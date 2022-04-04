@@ -1,0 +1,39 @@
+name: Next.js Pipelines
+
+on: [push, pull_request]
+
+jobs:
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: | 
+          echo "Running installing dependecies ... "
+          npm install
+
+      - name: Run linting
+        run: |
+          echo "Running linting ... "
+          npm run lint
+
+  test:
+    name: test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: | 
+          echo "Running installing dependecies ... "
+          npm install
+
+      - name: Run test
+        run: |
+          echo "Running tests ... "
