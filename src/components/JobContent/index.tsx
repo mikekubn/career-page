@@ -17,15 +17,15 @@ const JobContent = ({ data, truncate, modal }: { data: IJob, truncate: boolean, 
             <Image src={image} width={60} height={60} priority />
           </div>
         </div>
-        <div className="flex w-48 ml-2 flex-col-1 sm:w-56 lg:w-96">
-          <h1 className="pb-1 text-lg font-AsapItal">{companyName}</h1>
-          <p className="text-sm italic font-Asap">{date}</p>
-          <p className="text-sm italic font-Asap">{where}</p>
-          <h1 className="pt-5 pb-2 text-lg font-bold font-AsapItal">{position}</h1>
+        <div className="flex w-48 ml-2 sm:ml-4 lg:ml-6 flex-col-1 sm:w-56 lg:w-96">
+          <h1 className={`pb-1 font-AsapItal ${modal ? 'lg:text-3xl' : 'text-lg'}`}>{companyName}</h1>
+          <p className={`italic font-Asap ${modal ? 'lg:text-lg' : 'text-sm'}`}>{date}</p>
+          <p className={`italic font-Asap ${modal ? 'lg:text-lg' : 'text-sm'}`}>{where}</p>
+          <h1 className={`pt-5 pb-2 font-bold font-AsapItal ${modal ? 'lg:text-2xl' : 'text-lg'}`}>{position}</h1>
           {
           modal
             ? (
-              <ul className="list-disc leading-6">
+              <ul className="list-disc leading-6 lg:text-base lg:leading-9">
                 { description.map((val) => (<li key={val}>{val}</li>))}
               </ul>
             )
