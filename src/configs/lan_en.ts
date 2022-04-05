@@ -10,7 +10,7 @@ interface IJob {
 
 const jobs_lan_en: IJob[] = [
   {
-    id: '1', image: '/img/work/livesporttv.jpeg', companyName: 'Livesport', date: 'from: 11.2020', where: 'where: Brno, Czech Republic', position: 'Javascript Developer', description: ['React', 'Next', 'Introduction of QA process Cypress', 'JavaScript, TypeScript development'],
+    id: '1', image: '/img/work/livesport.jpeg', companyName: 'Livesport', date: 'from: 11.2020', where: 'where: Brno, Czech Republic', position: 'Javascript Developer', description: ['React, Next, Nuxt, MSW, Cypress', 'JavaScript, TypeScript', 'Media service development (IPTV, Flashscore)', 'Introduction of QA process Cypress'],
   },
   {
     id: '2', image: '/img/work/onsemi.jpeg', companyName: 'ON Semiconductor', date: 'from: 12.2019 / to: 10.2020', where: 'where: Rožnov pod Radhoštěm, Czech Republic', position: 'Jr. Programmer', description: ['Java', 'SQL', 'Tricentis Tosca', 'Creation test scenarios for manual and automation testing', 'Writing automatic scripts in tool Tosca and extension basic function in Selenium', 'Reporting result of tests'],

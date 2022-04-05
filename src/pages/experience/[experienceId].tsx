@@ -78,9 +78,9 @@ const JobDescriptionPage = ({ experienceId }: ITaskId): React.ReactElement | nul
           },
         }}
       >
-        <div className="flex-1 main-page-layout">
-          <MainLayout>
-            <CenterLayout>
+        <MainLayout>
+          <CenterLayout>
+            <div className="main-page-layout">
               <MotionDiv>
                 {
                   isDesktop.width
@@ -88,9 +88,9 @@ const JobDescriptionPage = ({ experienceId }: ITaskId): React.ReactElement | nul
                     : <MobileModal data={description} handleClick={copy} />
                 }
               </MotionDiv>
-            </CenterLayout>
-          </MainLayout>
-        </div>
+            </div>
+          </CenterLayout>
+        </MainLayout>
       </Modal>
     </>
   );
