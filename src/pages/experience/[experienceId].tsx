@@ -52,9 +52,9 @@ const JobDescriptionPage = ({ experienceId }: ITaskId): React.ReactElement | nul
     <>
       <Head>
         <title>{description?.companyName}</title>
-        <meta name="description" content={`Michael Kubín ${description.companyName}`} />
-        <meta property="og:title" content={`Experience ${experienceId}  ${description.id} ${description.companyName}`} />
-        <meta property="og:description" content={`Experience ${description.description}`} />
+        <meta name="description" content={`Michael Kubín - ${description.companyName}`} />
+        <meta property="og:title" content={`Michael Kubin - Experience ${description.companyName}`} />
+        <meta property="og:description" content={`Experience - ${description.description}`} />
         <meta property="og:url" content={`https://mikekubn.cz/experience/${experienceId}`} />
         <meta property="og:type" content="website" />
       </Head>
