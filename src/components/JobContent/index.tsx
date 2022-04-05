@@ -10,8 +10,8 @@ const JobContent = ({ data, truncate, modal }: { data: IJob, truncate: boolean, 
   const abridge = truncate ? 'truncate' : '';
 
   return (
-    <div className="m-3 lg:m-5 flex-row-1">
-      <div className={modal ? 'flex mx-auto' : 'flex'}>
+    <div className={`m-3 lg:m-5 flex-row-1 ${modal ? 'justify-center sm:justify-center md:justify-end lg:justify-end' : 'justify-start'}`}>
+      <div className="flex">
         <div className="flex flex-col">
           <div className="w-16 h-16">
             <Image src={image} width={60} height={60} priority />
