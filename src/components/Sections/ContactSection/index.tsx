@@ -72,24 +72,24 @@ const Gallery = () => (
       <ImageTooltip
         positon="justify-center"
         root="technology/typescript"
-        height={70}
-        width={70}
+        height="80"
+        width="70"
         alt="Technology typescript"
         tooltip="Typescript"
       />
       <ImageTooltip
         positon="justify-center"
         root="technology/cypress"
-        height={70}
-        width={70}
+        height="80"
+        width="70"
         alt="Technology cypress"
         tooltip="Cypress"
       />
       <ImageTooltip
         positon="justify-center"
         root="technology/react"
-        height={70}
-        width={70}
+        height="80"
+        width="70"
         alt="Technology react"
         tooltip="React"
       />
@@ -98,24 +98,24 @@ const Gallery = () => (
       <ImageTooltip
         positon="justify-center"
         root="technology/javascript"
-        height={70}
-        width={70}
+        height="80"
+        width="70"
         alt="Technology javascript"
         tooltip="Javascript"
       />
       <ImageTooltip
         positon="justify-center"
         root="technology/nuxt"
-        height={70}
-        width={70}
+        height="80"
+        width="70"
         alt="Technology nuxt"
         tooltip="Nuxt"
       />
       <ImageTooltip
         positon="justify-center"
         root="technology/framer"
-        height={70}
-        width={70}
+        height="80"
+        width="70"
         alt="Technology framer"
         tooltip="Framer"
       />

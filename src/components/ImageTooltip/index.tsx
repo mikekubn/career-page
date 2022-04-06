@@ -3,8 +3,8 @@ import Image from 'next/image';
 
 interface IImageTooltop {
   root: string,
-  height: number,
-  width: number,
+  height: string,
+  width: string,
   alt: string,
   tooltip: string,
   positon: string,

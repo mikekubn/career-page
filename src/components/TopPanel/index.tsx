@@ -25,24 +25,24 @@ export default TopPanel;
 
 const BackToTop = () => (
   <div className="flex flex-row items-center p-2 cursor-pointer">
-    <Image src="/img/top-arrow.png" height={30} width={30} onClick={() => window.scrollTo(0, 0)} alt="Arrow top" />
+    <Image src="/img/top-arrow.png" height="30" width="30" onClick={() => window.scrollTo(0, 0)} alt="Arrow top" />
   </div>
 );
 
 const ProvideImage = ({ val }: { val: boolean }) => {
   if (val) {
     return (
-      <Image src="/img/moon.png" alt="Moon" height={26} width={26} />
+      <Image src="/img/moon.png" alt="Moon" height="28" width="28" />
     );
   }
 
   return (
-    <Image src="/img/sun.png" alt="Sun" height={30} width={30} />
+    <Image src="/img/sun.png" alt="Sun" height="28" width="28" />
   );
 };
 
 const RenderThemeImage = ({ val }: { val: boolean }) => (
-  <div className="flex flex-row items-center p-2 w-10 h-10">
+  <div className="flex flex-row items-center p-2">
     <ProvideImage val={val} />
   </div>
 );
