@@ -23,7 +23,7 @@ const Custom404: NextPage = (): React.ReactElement => (
             scale: [0.8, 1],
           }}
         >
-          <Image src="/img/smiley-sad.png" width={300} height={300} />
+          <Image src="/img/smiley-sad.png" alt="Error 404 smile sad" width={300} height={300} />
         </motion.div>
         <Link href="/" scroll={false} replace passHref>
           <a className="button-style mt-16">Go Home</a>
