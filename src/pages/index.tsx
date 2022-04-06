@@ -3,7 +3,6 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import HomeSection from '@/components/Sections/HomeSection';
 import ContactSection from '@/components/Sections/ContactSection';
-import MotionDiv from '@/components/Motions/MotionDiv';
 
 const Home: NextPage = (): React.ReactElement => (
   <>
@@ -16,9 +15,7 @@ const Home: NextPage = (): React.ReactElement => (
       <meta property="og:type" content="website" />
     </Head>
     <section className="main-page-layout">
-      <MotionDiv>
-        <HomeSection />
-      </MotionDiv>
+      <HomeSection />
     </section>
     <section className="main-page-layout">
       <ContactSection />

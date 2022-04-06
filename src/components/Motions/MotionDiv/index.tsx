@@ -15,6 +15,7 @@ const MotionDiv = ({ children }: { children: React.ReactNode }): React.ReactElem
     className="flex flex-1"
   >
     {children}
+
   </motion.div>
 );
 

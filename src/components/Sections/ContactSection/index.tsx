@@ -44,7 +44,9 @@ const ContactSection = (): React.ReactElement => {
         <div className="flex flex-col overflow-auto">
           <MotionDiv>
             <form ref={form} onSubmit={handleSubmitForm} className="flex flex-col mx-auto w-72 lg:w-96 lg:mx-14">
-              <h3 className="flex pb-5 mx-auto text-2xl font-AsapItal">Contact me</h3>
+              <section className="flex pb-5 mx-auto">
+                <h1 className="text-2xl font-AsapItal">Contact me</h1>
+              </section>
               <Input label="Subject" type="subject" name="subject" placeholder="Write here" />
               <Input label="Full Name" type="text" name="from_name" placeholder="Write here" />
               <Input label="Your Email" type="email" name="from_email" placeholder="example@foo.com" />
@@ -54,7 +56,7 @@ const ContactSection = (): React.ReactElement => {
                 className="button-style"
               >
                 <p className="pr-3">Send</p>
-                <Image src="/img/email.png" height={26} width={26} />
+                <Image src="/img/email.png" height={26} width={26} alt="Send" />
               </button>
             </form>
           </MotionDiv>
@@ -70,24 +72,24 @@ const Gallery = () => (
       <ImageTooltip
         positon="justify-center"
         root="technology/typescript"
-        height={70}
-        width={70}
+        height="80"
+        width="70"
         alt="Technology typescript"
         tooltip="Typescript"
       />
       <ImageTooltip
         positon="justify-center"
         root="technology/cypress"
-        height={70}
-        width={70}
+        height="80"
+        width="70"
         alt="Technology cypress"
         tooltip="Cypress"
       />
       <ImageTooltip
         positon="justify-center"
         root="technology/react"
-        height={70}
-        width={70}
+        height="80"
+        width="70"
         alt="Technology react"
         tooltip="React"
       />
@@ -96,24 +98,24 @@ const Gallery = () => (
       <ImageTooltip
         positon="justify-center"
         root="technology/javascript"
-        height={70}
-        width={70}
+        height="80"
+        width="70"
         alt="Technology javascript"
         tooltip="Javascript"
       />
       <ImageTooltip
         positon="justify-center"
         root="technology/nuxt"
-        height={70}
-        width={70}
+        height="80"
+        width="70"
         alt="Technology nuxt"
         tooltip="Nuxt"
       />
       <ImageTooltip
         positon="justify-center"
         root="technology/framer"
-        height={70}
-        width={70}
+        height="80"
+        width="70"
         alt="Technology framer"
         tooltip="Framer"
       />

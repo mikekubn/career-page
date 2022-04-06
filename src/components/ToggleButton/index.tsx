@@ -12,7 +12,7 @@ const ToggleButton = ({ value, callback }: IToggleButton): React.ReactElement =>
       checked={value}
       type="checkbox"
       id="toggle-button"
-      className="appearance-none sr-only peer"
+      className="appearance-none sr-only peer hidden"
     />
     <section
       className="flex w-12 h-6 p-1 text-black bg-transparent border rounded-full shrink-0 duration-500 ease-in-out peer-checked:bg-transparent after:w-[15px] after:h-[15px] after:bg-sky500/50 after:rounded-full after:shadow-md after:duration-500 peer-checked:after:translate-x-6"
