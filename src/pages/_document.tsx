@@ -10,7 +10,7 @@ export default class MyDocument extends Document {
           <meta name="google-site-verification" content="JKVyi3BBSq744RDL7GjbV4PnS8NyES3hY93rQMu-QsE" />
           <meta name="description" content="Michael Kubín career web" />
           <meta property="og:description" content="Michael Kubín, react, next, nuxt, javascript, typescript" />
-          <link rel="icon" href="/me_favicon.png" />
+          <link rel="icon" type="image/png" href="/favicon.png" />
         </Head>
         <body className="bg-white dark:bg-gray900 ease-in-out duration-700 text-gray500">
           <Main />
