@@ -13,7 +13,7 @@ const TopPanel = (): React.ReactElement => {
   return (
     <header className={`fixed top-0 left-0 z-50 ${display} flex-row items-center w-full px-7 h-14`}>
       <div className="flex ml-auto">
-        {num !== 0 ? <BackToTop /> : null}
+        {num > 200 ? <BackToTop /> : null}
         <RenderThemeImage val={state} />
         <ToggleButton value={state} callback={(val) => toggle(val)} />
       </div>
