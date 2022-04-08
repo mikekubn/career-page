@@ -129,7 +129,7 @@ const DesktopModal = ({ data, handleClick }: { data: IJob, handleClick: () => vo
         <JobContent modal truncate={false} data={data} />
       </div>
       <div className="flex justify-end">
-        <div onClick={handleClick} className="flex items-center justify-center w-12 h-12 border rounded-full cursor-pointer text-sky500 hover:bg-sky500/5">
+        <div onClick={handleClick} className="flex items-center justify-center w-12 h-12 border border-b-4 rounded-full cursor-pointer text-sky500 hover:bg-sky500/5 hover:border-b">
           <Image src="/img/link.png" width="28" height="28" alt="Copy link" />
         </div>
         <div className="pl-4 flex-col-center-content">
@@ -150,13 +150,13 @@ const MobileModal = ({ data, handleClick }: { data: IJob, handleClick: () => voi
     <div className="my-5 flex-row-1">
       <div className="justify-end flex-col-1">
         <Link href="/" passHref>
-          <a className="flex items-center justify-center w-10 h-10 border rounded-full cursor-pointer text-sky500 hover:bg-sky500/5">
+          <a className="flex items-center justify-center w-10 h-10 border border-b-4 rounded-full cursor-pointer text-sky500 hover:bg-sky500/5 hover:border-b">
             <Image src="/img/cross.png" width={24} height={24} alt="Cross" />
           </a>
         </Link>
       </div>
       <div className="items-end justify-end flex-row-1">
-        <div onClick={handleClick} className="flex items-center justify-center w-10 h-10 border rounded-full cursor-pointer text-sky500 hover:bg-sky500/5">
+        <div onClick={handleClick} className="flex items-center justify-center w-10 h-10 border border-b-4 rounded-full cursor-pointer text-sky500 hover:bg-sky500/5 hover:border-b">
           <Image src="/img/link.png" width={24} height={24} alt="Copy link" />
         </div>
         <div className="flex items-center justify-center w-10 h-10">
