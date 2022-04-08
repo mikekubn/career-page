@@ -66,59 +66,47 @@ const ContactSection = (): React.ReactElement => {
   );
 };
 
-const imgHeight = '70';
-const imgWeight = '70';
-
 const Gallery = () => (
   <div className="items-center my-20 lg:my-auto flex-col-1 lg:h-96">
-    <div className="flex flex-row flex-1">
+    <div className="flex-row-1">
       <ImageTooltip
         positon="justify-center"
         root="technology/typescript_n"
-        height={imgHeight}
-        width={imgWeight}
         alt="Technology typescript"
         tooltip="Typescript"
       />
       <ImageTooltip
         positon="justify-center"
         root="technology/cypress"
-        height={imgHeight}
-        width={imgWeight}
         alt="Technology cypress"
         tooltip="Cypress"
       />
       <ImageTooltip
         positon="justify-center"
         root="technology/react"
-        height={imgHeight}
-        width={imgWeight}
         alt="Technology react"
         tooltip="React"
       />
     </div>
-    <div className="flex flex-row flex-1">
+    <div className="flex-row-1">
       <ImageTooltip
+        rtl
         positon="justify-center"
         root="technology/javascript_n"
-        height={imgHeight}
-        width={imgWeight}
         alt="Technology javascript"
         tooltip="Javascript"
       />
       <ImageTooltip
+        rtl
         positon="justify-center"
         root="technology/nuxt"
-        height={imgHeight}
-        width={imgWeight}
         alt="Technology nuxt"
         tooltip="Nuxt"
       />
       <ImageTooltip
+        rtl
         positon="justify-center"
         root="technology/framer"
-        height={imgHeight}
-        width={imgWeight}
         alt="Technology framer"
         tooltip="Framer"
       />

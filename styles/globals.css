@@ -34,6 +34,6 @@
         @apply bottom-0 left-0 flex items-center justify-center w-screen
     }
     .button-style {
-        @apply flex items-center justify-center h-12 border rounded-full cursor-pointer mt-7 w-52 text-sky500 hover:bg-sky500/5
+        @apply flex items-center justify-center h-12 border rounded-full border-b-4 cursor-pointer mt-7 w-52 text-sky500 hover:bg-sky500/5 hover:border-b
     }
 }
