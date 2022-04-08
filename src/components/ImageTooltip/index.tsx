@@ -1,6 +1,5 @@
 import React from 'react';
 import { AnimatePresence, motion, useAnimation } from 'framer-motion';
-import { useMediaQueries } from '@react-hook/media-query';
 import { useIntersection } from '@/hooks/useIntersection';
 
 interface IImageTooltop {
@@ -16,10 +15,6 @@ const ImageTooltip = ({
 }: IImageTooltop): React.ReactElement => {
   const { visible, add: [ref] } = useIntersection();
   const controls = useAnimation();
-  const { matches: isMobile } = useMediaQueries({
-    screen: 'screen',
-    width: '(min-width: 500px)',
-  });
 
   React.useEffect(() => {
     if (visible) {
@@ -93,8 +88,7 @@ const fadeInLeft = {
     x: 0,
     transition: {
       staggerChildren: 0.2,
-      duration: 1,
-      delay: 0.2,
+      duration: 0.8,
     },
   },
 };
