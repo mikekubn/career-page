@@ -13,7 +13,8 @@
     "start:https": "node server.js",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "jest"
   },
   "dependencies": {
     "@emailjs/browser": "^3.4.0",
@@ -27,8 +28,10 @@
   "devDependencies": {
     "@next/eslint-plugin-next": "^12.0.10",
     "@react-hook/media-query": "^1.1.1",
+    "@testing-library/dom": "^8.13.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^12.1.4",
+    "@testing-library/user-event": "^14.0.4",
     "@types/luxon": "^2.0.9",
     "@types/node": "17.0.17",
     "@types/react": "17.0.39",
