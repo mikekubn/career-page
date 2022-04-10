@@ -37,3 +37,4 @@ jobs:
       - name: Run test
         run: |
           echo "Running tests ... "
+          npm run test
