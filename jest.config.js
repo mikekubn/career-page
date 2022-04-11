@@ -9,6 +9,7 @@ const customJestConfig = {
   moduleNameMapper: {
     '^@/components/(.*)$': '<rootDir>/src/components/$1',
     '^@/hooks/(.*)$': '<rootDir>/src/hooks/$1',
+    '^@/config/(.*)$': '<rootDir>/src/config/$1',
   },
   testRegex: '(/__tests__/.*|(\\.|/)test)\\.[jt]sx?$',
   testEnvironment: 'jsdom',
