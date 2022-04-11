@@ -39,6 +39,7 @@ const ImageTooltip = ({
         }}
       >
         <motion.img
+          data-testid="image-tooltip-img"
           key={`/img/${root}`}
           src={`/img/${root}.png`}
           height="60"
@@ -47,6 +48,7 @@ const ImageTooltip = ({
           variants={rtl ? fadeInRight : fadeInLeft}
         />
         <motion.p
+          data-testid="image-tooltip-tooltip"
           className="mt-2 text-xs mx-auto sm:text-sm md:text-sm lg:text-sm"
           variants={rtl ? fadeInLeft : fadeInRight}
         >
