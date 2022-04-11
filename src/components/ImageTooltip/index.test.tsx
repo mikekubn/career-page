@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import ImageTooltip from '.';
 
-describe('Image tooltip', () => {
+describe.skip('Image tooltip', () => {
   it('render image tooltip', () => {
     render(<ImageTooltip root="root" alt="Unit" tooltip="Test" positon="center" rtl />);
 

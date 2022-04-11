@@ -10,24 +10,58 @@ const JobContent = ({ data, truncate, modal }: { data: IJob, truncate: boolean, 
   const abridge = truncate ? 'truncate' : '';
 
   return (
-    <div className={`m-3 lg:m-5 flex-row-1 ${modal ? 'justify-center sm:justify-center md:justify-end lg:justify-end' : 'justify-start'}`}>
+    <div
+      data-testid={modal ? 'modal' : 'card'}
+      className={`m-3 lg:m-5 flex-row-1 ${modal ? 'justify-center sm:justify-center md:justify-end lg:justify-end' : 'justify-start'}`}
+    >
       <div className="flex">
         <div className="flex flex-col">
-          <Image src={image} width="60" height="60" priority alt={companyName} />
+          <Image data-testid="image" src={image} width="60" height="60" priority alt={companyName} />
         </div>
         <div className="flex w-48 ml-2 sm:ml-4 lg:ml-6 flex-col-1 sm:w-56 lg:w-96">
-          <h1 className={`pb-1 font-AsapItal ${modal ? 'lg:text-3xl' : 'text-lg'}`}>{companyName}</h1>
-          <p className={`italic font-Asap ${modal ? 'lg:text-lg' : 'text-sm'}`}>{date}</p>
-          <p className={`italic font-Asap ${modal ? 'lg:text-lg' : 'text-sm'}`}>{where}</p>
-          <h1 className={`pt-5 pb-2 font-bold font-AsapItal ${modal ? 'lg:text-2xl' : 'text-lg'}`}>{position}</h1>
+          <h1
+            data-testid={modal ? 'modal-company-name' : 'company-name'}
+            className={`pb-1 font-AsapItal ${modal ? 'lg:text-3xl' : 'text-lg'}`}
+          >
+            {companyName}
+          </h1>
+          <p
+            data-testid={modal ? 'modal-date' : 'date'}
+            className={`italic font-Asap ${modal ? 'lg:text-lg' : 'text-sm'}`}
+          >
+            {date}
+
+          </p>
+          <p
+            data-testid={modal ? 'modal-where' : 'where'}
+            className={`italic font-Asap ${modal ? 'lg:text-lg' : 'text-sm'}`}
+          >
+            {where}
+          </p>
+          <h1
+            data-testid={modal ? 'modal-position' : 'position'}
+            className={`pt-5 pb-2 font-bold font-AsapItal ${modal ? 'lg:text-2xl' : 'text-lg'}`}
+          >
+            {position}
+          </h1>
           {
           modal
             ? (
-              <ul className="list-disc leading-6 lg:text-base lg:leading-9">
-                { description.map((val) => (<li key={val}>{val}</li>))}
+              <ul
+                aria-label="position"
+                className="list-disc leading-6 lg:text-base lg:leading-9"
+              >
+                {description.map((val) => (<li key={val}>{val}</li>))}
               </ul>
             )
-            : <p className={`text-base ${abridge}`}>{description.join(', ')}</p>
+            : (
+              <p
+                data-testid="description"
+                className={`text-base ${abridge}`}
+              >
+                {description.join(', ')}
+              </p>
+            )
         }
         </div>
       </div>
