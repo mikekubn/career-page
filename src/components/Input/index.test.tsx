@@ -12,7 +12,7 @@ describe('Input', () => {
     userEvent.type(screen.getByLabelText(/name/i), inputName);
 
     waitFor(() => {
-      expect(screen.getByTestId('input')).toHaveValue(inputName);
+      expect(screen.getByTestId('input-name')).toHaveValue(inputName);
       expect(onChange).toHaveBeenCalled();
     });
   });

@@ -31,7 +31,7 @@ const Form = ({ handleSubmitForm, setValues, values }: IForm): React.ReactElemen
   return (
     <form ref={form} onSubmit={handleSubmitForm} className="flex flex-col mx-auto w-72 lg:w-96 lg:mx-14">
       <section className="flex pb-5 mx-auto">
-        <h1 className="text-2xl font-AsapItal">Contact me</h1>
+        <h1 data-testid="form-head" className="text-2xl font-AsapItal">Contact me</h1>
       </section>
       <Input label="Subject" type="subject" name="subject" placeholder="Write here" value={values.subject} handleChange={handleChange} />
       <Input label="Full Name" type="text" name="from_name" placeholder="Write here" value={values.from_name} handleChange={handleChange} />

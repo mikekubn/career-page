@@ -14,14 +14,16 @@ const Input = (props: IProps): React.ReactElement => {
     label, name, type, placeholder, value, handleChange,
   } = props;
 
+  const sanity = label.toLowerCase().replace(' ', '-');
+
   return (
     <>
-      <label data-testid="label" htmlFor={`input-contanct-${label}`} className="py-2">{label}</label>
+      <label data-testid="label" htmlFor={`input-${sanity}`} className="py-2">{label}</label>
       <input
         value={value}
         onChange={handleChange}
-        data-testid="input"
-        id={`input-contanct-${label}`}
+        data-testid={`input-${sanity}`}
+        id={`input-${sanity}`}
         required
         type={type}
         name={name}

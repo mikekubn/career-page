@@ -14,9 +14,9 @@ const TextArea = (props: IProps): React.ReactElement => {
 
   return (
     <>
-      <label htmlFor="message-contact" className="py-2">{label}</label>
+      <label htmlFor="message" className="py-2">{label}</label>
       <textarea
-        id="message-contact"
+        id="message"
         required
         name={name}
         value={value}
