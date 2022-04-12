@@ -11,6 +11,7 @@ const ToggleButton = ({ value, callback }: IToggleButton): React.ReactElement =>
       onChange={() => callback(!value)}
       checked={value}
       type="checkbox"
+      role="switch"
       id="toggle-button"
       className="appearance-none sr-only peer hidden"
     />
