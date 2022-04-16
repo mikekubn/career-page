@@ -21,6 +21,7 @@
       "@/provider/*": ["src/providers/*"],
       "@/hooks/*": ["src/hooks/*"],
       "@/styles/*": ["styles/*"],
+      "@/utils/*": ["utils/*"],
     }
   },
   "include": [

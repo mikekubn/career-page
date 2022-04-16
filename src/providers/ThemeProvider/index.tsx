@@ -1,5 +1,5 @@
 import React from 'react';
-import { useMatchMedia } from 'src/hooks';
+import { useMatchMedia } from '@/hooks/index';
 
 type ThemeProviderProps = { children: React.ReactNode };
 type ThemeState = {
@@ -46,4 +46,4 @@ const useThemeProvider = () => {
   return context;
 };
 
-export { ThemeProvider, useThemeProvider };
+export { ThemeProvider, useThemeProvider, ThemeContex };

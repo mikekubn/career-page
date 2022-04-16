@@ -7,6 +7,7 @@ interface ICard {
 
 const Card = ({ children, handleClick }: ICard): React.ReactElement => (
   <section
+    data-testid="card"
     onClick={handleClick}
     className="card border-sky500/5 shadow-sky500/5 hover:shadow-sky500/20 hover:bg-transparent/10"
   >

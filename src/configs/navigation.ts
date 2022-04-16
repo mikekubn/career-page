@@ -3,6 +3,11 @@ export const hrefs = {
   contact: 'contact',
 };
 
-export const navigation = [
+export interface INavigation {
+  name: string,
+  url: string,
+}
+
+export const navigation: INavigation[] = [
   { name: 'Contact', url: '#contact' },
 ];

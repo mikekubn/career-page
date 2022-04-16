@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { jobs_lan_en } from 'src/configs/lan_en';
 import Router from 'next/router';
-import { hrefs } from 'src/configs/navigation';
+import { hrefs, navigation } from 'src/configs/navigation';
 import Card from '@/components/Card';
 import Navigation from '@/components/Navigation';
 import Name from '@/components/Name';
@@ -27,7 +27,7 @@ const HomeSection = () => {
       <div id="home" ref={ref} className="mt-10 flex-col-1 lg:flex-row-1 lg:mt-0">
         <div className="justify-center flex-col-1 sm:items-center lg:items-start">
           <Name />
-          <Navigation />
+          <Navigation items={navigation} />
         </div>
         <div className="justify-center mx-auto mt-5 flex-col-1 sm:items-center">
           <h1 className="mx-auto my-10 text-2xl font-AsapItal lg:mb-10">Experience</h1>
