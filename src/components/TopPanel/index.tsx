@@ -1,8 +1,8 @@
 import React from 'react';
-import { useThemeProvider } from 'src/providers/ThemeProvider';
 import Image from 'next/image';
 import ToggleButton from '@/components/ToggleButton';
 import { useScroll } from '@/hooks/index';
+import { useThemeProvider } from '@/provider/ThemeProvider';
 
 const TopPanel = (): React.ReactElement => {
   const { move, num } = useScroll();
@@ -11,7 +11,7 @@ const TopPanel = (): React.ReactElement => {
   const display = move === 'down' ? 'hidden' : 'flex';
 
   return (
-    <header className={`fixed top-0 left-0 z-50 ${display} flex-row items-center w-full px-7 h-14`}>
+    <header data-testid="top-panel" className={`fixed top-0 left-0 z-50 ${display} flex-row items-center w-full px-7 h-14`}>
       <div className="flex ml-auto">
         {num > 200 ? <BackToTop /> : null}
         <RenderThemeImage val={state} />
