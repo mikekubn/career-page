@@ -8,7 +8,7 @@ const MotionDiv = ({ children }: { children: React.ReactNode }): React.ReactElem
       y: '0vh',
       opacity: 1,
       transition: {
-        duration: 1, type: 'tween',
+        duration: 0.8, type: 'tween',
       },
     }}
     exit={{ y: '100vh', opacity: 0 }}
