@@ -14,6 +14,5 @@ describe('Navigation', () => {
     mocks.forEach((mock) => {
       expect(screen.getByTestId(`nav-${mock.name}`)).toHaveTextContent(mock.name);
     });
-    screen.debug();
   });
 });
