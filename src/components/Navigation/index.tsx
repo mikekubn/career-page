@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { INavigation } from 'src/configs/navigation';
 
 const Navigation = ({ items }: { items: INavigation[] }): React.ReactElement => (
-  <div className="flex-row hidden mt-6 lg:flex lg:mt-0">
+  <div data-cy="navigation" className="flex-row hidden mt-6 lg:flex lg:mt-0">
     {
       items.map((nav) => (
         <Link href={nav.url} key={nav.url} scroll={false} replace passHref>
