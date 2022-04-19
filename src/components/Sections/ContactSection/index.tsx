@@ -5,7 +5,6 @@ import emailjs from '@emailjs/browser';
 import { useIntersection } from '@/hooks/index';
 import { useNotificationProvider } from '@/provider/NotificationProvider';
 import ImageTooltip from '@/components/ImageTooltip';
-import MotionDiv from '@/components/Motions/MotionDiv';
 import Form, { defaultValues, TFormValues } from '@/components/Form';
 
 const ContactSection = (): React.ReactElement => {
@@ -36,14 +35,10 @@ const ContactSection = (): React.ReactElement => {
 
   return (
     <div id="contact" ref={ref} className="flex-col-1 lg:flex-row-1">
-      <MotionDiv>
-        <Gallery />
-      </MotionDiv>
+      <Gallery />
       <div className="justify-end my-8 flex-col-1 lg:flex-col-center-content lg:mb-0">
         <div className="flex flex-col overflow-auto">
-          <MotionDiv>
-            <Form handleSubmitForm={handleSubmitForm} setValues={setValues} values={values} />
-          </MotionDiv>
+          <Form handleSubmitForm={handleSubmitForm} setValues={setValues} values={values} />
         </div>
       </div>
     </div>
