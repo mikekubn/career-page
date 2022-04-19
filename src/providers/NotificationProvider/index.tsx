@@ -8,7 +8,7 @@ interface INotificaitonBox {
   img: string,
 }
 
-interface INotificaiton {
+export interface INotificaiton {
   visible: boolean,
   status: Status,
   note: string
@@ -66,24 +66,24 @@ const useNotificationProvider = () => {
 const NotificaitonBox = ({ display, img, note }: INotificaitonBox) => (
   <AnimatePresence>
     {
-        display ? (
-          <motion.div
-            key="notification"
-            initial={{ x: 300, opacity: 0 }}
-            animate={{ x: -28, opacity: 1 }}
-            exit={{ x: 300, opacity: 0 }}
-            transition={{ duration: 0.7, ease: 'easeInOut' }}
-            className="fixed right-0 z-50 mt-12"
-          >
-            <div className="flex items-center px-4 rounded-lg h-9 w-60 bg-gray text-black sm:bg-sky500/5 sm:text-gray500 lg:h-11 lg:bg-sky500/5 lg:text-gray500">
-              <Image src={img} width={18} height={18} alt="Notification" />
-              <p className="pl-2 text-sm lg:pl-4">{note}</p>
-            </div>
-          </motion.div>
-        )
-          : null
-      }
+      display ? (
+        <motion.div
+          key="notification"
+          initial={{ x: 300, opacity: 0 }}
+          animate={{ x: -28, opacity: 1 }}
+          exit={{ x: 300, opacity: 0 }}
+          transition={{ duration: 0.7, ease: 'easeInOut' }}
+          className="fixed right-0 z-50 mt-12"
+        >
+          <div className="flex items-center px-4 rounded-lg h-9 w-60 bg-gray text-black sm:bg-sky500/5 sm:text-gray500 lg:h-11 lg:bg-sky500/5 lg:text-gray500">
+            <Image data-testid="notificaiton-box-image" src={img} width={18} height={18} alt="Notification" />
+            <p data-testid="notificaiton-box-note" className="pl-2 text-sm lg:pl-4">{note}</p>
+          </div>
+        </motion.div>
+      )
+        : null
+    }
   </AnimatePresence>
 );
 
-export { NotificationProvider, useNotificationProvider };
+export { NotificationProvider, useNotificationProvider, NotificaitonBox };

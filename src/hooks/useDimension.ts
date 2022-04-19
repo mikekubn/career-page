@@ -1,10 +1,8 @@
 import React from 'react';
 
-interface IDimension {
-  ref: React.MutableRefObject<null>
-}
+const useDimension = () => {
+  const ref = React.useRef(null);
 
-const useDimension = ({ ref }: IDimension) => {
   const getDimension = React.useCallback(() => ({
     width: ref.current ? (ref.current as HTMLElement).offsetWidth : 0,
     height: ref.current ? (ref.current as HTMLElement).offsetHeight : 0,
@@ -24,7 +22,10 @@ const useDimension = ({ ref }: IDimension) => {
     };
   }, [handleResize]);
 
-  return dimension;
+  return {
+    dimension,
+    add: [ref],
+  };
 };
 
 export { useDimension };
