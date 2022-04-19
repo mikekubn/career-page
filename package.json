@@ -14,7 +14,9 @@
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "prepare": "husky install",
-    "test": "jest"
+    "test": "jest",
+    "cy": "cypress open",
+    "cy:run": "cypress run"
   },
   "dependencies": {
     "@emailjs/browser": "^3.6.2",
@@ -39,6 +41,7 @@
     "@typescript-eslint/parser": "^5.21.0",
     "autoprefixer": "^10.4.6",
     "classnames": "^2.3.1",
+    "cypress": "^9.5.4",
     "dotenv": "^16.0.0",
     "dotenv-cli": "^5.1.0",
     "eslint": "^8.14.0",
