@@ -6,12 +6,15 @@ import Footer from 'src/components/Footer';
 import TopPanel from 'src/components/TopPanel';
 import { ThemeProvider } from 'src/providers/ThemeProvider';
 import { NotificationProvider } from 'src/providers/NotificationProvider';
+import Script from 'next/script';
 import CenterLayout from '@/layouts/CenterLayout';
+import BackToTop from '@/components/BackToTop';
 
 const MyApp = ({ Component, pageProps }: AppProps): React.ReactElement => (
   <ThemeProvider>
     <NotificationProvider>
       <TopPanel />
+      <BackToTop />
       <MainLayout>
         <CenterLayout>
           <Component {...pageProps} />
@@ -19,6 +22,7 @@ const MyApp = ({ Component, pageProps }: AppProps): React.ReactElement => (
       </MainLayout>
       <Footer />
     </NotificationProvider>
+    <Script src="/theme.js" strategy="beforeInteractive" />
   </ThemeProvider>
 );
 

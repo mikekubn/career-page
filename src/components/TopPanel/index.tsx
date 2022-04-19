@@ -5,7 +5,7 @@ import { useScroll } from '@/hooks/index';
 import { useThemeProvider } from '@/provider/ThemeProvider';
 
 const TopPanel = (): React.ReactElement => {
-  const { move, num } = useScroll();
+  const { move } = useScroll();
   const { state, toggle } = useThemeProvider();
 
   const display = move === 'down' ? 'hidden' : 'flex';
@@ -13,7 +13,6 @@ const TopPanel = (): React.ReactElement => {
   return (
     <header data-testid="top-panel" className={`fixed top-0 left-0 z-50 ${display} flex-row items-center w-full px-7 h-14`}>
       <div className="flex ml-auto">
-        {num > 200 ? <BackToTop /> : null}
         <RenderThemeImage val={state} />
         <ToggleButton value={state} callback={(val) => toggle(val)} />
       </div>
@@ -22,12 +21,6 @@ const TopPanel = (): React.ReactElement => {
 };
 
 export default TopPanel;
-
-const BackToTop = () => (
-  <div className="flex flex-row items-center p-2 cursor-pointer">
-    <Image src="/img/top-arrow.png" height="30" width="30" onClick={() => window.scrollTo(0, 0)} alt="Arrow top" />
-  </div>
-);
 
 const ProvideImage = ({ val }: { val: boolean }) => {
   if (val) {
