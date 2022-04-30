@@ -20,7 +20,7 @@
     "@emailjs/browser": "^3.6.2",
     "framer-motion": "^6.3.3",
     "luxon": "^2.3.2",
-    "next": "^12.1.4",
+    "next": "^12.1.5",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-modal": "^3.15.1"
