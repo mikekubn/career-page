@@ -38,7 +38,7 @@
     "tailwindcss/no-contradicting-classname": "error",
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
-    "import/no-extraneous-dependencies": [2, { "devDependencies": true }],
+    "import/no-extraneous-dependencies": "off",
     "@typescript-eslint/naming-convention": [
       "error",
       {
