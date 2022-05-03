@@ -1,6 +1,9 @@
 name: Next.js Pipelines
 
 on:
+  push: 
+    baranches:
+      - develop
   pull_request:
     branches:
       - develop
