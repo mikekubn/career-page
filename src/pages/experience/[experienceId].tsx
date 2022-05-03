@@ -11,9 +11,9 @@ import { useThemeProvider } from '@/provider/ThemeProvider';
 import Name from '@/components/Name';
 import JobContent from '@/components/JobContent';
 import { useNotificationProvider } from '@/provider/NotificationProvider';
-import MotionDiv from '@/components/Motions/MotionDiv';
 import CenterLayout from '@/layouts/CenterLayout';
 import MainLayout from '@/layouts/MainLayout';
+import { motion } from 'framer-motion';
 
 interface ITaskId {
   experienceId: string,
@@ -84,13 +84,11 @@ const JobDescriptionPage = ({ experienceId }: ITaskId): React.ReactElement | nul
         <MainLayout>
           <CenterLayout>
             <div className="main-page-layout">
-              <MotionDiv>
-                {
-                  isDesktop.width
-                    ? <DesktopModal data={description} handleClick={copy} />
-                    : <MobileModal data={description} handleClick={copy} />
-                }
-              </MotionDiv>
+              {
+                isDesktop.width
+                  ? <DesktopModal data={description} handleClick={copy} />
+                  : <MobileModal data={description} handleClick={copy} />
+              }
             </div>
           </CenterLayout>
         </MainLayout>
@@ -119,15 +117,19 @@ const DesktopModal = ({ data, handleClick }: { data: IJob, handleClick: () => vo
     <div className="flex-col-1">
       <Name />
       <Link href="/" passHref>
-        <a className="button-style">
+        <motion.a animate={{ scale: [1, 1.2, 1] }} className="button-style">
           Close
-        </a>
+        </motion.a>
       </Link>
     </div>
     <div className="flex-col-1">
-      <div className="flex items-center flex-1">
+      <motion.div
+        initial={{ x: 100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1, transition: { duration: 0.8, type: 'tween' } }}
+        className="flex items-center flex-1"
+      >
         <JobContent modal truncate={false} data={data} />
-      </div>
+      </motion.div>
       <div className="flex justify-end">
         <div onClick={handleClick} className="flex items-center justify-center w-12 h-12 border border-b-4 rounded-full cursor-pointer text-sky500 hover:bg-sky500/5 hover:border-b">
           <Image src="/img/link.png" width="28" height="28" alt="Copy link" />
