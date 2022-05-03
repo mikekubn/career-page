@@ -10,7 +10,6 @@
     "build": "next build",
     "export": "next export",
     "start": "next start",
-    "start:https": "node server.js",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "prepare": "husky install",
