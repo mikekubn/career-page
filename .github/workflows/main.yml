@@ -72,36 +72,35 @@ jobs:
           echo "Running linting ... "
           npm run lint
 
-e2e-tests: 
-  container: "cypress/browsers:node14.17.6-chrome100-ff98"
-  name: e2e-tests
-  runs-on: ubuntu-latest
-  steps: 
-    - 
-      name: "Checkout repository"
-      uses: actions/checkout@v2
-    - 
-      name: "Run tests"
-      uses: cypress-io/github-action@v2
-      with: 
-        browser: chrome
-        start: "npx next dev"
-        wait-on: "http://localhost:3000"
+  e2e-tests: 
+    name: e2e-tests
+    runs-on: ubuntu-latest
+    container: cypress/browsers:node14.17.6-chrome100-ff98
 
-unit-tests: 
-  name: unit-tests
-  runs-on: ubuntu-latest
-  steps: 
-    - 
-      name: "Checkout repository"
-      uses: actions/checkout@v3
-    - 
-      name: "Install dependencies"
-      run: |
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Run tests
+        uses: cypress-io/github-action@v2
+        with: 
+          browser: chrome
+          start: npx next dev
+          wait-on: 'http://localhost:3000'
+
+  unit-tests:
+    name: unit-tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: | 
           echo "Running installing dependecies ... "
           npm install
-    - 
-      name: "Run tests"
-      run: |-
+      - name: Run tests
+        run: |
           echo "Running tests ... "
           npm run test
