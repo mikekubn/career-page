@@ -34,6 +34,11 @@ jobs:
           echo "Running installing dependecies ... "
           npm install
 
+      - name: Build
+        run: | 
+          echo "Runn build ... "
+          npm run build
+
   lint:
     name: lint
     runs-on: ubuntu-latest
@@ -43,6 +48,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Install dependencies
+        if: steps.myCacheStep.output.cache-hit != 'true'
+        run: | 
+          echo "Running installing dependecies ... "
+          npm install
+          
       - name: Run linting
         run: |
           echo "Running linting ... "
