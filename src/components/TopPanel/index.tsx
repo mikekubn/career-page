@@ -25,12 +25,12 @@ export default TopPanel;
 const ProvideImage = ({ val }: { val: boolean }) => {
   if (val) {
     return (
-      <Image src="/img/moon.png" alt="Moon" height="28" width="28" />
+      <Image data-cy="moon-image" src="/img/moon.png" alt="Moon" height="28" width="28" />
     );
   }
 
   return (
-    <Image src="/img/sun.png" alt="Sun" height="28" width="28" />
+    <Image data-cy="sun-image" src="/img/sun.png" alt="Sun" height="28" width="28" />
   );
 };
 
