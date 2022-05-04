@@ -7,9 +7,23 @@ on:
       - main
 
 jobs:
+  install-dep:
+    name: dependecies
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+      - uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: | 
+          echo "Running installing dependecies ... "
+          npm install
+
   lint:
     name: lint
     runs-on: ubuntu-latest
+    needs: [ install-dep ]
 
     steps:
       - name: Checkout repository
@@ -24,37 +38,3 @@ jobs:
         run: |
           echo "Running linting ... "
           npm run lint
-
-  e2e-tests: 
-    name: e2e-tests
-    runs-on: ubuntu-latest
-    container: cypress/browsers:node14.17.6-chrome100-ff98
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Run tests
-        uses: cypress-io/github-action@v2
-        with: 
-          browser: chrome
-          start: npx next dev
-          wait-on: 'http://localhost:3000'
-
-  unit-tests:
-    name: unit-tests
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Install dependencies
-        run: | 
-          echo "Running installing dependecies ... "
-          npm install
-
-      - name: Run tests
-        run: |
-          echo "Running tests ... "
-          npm run test
