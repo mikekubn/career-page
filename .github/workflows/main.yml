@@ -7,15 +7,27 @@ on:
       - main
 
 jobs:
-  setup:
-    name: setup
+  node_modules:
+    name: node_modules
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        id: myCacheStep
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-node-modules
+
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
 
       - name: Install dependencies
+        if: steps.myCacheStep.output.cache-hit != 'true'
         run: | 
           echo "Running installing dependecies ... "
           npm install
@@ -27,12 +39,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Install dependencies
-        run: | 
-          echo "Running installing dependecies ... "
-          npm install
+        uses: actions/checkout@v3
 
       - name: Run linting
         run: |
