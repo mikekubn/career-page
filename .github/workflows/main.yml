@@ -45,16 +45,63 @@ jobs:
     needs: build
 
     steps:
-      - name: Checkout repository
         uses: actions/checkout@v3
+      
+      - name: Cache node modules
+        id: myCacheStep
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-node-modules
+
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
 
       - name: Install dependencies
         if: steps.myCacheStep.output.cache-hit != 'true'
         run: | 
           echo "Running installing dependecies ... "
           npm install
-          
+
       - name: Run linting
         run: |
           echo "Running linting ... "
           npm run lint
+
+e2e-tests: 
+  container: "cypress/browsers:node14.17.6-chrome100-ff98"
+  name: e2e-tests
+  runs-on: ubuntu-latest
+  steps: 
+    - 
+      name: "Checkout repository"
+      uses: actions/checkout@v2
+    - 
+      name: "Run tests"
+      uses: cypress-io/github-action@v2
+      with: 
+        browser: chrome
+        start: "npx next dev"
+        wait-on: "http://localhost:3000"
+
+unit-tests: 
+  name: unit-tests
+  runs-on: ubuntu-latest
+  steps: 
+    - 
+      name: "Checkout repository"
+      uses: actions/checkout@v3
+    - 
+      name: "Install dependencies"
+      run: |
+          echo "Running installing dependecies ... "
+          npm install
+    - 
+      name: "Run tests"
+      run: |-
+          echo "Running tests ... "
+          npm run test
