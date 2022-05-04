@@ -20,10 +20,10 @@ jobs:
 
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-node_modules-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
+            ${{ runner.os }}-node_modules-${{ env.cache-name }}-
+            ${{ runner.os }}-node_modules-
             ${{ runner.os }}-
 
       - name: Install dependencies
