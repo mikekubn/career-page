@@ -23,6 +23,7 @@ const customJestConfig = {
   testEnvironment: 'jsdom',
   testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/.next/'],
   setupFilesAfterEnv: ['<rootDir>/utils/setupTests.ts'],
+  modulePathIgnorePatterns: ['cypress'],
 };
 
 module.exports = createJestConfig(customJestConfig);
