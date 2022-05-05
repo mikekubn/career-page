@@ -117,7 +117,7 @@ const DesktopModal = ({ data, handleClick }: { data: IJob, handleClick: () => vo
     <div className="flex-col-1">
       <Name />
       <Link href="/" passHref>
-        <motion.a animate={{ scale: [1, 1.2, 1] }} className="button-style">
+        <motion.a animate={{ scale: [1, 1.2, 1] }} className="button-style" data-cy="close-btn">
           Close
         </motion.a>
       </Link>

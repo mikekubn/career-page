@@ -8,7 +8,7 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 
-Cypress.Commands.add('dataCy', (value) => cy.get(`data-cy=[${value}]`));
+Cypress.Commands.add('dataCy', (value) => cy.get(`[data-cy="${value}"]`));
 
 Cypress.Commands.add('verifyUrl', (url) => {
   cy.location().should((loc) => {
