@@ -1,7 +1,5 @@
-import { screen, render } from '@testing-library/react';
-import { renderHook } from '@testing-library/react-hooks';
+import { screen, render, renderHook, act } from '@testing-library/react';
 import React from 'react';
-import { act } from 'react-dom/test-utils';
 import { INotificaiton, useNotification } from './useNotification';
 
 describe('useNotification', () => {

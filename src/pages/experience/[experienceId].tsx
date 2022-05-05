@@ -117,7 +117,7 @@ const DesktopModal = ({ data, handleClick }: { data: IJob, handleClick: () => vo
     <div className="flex-col-1">
       <Name />
       <Link href="/" passHref>
-        <motion.a animate={{ scale: [1, 1.2, 1] }} className="button-style">
+        <motion.a animate={{ scale: [1, 1.2, 1] }} className="button-style" data-cy="close-btn">
           Close
         </motion.a>
       </Link>
@@ -132,10 +132,10 @@ const DesktopModal = ({ data, handleClick }: { data: IJob, handleClick: () => vo
       </motion.div>
       <div className="flex justify-end">
         <div onClick={handleClick} className="flex items-center justify-center w-12 h-12 border border-b-4 rounded-full cursor-pointer text-sky500 hover:bg-sky500/5 hover:border-b">
-          <Image src="/img/link.png" width="28" height="28" alt="Copy link" />
+          <Image data-cy="image-link" src="/img/link.png" width="28" height="28" alt="Copy link" />
         </div>
         <div className="pl-4 flex-col-center-content">
-          <Image src="/img/fork.png" width="28" height="28" alt="Moved from home page" />
+          <Image data-cy="image-fork" src="/img/fork.png" width="28" height="28" alt="Moved from home page" />
           <p className="pl-2">{data.companyName}</p>
         </div>
       </div>

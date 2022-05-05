@@ -11,21 +11,24 @@ const JobContent = ({ data, truncate, modal }: { data: IJob, truncate: boolean, 
 
   return (
     <div
+      data-cy="job-content"
       data-testid={modal ? 'modal' : 'card'}
       className={`m-3 lg:m-5 flex-row-1 ${modal ? 'justify-center sm:justify-center md:justify-end lg:justify-end' : 'justify-start'}`}
     >
       <div className="flex">
         <div className="flex flex-col">
-          <Image data-testid="image" src={image} width="60" height="60" priority alt={companyName} />
+          <Image data-cy="image" data-testid="image" src={image} width="60" height="60" priority alt={companyName} />
         </div>
         <div className="flex w-48 ml-2 sm:ml-4 lg:ml-6 flex-col-1 sm:w-56 lg:w-96">
           <h1
+            data-cy="company-name"
             data-testid={modal ? 'modal-company-name' : 'company-name'}
             className={`pb-1 font-AsapItal ${modal ? 'lg:text-3xl' : 'text-lg'}`}
           >
             {companyName}
           </h1>
           <p
+            data-cy="date"
             data-testid={modal ? 'modal-date' : 'date'}
             className={`italic font-Asap ${modal ? 'lg:text-lg' : 'text-sm'}`}
           >
@@ -33,12 +36,14 @@ const JobContent = ({ data, truncate, modal }: { data: IJob, truncate: boolean, 
 
           </p>
           <p
+            data-cy="where"
             data-testid={modal ? 'modal-where' : 'where'}
             className={`italic font-Asap ${modal ? 'lg:text-lg' : 'text-sm'}`}
           >
             {where}
           </p>
           <h1
+            data-cy="position"
             data-testid={modal ? 'modal-position' : 'position'}
             className={`pt-5 pb-2 font-bold font-AsapItal ${modal ? 'lg:text-2xl' : 'text-lg'}`}
           >
@@ -48,6 +53,7 @@ const JobContent = ({ data, truncate, modal }: { data: IJob, truncate: boolean, 
           modal
             ? (
               <ul
+                data-cy="position"
                 aria-label="position"
                 className="list-disc leading-6 lg:text-base lg:leading-9"
               >
@@ -56,6 +62,7 @@ const JobContent = ({ data, truncate, modal }: { data: IJob, truncate: boolean, 
             )
             : (
               <p
+                data-cy="description"
                 data-testid="description"
                 className={`text-base ${abridge}`}
               >

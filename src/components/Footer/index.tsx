@@ -14,7 +14,7 @@ const Footer = (): React.ReactElement => (
         <Link key={val.name} href={val.url} passHref>
           <a target="_blank" rel="noreferrer">
             <div className="p-4 flex-row-center-content">
-              <Image src={`/img/${val.src}.png`} width={28} height={28} alt={val.name} />
+              <Image data-cy={val.src} src={`/img/${val.src}.png`} width={28} height={28} alt={val.name} />
               <p className="ml-3">{val.name}</p>
             </div>
           </a>
