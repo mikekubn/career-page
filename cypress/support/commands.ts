@@ -15,3 +15,9 @@ Cypress.Commands.add('verifyUrl', (url) => {
     expect(loc.pathname).to.include(url);
   });
 });
+
+Cypress.Commands.add('verifyUrlHash', (url) => {
+  cy.location().should((loc) => {
+    expect(loc.hash).to.include(`#${url}`);
+  });
+});

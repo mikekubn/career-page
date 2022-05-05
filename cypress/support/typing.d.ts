@@ -11,6 +11,12 @@ declare namespace Cypress {
     verifyUrl(url: string): Chainable<Element>
 
     /**
+    * Custom command to verify url hash.
+    * @param url string)
+    */
+    verifyUrlHash(url: string): Chainable<Element>
+
+    /**
     * Custom extension for cy.get('').
     * @param value string attached to data-cy
     */
