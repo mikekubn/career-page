@@ -35,7 +35,7 @@ describe('Basic behavior', () => {
     }
   });
 
-  it.only('Home page', () => {
+  it('Home page', () => {
     const name = 'Michael Kubín';
     const position = 'Frontend developer';
 
