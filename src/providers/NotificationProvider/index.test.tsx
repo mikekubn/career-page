@@ -1,5 +1,4 @@
-import { screen, render } from '@testing-library/react';
-import { renderHook, act } from '@testing-library/react-hooks';
+import { screen, renderHook, act } from '@testing-library/react';
 import React from 'react';
 import {
   INotificaiton, NotificationProvider, useNotificationProvider, NotificaitonBox,
@@ -66,12 +65,6 @@ describe('Notification provider', () => {
     act(() => {
       result.current.dispatch(succes_state_notification);
     });
-
-    render(<NotificaitonBox
-      display={result.current.state.visible}
-      img={result.current.state.status === 'success' ? '/test_success' : '/test_error'}
-      note={result.current.state.note}
-    />);
 
     expect(screen.getByTestId('notificaiton-box-note')).toHaveTextContent('Test success.');
     expect(screen.getByTestId('notificaiton-box-image')).toHaveAttribute('alt', 'Notification');
