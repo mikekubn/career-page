@@ -14,10 +14,10 @@ const Home: NextPage = (): React.ReactElement => (
       <meta property="og:url" content="https://mikekubn.cz/" />
       <meta property="og:type" content="website" />
     </Head>
-    <section className="section-layout">
+    <section className="fullscreen-layout">
       <HomeSection />
     </section>
-    <section className="section-layout">
+    <section className="fullscreen-layout">
       <ContactSection />
     </section>
   </>

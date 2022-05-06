@@ -2,74 +2,35 @@ import Image from 'next/image';
 import React from 'react';
 import { IJob } from 'src/configs/lan_en';
 
-const JobContent = ({ data, truncate, modal }: { data: IJob, truncate: boolean, modal: boolean }): React.ReactElement => {
+const JobContent = ({ data }: { data: IJob }): React.ReactElement => {
   const {
     companyName, date, where, position, description, image,
   } = data;
 
-  const abridge = truncate ? 'truncate' : '';
-
   return (
-    <div
-      data-cy="job-content"
-      data-testid={modal ? 'modal' : 'card'}
-      className={`m-3 lg:m-5 flex-row-1 ${modal ? 'justify-center sm:justify-center md:justify-end lg:justify-end' : 'justify-start'}`}
+    <div data-cy="job-content"
+      className="m-3 lg:m-5 flex-row-1 justify-start"
     >
       <div className="flex">
         <div className="flex flex-col">
           <Image data-cy="image" data-testid="image" src={image} width="60" height="60" priority alt={companyName} />
         </div>
         <div className="flex w-48 ml-2 sm:ml-4 lg:ml-6 flex-col-1 sm:w-56 lg:w-96">
-          <h1
-            data-cy="company-name"
-            data-testid={modal ? 'modal-company-name' : 'company-name'}
-            className={`pb-1 font-AsapItal ${modal ? 'lg:text-3xl' : 'text-lg'}`}
-          >
+          <h1 data-cy="company-name" className="pb-1 font-AsapItal text-lg">
             {companyName}
           </h1>
-          <p
-            data-cy="date"
-            data-testid={modal ? 'modal-date' : 'date'}
-            className={`italic font-Asap ${modal ? 'lg:text-lg' : 'text-sm'}`}
-          >
+          <p data-cy="date" className="italic font-Asap text-sm">
             {date}
-
           </p>
-          <p
-            data-cy="where"
-            data-testid={modal ? 'modal-where' : 'where'}
-            className={`italic font-Asap ${modal ? 'lg:text-lg' : 'text-sm'}`}
-          >
+          <p data-cy="where"className="italic font-Asap text-sm">
             {where}
           </p>
-          <h1
-            data-cy="position"
-            data-testid={modal ? 'modal-position' : 'position'}
-            className={`pt-5 pb-2 font-bold font-AsapItal ${modal ? 'lg:text-2xl' : 'text-lg'}`}
-          >
+          <h1 data-cy="position" className="pt-5 pb-2 font-bold font-AsapItal text-lg">
             {position}
           </h1>
-          {
-          modal
-            ? (
-              <ul
-                data-cy="position"
-                aria-label="position"
-                className="list-disc leading-6 lg:text-base lg:leading-9"
-              >
-                {description.map((val) => (<li key={val}>{val}</li>))}
-              </ul>
-            )
-            : (
-              <p
-                data-cy="description"
-                data-testid="description"
-                className={`text-base ${abridge}`}
-              >
-                {description.join(', ')}
-              </p>
-            )
-        }
+          <p data-cy="description" data-testid="description" className="text-base truncate">
+            {description.join(', ')}
+          </p>
         </div>
       </div>
     </div>

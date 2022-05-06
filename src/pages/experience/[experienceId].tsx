@@ -46,11 +46,11 @@ const JobDescriptionPage = ({ experienceId }: ITaskId): React.ReactElement | nul
         <meta property="og:url" content={`https://mikekubn.cz/experience/${experienceId}`} />
         <meta property="og:type" content="website" />
       </Head>
-      <section className="section-layout">
+      <section className="fullscreen-layout">
         <div className="mt-10 flex-col-1 lg:flex-row-1 lg:mt-0">
           <div className="flex-col-1">
             <Name post={description.position}/>
-            {/* <div className='flex flex-row'>
+            <div className='flex flex-row'>
               <Link href="/" passHref>
                 <a className="button-style" data-cy="close-btn">
                   Go Home
@@ -60,11 +60,11 @@ const JobDescriptionPage = ({ experienceId }: ITaskId): React.ReactElement | nul
                 <p className="mr-3">Copy Link</p>
                 <Image data-cy="image-link" src="/img/link.png" width="28" height="28" alt="Copy link" />
               </div>
-            </div> */}
+            </div>
           </div>
 
           <div className="flex-col-1">
-            <div  className="justify-center flex-col-1">
+            <div  className="justify-center flex-col-1  w-80 sm:w-96 lg:w-[540px]">
               <h1 className="text-3xl my-3 italic font-AsapItal text-center lg:mt-0 lg:text-right">{description.companyName}</h1>
               <Image src={description.cover} width="620" height="220" priority alt={description.companyName} />
               <p className="italic font-Asap text-sm my-1 text-right">{description.where}</p>
