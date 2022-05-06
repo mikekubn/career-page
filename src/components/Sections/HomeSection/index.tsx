@@ -22,7 +22,7 @@ const HomeSection = () => {
   }, [visible]);
 
   return (
-    <div data-cy="home-section" id="home" ref={ref} className="mt-10 flex-col-1 lg:flex-row-1 lg:mt-0">
+    <div data-cy="home-section" id="home" ref={ref} className="mt-2 flex-col-1 lg:flex-row-1 lg:mt-0">
       <div className="justify-center flex-col-1 sm:items-center lg:items-start">
         <Name />
         <Navigation items={navigation} />

@@ -47,7 +47,7 @@ const JobDescriptionPage = ({ experienceId }: ITaskId): React.ReactElement | nul
         <meta property="og:type" content="website" />
       </Head>
       <section className="fullscreen-layout">
-        <div className="mt-10 flex-col-1 lg:flex-row-1 lg:mt-0">
+        <div className="mt-2 flex-col-1 lg:flex-row-1 lg:mt-0">
           <div className="flex-col-1">
             <Name post={description.position}/>
             <div className='flex flex-row'>
