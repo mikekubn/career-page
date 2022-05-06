@@ -2,18 +2,11 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import Modal from 'react-modal';
 import { IJob, jobs_lan_en } from 'src/configs/lan_en';
-import { theme } from 'tailwind.config';
 import Link from 'next/link';
 import Image from 'next/image';
 import Head from 'next/head';
-import { useMediaQueries } from '@react-hook/media-query';
-import { useThemeProvider } from '@/provider/ThemeProvider';
 import Name from '@/components/Name';
-import JobContent from '@/components/JobContent';
 import { useNotificationProvider } from '@/provider/NotificationProvider';
-import CenterLayout from '@/layouts/CenterLayout';
-import MainLayout from '@/layouts/MainLayout';
-import { motion } from 'framer-motion';
 
 interface ITaskId {
   experienceId: string,
@@ -23,13 +16,8 @@ Modal.setAppElement('#__next');
 
 const JobDescriptionPage = ({ experienceId }: ITaskId): React.ReactElement | null => {
   const router = useRouter();
-  const { state: darkMode } = useThemeProvider();
   const description: IJob | undefined = jobs_lan_en.find((job) => job.id === experienceId);
   const { dispatch } = useNotificationProvider();
-  const { matches: isDesktop } = useMediaQueries({
-    screen: 'screen',
-    width: '(min-width: 700px)',
-  });
 
   const copy = async () => {
     try {
@@ -58,41 +46,38 @@ const JobDescriptionPage = ({ experienceId }: ITaskId): React.ReactElement | nul
         <meta property="og:url" content={`https://mikekubn.cz/experience/${experienceId}`} />
         <meta property="og:type" content="website" />
       </Head>
-      <Modal
-        isOpen // The modal should always be shown on page load, it is the 'page'
-        onRequestClose={() => {
-          router.push('/');
-        }}
-        contentLabel="JobDescriptionPage modal"
-        style={{
-          overlay: {
-            display: 'flex',
-            flex: '1',
-            flexDirection: 'column',
-          },
-          content: {
-            padding: '0px',
-            display: 'flex',
-            flex: '1',
-            border: '0px',
-            borderRadius: '0px',
-            position: 'revert',
-            background: `${darkMode ? `${theme.colors.gray900}` : `${theme.colors.white}`}`,
-          },
-        }}
-      >
-        <MainLayout>
-          <CenterLayout>
-            <div className="main-page-layout">
-              {
-                isDesktop.width
-                  ? <DesktopModal data={description} handleClick={copy} />
-                  : <MobileModal data={description} handleClick={copy} />
-              }
+      <section className="section-layout">
+        <div className="mt-10 flex-col-1 lg:flex-row-1 lg:mt-0">
+          <div className="flex-col-1">
+            <Name post={description.position}/>
+            {/* <div className='flex flex-row'>
+              <Link href="/" passHref>
+                <a className="button-style" data-cy="close-btn">
+                  Go Home
+                </a>
+              </Link>
+              <div onClick={copy} className="button-style ml-4">
+                <p className="mr-3">Copy Link</p>
+                <Image data-cy="image-link" src="/img/link.png" width="28" height="28" alt="Copy link" />
+              </div>
+            </div> */}
+          </div>
+
+          <div className="flex-col-1">
+            <div  className="justify-center flex-col-1">
+              <h1 className="text-3xl my-3 italic font-AsapItal text-center lg:mt-0 lg:text-right">{description.companyName}</h1>
+              <Image src={description.cover} width="620" height="220" priority alt={description.companyName} />
+              <p className="italic font-Asap text-sm my-1 text-right">{description.where}</p>
+              <p className="italic font-Asap text-sm my-1 text-right">{description.date}</p>
+              <div className="flex justify-center mt-3">
+                <ul data-cy="position" aria-label="position" className="list-disc leading-6 lg:text-base lg:leading-9">
+                  {description.description.map((val) => (<li key={val}>{val}</li>))}
+                </ul>
+              </div>
             </div>
-          </CenterLayout>
-        </MainLayout>
-      </Modal>
+          </div>
+        </div>
+      </section>
     </>
   );
 };
@@ -111,60 +96,3 @@ export function getStaticPaths() {
     fallback: false,
   };
 }
-
-const DesktopModal = ({ data, handleClick }: { data: IJob, handleClick: () => void }) => (
-  <div className="flex-row-1">
-    <div className="flex-col-1">
-      <Name />
-      <Link href="/" passHref>
-        <motion.a animate={{ scale: [1, 1.2, 1] }} className="button-style" data-cy="close-btn">
-          Close
-        </motion.a>
-      </Link>
-    </div>
-    <div className="flex-col-1">
-      <motion.div
-        initial={{ x: 100, opacity: 0 }}
-        animate={{ x: 0, opacity: 1, transition: { duration: 0.8, type: 'tween' } }}
-        className="flex items-center flex-1"
-      >
-        <JobContent modal truncate={false} data={data} />
-      </motion.div>
-      <div className="flex justify-end">
-        <div onClick={handleClick} className="flex items-center justify-center w-12 h-12 border border-b-4 rounded-full cursor-pointer text-sky500 hover:bg-sky500/5 hover:border-b">
-          <Image data-cy="image-link" src="/img/link.png" width="28" height="28" alt="Copy link" />
-        </div>
-        <div className="pl-4 flex-col-center-content">
-          <Image data-cy="image-fork" src="/img/fork.png" width="28" height="28" alt="Moved from home page" />
-          <p className="pl-2">{data.companyName}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-);
-
-const MobileModal = ({ data, handleClick }: { data: IJob, handleClick: () => void }) => (
-  <div className="mt-10 flex-col-1">
-    <Name />
-    <div className="items-center mt-10 flex-row-1">
-      <JobContent modal truncate={false} data={data} />
-    </div>
-    <div className="my-5 flex-row-1">
-      <div className="justify-end flex-col-1">
-        <Link href="/" passHref>
-          <a className="flex items-center justify-center w-10 h-10 border border-b-4 rounded-full cursor-pointer text-sky500 hover:bg-sky500/5 hover:border-b">
-            <Image src="/img/cross.png" width={24} height={24} alt="Cross" />
-          </a>
-        </Link>
-      </div>
-      <div className="items-end justify-end flex-row-1">
-        <div onClick={handleClick} className="flex items-center justify-center w-10 h-10 border border-b-4 rounded-full cursor-pointer text-sky500 hover:bg-sky500/5 hover:border-b">
-          <Image src="/img/link.png" width={24} height={24} alt="Copy link" />
-        </div>
-        <div className="flex items-center justify-center w-10 h-10">
-          <Image src="/img/fork.png" width={24} height={24} alt="Moved from home page" />
-        </div>
-      </div>
-    </div>
-  </div>
-);

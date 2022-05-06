@@ -21,7 +21,7 @@
     .flex-col-center-content {
         @apply flex flex-col items-center justify-center
     }
-    .main-page-layout {
+    .section-layout {
         @apply flex h-full p-5 pt-0 pb-4 lg:p-24 lg:pt-0 lg:pb-20 lg:h-screen
     }
 }

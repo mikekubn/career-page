@@ -2,7 +2,7 @@ import { render, screen, within } from '@testing-library/react';
 import JobContent from '.';
 
 const mock = {
-  id: '1', image: '/test.jpeg', companyName: 'UnitTest', date: 'from: 11.2020', where: 'where: Mock, Unit Republic', position: 'Test Devr', description: ['React, Next, Nuxt, MSW, Cypress', 'JavaScript, TypeScript', 'Media service development (IPTV, Flashscore)', 'Introduction of QA process Cypress'],
+  id: '1', image: '/test.jpeg', cover: '/test-cover.png', companyName: 'UnitTest', date: 'from: 11.2020', where: 'where: Mock, Unit Republic', position: 'Test Devr', description: ['React, Next, Nuxt, MSW, Cypress', 'JavaScript, TypeScript', 'Media service development (IPTV, Flashscore)', 'Introduction of QA process Cypress'],
 };
 
 describe('Job content', () => {
