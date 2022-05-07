@@ -37,6 +37,7 @@ const JobDescriptionPage = ({ experienceId }: ITaskId): React.ReactElement | nul
     return null;
   }
 
+  //mt-2 flex-col-1 lg:flex-row-1 lg:mt-0
   return (
     <>
       <Head>
@@ -48,34 +49,30 @@ const JobDescriptionPage = ({ experienceId }: ITaskId): React.ReactElement | nul
         <meta property="og:type" content="website" />
       </Head>
       <section className="fullscreen-layout">
-        <div className="mt-2 flex-col-1 lg:flex-row-1 lg:mt-0">
-          <div className="flex-col-1">
+        <div className="home-layout">
+          <div className="home-children">
             <Name post={description.position}/>
-            <div className='flex flex-row'>
-              <Link href="/" passHref>
-                <a className="button-style" data-cy="close-btn">
-                  Go Home
-                </a>
-              </Link>
-              <div onClick={copy} className="button-style ml-4">
-                <p className="mr-3">Copy Link</p>
-                <Image data-cy="image-link" src="/img/link.png" width="28" height="28" alt="Copy link" />
-              </div>
-            </div>
+            { !isMobile ? <Buttons handleCopy={copy}/> : null }
           </div>
 
-          <div className="flex-col-1">
-            <div  className="justify-center flex-col-1  w-80 sm:w-96 lg:w-[540px]">
-              <h1 className="text-3xl my-3 italic font-AsapItal text-center lg:mt-0 lg:text-right">{description.companyName}</h1>
-              <Image src={description.cover} width="620" height="220" priority alt={description.companyName} />
-              <p className="italic font-Asap text-sm my-1 text-right">{description.where}</p>
-              <p className="italic font-Asap text-sm my-1 text-right">{description.date}</p>
-              <div className="flex justify-center mt-3">
-                <ul data-cy="position" aria-label="position" className="list-disc leading-6 lg:text-base lg:leading-9 w-96">
-                  {description.description.map((val) => (<li key={val}>{val}</li>))}
-                </ul>
-              </div>
+          <div className="experience">
+            <h1 className="headerH1 text-center lg:text-right my-3">{description.companyName}</h1>
+            <Image src={description.cover} width="620" height="220" priority alt={description.companyName} />
+            <p className="italic font-Asap text-sm mt-2 text-right">{description.where}</p>
+            <p className="italic font-Asap text-sm my-2 text-right">{description.date}</p>
+            <div className="flex justify-center mt-3">
+              <ul data-cy="position" aria-label="position" className="list-disc leading-10 w-60 lg:text-base lg:leading-9">
+                {description.description.map((val) => (<li key={val}>{val}</li>))}
+              </ul>
             </div>
+            { isMobile
+              ? (
+                <div className="flex justify-center mt-6">
+                  <Buttons handleCopy={copy}/>
+                </div>
+              )
+              : null
+                }
           </div>
         </div>
       </section>
@@ -97,3 +94,17 @@ export function getStaticPaths() {
     fallback: false,
   };
 }
+
+const Buttons = ({ handleCopy }: { handleCopy: () => void }) => (
+  <div className='flex flex-row'>
+    <Link href="/" passHref>
+      <a className="button-style" data-cy="close-btn">
+        Go Home
+      </a>
+    </Link>
+    <div onClick={handleCopy} className="button-style ml-4">
+      <p className="mr-3">Copy Link</p>
+      <Image data-cy="image-link" src="/img/link.png" width="28" height="28" alt="Copy link" />
+    </div>
+  </div>
+);

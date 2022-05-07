@@ -46,7 +46,7 @@ const ContactSection = (): React.ReactElement => {
 };
 
 const Gallery = () => (
-  <div className="items-center my-20 lg:my-auto flex-col-1 lg:h-96">
+  <div className="items-center my-10 lg:my-auto flex-col-1 lg:h-96">
     <div className="flex-row-1">
       <ImageTooltip
         positon="justify-center"

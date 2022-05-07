@@ -34,6 +34,18 @@
         @apply w-screen mx-auto flex justify-center h-14 bottom-0 mt-1
     }
     .button-style {
-        @apply flex items-center justify-center h-12 border rounded-full border-b-4 cursor-pointer mt-7 w-52 text-sky500 hover:bg-sky500/5 hover:border-b
+        @apply flex items-center justify-center h-12 border rounded-full border-b-4 cursor-pointer mt-7 w-32 lg:w-52 text-sky500 hover:bg-sky500/5 hover:border-b
+    }
+    .home-layout {
+        @apply mt-2 flex-col-1 md:items-center lg:items-stretch lg:flex-row-1 lg:mt-0
+    }
+    .home-children {
+        @apply justify-center flex-col-1 sm:items-center lg:items-start
+    }
+    .experience {
+        @apply flex-col-1 justify-center mt-5
+    }
+    .headerH1 {
+        @apply text-3xl italic font-AsapItal
     }
 }

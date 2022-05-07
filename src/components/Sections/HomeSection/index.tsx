@@ -22,14 +22,15 @@ const HomeSection = () => {
   }, [visible]);
 
   return (
-    <div data-cy="home-section" id="home" ref={ref} className="mt-2 flex-col-1 lg:flex-row-1 lg:mt-0">
-      <div className="justify-center flex-col-1 sm:items-center lg:items-start">
+    <div data-cy="home-section" id="home" ref={ref} className="home-layout">
+      <div className="home-children">
         <Name />
         <Navigation items={navigation} />
       </div>
-      <div className="justify-center mx-auto mt-5 flex-col-1 sm:items-center">
-        <h1 className="mx-auto my-10 text-2xl font-AsapItal lg:mb-10">Experience</h1>
-        <div data-cy="experience" className="flex flex-row overflow-auto h-3/4 w-80 sm:w-96 lg:w-[540px] lg:mx-auto lg:flex-col">
+
+      <div className="experience">
+        <h1 className="headerH1 mx-auto mt-10 mb-20 lg:mb-10">Experience</h1>
+        <div data-cy="experience" className="flex flex-row overflow-auto w-80 sm:w-96 lg:w-[540px] lg:h-[650px] lg:mx-auto lg:flex-col">
           {
             jobs_lan_en.map((job) => (
               <Link key={job.id} href="/experience/[experienceId]" as={`/experience/${job.id}`} passHref>
