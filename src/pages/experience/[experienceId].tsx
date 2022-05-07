@@ -1,12 +1,12 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import Modal from 'react-modal';
 import { IJob, jobs_lan_en } from 'src/configs/lan_en';
 import Link from 'next/link';
 import Image from 'next/image';
 import Head from 'next/head';
 import Name from '@/components/Name';
 import { useNotificationProvider } from '@/provider/NotificationProvider';
+import { useWindowSize } from '@/hooks/index';
 
 interface ITaskId {
   experienceId: string,
@@ -16,6 +16,9 @@ const JobDescriptionPage = ({ experienceId }: ITaskId): React.ReactElement | nul
   const router = useRouter();
   const description: IJob | undefined = jobs_lan_en.find((job) => job.id === experienceId);
   const { dispatch } = useNotificationProvider();
+  const { width, height, isMobile } = useWindowSize();
+
+  console.log('size', width, height, isMobile);
 
   const copy = async () => {
     try {
