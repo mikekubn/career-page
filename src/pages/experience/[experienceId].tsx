@@ -37,7 +37,6 @@ const JobDescriptionPage = ({ experienceId }: ITaskId): React.ReactElement | nul
     return null;
   }
 
-  //mt-2 flex-col-1 lg:flex-row-1 lg:mt-0
   return (
     <>
       <Head>

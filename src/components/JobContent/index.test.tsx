@@ -1,4 +1,4 @@
-import { render, screen, within } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import JobContent from '.';
 
 const mock = {
@@ -9,7 +9,7 @@ describe('Job content', () => {
   it('render job content', () => {
     render(<JobContent data={mock} />);
 
-    const card = screen.getByTestId('card');
+    const card = screen.getByTestId('job-content');
     const companyName = screen.getByTestId('company-name');
     const date = screen.getByTestId('date');
     const where = screen.getByTestId('where');
