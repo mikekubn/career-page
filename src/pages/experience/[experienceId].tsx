@@ -12,8 +12,6 @@ interface ITaskId {
   experienceId: string,
 }
 
-Modal.setAppElement('#__next');
-
 const JobDescriptionPage = ({ experienceId }: ITaskId): React.ReactElement | null => {
   const router = useRouter();
   const description: IJob | undefined = jobs_lan_en.find((job) => job.id === experienceId);
@@ -70,7 +68,7 @@ const JobDescriptionPage = ({ experienceId }: ITaskId): React.ReactElement | nul
               <p className="italic font-Asap text-sm my-1 text-right">{description.where}</p>
               <p className="italic font-Asap text-sm my-1 text-right">{description.date}</p>
               <div className="flex justify-center mt-3">
-                <ul data-cy="position" aria-label="position" className="list-disc leading-6 lg:text-base lg:leading-9">
+                <ul data-cy="position" aria-label="position" className="list-disc leading-6 lg:text-base lg:leading-9 w-96">
                   {description.description.map((val) => (<li key={val}>{val}</li>))}
                 </ul>
               </div>
