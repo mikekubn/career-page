@@ -1,7 +1,7 @@
 import React from 'react';
 
 const MainLayout = ({ children }: { children: React.ReactNode }): React.ReactElement => (
-  <div className="flex-col-1">
+  <div className="min-h-screen flex flex-col">
     {children}
   </div>
 );

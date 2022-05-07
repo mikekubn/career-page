@@ -18,8 +18,8 @@ const MyApp = ({ Component, pageProps }: AppProps): React.ReactElement => (
         <CenterLayout>
           <Component {...pageProps} />
         </CenterLayout>
+        <Footer />
       </MainLayout>
-      <Footer />
     </NotificationProvider>
   </ThemeProvider>
 );
