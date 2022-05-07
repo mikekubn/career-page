@@ -37,14 +37,14 @@ describe('Basic behavior', () => {
 
   it('Home page', () => {
     const name = 'Michael Kubín';
-    const position = 'Frontend developer';
+    const position = 'Javascript Developer';
 
     cy.verifyUrlHash('home');
     cy.dataCy('name').should('be.visible').contains(name);
     cy.dataCy('position').should('be.visible').contains(position);
 
     cy.dataCy('card').should('be.visible');
-    cy.dataCy('job-content').first().click();
+    cy.dataCy('job-content').first().click({ force: true });
 
     cy.verifyUrl('/experience/1');
 

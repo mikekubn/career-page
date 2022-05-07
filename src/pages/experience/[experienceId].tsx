@@ -62,8 +62,8 @@ const JobDescriptionPage = ({ experienceId }: ITaskId): React.ReactElement | nul
               <p className="italic font-Asap text-sm mt-2 text-right">{description.where}</p>
               <p className="italic font-Asap text-sm my-2 text-right">{description.date}</p>
             </div>
-            <div className="flex justify-center mt-3">
-              <ul data-cy="position" aria-label="position" className="list-disc leading-10 w-60 lg:text-base lg:leading-9">
+            <div data-cy="job-content" className="flex justify-center mt-3">
+              <ul aria-label="position" className="list-disc leading-10 w-60 lg:text-base lg:leading-9">
                 {description.description.map((val) => (<li key={val}>{val}</li>))}
               </ul>
             </div>
