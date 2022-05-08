@@ -34,7 +34,7 @@
         @apply w-screen mx-auto flex justify-center h-14 bottom-0 mt-1
     }
     .button-style {
-        @apply flex items-center justify-center h-12 border rounded-full border-b-4 cursor-pointer mt-7 w-32 lg:w-52 text-sky500 hover:bg-sky500/5 hover:border-b
+        @apply flex items-center justify-center h-14 md:h-12 lg:h-12 border rounded-full border-b-4 cursor-pointer mt-7 w-32 lg:w-52 text-sky500 hover:bg-sky500/5 hover:border-b focus:bg-sky500/5 focus:border-b duration-500
     }
     .home-layout {
         @apply mt-2 flex-col-1 md:items-center lg:items-stretch lg:flex-row-1 lg:mt-0
