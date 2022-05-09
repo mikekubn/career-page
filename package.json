@@ -51,7 +51,7 @@
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.5.0",
     "eslint-plugin-tailwindcss": "^3.4.4",
-    "husky": "^7.0.0",
+    "husky": "^8.0.0",
     "jest": "^27.5.1",
     "lint-staged": "^12.4.1",
     "postcss": "^8.4.13",
