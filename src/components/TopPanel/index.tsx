@@ -4,7 +4,7 @@ import ToggleButton from '@/components/ToggleButton';
 import { useScroll } from '@/hooks/index';
 import { useThemeProvider } from '@/provider/ThemeProvider';
 
-const TopPanel = (): React.ReactElement => {
+const Header = (): React.ReactElement => {
   const { move } = useScroll();
   const { state, toggle } = useThemeProvider();
 
@@ -20,7 +20,7 @@ const TopPanel = (): React.ReactElement => {
   );
 };
 
-export default TopPanel;
+export default Header;
 
 const ProvideImage = ({ val }: { val: boolean }) => {
   if (val) {
