@@ -34,20 +34,18 @@ const ContactSection = (): React.ReactElement => {
   }, [visible]);
 
   return (
-    <div id="contact" ref={ref} className="flex-col-1 lg:flex-row-1">
+    <section ref={ref} id="contact" className="section-layout">
       <Gallery />
-      <div className="justify-end my-8 flex-col-1 lg:flex-col-center-content lg:mb-0">
-        <div className="flex flex-col overflow-auto">
-          <Form handleSubmitForm={handleSubmitForm} setValues={setValues} values={values} />
-        </div>
+      <div className="flex flex-col justify-center mx-auto sm:overflow-auto">
+        <Form handleSubmitForm={handleSubmitForm} setValues={setValues} values={values} />
       </div>
-    </div>
+    </section>
   );
 };
 
 const Gallery = () => (
-  <div className="items-center my-10 lg:my-auto flex-col-1 lg:h-96">
-    <div className="flex-row-1">
+  <div className="justify-center mx-auto mb-10 mt-5 flex flex-col md:my-auto lg:h-96">
+    <div className="flex flex-row">
       <ImageTooltip
         positon="justify-center"
         root="technology/typescript_n"
@@ -67,7 +65,7 @@ const Gallery = () => (
         tooltip="React"
       />
     </div>
-    <div className="flex-row-1">
+    <div className="flex flex-row">
       <ImageTooltip
         rtl
         positon="justify-center"

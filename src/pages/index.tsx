@@ -14,12 +14,8 @@ const Home: NextPage = (): React.ReactElement => (
       <meta property="og:url" content="https://mikekubn.cz/" />
       <meta property="og:type" content="website" />
     </Head>
-    <section className="fullscreen-layout">
-      <HomeSection />
-    </section>
-    <section className="fullscreen-layout">
-      <ContactSection />
-    </section>
+    <HomeSection />
+    <ContactSection />
   </>
 );
 

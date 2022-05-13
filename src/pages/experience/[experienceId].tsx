@@ -47,34 +47,23 @@ const JobDescriptionPage = ({ experienceId }: ITaskId): React.ReactElement | nul
         <meta property="og:url" content={`https://mikekubn.cz/experience/${experienceId}`} />
         <meta property="og:type" content="website" />
       </Head>
-      <section className="fullscreen-layout">
-        <div className="home-layout">
-          <div className="home-children">
-            <Name post={description.position}/>
-            { !isMobile ? <Buttons handleCopy={copy}/> : null }
-          </div>
+      <section className="section-layout">
+        <div className="content-name mx-auto md:mx-0">
+          <Name post={description.position}/>
+          { !isMobile ? <Buttons handleCopy={copy}/> : null }
+        </div>
 
-          <div className="experience">
-            <div className="flex flex-col">
-              <h1 className="headerH1 text-center lg:text-right my-3">{description.companyName}</h1>
-              <Image src={description.cover} width="620" height="220" priority alt={description.companyName} />
-              <p className="italic font-Asap text-sm mt-2 text-right">{description.where}</p>
-              <p className="italic font-Asap text-sm my-2 text-right">{description.date}</p>
-            </div>
-            <div data-cy="job-content" className="flex justify-center mt-3">
-              <ul aria-label="position" className="list-disc leading-10 w-60 lg:text-base lg:leading-9">
-                {description.description.map((val) => (<li key={val}>{val}</li>))}
-              </ul>
-            </div>
-            { isMobile
-              ? (
-                <div className="flex justify-center mt-6">
-                  <Buttons handleCopy={copy}/>
-                </div>
-              )
-              : null
-                }
+        <div className="experience mx-auto w-80 sm:w-96 md:w-96 md:mb-6 lg:w-128 md:mx-0">
+          <h1 className="headerH1 text-center lg:text-right my-3">{description.companyName}</h1>
+          <Image src={description.cover} width="620" height="220" priority alt={description.companyName} />
+          <p className="italic font-Asap text-sm mt-2 text-right">{description.where}</p>
+          <p className="italic font-Asap text-sm my-2 text-right">{description.date}</p>
+          <div data-cy="job-content" className="flex justify-center mt-3">
+            <ul aria-label="position" className="list-disc leading-10 w-60 lg:text-base lg:leading-9">
+              {description.description.map((val) => (<li key={val}>{val}</li>))}
+            </ul>
           </div>
+          { isMobile ? (<div className="flex justify-center mt-6"> <Buttons handleCopy={copy}/></div>) : null }
         </div>
       </section>
     </>
@@ -103,9 +92,9 @@ const Buttons = ({ handleCopy }: { handleCopy: () => void }) => (
         Go Home
       </a>
     </Link>
-    <div onClick={handleCopy} className="button-style ml-4">
+    <button onClick={handleCopy} className="button-style ml-4">
       <p className="mr-3">Copy Link</p>
       <Image data-cy="image-link" src="/img/link.png" width="28" height="28" alt="Copy link" />
-    </div>
+    </button>
   </div>
 );

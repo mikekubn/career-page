@@ -16,7 +16,7 @@ describe('Job content', () => {
     const position = screen.getByTestId('position');
     const description = screen.getByTestId('description');
 
-    expect(card).toHaveClass('justify-start');
+    expect(card).toHaveClass('inline-block w-full p-3');
     expect(card).not.toHaveProperty('modal-true');
 
     expect(screen.getByTestId('image')).toBeInTheDocument();
