@@ -1,8 +1,10 @@
 import React from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import HomeSection from '@/components/Sections/HomeSection';
-import ContactSection from '@/components/Sections/ContactSection';
+import dynamic from 'next/dynamic';
+
+const HomeSection = dynamic(() => import('@/components/Sections/HomeSection'));
+const ContactSection = dynamic(() => import('@/components/Sections/ContactSection'));
 
 const Home: NextPage = (): React.ReactElement => (
   <>
