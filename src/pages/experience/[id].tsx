@@ -68,7 +68,7 @@ const JobDescriptionPage: NextPage<IPost> = ({ post }) => {
           <p className="italic font-Asap text-sm my-2 text-right">From: {from}</p>
           <p className="italic font-Asap text-sm my-2 text-right">To: {to}</p>
           <div data-cy="job-content" className="flex justify-center mt-3">
-            <ul aria-label="position" className="list-disc leading-10 w-60 lg:text-base lg:leading-9">
+            <ul aria-label="position" className="list-disc leading-10 w-60 md:w-80 lg:w-96 lg:text-base lg:leading-9">
               {description.map((val) => (<li key={val}>{val}</li>))}
             </ul>
           </div>
