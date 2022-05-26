@@ -7,7 +7,5 @@ where: Brno, Czech Republic
 position: React Developer
 image: webscope.jpeg
 cover: webscope-cover.jpg
+description: ['React, Next.js']
 ---
-
-# Description
-- React, Next.js

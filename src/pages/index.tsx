@@ -12,6 +12,7 @@ export interface IPostsProps {
   posts: {
     filename: string,
     frontmatter: {
+      description: string[],
       cover: string,
       from: string,
       id: number,

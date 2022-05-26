@@ -7,9 +7,5 @@ where: Brno, Czech Republic
 position: Javascript Developer
 image: livesport.jpeg
 cover: livesport-cover.png
+description: ['React, Next, Nuxt, MSW, Cypress, JavaScript, TypeScript', 'Media service development (IPTV, CMS)', Introduction of QA process Cypress]
 ---
-
-# Description
-- React, Next, Nuxt, MSW, Cypress, JavaScript, TypeScript
-- Media service development (IPTV, CMS)
-- Introduction of QA process Cypress

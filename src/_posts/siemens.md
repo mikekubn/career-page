@@ -7,9 +7,5 @@ where: Ostrava, Czech Republic
 position: SAP Programmer
 image: siemens.jpeg
 cover: siemens-cover.png
+description: ['ABAP, SQL', 'Maintenance old applications in SAP', 'Creating basic and simple company application']
 ---
-
-# Description
-- ABAP, SQL
-- Maintenance old applications in SAP
-- Creating basic and simple company application

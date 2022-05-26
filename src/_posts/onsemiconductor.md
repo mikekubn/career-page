@@ -7,10 +7,5 @@ where: Rožnov pod Radhoštěm, Czech Republic
 position: Jr. Programmer
 image: onsemi.jpeg
 cover: onsemi-cover.png
+description: ['Java, SQL, Tricentis Tosca', 'Creation test scenarios for manual and automation testing', 'Writing automatic scripts in tool Tosca and extension basic function in Selenium', 'Reporting result of tests']
 ---
-
-# Description
-- Java, SQL, Tricentis Tosca
-- Creation test scenarios for manual and automation testing
-- Writing automatic scripts in tool Tosca and extension basic function in Selenium
-- Reporting result of tests

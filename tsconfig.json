@@ -21,6 +21,7 @@
       "@/layouts/*": ["src/layouts/*"],
       "@/provider/*": ["src/providers/*"],
       "@/hooks/*": ["src/hooks/*"],
+      "@/lib/*": ["src/lib/*"],
       "@/styles/*": ["styles/*"],
       "@/utils/*": ["utils/*"],
     }

@@ -16,12 +16,11 @@ const getPosts = (_dir: string, arr: string[]) => arr.map((filename) => {
   const filePath = path.join(_dir, filename);
   const fileContent = fs.readFileSync(filePath, 'utf8');
 
-  const { data: frontmatter, content } = matter(fileContent);
+  const { data: frontmatter } = matter(fileContent);
 
   return {
     filename: slug,
     frontmatter,
-    content,
   };
 });
 
@@ -29,11 +28,10 @@ const getPost = (params: ParsedUrlQuery | undefined) => {
   const directory = getDirection(`src/_posts/${params?.id}.md`);
   const file = fs.readFileSync(directory, 'utf8');
 
-  const { data: frontmatter, content } = matter(file);
+  const { data: frontmatter } = matter(file);
 
   return {
     frontmatter,
-    content,
   };
 };
 

@@ -7,9 +7,9 @@ import Name from '@/components/Name';
 import { useNotificationProvider } from '@/provider/NotificationProvider';
 import { useWindowSize } from '@/hooks/index';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import { getPaths, getPost, imgPaths } from 'src/lib/utils';
 import { ParsedUrlQuery } from 'querystring';
 import { IPostsProps } from '..';
+import { getPaths, getPost, imgPaths } from '@/lib/utils';
 
 interface IParams extends ParsedUrlQuery {
   id: string
@@ -26,7 +26,7 @@ const JobDescriptionPage: NextPage<IPost> = ({ post }) => {
   const router = useRouter();
   const { dispatch } = useNotificationProvider();
   const { isMobile } = useWindowSize();
-  const { title, from, to, where, cover, position } = post.frontmatter;
+  const { title, from, to, where, cover, position, description } = post.frontmatter;
 
   const copy = async () => {
     try {
@@ -51,7 +51,7 @@ const JobDescriptionPage: NextPage<IPost> = ({ post }) => {
         <title>{title}</title>
         <meta name="description" content={`Michael Kubin - ${title}`} />
         <meta property="og:title" content={`Michael Kubin - ${title}`} />
-        <meta property="og:description" content={post.content} />
+        <meta property="og:description" content={description.toString()} />
         <meta property="og:url" content={`https://mikekubn.cz/experience/${title.replace(' ', '').toLocaleLowerCase()}`} />
         <meta property="og:type" content="website" />
       </Head>
@@ -67,11 +67,11 @@ const JobDescriptionPage: NextPage<IPost> = ({ post }) => {
           <p className="italic font-Asap text-sm mt-2 text-right">{where}</p>
           <p className="italic font-Asap text-sm my-2 text-right">From: {from}</p>
           <p className="italic font-Asap text-sm my-2 text-right">To: {to}</p>
-          {/* <div data-cy="job-content" className="flex justify-center mt-3">
+          <div data-cy="job-content" className="flex justify-center mt-3">
             <ul aria-label="position" className="list-disc leading-10 w-60 lg:text-base lg:leading-9">
-              {description.description.map((val) => (<li key={val}>{val}</li>))}
+              {description.map((val) => (<li key={val}>{val}</li>))}
             </ul>
-          </div> */}
+          </div>
           { isMobile ? (<div className="flex justify-center mt-6"> <Buttons handleCopy={copy}/></div>) : null }
         </div>
       </section>

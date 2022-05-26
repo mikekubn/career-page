@@ -1,11 +1,11 @@
+import { imgPaths } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import { imgPaths } from 'src/lib/utils';
 import { IPostsProps } from 'src/pages';
 
 const JobContent = ({ data }: { data: IPostsProps['posts'][0] }): React.ReactElement => {
-  const { title, from, to, where, image, position } = data.frontmatter;
+  const { title, from, to, where, image, position, description } = data.frontmatter;
 
   return (
     <Link aria-label='job-link' href="/experience/[id]" as={`/experience/${data.filename}`} passHref>
@@ -19,10 +19,10 @@ const JobContent = ({ data }: { data: IPostsProps['posts'][0] }): React.ReactEle
               {title}
             </h1>
             <div className="flex-row-1">
-              <p data-testid="date-from" data-cy="date" className="italic font-Asap text-sm">
+              <p data-testid="date-from" data-cy="date-from" className="italic font-Asap text-sm">
                 {`${from}`}&nbsp;
               </p>
-              <p data-testid="date-tp" data-cy="date" className="italic font-Asap text-sm">
+              <p data-testid="date-tp" data-cy="date-to" className="italic font-Asap text-sm">
                 {`- ${to}`}
               </p>
             </div>
@@ -32,9 +32,9 @@ const JobContent = ({ data }: { data: IPostsProps['posts'][0] }): React.ReactEle
             <h1 data-testid="position" data-cy="position" className="pt-5 pb-2 font-bold font-AsapItal text-lg">
               {position}
             </h1>
-            {/* <p data-testid="description" data-cy="description" className="text-base truncate">
-              {description.join(', ')}
-            </p> */}
+            <p data-testid="description" data-cy="description" className="text-base truncate">
+              {description}
+            </p>
           </div>
         </div>
       </a>

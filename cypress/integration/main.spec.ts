@@ -46,10 +46,10 @@ describe('Basic behavior', () => {
     cy.dataCy('card').should('be.visible');
     cy.dataCy('job-content').first().click({ force: true });
 
-    cy.verifyUrl('/experience/1');
+    cy.verifyUrl('/experience/webscope');
 
     cy.dataCy('name').should('be.visible').contains(name);
-    cy.dataCy('position').should('be.visible').contains(position);
+    cy.dataCy('position').should('be.visible');
     cy.dataCy('job-content').should('be.visible');
     cy.dataCy('close-btn').should('be.visible').click();
 
