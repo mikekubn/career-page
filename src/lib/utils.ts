@@ -1,7 +1,6 @@
 import matter from 'gray-matter';
 import path from 'path';
 import fs from 'fs';
-import { ParsedUrlQuery } from 'querystring';
 
 const getDirection = (str: string): string => path.join(process.cwd(), str);
 
@@ -11,21 +10,28 @@ const getPaths = (str: string) => {
   return  sanitation(filenames, '.md');
 };
 
-const getPosts = (_dir: string, arr: string[]) => arr.map((filename) => {
-  const slug = filename.replace('.md', '');
-  const filePath = path.join(_dir, filename);
-  const fileContent = fs.readFileSync(filePath, 'utf8');
+const getPosts = (dir: string) => {
+  const directory = getDirection(dir);
+  const filenames = fs.readdirSync(directory);
 
-  const { data: frontmatter } = matter(fileContent);
+  const posts = filenames.map((filename) => {
+    const slug = filename.replace('.md', '');
+    const filePath = path.join(directory, filename);
+    const fileContent = fs.readFileSync(filePath, 'utf8');
 
-  return {
-    filename: slug,
-    frontmatter,
-  };
-});
+    const { data: frontmatter } = matter(fileContent);
 
-const getPost = (params: ParsedUrlQuery | undefined) => {
-  const directory = getDirection(`src/_posts/${params?.id}.md`);
+    return {
+      filename: slug,
+      frontmatter,
+    };
+  });
+
+  return posts;
+};
+
+const getPost = (dir: string) => {
+  const directory = getDirection(dir);
   const file = fs.readFileSync(directory, 'utf8');
 
   const { data: frontmatter } = matter(file);
