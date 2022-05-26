@@ -1,8 +1,20 @@
 import { render, screen } from '@testing-library/react';
+import { IPostsProps } from 'src/pages';
 import JobContent from '.';
 
-const mock = {
-  id: '1', image: '/test.jpeg', cover: '/test-cover.png', companyName: 'UnitTest', date: 'from: 11.2020', where: 'where: Mock, Unit Republic', position: 'Test Devr', description: ['React, Next, Nuxt, MSW, Cypress', 'JavaScript, TypeScript', 'Media service development (IPTV, Flashscore)', 'Introduction of QA process Cypress'],
+const mock: IPostsProps['posts'][0] = {
+  filename: 'test',
+  frontmatter: {
+    id: 1,
+    image: 'test.jpeg',
+    cover: 'test-cover.jpeg',
+    title: 'UnitTest',
+    to: '12/2000',
+    from: '02/2005',
+    where: 'Mock, Unit Republic',
+    position: 'Test',
+    description: ['Media', 'Cypress'],
+  },
 };
 
 describe('Job content', () => {
@@ -11,7 +23,7 @@ describe('Job content', () => {
 
     const card = screen.getByTestId('job-content');
     const companyName = screen.getByTestId('company-name');
-    const date = screen.getByTestId('date');
+    const date = screen.getByTestId('date-from');
     const where = screen.getByTestId('where');
     const position = screen.getByTestId('position');
     const description = screen.getByTestId('description');
@@ -22,18 +34,20 @@ describe('Job content', () => {
     expect(screen.getByTestId('image')).toBeInTheDocument();
 
     expect(companyName).toHaveClass('text-lg');
-    expect(companyName).toHaveTextContent(mock.companyName);
+    expect(companyName).toHaveTextContent(mock.frontmatter.title);
 
     expect(date).toHaveClass('text-sm');
-    expect(date).toHaveTextContent(mock.date);
+    expect(date).toHaveTextContent(mock.frontmatter.from);
 
     expect(where).toHaveClass('text-sm');
-    expect(where).toHaveTextContent(mock.where);
+    expect(where).toHaveTextContent(mock.frontmatter.where);
 
     expect(position).toHaveClass('text-lg');
-    expect(position).toHaveTextContent(mock.position);
+    expect(position).toHaveTextContent(mock.frontmatter.position);
 
     expect(description).toHaveClass('text-base truncate');
-    expect(description).toHaveTextContent(mock.description.join(', '));
+    mock.frontmatter.description.map((item) => {
+      expect(description).toHaveTextContent(item);
+    });
   });
 });

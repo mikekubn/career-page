@@ -1,24 +1,32 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import { IJob, jobs_lan_en } from 'src/configs/lan_en';
 import Link from 'next/link';
 import Image from 'next/image';
 import Head from 'next/head';
 import Name from '@/components/Name';
 import { useNotificationProvider } from '@/provider/NotificationProvider';
 import { useWindowSize } from '@/hooks/index';
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import { ParsedUrlQuery } from 'querystring';
+import { IPostsProps } from '..';
+import { getPaths, getPost, imgPaths } from '@/lib/utils';
 
-interface ITaskId {
-  experienceId: string,
+interface IParams extends ParsedUrlQuery {
+  id: string
 }
 
-const JobDescriptionPage = ({ experienceId }: ITaskId): React.ReactElement | null => {
-  const router = useRouter();
-  const description: IJob | undefined = jobs_lan_en.find((job) => job.id === experienceId);
-  const { dispatch } = useNotificationProvider();
-  const { width, height, isMobile } = useWindowSize();
+interface IPost {
+  post: {
+    frontmatter: IPostsProps['posts'][0]['frontmatter'],
+    content: string,
+  }
+}
 
-  console.log('size', width, height, isMobile);
+const JobDescriptionPage: NextPage<IPost> = ({ post }) => {
+  const router = useRouter();
+  const { dispatch } = useNotificationProvider();
+  const { isMobile } = useWindowSize();
+  const { title, from, to, where, cover, position, description } = post.frontmatter;
 
   const copy = async () => {
     try {
@@ -33,34 +41,35 @@ const JobDescriptionPage = ({ experienceId }: ITaskId): React.ReactElement | nul
     router.prefetch('/');
   }, [router]);
 
-  if (!description) {
+  if (!post) {
     return null;
   }
 
   return (
     <>
       <Head>
-        <title>{description?.companyName}</title>
-        <meta name="description" content={`Michael Kubín - ${description.companyName}`} />
-        <meta property="og:title" content={`Michael Kubin - Experience ${description.companyName}`} />
-        <meta property="og:description" content={`Experience - ${description.description}`} />
-        <meta property="og:url" content={`https://mikekubn.cz/experience/${experienceId}`} />
+        <title>{title}</title>
+        <meta name="description" content={`Michael Kubin - ${title}`} />
+        <meta property="og:title" content={`Michael Kubin - ${title}`} />
+        <meta property="og:description" content={description.toString()} />
+        <meta property="og:url" content={`https://mikekubn.cz/experience/${title.replace(' ', '').toLocaleLowerCase()}`} />
         <meta property="og:type" content="website" />
       </Head>
       <section className="section-layout">
         <div className="content-name mx-auto md:mx-0">
-          <Name post={description.position}/>
+          <Name post={position}/>
           { !isMobile ? <Buttons handleCopy={copy}/> : null }
         </div>
 
         <div className="experience mx-auto w-80 sm:w-96 md:w-96 md:mb-6 lg:w-128 md:mx-0">
-          <h1 className="headerH1 text-center lg:text-right my-3">{description.companyName}</h1>
-          <Image src={description.cover} width="620" height="220" priority alt={description.companyName} />
-          <p className="italic font-Asap text-sm mt-2 text-right">{description.where}</p>
-          <p className="italic font-Asap text-sm my-2 text-right">{description.date}</p>
+          <h1 className="headerH1 text-center lg:text-right my-3">{title}</h1>
+          <Image src={imgPaths(cover)} width="620" height="220" priority alt={title} />
+          <p className="italic font-Asap text-sm mt-2 text-right">{where}</p>
+          <p className="italic font-Asap text-sm my-2 text-right">From: {from}</p>
+          <p className="italic font-Asap text-sm my-2 text-right">To: {to}</p>
           <div data-cy="job-content" className="flex justify-center mt-3">
-            <ul aria-label="position" className="list-disc leading-10 w-60 lg:text-base lg:leading-9">
-              {description.description.map((val) => (<li key={val}>{val}</li>))}
+            <ul aria-label="position" className="list-disc leading-10 w-60 md:w-80 lg:w-96 lg:text-base lg:leading-9">
+              {description.map((val) => (<li key={val}>{val}</li>))}
             </ul>
           </div>
           { isMobile ? (<div className="flex justify-center mt-6"> <Buttons handleCopy={copy}/></div>) : null }
@@ -72,18 +81,20 @@ const JobDescriptionPage = ({ experienceId }: ITaskId): React.ReactElement | nul
 
 export default JobDescriptionPage;
 
-export function getStaticProps({ params: { experienceId } }: { params: ITaskId }) {
-  return { props: { experienceId } };
-}
+export const getStaticPaths: GetStaticPaths<IParams> = () => {
+  const posts = getPaths('src/_posts');
+  const paths = posts.map((post) => ({ params: { id: post } }));
 
-export function getStaticPaths() {
   return {
-    paths: jobs_lan_en.map((job) => ({
-      params: { experienceId: job.id },
-    })),
+    paths,
     fallback: false,
   };
-}
+};
+
+export const getStaticProps: GetStaticProps = ({ params }) => {
+  const post = getPost(params);
+  return { props: { post } };
+};
 
 const Buttons = ({ handleCopy }: { handleCopy: () => void }) => (
   <div className='flex flex-row'>

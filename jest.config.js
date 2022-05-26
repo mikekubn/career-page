@@ -18,6 +18,7 @@ const customJestConfig = {
     '^@/config/(.*)$': '<rootDir>/src/config/$1',
     '^@/provider/(.*)$': '<rootDir>/src/providers/$1',
     '^@/utils/(.*)$': '<rootDir>/utils/$1',
+    '^@/lib/(.*)$': '<rootDir>/src/lib/$1',
   },
   testRegex: '(/__tests__/.*|(\\.|/)test)\\.[jt]sx?$',
   testEnvironment: 'jsdom',
