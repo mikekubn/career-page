@@ -92,7 +92,7 @@ export const getStaticPaths: GetStaticPaths<IParams> = () => {
 };
 
 export const getStaticProps: GetStaticProps = ({ params }) => {
-  const post = getPost(params);
+  const post = getPost(`src/_posts/${params?.id}.md`);
   return { props: { post } };
 };
 

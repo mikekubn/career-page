@@ -2,8 +2,7 @@ import React from 'react';
 import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
-import fs from 'fs';
-import { getDirection, getPosts } from 'src/lib/utils';
+import { getPosts } from 'src/lib/utils';
 
 const HomeSection = dynamic(() => import('@/components/Sections/HomeSection'));
 const ContactSection = dynamic(() => import('@/components/Sections/ContactSection'));
@@ -45,9 +44,7 @@ const Home: NextPage<IPostsProps> = ({ posts }) => {
 export default Home;
 
 export const  getStaticProps: GetStaticProps = async () => {
-  const directory = getDirection('src/_posts');
-  const filenames = fs.readdirSync(directory);
-  const posts = getPosts(directory, filenames);
+  const posts = getPosts('src/_posts');
   const sortPostsByLast = posts.sort((a, b) => b.frontmatter.id - a.frontmatter.id);
 
   return {
