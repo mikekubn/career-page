@@ -10,9 +10,13 @@ describe('Basic behavior', () => {
     cy.verifyUrlHash('home');
 
     cy.visit('/#contact');
+    cy.wait(500);
     cy.verifyUrlHash('contact');
 
+    cy.wait(500);
     cy.dataCy('back-to-top').should('be.visible').click();
+
+    cy.wait(500);
     cy.verifyUrlHash('home');
   });
 
