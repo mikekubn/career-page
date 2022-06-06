@@ -14,8 +14,8 @@
     "lint:fix": "next lint --fix",
     "prepare": "husky install",
     "test": "jest",
-    "cy": "cypress open",
-    "cy:run": "cypress run"
+    "cy:open": "cypress open -b chrome --e2e",
+    "cy:run": "cypress run -b chrome"
   },
   "dependencies": {
     "@emailjs/browser": "^3.6.2",
