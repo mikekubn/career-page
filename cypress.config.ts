@@ -2,6 +2,7 @@
 const { defineConfig } = require('cypress');
 
 export default defineConfig({
+  video: false,
   retries: {
     runMode: 1,
     openMode: 0,
