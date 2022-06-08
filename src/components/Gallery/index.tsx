@@ -5,7 +5,7 @@ const Gallery = () => (
     <div className="flex flex-row">
       <ImageTooltip
           positon="justify-center"
-          root="technology/typescript_n"
+          root="technology/typescript"
           alt="Technology typescript"
           tooltip="Typescript"
         />
@@ -26,7 +26,7 @@ const Gallery = () => (
       <ImageTooltip
           rtl
           positon="justify-center"
-          root="technology/javascript_n"
+          root="technology/javascript"
           alt="Technology javascript"
           tooltip="Javascript"
         />
