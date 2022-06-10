@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import { IPostsProps } from 'src/pages';
+import { IParamsProps } from 'src/pages';
 import JobContent from '.';
 
-const mock: IPostsProps['posts'][0] = {
+const mock: IParamsProps['posts'][0] = {
   filename: 'test',
   frontmatter: {
     id: 1,

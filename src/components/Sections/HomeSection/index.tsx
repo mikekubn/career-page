@@ -4,13 +4,13 @@ import { hrefs, navigation } from 'src/configs/navigation';
 import Navigation from '@/components/Navigation';
 import { useIntersection } from '@/hooks/index';
 import dynamic from 'next/dynamic';
-import { IPostsProps } from 'src/pages';
+import { IParamsProps } from 'src/pages';
 
 const Name = dynamic(() => import('@/components/Name'));
 const Card = dynamic(() => import('@/components/Card'));
 const JobContent = dynamic(() => import('@/components/JobContent'));
 
-const HomeSection = ({ posts }: { posts: IPostsProps['posts'] }) => {
+const HomeSection = ({ posts }: { posts: IParamsProps['posts'] }) => {
   const { visible, add: [ref] } = useIntersection();
 
   React.useEffect(() => {
