@@ -38,6 +38,8 @@ const Form = ({
     setValues({ ...values, [name]: value });
   };
 
+  const isDisabled = !values.from_email.length || !values.from_name.length || !values.messages.length || !values.subject.length
+
   return (
     <form
       ref={form}
@@ -79,8 +81,8 @@ const Form = ({
         value={values.messages}
         handleChange={handleChange}
       />
-      <button type="submit" className="button-style">
-        <p className="pr-3">Send</p>
+      <button type="submit" className="button-style" disabled={isDisabled}>
+        <p className="pr-3">{isDisabled ? 'Fill in all' : 'Send'}</p>
         <Image
           src={getCloudinaryUrl('assets/email_eifwav.png')}
           height={26}
