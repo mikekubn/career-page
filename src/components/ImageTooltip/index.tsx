@@ -11,13 +11,7 @@ interface IImageTooltop {
   rtl?: boolean;
 }
 
-const ImageTooltip = ({
-  root,
-  alt,
-  tooltip,
-  positon,
-  rtl,
-}: IImageTooltop): React.ReactElement => {
+const ImageTooltip = ({ root, alt, tooltip, positon, rtl }: IImageTooltop): React.ReactElement => {
   const {
     visible,
     add: [ref],
@@ -44,25 +38,15 @@ const ImageTooltip = ({
               staggerChildren: 0.2,
             },
           },
-        }}
-      >
+        }}>
         <motion.div variants={rtl ? fadeInRight : fadeInLeft}>
-          <Image
-            data-cy="image-tooltip-img"
-            data-testid="image-tooltip-img"
-            key={root}
-            src={root}
-            height="60"
-            width="60"
-            alt={alt}
-          />
+          <Image data-cy="image-tooltip-img" data-testid="image-tooltip-img" key={root} src={root} height="60" width="60" alt={alt} />
         </motion.div>
         <motion.p
           data-cy="image-tooltip"
           data-testid="image-tooltip-tooltip"
           className="mt-2 text-xs mx-auto sm:text-sm md:text-sm lg:text-sm"
-          variants={rtl ? fadeInLeft : fadeInRight}
-        >
+          variants={rtl ? fadeInLeft : fadeInRight}>
           {tooltip}
         </motion.p>
       </motion.div>

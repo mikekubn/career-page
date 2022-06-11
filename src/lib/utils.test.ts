@@ -17,12 +17,21 @@ describe('Utils tests', () => {
     const dir = 'src/_mock_posts/mock.md';
     const post = getPost(dir);
 
-    expect(post.frontmatter).toEqual({ id: 3, title: 'Mock', where: 'Testing' });
+    expect(post.frontmatter).toEqual({
+      id: 3,
+      title: 'Mock',
+      where: 'Testing',
+    });
   });
 
   it('get posts', () => {
     const posts = getPosts('src/_mock_posts');
 
-    expect(posts).toEqual([{ filename: 'mock', frontmatter: { id: 3, title: 'Mock', where: 'Testing' } }]);
+    expect(posts).toEqual([
+      {
+        filename: 'mock',
+        frontmatter: { id: 3, title: 'Mock', where: 'Testing' },
+      },
+    ]);
   });
 });

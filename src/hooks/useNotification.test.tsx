@@ -13,7 +13,11 @@ describe('useNotification', () => {
 
     render(<Component notify={result.current[0]} />);
 
-    expect(result.current[0]).toEqual({ visible: true, status: 'success', note: 'Test!' });
+    expect(result.current[0]).toEqual({
+      visible: true,
+      status: 'success',
+      note: 'Test!',
+    });
     expect(screen.getByTestId('notification')).toBeInTheDocument();
     expect(screen.getByTestId('notification')).toHaveTextContent('success');
     expect(screen.getByTestId('notification-note')).toHaveTextContent('Test!');
@@ -29,7 +33,11 @@ describe('useNotification', () => {
 
     render(<Component notify={result.current[0]} />);
 
-    expect(result.current[0]).toEqual({ visible: true, status: 'error', note: 'Test!' });
+    expect(result.current[0]).toEqual({
+      visible: true,
+      status: 'error',
+      note: 'Test!',
+    });
     expect(screen.getByTestId('notification')).toBeInTheDocument();
     expect(screen.getByTestId('notification')).toHaveTextContent('error');
     expect(screen.getByTestId('notification-note')).toHaveTextContent('Test!');
@@ -45,7 +53,11 @@ describe('useNotification', () => {
 
     render(<Component notify={result.current[0]} />);
 
-    expect(result.current[0]).toEqual({ visible: false, status: 'error', note: 'Test!' });
+    expect(result.current[0]).toEqual({
+      visible: false,
+      status: 'error',
+      note: 'Test!',
+    });
 
     expect(screen.getByTestId('invisible-notification')).toBeInTheDocument();
   });
@@ -63,15 +75,17 @@ describe('useNotification', () => {
       jest.advanceTimersByTime(1500);
     });
 
-    expect(result.current[0]).toEqual({ visible: false, status: 'error', note: 'Test!' });
+    expect(result.current[0]).toEqual({
+      visible: false,
+      status: 'error',
+      note: 'Test!',
+    });
   });
 });
 
 const Component = ({ notify }: { notify: INotificaiton | undefined }): React.ReactElement | null => {
   if (!notify?.visible) {
-    return (
-      <div data-testid="invisible-notification" />
-    );
+    return <div data-testid="invisible-notification" />;
   }
 
   return (

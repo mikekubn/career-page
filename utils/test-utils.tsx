@@ -5,15 +5,10 @@ import { NotificationProvider } from '@/provider/NotificationProvider';
 
 const AllTheProviders = ({ children }: { children: React.ReactNode }) => (
   <ThemeProvider>
-    <NotificationProvider>
-      {children}
-    </NotificationProvider>
+    <NotificationProvider>{children}</NotificationProvider>
   </ThemeProvider>
 );
 
-const customRender = (
-  ui: React.ReactElement,
-  options?: Omit<RenderOptions, 'wrapper'>,
-) => render(ui, { wrapper: AllTheProviders, ...options });
+const customRender = (ui: React.ReactElement, options?: Omit<RenderOptions, 'wrapper'>) => render(ui, { wrapper: AllTheProviders, ...options });
 
 export { customRender };

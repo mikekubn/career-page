@@ -11,14 +11,21 @@ const Card = dynamic(() => import('@/components/Card'));
 const JobContent = dynamic(() => import('@/components/JobContent'));
 
 const HomeSection = ({ posts }: { posts: IParamsProps['posts'] }) => {
-  const { visible, add: [ref] } = useIntersection();
+  const {
+    visible,
+    add: [ref],
+  } = useIntersection();
 
   React.useEffect(() => {
     if (visible) {
-      Router.push({
-        pathname: '/',
-        hash: hrefs.home,
-      }, undefined, { scroll: false });
+      Router.push(
+        {
+          pathname: '/',
+          hash: hrefs.home,
+        },
+        undefined,
+        { scroll: false }
+      );
     }
   }, [visible]);
 
@@ -32,13 +39,11 @@ const HomeSection = ({ posts }: { posts: IParamsProps['posts'] }) => {
       <div className="experience">
         <h1 className="headerH1 mx-auto mb-8 lg:mb-10">Experience</h1>
         <div data-cy="experience" className="overflow-auto flex flex-col items-center h-128 p-6">
-          {
-            posts.map((post) => (
-              <Card key={post.frontmatter.id}>
-                <JobContent data={post} />
-              </Card>
-            ))
-          }
+          {posts.map((post) => (
+            <Card key={post.frontmatter.id}>
+              <JobContent data={post} />
+            </Card>
+          ))}
         </div>
       </div>
     </section>

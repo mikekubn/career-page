@@ -17,9 +17,7 @@ const Gallery = ({ images }: { images: TImages }) => {
       .map((item) => item);
 
     const items_first = shuffled.slice(0, 3);
-    const items_seconds = shuffled
-      .filter((val) => !items_first.includes(val))
-      .slice(0, 3);
+    const items_seconds = shuffled.filter((val) => !items_first.includes(val)).slice(0, 3);
 
     setArrFirst(items_first);
     setArrSecond(items_seconds);
@@ -29,24 +27,12 @@ const Gallery = ({ images }: { images: TImages }) => {
     <div className="justify-center mx-auto mb-10 mt-5 flex flex-col md:my-auto lg:h-96">
       <div className="flex flex-row">
         {arrFirst?.map((val) => (
-          <ImageTooltip
-            key={val.sort.toString()}
-            positon="justify-center"
-            root={val.item}
-            alt={`Technology ${val.title}`}
-            tooltip={val.title}
-          />
+          <ImageTooltip key={val.sort.toString()} positon="justify-center" root={val.item} alt={`Technology ${val.title}`} tooltip={val.title} />
         ))}
       </div>
       <div className="flex flex-row">
         {arrSecond?.map((val) => (
-          <ImageTooltip
-            key={val.sort.toString()}
-            positon="justify-center"
-            root={val.item}
-            alt={`Technology ${val.title}`}
-            tooltip={val.title}
-          />
+          <ImageTooltip key={val.sort.toString()} positon="justify-center" root={val.item} alt={`Technology ${val.title}`} tooltip={val.title} />
         ))}
       </div>
     </div>

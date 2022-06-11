@@ -23,17 +23,9 @@
       "@/hooks/*": ["src/hooks/*"],
       "@/lib/*": ["src/lib/*"],
       "@/styles/*": ["styles/*"],
-      "@/utils/*": ["utils/*"],
+      "@/utils/*": ["utils/*"]
     }
   },
-  "include": [
-    "tailwind.config.js",
-    "cypress.config.ts",
-    "style/**/*.ts",
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.js"
-  ],
+  "include": ["tailwind.config.js", "cypress.config.ts", "style/**/*.ts", "next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.js"],
   "exclude": ["node_modules", "cypress"]
 }

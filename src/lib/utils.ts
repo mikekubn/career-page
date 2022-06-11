@@ -7,7 +7,7 @@ const getDirection = (str: string): string => path.join(process.cwd(), str);
 const getPaths = (str: string) => {
   const directory = getDirection(str);
   const filenames = fs.readdirSync(directory);
-  return  sanitation(filenames, '.md');
+  return sanitation(filenames, '.md');
 };
 
 const getPosts = (dir: string) => {
@@ -53,10 +53,11 @@ const cleanTitle = (value: string) => {
     .replace(/[^\_]+$/, '')
     .replace('_', '');
 
-  if (!title?.length) { return '';}
+  if (!title?.length) {
+    return '';
+  }
 
-  const firstLetterToUpperCase =
-    title?.charAt(0).toUpperCase() + title?.slice(1);
+  const firstLetterToUpperCase = title?.charAt(0).toUpperCase() + title?.slice(1);
 
   return firstLetterToUpperCase;
 };

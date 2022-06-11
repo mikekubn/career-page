@@ -6,9 +6,7 @@ import { getPosts } from 'src/lib/utils';
 import cloudinary from 'cloudinary.config';
 
 const HomeSection = dynamic(() => import('@/components/Sections/HomeSection'));
-const ContactSection = dynamic(
-  () => import('@/components/Sections/ContactSection'),
-);
+const ContactSection = dynamic(() => import('@/components/Sections/ContactSection'));
 
 export interface IParamsProps {
   posts: {
@@ -30,26 +28,14 @@ export interface IParamsProps {
   };
 }
 
-const Home: NextPage<IParamsProps> = ({
-  posts,
-  resources,
-}) => {
+const Home: NextPage<IParamsProps> = ({ posts, resources }) => {
   return (
     <>
       <Head>
         <title>Michael Kubín</title>
-        <meta
-          name="description"
-          content="Michael Kubin frontend developer, career web"
-        />
-        <meta
-          property="og:title"
-          content="Michael Kubin - Frontend developer"
-        />
-        <meta
-          property="og:description"
-          content="Michael Kubin work experience"
-        />
+        <meta name="description" content="Michael Kubin frontend developer, career web" />
+        <meta property="og:title" content="Michael Kubin - Frontend developer" />
+        <meta property="og:description" content="Michael Kubin work experience" />
         <meta property="og:url" content="https://mikekubn.cz/" />
         <meta property="og:type" content="website" />
       </Head>
@@ -62,17 +48,11 @@ const Home: NextPage<IParamsProps> = ({
 export default Home;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const images = (
-    await cloudinary.api.resources_by_tag('work', { max_results: 20 })
-  ).resources.map((resource) => resource.public_id);
+  const images = (await cloudinary.api.resources_by_tag('work', { max_results: 20 })).resources.map((resource) => resource.public_id);
 
-  const technology = (
-    await cloudinary.api.resources_by_tag('technology', { max_results: 20 })
-  ).resources.map((resource) => resource.public_id);
+  const technology = (await cloudinary.api.resources_by_tag('technology', { max_results: 20 })).resources.map((resource) => resource.public_id);
 
-  const _posts = getPosts('src/_posts').sort(
-    (a, b) => b.frontmatter.id - a.frontmatter.id,
-  );
+  const _posts = getPosts('src/_posts').sort((a, b) => b.frontmatter.id - a.frontmatter.id);
 
   const posts = _posts.map((post) => {
     const image = images

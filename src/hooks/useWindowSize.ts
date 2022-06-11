@@ -1,15 +1,18 @@
 import React from 'react';
 
 interface IWindowSize {
-  width: number,
-  height: number,
-  isMobile: boolean,
+  width: number;
+  height: number;
+  isMobile: boolean;
 }
 
-const useWindowSize = (): IWindowSize  => {
+const useWindowSize = (): IWindowSize => {
   const isSSR = typeof window === 'undefined';
   const [isMobile, setIsMobile] = React.useState<boolean>(false);
-  const [size, setSize] = React.useState<{ height: IWindowSize['height'], width: IWindowSize['width'] }>({
+  const [size, setSize] = React.useState<{
+    height: IWindowSize['height'];
+    width: IWindowSize['width'];
+  }>({
     height: isSSR ? 1200 : window.innerHeight,
     width: isSSR ? 800 : window.innerWidth,
   });
@@ -36,11 +39,11 @@ const useWindowSize = (): IWindowSize  => {
     };
   }, [size.width]);
 
-  return ({
+  return {
     width: size?.width,
     height: size?.height,
     isMobile,
-  });
+  };
 };
 
 export { useWindowSize };

@@ -24,16 +24,10 @@ interface IForm {
   values: TFormValues;
 }
 
-const Form = ({
-  handleSubmitForm,
-  setValues,
-  values,
-}: IForm): React.ReactElement => {
+const Form = ({ handleSubmitForm, setValues, values }: IForm): React.ReactElement => {
   const form = React.useRef(null);
 
-  const handleChange = (
-    e: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
+  const handleChange = (e: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.currentTarget;
     setValues({ ...values, [name]: value });
   };
@@ -41,54 +35,19 @@ const Form = ({
   const isDisabled = !values.from_email.length || !values.from_name.length || !values.messages.length || !values.subject.length;
 
   return (
-    <form
-      ref={form}
-      onSubmit={handleSubmitForm}
-      className="flex flex-col mx-auto w-72 lg:w-96 lg:mx-14"
-    >
+    <form ref={form} onSubmit={handleSubmitForm} className="flex flex-col mx-auto w-72 lg:w-96 lg:mx-14">
       <section className="flex pb-5 mx-auto">
         <h1 data-testid="form-head" className="text-2xl font-AsapItal">
           Contact me
         </h1>
       </section>
-      <Input
-        label="Subject"
-        type="subject"
-        name="subject"
-        placeholder="Write here"
-        value={values.subject}
-        handleChange={handleChange}
-      />
-      <Input
-        label="Full Name"
-        type="text"
-        name="from_name"
-        placeholder="Write here"
-        value={values.from_name}
-        handleChange={handleChange}
-      />
-      <Input
-        label="Your Email"
-        type="email"
-        name="from_email"
-        placeholder="example@foo.com"
-        value={values.from_email}
-        handleChange={handleChange}
-      />
-      <TextArea
-        name="messages"
-        label="Your message"
-        value={values.messages}
-        handleChange={handleChange}
-      />
+      <Input label="Subject" type="subject" name="subject" placeholder="Write here" value={values.subject} handleChange={handleChange} />
+      <Input label="Full Name" type="text" name="from_name" placeholder="Write here" value={values.from_name} handleChange={handleChange} />
+      <Input label="Your Email" type="email" name="from_email" placeholder="example@foo.com" value={values.from_email} handleChange={handleChange} />
+      <TextArea name="messages" label="Your message" value={values.messages} handleChange={handleChange} />
       <button type="submit" className="button-style" disabled={isDisabled}>
         <p className="pr-3">{isDisabled ? 'Fill in all' : 'Send'}</p>
-        <Image
-          src={getCloudinaryUrl('assets/email_eifwav.png')}
-          height={26}
-          width={26}
-          alt="Send"
-        />
+        <Image src={getCloudinaryUrl('assets/email_eifwav.png')} height={26} width={26} alt="Send" />
       </button>
     </form>
   );

@@ -4,7 +4,10 @@ import { useIntersection } from './useIntersection';
 describe('useIntersection', () => {
   it('render useIntersecrion', () => {
     const { result } = renderHook(() => useIntersection());
-    const { visible, add: [ref] } = result.current;
+    const {
+      visible,
+      add: [ref],
+    } = result.current;
 
     // TODO Remove mocked_result and use only intersection hook.
     const mocked_result = {

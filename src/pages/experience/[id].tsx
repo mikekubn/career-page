@@ -27,8 +27,7 @@ const JobDescriptionPage: NextPage<IPost> = ({ post }) => {
   const router = useRouter();
   const { dispatch } = useNotificationProvider();
   const { isMobile } = useWindowSize();
-  const { title, from, to, where, cover, position, description } =
-    post.frontmatter;
+  const { title, from, to, where, cover, position, description } = post.frontmatter;
 
   const copy = async () => {
     try {
@@ -54,12 +53,7 @@ const JobDescriptionPage: NextPage<IPost> = ({ post }) => {
         <meta name="description" content={`Michael Kubin - ${title}`} />
         <meta property="og:title" content={`Michael Kubin - ${title}`} />
         <meta property="og:description" content={description.toString()} />
-        <meta
-          property="og:url"
-          content={`https://mikekubn.cz/experience/${title
-            .replace(' ', '')
-            .toLocaleLowerCase()}`}
-        />
+        <meta property="og:url" content={`https://mikekubn.cz/experience/${title.replace(' ', '').toLocaleLowerCase()}`} />
         <meta property="og:type" content="website" />
       </Head>
       <section className="section-layout">
@@ -70,23 +64,12 @@ const JobDescriptionPage: NextPage<IPost> = ({ post }) => {
 
         <div className="experience mx-auto w-80 sm:w-96 md:w-96 md:mb-6 lg:w-128 md:mx-0">
           <h1 className="headerH1 text-center lg:text-right my-3">{title}</h1>
-          <Image
-            src={post.image}
-            width="620"
-            height="220"
-            priority
-            alt={title}
-          />
+          <Image src={post.image} width="620" height="220" priority alt={title} />
           <p className="italic font-Asap text-sm mt-2 text-right">{where}</p>
-          <p className="italic font-Asap text-sm my-2 text-right">
-            From: {from}
-          </p>
+          <p className="italic font-Asap text-sm my-2 text-right">From: {from}</p>
           <p className="italic font-Asap text-sm my-2 text-right">To: {to}</p>
           <div data-cy="job-content" className="flex justify-center mt-3">
-            <ul
-              aria-label="position"
-              className="list-disc leading-10 w-60 md:w-80 lg:w-96 lg:text-base lg:leading-9"
-            >
+            <ul aria-label="position" className="list-disc leading-10 w-60 md:w-80 lg:w-96 lg:text-base lg:leading-9">
               {description.map((val) => (
                 <li key={val}>{val}</li>
               ))}
@@ -119,9 +102,7 @@ export const getStaticPaths: GetStaticPaths<IParams> = () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const post = getPost(`src/_posts/${params?.id}.md`);
   const title = post.frontmatter.title.replace(' ', '').toLocaleLowerCase();
-  const image = (
-    await cloudinary.api.resources_by_tag('cover', { max_results: 20 })
-  ).resources
+  const image = (await cloudinary.api.resources_by_tag('cover', { max_results: 20 })).resources
     .filter((resource) => resource.public_id.includes(title))
     .map((value) => value.public_id)
     .toString();
@@ -145,13 +126,7 @@ const Buttons = ({ handleCopy }: { handleCopy: () => void }) => (
     </Link>
     <div onClick={handleCopy} className="button-style ml-4">
       <p className="mr-3">Copy Link</p>
-      <Image
-        data-cy="image-link"
-        src={getCloudinaryUrl('assets/link-page_axgv1k.png')}
-        width="28"
-        height="28"
-        alt="Copy link"
-      />
+      <Image data-cy="image-link" src={getCloudinaryUrl('assets/link-page_axgv1k.png')} width="28" height="28" alt="Copy link" />
     </div>
   </div>
 );

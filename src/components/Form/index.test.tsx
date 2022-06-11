@@ -6,9 +6,12 @@ const subject = 'Test mail';
 const name = 'Jarek Parek';
 const email = 'ocal@host.cz';
 const messages = 'Lorem ipsum also approximates a typical distribution of letters in English.';
-const values = ({
-  subject, from_name: name, from_email: email, messages,
-});
+const values = {
+  subject,
+  from_name: name,
+  from_email: email,
+  messages,
+};
 
 describe('Form', () => {
   it('render form', async () => {

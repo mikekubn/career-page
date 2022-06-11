@@ -4,10 +4,8 @@ export const hrefs = {
 };
 
 export interface INavigation {
-  name: string,
-  url: string,
+  name: string;
+  url: string;
 }
 
-export const navigation: INavigation[] = [
-  { name: 'Contact', url: '#contact' },
-];
+export const navigation: INavigation[] = [{ name: 'Contact', url: '#contact' }];

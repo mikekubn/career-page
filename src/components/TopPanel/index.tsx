@@ -25,14 +25,10 @@ export default Header;
 
 const ProvideImage = ({ val }: { val: boolean }) => {
   if (val) {
-    return (
-      <Image data-cy="moon-image" src={getCloudinaryUrl('assets/moon_pomwuu.png')} alt="Moon" height="28" width="28" />
-    );
+    return <Image data-cy="moon-image" src={getCloudinaryUrl('assets/moon_pomwuu.png')} alt="Moon" height="28" width="28" />;
   }
 
-  return (
-    <Image data-cy="sun-image" src={getCloudinaryUrl('assets/sun_gpqllo.png')} alt="Sun" height="28" width="28" />
-  );
+  return <Image data-cy="sun-image" src={getCloudinaryUrl('assets/sun_gpqllo.png')} alt="Sun" height="28" width="28" />;
 };
 
 const RenderThemeImage = ({ val }: { val: boolean }) => (

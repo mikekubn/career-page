@@ -24,13 +24,7 @@ const Footer = (): React.ReactElement => (
       <Link key={val.name} href={val.url} passHref>
         <a target="_blank" rel="noreferrer" className="hover:text-black hover:dark:text-white">
           <div className="p-4 flex-row-center-content hover:bg-sky500/5 rounded-4xl">
-            <Image
-              data-cy={val.src}
-              src={val.img}
-              width={28}
-              height={28}
-              alt={val.name}
-            />
+            <Image data-cy={val.src} src={val.img} width={28} height={28} alt={val.name} />
             <p className="ml-3">{val.name}</p>
           </div>
         </a>
