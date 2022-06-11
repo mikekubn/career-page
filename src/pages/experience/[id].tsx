@@ -1,16 +1,16 @@
-import React from 'react';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
-import Image from 'next/image';
-import Head from 'next/head';
-import Name from '@/components/Name';
-import { useNotificationProvider } from '@/provider/NotificationProvider';
-import { useWindowSize } from '@/hooks/index';
-import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import { ParsedUrlQuery } from 'querystring';
-import { IParamsProps } from '..';
-import { getCloudinaryUrl, getPaths, getPost } from '@/lib/utils';
-import cloudinary from 'cloudinary.config';
+import React from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
+import Image from "next/image";
+import Head from "next/head";
+import Name from "@/components/Name";
+import { useNotificationProvider } from "@/provider/NotificationProvider";
+import { useWindowSize } from "@/hooks/index";
+import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import { ParsedUrlQuery } from "querystring";
+import { IParamsProps } from "..";
+import { getCloudinaryUrl, getPaths, getPost } from "@/lib/utils";
+import cloudinary from "cloudinary.config";
 
 interface IParams extends ParsedUrlQuery {
   id: string;
@@ -18,8 +18,8 @@ interface IParams extends ParsedUrlQuery {
 
 interface IPost {
   post: {
-    frontmatter: IParamsProps['posts'][0]['frontmatter'];
-    content: string;
+    frontmatter: IParamsProps["posts"][0]["frontmatter"];
+    image: string;
   };
 }
 
@@ -33,14 +33,14 @@ const JobDescriptionPage: NextPage<IPost> = ({ post }) => {
   const copy = async () => {
     try {
       await navigator.clipboard.writeText(`${window.location.href}`);
-      dispatch({ visible: true, status: 'success', note: 'Copied success.' });
+      dispatch({ visible: true, status: "success", note: "Copied success." });
     } catch (e) {
-      dispatch({ visible: true, status: 'error', note: 'Copied failed.' });
+      dispatch({ visible: true, status: "error", note: "Copied failed." });
     }
   };
 
   React.useEffect(() => {
-    router.prefetch('/');
+    router.prefetch("/");
   }, [router]);
 
   if (!post) {
@@ -57,7 +57,7 @@ const JobDescriptionPage: NextPage<IPost> = ({ post }) => {
         <meta
           property="og:url"
           content={`https://mikekubn.cz/experience/${title
-            .replace(' ', '')
+            .replace(" ", "")
             .toLocaleLowerCase()}`}
         />
         <meta property="og:type" content="website" />
@@ -71,7 +71,7 @@ const JobDescriptionPage: NextPage<IPost> = ({ post }) => {
         <div className="experience mx-auto w-80 sm:w-96 md:w-96 md:mb-6 lg:w-128 md:mx-0">
           <h1 className="headerH1 text-center lg:text-right my-3">{title}</h1>
           <Image
-            src={getCloudinaryUrl('work/livesport-cover_ln6jr3.png')}
+            src={post.image}
             width="620"
             height="220"
             priority
@@ -94,7 +94,7 @@ const JobDescriptionPage: NextPage<IPost> = ({ post }) => {
           </div>
           {isMobile ? (
             <div className="flex justify-center mt-6">
-              {' '}
+              {" "}
               <Buttons handleCopy={copy} />
             </div>
           ) : null}
@@ -107,7 +107,7 @@ const JobDescriptionPage: NextPage<IPost> = ({ post }) => {
 export default JobDescriptionPage;
 
 export const getStaticPaths: GetStaticPaths<IParams> = () => {
-  const posts = getPaths('src/_posts');
+  const posts = getPaths("src/_posts");
   const paths = posts.map((post) => ({ params: { id: post } }));
 
   return {
@@ -118,13 +118,22 @@ export const getStaticPaths: GetStaticPaths<IParams> = () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const post = getPost(`src/_posts/${params?.id}.md`);
-  const images = (
-    await cloudinary.api.resources_by_tag('cover', { max_results: 20 })
-  ).resources.map((resource) => resource.public_id);
+  const title = post.frontmatter.title.replace(" ", "").toLocaleLowerCase();
+  const image = (
+    await cloudinary.api.resources_by_tag("cover", { max_results: 20 })
+  ).resources
+    .filter((resource) => resource.public_id.includes(title))
+    .map((value) => value.public_id)
+    .toString();
 
-  console.log(post.frontmatter.title);
-
-  return { props: { post } };
+  return {
+    props: {
+      post: {
+        ...post,
+        image,
+      },
+    },
+  };
 };
 
 const Buttons = ({ handleCopy }: { handleCopy: () => void }) => (
@@ -138,7 +147,7 @@ const Buttons = ({ handleCopy }: { handleCopy: () => void }) => (
       <p className="mr-3">Copy Link</p>
       <Image
         data-cy="image-link"
-        src={getCloudinaryUrl('assets/link-page_axgv1k.png')}
+        src={getCloudinaryUrl("assets/link-page_axgv1k.png")}
         width="28"
         height="28"
         alt="Copy link"
