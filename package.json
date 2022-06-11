@@ -17,9 +17,6 @@
     "cy:open": "cypress open --config-file ./cypress.config.ts -b chrome --e2e",
     "cy:run": "cypress run --config-file ./cypress.config.ts -b chrome"
   },
-  "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown"
-  },
   "dependencies": {
     "@emailjs/browser": "^3.6.2",
     "cloudinary": "^1.30.0",
