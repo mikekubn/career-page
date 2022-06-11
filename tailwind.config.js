@@ -1,10 +1,5 @@
 module.exports = {
-  content: [
-    './src/**/*.{js,jsx,ts,tsx}',
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
-    './layouts/**/*.{js,ts,jsx,tsx}',
-  ],
+  content: ['./src/**/*.{js,jsx,ts,tsx}', './pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}', './layouts/**/*.{js,ts,jsx,tsx}'],
   darkMode: 'class',
   theme: {
     screens: {
@@ -22,11 +17,15 @@ module.exports = {
       purple: '#7e5bef',
       pink: '#ff49db',
       orange: '#ff7849',
+      red50: '#fef2f2',
+      red200: '#fecaca',
+      red400: '#f87171',
       green: '#13ce66',
       yellow: '#ffc82c',
       white: '#ffffff',
       gray: '#8492a6',
       gray100: '#f3f4f6',
+      gray200: '#e2e8f0',
       gray500: '#6b7280',
       gray600: '#4b5563',
       gray700: '#374151',

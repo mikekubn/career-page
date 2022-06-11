@@ -8,25 +8,26 @@ import { useNotificationProvider } from '@/provider/NotificationProvider';
 import { useWindowSize } from '@/hooks/index';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { ParsedUrlQuery } from 'querystring';
-import { IPostsProps } from '..';
-import { getPaths, getPost, imgPaths } from '@/lib/utils';
+import { IParamsProps } from '..';
+import { getCloudinaryUrl, getPaths, getPost } from '@/lib/utils';
+import cloudinary from 'cloudinary.config';
 
 interface IParams extends ParsedUrlQuery {
-  id: string
+  id: string;
 }
 
 interface IPost {
   post: {
-    frontmatter: IPostsProps['posts'][0]['frontmatter'],
-    content: string,
-  }
+    frontmatter: IParamsProps['posts'][0]['frontmatter'];
+    image: string;
+  };
 }
 
 const JobDescriptionPage: NextPage<IPost> = ({ post }) => {
   const router = useRouter();
   const { dispatch } = useNotificationProvider();
   const { isMobile } = useWindowSize();
-  const { title, from, to, where, cover, position, description } = post.frontmatter;
+  const { title, from, to, where, position, description } = post.frontmatter;
 
   const copy = async () => {
     try {
@@ -57,22 +58,29 @@ const JobDescriptionPage: NextPage<IPost> = ({ post }) => {
       </Head>
       <section className="section-layout">
         <div className="content-name mx-auto md:mx-0">
-          <Name post={position}/>
-          { !isMobile ? <Buttons handleCopy={copy}/> : null }
+          <Name post={position} />
+          {!isMobile ? <Buttons handleCopy={copy} /> : null}
         </div>
 
         <div className="experience mx-auto w-80 sm:w-96 md:w-96 md:mb-6 lg:w-128 md:mx-0">
           <h1 className="headerH1 text-center lg:text-right my-3">{title}</h1>
-          <Image src={imgPaths(cover)} width="620" height="220" priority alt={title} />
+          <Image src={post.image} width="620" height="220" priority alt={title} />
           <p className="italic font-Asap text-sm mt-2 text-right">{where}</p>
           <p className="italic font-Asap text-sm my-2 text-right">From: {from}</p>
           <p className="italic font-Asap text-sm my-2 text-right">To: {to}</p>
           <div data-cy="job-content" className="flex justify-center mt-3">
             <ul aria-label="position" className="list-disc leading-10 w-60 md:w-80 lg:w-96 lg:text-base lg:leading-9">
-              {description.map((val) => (<li key={val}>{val}</li>))}
+              {description.map((val) => (
+                <li key={val}>{val}</li>
+              ))}
             </ul>
           </div>
-          { isMobile ? (<div className="flex justify-center mt-6"> <Buttons handleCopy={copy}/></div>) : null }
+          {isMobile ? (
+            <div className="flex justify-center mt-6">
+              {' '}
+              <Buttons handleCopy={copy} />
+            </div>
+          ) : null}
         </div>
       </section>
     </>
@@ -91,21 +99,34 @@ export const getStaticPaths: GetStaticPaths<IParams> = () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = ({ params }) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const post = getPost(`src/_posts/${params?.id}.md`);
-  return { props: { post } };
+  const title = post.frontmatter.title.replace(' ', '').toLocaleLowerCase();
+  const image = (await cloudinary.api.resources_by_tag('cover', { max_results: 20 })).resources
+    .filter((resource) => resource.public_id.includes(title))
+    .map((value) => value.public_id)
+    .toString();
+
+  return {
+    props: {
+      post: {
+        ...post,
+        image,
+      },
+    },
+  };
 };
 
 const Buttons = ({ handleCopy }: { handleCopy: () => void }) => (
-  <div className='flex flex-row'>
+  <div className="flex flex-row">
     <Link href="/" passHref>
       <a className="button-style" data-cy="close-btn">
         Go Home
       </a>
     </Link>
-    <button onClick={handleCopy} className="button-style ml-4">
+    <div onClick={handleCopy} className="button-style ml-4">
       <p className="mr-3">Copy Link</p>
-      <Image data-cy="image-link" src="/img/link.png" width="28" height="28" alt="Copy link" />
-    </button>
+      <Image data-cy="image-link" src={getCloudinaryUrl('assets/link-page_axgv1k.png')} width="28" height="28" alt="Copy link" />
+    </div>
   </div>
 );

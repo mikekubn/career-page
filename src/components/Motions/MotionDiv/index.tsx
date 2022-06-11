@@ -8,14 +8,13 @@ const MotionDiv = ({ children }: { children: React.ReactNode }): React.ReactElem
       y: '0vh',
       opacity: 1,
       transition: {
-        duration: 0.8, type: 'tween',
+        duration: 0.8,
+        type: 'tween',
       },
     }}
     exit={{ y: '100vh', opacity: 0 }}
-    className="flex flex-1"
-  >
+    className="flex flex-1">
     {children}
-
   </motion.div>
 );
 

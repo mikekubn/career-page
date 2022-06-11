@@ -3,8 +3,8 @@ import { useMatchMedia } from '@/hooks/index';
 
 type ThemeProviderProps = { children: React.ReactNode };
 type ThemeState = {
-  state: boolean,
-  toggle: (val: boolean) => void,
+  state: boolean;
+  toggle: (val: boolean) => void;
 };
 
 const DefaultValue = { state: false, toggle: () => {} };
@@ -29,11 +29,7 @@ const ThemeProvider = ({ children }: ThemeProviderProps): React.ReactElement => 
     }
   }, [theme]);
 
-  return (
-    <ThemeContex.Provider value={{ state: theme, toggle: (val) => setTheme(val) }}>
-      {children}
-    </ThemeContex.Provider>
-  );
+  return <ThemeContex.Provider value={{ state: theme, toggle: (val) => setTheme(val) }}>{children}</ThemeContex.Provider>;
 };
 
 const useThemeProvider = () => {

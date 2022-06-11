@@ -1,8 +1,8 @@
 import React from 'react';
 
 interface ICard {
-  children: React.ReactNode,
-  handleClick?: () => void,
+  children: React.ReactNode;
+  handleClick?: () => void;
 }
 
 const Card = ({ children, handleClick }: ICard): React.ReactElement => (
@@ -10,8 +10,7 @@ const Card = ({ children, handleClick }: ICard): React.ReactElement => (
     data-cy="card"
     data-testid="card"
     onClick={handleClick}
-    className="card border-sky500/5 shadow-sky500 hover:shadow-sky500/20 hover:bg-transparent/10"
-  >
+    className="card border-sky500/5 shadow-sky500 hover:shadow-sky500/20 hover:bg-transparent/10">
     {children}
   </div>
 );

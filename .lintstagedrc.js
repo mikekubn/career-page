@@ -1,9 +1,4 @@
 module.exports = {
-   '*.{ts,tsx}': [
-     () => 'tsc --skipLibCheck --noEmit',
-     'eslint',
-   ],
-   '*.{js,mjs}': [
-     'eslint',
-   ],
- };
+  '*.{ts,tsx}': [() => 'tsc --skipLibCheck --noEmit', 'eslint'],
+  '*.{js,mjs}': ['eslint'],
+};

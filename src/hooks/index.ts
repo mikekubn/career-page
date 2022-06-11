@@ -5,11 +5,4 @@ import { useScroll } from './useScroll';
 import { useDimension } from './useDimension';
 import { useWindowSize } from './useWindowSize';
 
-export {
-  useScroll,
-  useIntersection,
-  useNotification,
-  useMatchMedia,
-  useDimension,
-  useWindowSize,
-};
+export { useScroll, useIntersection, useNotification, useMatchMedia, useDimension, useWindowSize };

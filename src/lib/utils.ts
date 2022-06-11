@@ -7,7 +7,7 @@ const getDirection = (str: string): string => path.join(process.cwd(), str);
 const getPaths = (str: string) => {
   const directory = getDirection(str);
   const filenames = fs.readdirSync(directory);
-  return  sanitation(filenames, '.md');
+  return sanitation(filenames, '.md');
 };
 
 const getPosts = (dir: string) => {
@@ -43,6 +43,23 @@ const getPost = (dir: string) => {
 
 const sanitation = (arr: string[], cut: string): string[] => arr.map((a) => a.replace(cut, ''));
 
-const imgPaths = (img: string) => `/img/work/${img}`;
+const getCloudinaryUrl = (url: string) => `/career_page/${url}`;
 
-export { getPost, getPosts, getPaths, getDirection, sanitation, imgPaths };
+const cleanTitle = (value: string) => {
+  const title = value
+    .split('/')
+    .pop()
+    ?.toString()
+    .replace(/[^\_]+$/, '')
+    .replace('_', '');
+
+  if (!title?.length) {
+    return '';
+  }
+
+  const firstLetterToUpperCase = title?.charAt(0).toUpperCase() + title?.slice(1);
+
+  return firstLetterToUpperCase;
+};
+
+export { getPost, getPosts, getPaths, getDirection, sanitation, getCloudinaryUrl, cleanTitle };
