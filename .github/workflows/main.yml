@@ -9,6 +9,7 @@ on:
 jobs:
   e2e-tests: 
     name: e2e-tests
+    environment: preview
     runs-on: ubuntu-latest
     container: cypress/browsers:node14.17.6-chrome100-ff98
 
