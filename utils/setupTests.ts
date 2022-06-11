@@ -21,5 +21,5 @@ window.IntersectionObserver = mockIntersectionObserver;
 
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
-  value: jest.fn().mockImplementation(() => (defaultMatchMedia)),
+  value: jest.fn().mockImplementation(() => defaultMatchMedia),
 });

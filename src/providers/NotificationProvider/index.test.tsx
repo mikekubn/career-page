@@ -1,12 +1,22 @@
 import { screen, renderHook, act } from '@testing-library/react';
 import React from 'react';
-import {
-  INotificaiton, NotificationProvider, useNotificationProvider, NotificaitonBox,
-} from '@/provider/NotificationProvider/index';
+import { INotificaiton, NotificationProvider, useNotificationProvider, NotificaitonBox } from '@/provider/NotificationProvider/index';
 
-const default_state_notification: INotificaiton = { visible: false, status: 'undefined', note: '' };
-const succes_state_notification: INotificaiton = { visible: true, status: 'success', note: 'Test success.' };
-const error_state_notification: INotificaiton = { visible: true, status: 'error', note: 'Test success.' };
+const default_state_notification: INotificaiton = {
+  visible: false,
+  status: 'undefined',
+  note: '',
+};
+const succes_state_notification: INotificaiton = {
+  visible: true,
+  status: 'success',
+  note: 'Test success.',
+};
+const error_state_notification: INotificaiton = {
+  visible: true,
+  status: 'error',
+  note: 'Test success.',
+};
 
 describe('Notification provider', () => {
   it('verify success notification provider', () => {

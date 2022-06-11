@@ -2,33 +2,39 @@ import React from 'react';
 
 const useScroll = () => {
   const [startPositionY, setStartPositionY] = React.useState<number>();
-  const [position, setPosition] = React.useState<{ move: 'up' | 'down', num: number }>({ move: 'up', num: 0 });
+  const [position, setPosition] = React.useState<{
+    move: 'up' | 'down';
+    num: number;
+  }>({ move: 'up', num: 0 });
 
   React.useEffect(() => {
     const { scrollY } = window;
     setStartPositionY(scrollY);
   }, [startPositionY]);
 
-  const handleScroll = React.useCallback((e: Event) => {
-    if (!e.currentTarget) {
-      return;
-    }
-
-    if (!('scrollY' in e.currentTarget)) {
-      return;
-    }
-
-    const { scrollY } = e.currentTarget;
-
-    if (startPositionY !== undefined) {
-      if (startPositionY > scrollY) {
-        setPosition({ move: 'up', num: scrollY });
-      } else if (startPositionY < scrollY) {
-        setPosition({ move: 'down', num: scrollY });
+  const handleScroll = React.useCallback(
+    (e: Event) => {
+      if (!e.currentTarget) {
+        return;
       }
-      setStartPositionY(scrollY);
-    }
-  }, [startPositionY]);
+
+      if (!('scrollY' in e.currentTarget)) {
+        return;
+      }
+
+      const { scrollY } = e.currentTarget;
+
+      if (startPositionY !== undefined) {
+        if (startPositionY > scrollY) {
+          setPosition({ move: 'up', num: scrollY });
+        } else if (startPositionY < scrollY) {
+          setPosition({ move: 'down', num: scrollY });
+        }
+        setStartPositionY(scrollY);
+      }
+    },
+    [startPositionY]
+  );
 
   React.useEffect(() => {
     window.addEventListener('scroll', handleScroll);

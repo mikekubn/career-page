@@ -1,13 +1,13 @@
 import { render, screen } from '@testing-library/react';
-import { IPostsProps } from 'src/pages';
+import { IParamsProps } from 'src/pages';
 import JobContent from '.';
 
-const mock: IPostsProps['posts'][0] = {
+const mock: IParamsProps['posts'][0] = {
   filename: 'test',
   frontmatter: {
     id: 1,
-    image: 'test.jpeg',
-    cover: 'test-cover.jpeg',
+    image: '/test.png',
+    cover: '/test-cover.png',
     title: 'UnitTest',
     to: '12/2000',
     from: '02/2005',

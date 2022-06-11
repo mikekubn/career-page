@@ -1,8 +1,8 @@
 import React from 'react';
 
 interface IToggleButton {
-  value: boolean,
-  callback: (val: boolean) => void,
+  value: boolean;
+  callback: (val: boolean) => void;
 }
 
 const ToggleButton = ({ value, callback }: IToggleButton): React.ReactElement => (

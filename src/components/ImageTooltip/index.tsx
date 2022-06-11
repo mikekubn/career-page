@@ -1,19 +1,21 @@
 import React from 'react';
 import { AnimatePresence, motion, useAnimation } from 'framer-motion';
 import { useIntersection } from '@/hooks/useIntersection';
+import Image from 'next/image';
 
 interface IImageTooltop {
-  root: string,
-  alt: string,
-  tooltip: string,
-  positon: string,
-  rtl?: boolean,
+  root: string;
+  alt: string;
+  tooltip: string;
+  positon: string;
+  rtl?: boolean;
 }
 
-const ImageTooltip = ({
-  root, alt, tooltip, positon, rtl,
-}: IImageTooltop): React.ReactElement => {
-  const { visible, add: [ref] } = useIntersection();
+const ImageTooltip = ({ root, alt, tooltip, positon, rtl }: IImageTooltop): React.ReactElement => {
+  const {
+    visible,
+    add: [ref],
+  } = useIntersection();
   const controls = useAnimation();
 
   React.useEffect(() => {
@@ -36,24 +38,15 @@ const ImageTooltip = ({
               staggerChildren: 0.2,
             },
           },
-        }}
-      >
-        <motion.img
-          data-cy="image-tooltip-img"
-          data-testid="image-tooltip-img"
-          key={`/img/${root}`}
-          src={`/img/${root}.png`}
-          height="60"
-          width="60"
-          alt={alt}
-          variants={rtl ? fadeInRight : fadeInLeft}
-        />
+        }}>
+        <motion.div variants={rtl ? fadeInRight : fadeInLeft}>
+          <Image data-cy="image-tooltip-img" data-testid="image-tooltip-img" key={root} src={root} height="60" width="60" alt={alt} />
+        </motion.div>
         <motion.p
           data-cy="image-tooltip"
           data-testid="image-tooltip-tooltip"
           className="mt-2 text-xs mx-auto sm:text-sm md:text-sm lg:text-sm"
-          variants={rtl ? fadeInLeft : fadeInRight}
-        >
+          variants={rtl ? fadeInLeft : fadeInRight}>
           {tooltip}
         </motion.p>
       </motion.div>

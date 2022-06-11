@@ -1,16 +1,13 @@
 import React from 'react';
 
-type TResult<T> = [
-  undefined | T,
-  (value: T) => void
-];
+type TResult<T> = [undefined | T, (value: T) => void];
 
 type Status = 'success' | 'error';
 
 export interface INotificaiton {
-  visible: boolean,
-  status: Status,
-  note: string
+  visible: boolean;
+  status: Status;
+  note: string;
 }
 
 const useNotification = (): TResult<INotificaiton> => {
