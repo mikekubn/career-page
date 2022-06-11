@@ -38,7 +38,7 @@ const Form = ({
     setValues({ ...values, [name]: value });
   };
 
-  const isDisabled = !values.from_email.length || !values.from_name.length || !values.messages.length || !values.subject.length
+  const isDisabled = !values.from_email.length || !values.from_name.length || !values.messages.length || !values.subject.length;
 
   return (
     <form
