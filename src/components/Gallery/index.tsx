@@ -1,4 +1,4 @@
-import React, { ReactEventHandler } from 'react';
+import React from 'react';
 import { cleanTitle } from '@/lib/utils';
 import { IParamsProps } from 'src/pages';
 import ImageTooltip from '../ImageTooltip';

@@ -92,17 +92,6 @@
         "ts-ignore": true
       }
     ],
-    "@typescript-eslint/no-use-before-define": ["off"],
-    "@typescript-eslint/comma-dangle": [
-      "error",
-      {
-        "arrays": "always-multiline",
-        "enums": "always-multiline",
-        "exports": "always-multiline",
-        "functions": "always-multiline",
-        "imports": "always-multiline",
-        "objects": "always-multiline"
-      }
-    ]
+    "@typescript-eslint/no-use-before-define": ["off"]
   }
 }

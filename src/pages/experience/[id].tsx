@@ -27,7 +27,7 @@ const JobDescriptionPage: NextPage<IPost> = ({ post }) => {
   const router = useRouter();
   const { dispatch } = useNotificationProvider();
   const { isMobile } = useWindowSize();
-  const { title, from, to, where, cover, position, description } = post.frontmatter;
+  const { title, from, to, where, position, description } = post.frontmatter;
 
   const copy = async () => {
     try {
