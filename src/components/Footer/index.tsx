@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { getCloudinaryUrl } from '@/lib/utils';
 
-const jobs: { name: string; src: string; url: string; img: string }[] = [
+const links: { name: string; src: string; url: string; img: string }[] = [
   {
     name: 'GitHub',
     src: 'github',
@@ -20,10 +20,10 @@ const jobs: { name: string; src: string; url: string; img: string }[] = [
 
 const Footer = (): React.ReactElement => (
   <footer className="border-t footer h-14 border-sky500/20 shadow-sky500/50">
-    {jobs.map((val) => (
+    {links.map((val) => (
       <Link key={val.name} href={val.url} passHref>
-        <a target="_blank" rel="noreferrer">
-          <div className="p-4 flex-row-center-content">
+        <a target="_blank" rel="noreferrer" className="hover:text-black hover:dark:text-white">
+          <div className="p-4 flex-row-center-content hover:bg-sky500/5 rounded-4xl">
             <Image
               data-cy={val.src}
               src={val.img}
