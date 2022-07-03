@@ -27,7 +27,7 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "^12.1.5",
+    "@next/eslint-plugin-next": "^12.2.0",
     "@react-hook/media-query": "^1.1.1",
     "@testing-library/dom": "^8.14.0",
     "@testing-library/jest-dom": "^5.16.4",
