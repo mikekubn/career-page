@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
@@ -16,7 +16,7 @@ const Home: NextPage = () => {
         <meta property="og:url" content="https://mikekubn.cz/" />
         <meta property="og:type" content="website" />
       </Head>
-      <div>Ahoj</div>
+      <div>Home</div>
     </>
   );
 };

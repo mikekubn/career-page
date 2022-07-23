@@ -9,9 +9,9 @@ const Navigation = (): React.ReactElement => (
   <nav data-cy="navigation" className="flex flex-row  w-34 justify-end">
     <ul className="flex flex-row">
       {menuItemConfig.map((nav, index) => (
-        <button key={index}>
+        <button key={index} className="ml-8">
           <Link href={nav.url} passHref>
-            <li className="mb-2 mx-4 text-lg cursor-pointer hover:underline underline-offset-8">{nav.name}</li>
+            <li className="mb-2 text-lg cursor-pointer hover:underline underline-offset-8">{nav.name}</li>
           </Link>
         </button>
       ))}
