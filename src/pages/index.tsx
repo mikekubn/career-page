@@ -16,7 +16,7 @@ const Home: NextPage = () => {
         <meta property="og:url" content="https://mikekubn.cz/" />
         <meta property="og:type" content="website" />
       </Head>
-      <div className="mt-20">Ahoj</div>
+      <div>Ahoj</div>
     </>
   );
 };
