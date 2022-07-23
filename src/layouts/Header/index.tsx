@@ -5,16 +5,12 @@ import { getCloudinaryUrl } from '@/lib/utils';
 import Link from 'next/link';
 import { useWindowSize } from '@/hooks/useWindowSize';
 import { useTheme } from 'next-themes';
-import { useRouter } from 'next/router';
 
 const Header = (): React.ReactElement => {
   const { isMobile } = useWindowSize();
   const { theme, setTheme, systemTheme } = useTheme();
   const [clientTheme, setClientTheme] = React.useState<string>('');
   const isLight = theme === 'light' ? 'dark' : 'light';
-
-  const router = useRouter();
-  console.log('router', router);
 
   const handleClick = () => {
     setTheme(isLight);

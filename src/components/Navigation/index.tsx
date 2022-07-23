@@ -1,25 +1,32 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { menuItemConfig } from 'src/configs/navigation';
 import { getCloudinaryUrl } from '@/lib/utils';
 import { motion } from 'framer-motion';
+import { useActiveItem } from '@/hooks/useActiveItem';
 
-const Navigation = (): React.ReactElement => (
-  <nav data-cy="navigation" className="flex flex-row  w-34 justify-end">
-    <ul className="flex flex-row">
-      {menuItemConfig.map((nav, index) => (
-        <button key={index} className="ml-8">
-          <Link href={nav.url} passHref>
-            <li className="mb-2 text-lg cursor-pointer hover:underline underline-offset-8">{nav.name}</li>
-          </Link>
-        </button>
-      ))}
-    </ul>
-  </nav>
-);
+const Navigation = (): React.ReactElement => {
+  const { items, callback } = useActiveItem();
+
+  return (
+    <nav data-cy="navigation" className="flex flex-row  w-34 justify-end">
+      <ul className="flex flex-row">
+        {items.map((item, index) => (
+          <button key={index} className="ml-8" onClick={() => callback({ url: item.url })}>
+            <Link href={item.url} passHref replace>
+              <li className={`mb-2 text-lg cursor-pointer hover:underline underline-offset-8 ${item.active ? 'border-b-2 border-sky500/50' : ''}`}>
+                {item.name}
+              </li>
+            </Link>
+          </button>
+        ))}
+      </ul>
+    </nav>
+  );
+};
 
 export const MobileNavigaiton = (): React.ReactElement => {
+  const { items, callback } = useActiveItem();
   const [toggle, setToggle] = React.useState<boolean>(false);
 
   return (
@@ -35,10 +42,16 @@ export const MobileNavigaiton = (): React.ReactElement => {
         value={toggle}
         children={
           <ul className="flex flex-col flex-1 items-center text-xl">
-            {menuItemConfig.map((nav, index) => (
-              <button key={index} className="my-4 first:mt-20 hover:text-2xl" onClick={() => setToggle(false)}>
-                <Link href={nav.url} replace passHref>
-                  <li>{nav.name}</li>
+            {items.map((item, index) => (
+              <button
+                key={index}
+                className={`my-4 first:mt-20 hover:text-2xl  ${item.active ? 'border-b-2 border-sky500/50' : ''}`}
+                onClick={() => {
+                  setToggle(false);
+                  callback({ url: item.url });
+                }}>
+                <Link href={item.url} replace passHref>
+                  <li>{item.name}</li>
                 </Link>
               </button>
             ))}
