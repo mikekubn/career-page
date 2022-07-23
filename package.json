@@ -5,7 +5,7 @@
   "main": "pages/_app.tsx",
   "author": "Michael Kubín",
   "scripts": {
-    "dev": "open http://localhost:3000 && next dev",
+    "dev": "next dev",
     "dev:https": "local-ssl-proxy --source 3001 --target 3000",
     "build": "next build",
     "export": "next export",
@@ -22,9 +22,9 @@
     "cloudinary": "^1.30.0",
     "framer-motion": "^6.3.16",
     "gray-matter": "^4.0.3",
-    "next": "^12.2.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "next": "^12.2.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^12.2.0",
