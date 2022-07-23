@@ -5,41 +5,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  .section-layout {
-    @apply h-full w-full flex flex-col pb-10 md:flex-row md:justify-between md:h-screen;
-  }
-  .flex-col-1 {
-    @apply flex flex-col flex-1;
-  }
-  .flex-row-1 {
-    @apply flex flex-row flex-1;
-  }
-  .flex-row-center-content {
-    @apply flex flex-row items-center justify-center;
-  }
-  .flex-col-center-content {
-    @apply flex flex-col items-center justify-center;
-  }
-}
-
-@layer components {
-  .card {
-    @apply cursor-pointer block mb-4 border border-solid rounded-2xl shadow-sm w-80 sm:w-96 md:w-96 md:mb-6 lg:w-128;
-  }
-  .footer {
-    @apply w-screen mx-auto flex justify-center bottom-0 left-0;
-  }
-  .button-style {
-    @apply flex items-center justify-center h-14 md:h-12 lg:h-12 border rounded-full border-b-4 cursor-pointer mt-7 w-32 lg:w-52 text-sky500 hover:bg-sky500/5 hover:border-b focus:bg-sky500/5 focus:border-b duration-500 disabled:cursor-not-allowed disabled:hover:border-b-4 disabled:text-red400;
-  }
-  .content-name {
-    @apply flex flex-col mt-16 mb-10 md:my-0;
-  }
-  .experience {
-    @apply flex flex-col md:justify-center mt-5 md:mt-0;
-  }
-  .headerH1 {
-    @apply text-3xl italic font-AsapItal;
+@layer base {
+  .dark-mode {
+    @apply bg-white text-black dark:bg-gray600 dark:text-white;
   }
 }

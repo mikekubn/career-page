@@ -5,16 +5,16 @@ import { getCloudinaryUrl } from '@/lib/utils';
 import Link from 'next/link';
 
 const Header = (): React.ReactElement => (
-  <div className="sticky top-0 z-50 bg-white">
-    <header className="flex flex-1 flex-col h-28 mx-4 mt-2 md:mt-0 md:mx-24 md:flex-row bg-pink">
-      <section className="flex flex-col flex-1 bg-red400">
+  <div className="dark-mode sticky top-0 z-50">
+    <header className="flex flex-1 flex-col h-28 mx-4 mt-2 md:mt-0 md:mx-24 md:flex-row ">
+      <section className="flex flex-col flex-1">
         <div className="flex flex-row my-auto">
           <Image src="career_page/profile/profile_nv9lqo" width="50" height="50" className="rounded-full" />
           <h1 className="pl-4 text-lg font-semibold my-auto cursor-default">Michael Kubín</h1>
         </div>
       </section>
       <section className="flex flex-1 flex-col justify-end">
-        <div className="flex flex-row justify-start md:justify-end my-auto bg-yellow">
+        <div className="flex flex-row justify-start md:justify-end my-auto">
           {links.map((link) => (
             <button key={link.src} className="ml-4 flex flex-col content-center">
               <Link href={link.url} passHref>
