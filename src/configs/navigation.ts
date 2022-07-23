@@ -8,4 +8,8 @@ export interface INavigation {
   url: string;
 }
 
-export const navigation: INavigation[] = [{ name: 'Contact', url: '#contact' }];
+export const menuItemConfig: INavigation[] = [
+  { name: 'Home', url: '/' },
+  { name: 'Blog', url: '/blog' },
+  { name: 'Experience', url: '/experience' },
+];
