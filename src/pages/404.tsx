@@ -14,21 +14,14 @@ const Custom404: NextPage = (): React.ReactElement => (
       <meta property="og:url" content="https://mikekubn.cz/" />
       <meta property="og:type" content="website" />
     </Head>
-    <div className="h-screen flex justify-center items-center">
-      <div className="flex-col-1 justify-center items-center">
-        <h1 className="font-AsapItal text-3xl mb-16">Not Found</h1>
-        <motion.div
-          transition={{ yoyo: Infinity }}
-          animate={{
-            scale: [0.8, 1],
-          }}>
-          <Image src="/img/smiley-sad.png" alt="Error 404 smile sad" width={300} height={300} />
-        </motion.div>
-        <Link href="/" scroll={false} replace passHref>
-          <a className="button-style mt-16">Go Home</a>
-        </Link>
-      </div>
-    </div>
+    <section className="flex flex-col flex-1 items-center justify-center">
+      <h1 className="font-AsapItal text-3xl mb-16">Sorry page was not found 404</h1>
+      <Link href="/" scroll={false} replace passHref>
+        <button className="p-4 rounded-full shadow-lg shadow-black dark:shadow-white flex flex-row justify-center hover:text-md">
+          Do you want to go to the home page?
+        </button>
+      </Link>
+    </section>
   </>
 );
 

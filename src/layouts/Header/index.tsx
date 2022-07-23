@@ -29,7 +29,7 @@ const Header = (): React.ReactElement => {
   }, [theme, setClientTheme]);
 
   return (
-    <div className="dark-mode sticky top-0 z-20">
+    <div className="dark-mode sticky top-0 z-20" id="header-content">
       <header className="flex flex-1 flex-col h-28 mx-4 pt-2 md:mt-0 md:mx-24 md:flex-row">
         <section className="flex flex-col flex-1">
           <div className="flex flex-row my-auto justify-between">
