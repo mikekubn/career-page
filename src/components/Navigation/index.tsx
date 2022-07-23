@@ -6,12 +6,12 @@ import { motion, useCycle } from 'framer-motion';
 const Navigation = (): React.ReactElement => (
   <nav data-cy="navigation" className="flex flex-row justify-end">
     <ul className="flex flex-row">
-      {menuItemConfig.map((nav) => (
-        <Link key={nav.url} href={nav.url} passHref>
-          <li className="mb-2 mx-4 text-lg cursor-pointer hover:font-semibold" key={nav.url}>
-            {nav.name}
-          </li>
-        </Link>
+      {menuItemConfig.map((nav, index) => (
+        <button key={index}>
+          <Link href={nav.url} passHref>
+            <li className="mb-2 mx-4 text-lg cursor-pointer hover:font-semibold">{nav.name}</li>
+          </Link>
+        </button>
       ))}
     </ul>
   </nav>

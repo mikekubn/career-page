@@ -5,8 +5,8 @@ import { getCloudinaryUrl } from '@/lib/utils';
 import Link from 'next/link';
 
 const Header = (): React.ReactElement => (
-  <header className="sticky top-0 z-50 bg-white">
-    <div className="flex flex-1 flex-col h-28 mx-4 mt-2 md:mt-0 md:mx-24 md:flex-row bg-pink">
+  <div className="sticky top-0 z-50 bg-white">
+    <header className="flex flex-1 flex-col h-28 mx-4 mt-2 md:mt-0 md:mx-24 md:flex-row bg-pink">
       <section className="flex flex-col flex-1 bg-red400">
         <div className="flex flex-row my-auto">
           <Image src="career_page/profile/profile_nv9lqo" width="50" height="50" className="rounded-full" />
@@ -16,19 +16,18 @@ const Header = (): React.ReactElement => (
       <section className="flex flex-1 flex-col justify-end">
         <div className="flex flex-row justify-start md:justify-end my-auto bg-yellow">
           {links.map((link) => (
-            <>
-              <Link key={link.src} href={link.url} passHref>
+            <button key={link.src} className="ml-4 flex flex-col content-center">
+              <Link href={link.url} passHref>
                 <Image key={link.src} src={link.img} width="30" height="30" className="cursor-pointer" />
               </Link>
-              <div className="w-8 md:w-4" />
-            </>
+            </button>
           ))}
         </div>
         <Navigation />
       </section>
-    </div>
+    </header>
     <div className="border-b" />
-  </header>
+  </div>
 );
 
 export default Header;
