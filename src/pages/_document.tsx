@@ -1,5 +1,4 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
-import Script from 'next/script';
 
 export default class MyDocument extends Document {
   render() {
@@ -14,10 +13,9 @@ export default class MyDocument extends Document {
           <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
           <link rel="manifest" href="/site.webmanifest" />
         </Head>
-        <body className="bg-white dark:bg-gray900 ease-in-out duration-700 text-gray500">
+        <body>
           <Main />
           <NextScript />
-          <Script src="/theme.js" strategy="beforeInteractive" />
         </body>
       </Html>
     );

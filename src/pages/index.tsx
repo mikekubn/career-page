@@ -5,30 +5,7 @@ import dynamic from 'next/dynamic';
 import { getPosts } from 'src/lib/utils';
 import cloudinary from 'cloudinary.config';
 
-const HomeSection = dynamic(() => import('@/components/Sections/HomeSection'));
-const ContactSection = dynamic(() => import('@/components/Sections/ContactSection'));
-
-export interface IParamsProps {
-  posts: {
-    filename: string;
-    frontmatter: {
-      description: string[];
-      cover: string;
-      from: string;
-      id: number;
-      image: string;
-      position: string;
-      title: string;
-      to: string;
-      where: string;
-    };
-  }[];
-  resources: {
-    technology: string[];
-  };
-}
-
-const Home: NextPage<IParamsProps> = ({ posts, resources }) => {
+const Home: NextPage = () => {
   return (
     <>
       <Head>
@@ -39,42 +16,41 @@ const Home: NextPage<IParamsProps> = ({ posts, resources }) => {
         <meta property="og:url" content="https://mikekubn.cz/" />
         <meta property="og:type" content="website" />
       </Head>
-      <HomeSection posts={posts} />
-      <ContactSection resources={resources} />
+      <div>Ahoj</div>
     </>
   );
 };
 
 export default Home;
 
-export const getStaticProps: GetStaticProps = async () => {
-  const images = (await cloudinary.api.resources_by_tag('work', { max_results: 20 })).resources.map((resource) => resource.public_id);
+// export const getStaticProps: GetStaticProps = async () => {
+//   const images = (await cloudinary.api.resources_by_tag('work', { max_results: 20 })).resources.map((resource) => resource.public_id);
 
-  const technology = (await cloudinary.api.resources_by_tag('technology', { max_results: 20 })).resources.map((resource) => resource.public_id);
+//   const technology = (await cloudinary.api.resources_by_tag('technology', { max_results: 20 })).resources.map((resource) => resource.public_id);
 
-  const _posts = getPosts('src/_posts').sort((a, b) => b.frontmatter.id - a.frontmatter.id);
+//   const _posts = getPosts('src/_posts').sort((a, b) => b.frontmatter.id - a.frontmatter.id);
 
-  const posts = _posts.map((post) => {
-    const image = images
-      .filter((img) => !img.includes('cover'))
-      .filter((job) => job.includes(post.filename))
-      .toLocaleString();
+//   const posts = _posts.map((post) => {
+//     const image = images
+//       .filter((img) => !img.includes('cover'))
+//       .filter((job) => job.includes(post.filename))
+//       .toLocaleString();
 
-    return {
-      filename: post.filename,
-      frontmatter: {
-        ...post.frontmatter,
-        image,
-      },
-    };
-  });
+//     return {
+//       filename: post.filename,
+//       frontmatter: {
+//         ...post.frontmatter,
+//         image,
+//       },
+//     };
+//   });
 
-  return {
-    props: {
-      posts: posts,
-      resources: {
-        technology,
-      },
-    },
-  };
-};
+//   return {
+//     props: {
+//       posts: posts,
+//       resources: {
+//         technology,
+//       },
+//     },
+//   };
+// };
