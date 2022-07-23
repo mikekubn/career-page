@@ -6,12 +6,12 @@ import { getCloudinaryUrl } from '@/lib/utils';
 import { motion } from 'framer-motion';
 
 const Navigation = (): React.ReactElement => (
-  <nav data-cy="navigation" className="flex flex-row justify-end">
+  <nav data-cy="navigation" className="flex flex-row  w-34 justify-end">
     <ul className="flex flex-row">
       {menuItemConfig.map((nav, index) => (
         <button key={index}>
           <Link href={nav.url} passHref>
-            <li className="mb-2 mx-4 text-lg cursor-pointer hover:font-semibold">{nav.name}</li>
+            <li className="mb-2 mx-4 text-lg cursor-pointer hover:underline underline-offset-8">{nav.name}</li>
           </Link>
         </button>
       ))}
@@ -36,8 +36,8 @@ export const MobileNavigaiton = (): React.ReactElement => {
         children={
           <ul className="flex flex-col flex-1 items-center text-xl">
             {menuItemConfig.map((nav, index) => (
-              <button key={index} className="my-4 first:mt-20 hover:text-2xl">
-                <Link href={nav.url} passHref>
+              <button key={index} className="my-4 first:mt-20 hover:text-2xl" onClick={() => setToggle(false)}>
+                <Link href={nav.url} replace passHref>
                   <li>{nav.name}</li>
                 </Link>
               </button>

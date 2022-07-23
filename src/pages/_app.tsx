@@ -9,7 +9,7 @@ import Header from '@/layouts/Header';
 import Footer from '@/layouts/Footer';
 
 const MyApp = ({ Component, pageProps }: AppProps): React.ReactElement => (
-  <ThemeProvider attribute="class">
+  <ThemeProvider attribute="class" enableSystem>
     <NotificationProvider>
       <BackToTop />
       <Header />

@@ -4,9 +4,29 @@ import Navigation, { MobileNavigaiton } from '@/components/Navigation';
 import { getCloudinaryUrl } from '@/lib/utils';
 import Link from 'next/link';
 import { useWindowSize } from '@/hooks/useWindowSize';
+import { useTheme } from 'next-themes';
 
 const Header = (): React.ReactElement => {
   const { isMobile } = useWindowSize();
+  const { theme, setTheme, systemTheme } = useTheme();
+  const [clientTheme, setClientTheme] = React.useState<string>('');
+  const isLight = theme === 'light' ? 'dark' : 'light';
+
+  const handleClick = () => {
+    setTheme(isLight);
+  };
+
+  React.useEffect(() => {
+    if (systemTheme) {
+      setTheme(systemTheme);
+    }
+  }, [systemTheme, setTheme]);
+
+  React.useEffect(() => {
+    if (theme) {
+      setClientTheme(theme);
+    }
+  }, [theme, setClientTheme]);
 
   return (
     <div className="dark-mode sticky top-0 z-20">
@@ -21,9 +41,14 @@ const Header = (): React.ReactElement => {
           </div>
         </section>
         <section className="flex flex-1 flex-col justify-end">
-          <div className="flex flex-row justify-start md:justify-end my-auto">
+          <div className="flex flex-row justify-center md:justify-end my-auto">
+            <button
+              className="md:ml-4 rounded-full w-28 h-8 shadow-sm shadow-black dark:shadow-white flex flex-row justify-center"
+              onClick={handleClick}>
+              <p className="p-1 text-sm font-light">Theme {clientTheme}</p>
+            </button>
             {links.map((link) => (
-              <button key={link.src} className="ml-6 md:ml-4 flex flex-col content-center">
+              <button key={link.src} className="ml-6 md:ml-4 flex flex-col content-center my-auto">
                 <Link href={link.url} passHref>
                   <Image key={link.src} src={link.img} width="30" height="30" className="cursor-pointer" />
                 </Link>
