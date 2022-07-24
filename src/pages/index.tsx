@@ -1,11 +1,32 @@
 import React from 'react';
-import type { GetStaticProps, NextPage } from 'next';
+import type { NextPage } from 'next';
 import Head from 'next/head';
-import dynamic from 'next/dynamic';
-import { getPosts } from 'src/lib/utils';
-import cloudinary from 'cloudinary.config';
+import Image from 'next/image';
+import Card from '@/components/Card';
+import Form, { defaultValues, TFormValues } from '@/components/Form';
+import emailjs from '@emailjs/browser';
+import { useNotificationProvider } from '@/provider/NotificationProvider';
 
 const Home: NextPage = () => {
+  const { dispatch } = useNotificationProvider();
+  const [values, setValues] = React.useState<TFormValues>(defaultValues);
+
+  const handleSubmitForm = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    try {
+      emailjs.send(`${process.env.NEXT_PUBLIC_SERVICE_ID}`, `${process.env.NEXT_PUBLIC_TEMPLATE_ID}`, values, `${process.env.NEXT_PUBLIC_USER_ID}`);
+      dispatch({
+        visible: true,
+        status: 'success',
+        note: 'Email send success.',
+      });
+      setValues(defaultValues);
+    } catch (e) {
+      dispatch({ visible: true, status: 'error', note: 'Email send failed.' });
+    }
+  };
+
   return (
     <>
       <Head>
@@ -16,41 +37,42 @@ const Home: NextPage = () => {
         <meta property="og:url" content="https://mikekubn.cz/" />
         <meta property="og:type" content="website" />
       </Head>
-      <div>Home</div>
+      <section className="flex flex-col flex-1">
+        <div className="flex flex-row justify-center mt-14 h-40">
+          <Image src="career_page/profile/profile_nv9lqo" width="160" height="160" className="rounded-full" />
+          <div className="flex flex-col pl-10 my-auto cursor-default leading-relaxed tracking-wide">
+            <h1 className="text-2xl font-medium">Michael Kubín</h1>
+            <h2 className="text-xl font-medium">Webscope</h2>
+            <p className="text-lg font-light italic">React, Frontend, Next.js 🚀</p>
+          </div>
+        </div>
+      </section>
+      <section className="flex flex-row justify-between m-20 xl:w-7/12 xl:mx-auto xl:mb-28">
+        <Card title="About Me">
+          <p className="leading-loose text-lg p-6 underline underline-offset-8 font-light">
+            Hi everyone, I'm Michael and I'm a frontend developer mostly working with React and I really enjoy working with the Cypress e2e testing
+            framework. I love hiking, so when I'm not coding I enjoy the peace and quiet there.
+          </p>
+        </Card>
+        <Card title="My Stack">
+          <div className="p-6 flex flex-row flex-1  flex-wrap">
+            {myStack.map((item) => (
+              <p
+                key={item}
+                className="leading-loose text-xl font-light border border-black text-center rounded-xl shadow-md shadow-black p-2 m-1 mb-4">
+                {item}
+              </p>
+            ))}
+          </div>
+        </Card>
+      </section>
+      <section className="xl:mb-16 flex flex-1 flew-row justify-center">
+        <Form handleSubmitForm={handleSubmitForm} setValues={setValues} values={values} />
+      </section>
     </>
   );
 };
 
 export default Home;
 
-// export const getStaticProps: GetStaticProps = async () => {
-//   const images = (await cloudinary.api.resources_by_tag('work', { max_results: 20 })).resources.map((resource) => resource.public_id);
-
-//   const technology = (await cloudinary.api.resources_by_tag('technology', { max_results: 20 })).resources.map((resource) => resource.public_id);
-
-//   const _posts = getPosts('src/_posts').sort((a, b) => b.frontmatter.id - a.frontmatter.id);
-
-//   const posts = _posts.map((post) => {
-//     const image = images
-//       .filter((img) => !img.includes('cover'))
-//       .filter((job) => job.includes(post.filename))
-//       .toLocaleString();
-
-//     return {
-//       filename: post.filename,
-//       frontmatter: {
-//         ...post.frontmatter,
-//         image,
-//       },
-//     };
-//   });
-
-//   return {
-//     props: {
-//       posts: posts,
-//       resources: {
-//         technology,
-//       },
-//     },
-//   };
-// };
+const myStack = ['Frontend Development', 'End to End testing', 'Cypress', 'React', 'TypeScript', 'Next.js'];

@@ -14,7 +14,7 @@ const Main = ({ children }: { children: React.ReactNode }): React.ReactElement =
   }, [height]);
 
   return (
-    <main className={'container flex flex-1 flex-col mx-auto'} style={{ height: `${_height}px` }}>
+    <main className={'container block mx-auto mb-auto'} style={{ minHeight: `${_height}px` }}>
       {children}
     </main>
   );
