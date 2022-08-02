@@ -15,7 +15,7 @@ const Custom404: NextPage = (): React.ReactElement => (
       <meta property="og:type" content="website" />
     </Head>
     <section className="flex flex-col flex-1 items-center justify-center">
-      <h1 className="font-AsapItal text-3xl mb-16">Sorry page was not found 404</h1>
+      <h1 className="text-3xl mb-16">Sorry page was not found 404</h1>
       <Link href="/" scroll={false} replace passHref>
         <button className="p-4 rounded-full shadow-lg shadow-black dark:shadow-white flex flex-row justify-center hover:text-md">
           Do you want to go to the home page?

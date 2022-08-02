@@ -36,8 +36,6 @@ module.exports = {
     fontFamily: {
       sans: ['Graphik', 'sans-serif'],
       serif: ['Merriweather', 'serif'],
-      Asap: ['Asap', 'sans-serif'],
-      AsapItal: ['Asap', 'sans-serif'],
     },
     extend: {
       textUnderlineOffset: {
