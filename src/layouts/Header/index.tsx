@@ -49,9 +49,9 @@ const Header = (): React.ReactElement => {
             </button>
             {links.map((link) => (
               <button key={link.src} className="ml-6 md:ml-4 flex flex-col content-center my-auto">
-                <Link href={link.url} passHref>
+                <a href={link.url} target="_blank">
                   <Image key={link.src} src={link.img} width="30" height="30" className="cursor-pointer" />
-                </Link>
+                </a>
               </button>
             ))}
           </div>

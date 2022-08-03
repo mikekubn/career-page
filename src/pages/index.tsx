@@ -6,9 +6,11 @@ import Card from '@/components/Card';
 import Form, { defaultValues, TFormValues } from '@/components/Form';
 import emailjs from '@emailjs/browser';
 import { useNotificationProvider } from '@/provider/NotificationProvider';
+import { useWindowSize } from '@/hooks/useWindowSize';
 
 const Home: NextPage = () => {
   const { dispatch } = useNotificationProvider();
+  const { isMobile } = useWindowSize();
   const [values, setValues] = React.useState<TFormValues>(defaultValues);
 
   const handleSubmitForm = (event: React.FormEvent<HTMLFormElement>) => {
@@ -38,16 +40,16 @@ const Home: NextPage = () => {
         <meta property="og:type" content="website" />
       </Head>
       <section className="flex flex-col flex-1">
-        <div className="flex flex-row justify-center mt-14 h-40">
-          <Image src="career_page/profile/profile_nv9lqo" width="160" height="160" className="rounded-full" />
-          <div className="flex flex-col pl-10 my-auto cursor-default leading-relaxed tracking-wide">
+        <div className="flex flex-row justify-center mt-6 md:mt-14 md:h-40">
+          <Image src="career_page/profile/profile_nv9lqo" width={isMobile ? '90' : '160'} height={isMobile ? '90' : '160'} className="rounded-full" />
+          <div className="flex flex-col pl-4 md:pl-10 my-auto cursor-default leading-relaxed tracking-wide">
             <h1 className="text-2xl font-medium">Michael Kubín</h1>
             <h2 className="text-xl font-medium">Webscope</h2>
             <p className="text-lg font-light italic">React, Frontend, Next.js 🚀</p>
           </div>
         </div>
       </section>
-      <section className="flex flex-row justify-between m-20 xl:w-7/12 xl:mx-auto xl:mb-28">
+      <section className="flex flex-col items-center md:flex-row md:justify-between lg:w-11/12 lg:mx-auto xl:w-9/12 xl:mx-auto">
         <Card title="About Me">
           <p className="leading-loose text-lg p-6 underline underline-offset-8 font-light">
             Hi everyone, I'm Michael and I'm a frontend developer mostly working with React and I really enjoy working with the Cypress e2e testing
@@ -66,7 +68,7 @@ const Home: NextPage = () => {
           </div>
         </Card>
       </section>
-      <section className="xl:mb-16 flex flex-1 flew-row justify-center">
+      <section className="my-14 md:my-20 xl:my-24 flex flex-1 flew-row justify-center">
         <Form handleSubmitForm={handleSubmitForm} setValues={setValues} values={values} />
       </section>
     </>

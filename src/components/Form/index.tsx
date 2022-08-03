@@ -35,7 +35,7 @@ const Form = ({ handleSubmitForm, setValues, values }: IForm): React.ReactElemen
   const isDisabled = !values.from_email.length || !values.from_name.length || !values.messages.length || !values.subject.length;
 
   return (
-    <form ref={form} onSubmit={handleSubmitForm} className="flex flex-col mx-auto lg:w-72 xl:w-96 lg:mx-14">
+    <form ref={form} onSubmit={handleSubmitForm} className="flex flex-col mx-auto w-5/6 md:w-1/2 lg:w-96 xl:w-96 lg:mx-14">
       <section className="flex pb-5 mx-auto">
         <h1 data-testid="form-head" className="text-2xl">
           Contact me 📭
