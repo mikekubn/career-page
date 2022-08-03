@@ -5,7 +5,6 @@ describe('useIntersection', () => {
   it('render useIntersecrion', () => {
     const { result } = renderHook(() => useIntersection());
     const {
-      visible,
       add: [ref],
     } = result.current;
 

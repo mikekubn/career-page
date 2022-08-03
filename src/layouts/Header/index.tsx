@@ -2,7 +2,6 @@ import React from 'react';
 import Image from 'next/image';
 import Navigation, { MobileNavigaiton } from '@/components/Navigation';
 import { getCloudinaryUrl } from '@/lib/utils';
-import Link from 'next/link';
 import { useWindowSize } from '@/hooks/useWindowSize';
 import { useTheme } from 'next-themes';
 
@@ -26,7 +25,7 @@ const Header = (): React.ReactElement => {
     if (theme) {
       setClientTheme(isLight);
     }
-  }, [theme, setClientTheme]);
+  }, [theme, setClientTheme, isLight]);
 
   return (
     <div className="dark-mode sticky top-0 z-20" id="header-content">
@@ -49,7 +48,7 @@ const Header = (): React.ReactElement => {
             </button>
             {links.map((link) => (
               <button key={link.src} className="ml-6 md:ml-4 flex flex-col content-center my-auto">
-                <a href={link.url} target="_blank">
+                <a href={link.url} target="_blank" rel="noreferrer">
                   <Image key={link.src} src={link.img} width="30" height="30" className="cursor-pointer" />
                 </a>
               </button>

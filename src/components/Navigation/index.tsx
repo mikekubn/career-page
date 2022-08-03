@@ -9,7 +9,7 @@ const Navigation = (): React.ReactElement => {
   const { items, callback } = useActiveItem();
 
   return (
-    <nav data-cy="navigation" className="flex flex-row  w-34 justify-end">
+    <nav data-cy="navigation" className="flex flex-row justify-end">
       <ul className="flex flex-row">
         {items.map((item, index) => (
           <button key={index} className="ml-8" onClick={() => callback({ url: item.url })}>
@@ -38,26 +38,23 @@ export const MobileNavigaiton = (): React.ReactElement => {
           <Image src={getCloudinaryUrl('assets/menu_bbe3tl.png')} width="38" height="38" />
         )}
       </button>
-      <MobileNavigationList
-        value={toggle}
-        children={
-          <ul className="flex flex-col flex-1 items-center text-xl">
-            {items.map((item, index) => (
-              <button
-                key={index}
-                className={`my-4 first:mt-20 hover:text-2xl  ${item.active ? 'border-b-2 border-sky500/50' : ''}`}
-                onClick={() => {
-                  setToggle(false);
-                  callback({ url: item.url });
-                }}>
-                <Link href={item.url} replace passHref>
-                  <li>{item.name}</li>
-                </Link>
-              </button>
-            ))}
-          </ul>
-        }
-      />
+      <MobileNavigationList value={toggle}>
+        <ul className="flex flex-col flex-1 items-center text-xl">
+          {items.map((item, index) => (
+            <button
+              key={index}
+              className={`my-4 first:mt-20 hover:text-2xl  ${item.active ? 'border-b-2 border-sky500/50' : ''}`}
+              onClick={() => {
+                setToggle(false);
+                callback({ url: item.url });
+              }}>
+              <Link href={item.url} replace passHref>
+                <li>{item.name}</li>
+              </Link>
+            </button>
+          ))}
+        </ul>
+      </MobileNavigationList>
     </>
   );
 };

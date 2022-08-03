@@ -52,8 +52,8 @@ const Home: NextPage = () => {
       <section className="flex flex-col items-center md:flex-row md:justify-between lg:w-11/12 lg:mx-auto xl:w-9/12 xl:mx-auto">
         <Card title="About Me">
           <p className="leading-loose text-lg p-6 underline underline-offset-8 font-light">
-            Hi everyone, I'm Michael and I'm a frontend developer mostly working with React and I really enjoy working with the Cypress e2e testing
-            framework. I love hiking, so when I'm not coding I enjoy the peace and quiet there.
+            Hi everyone, I&apos;m Michael and I&apos;m a frontend developer mostly working with React and I really enjoy working with the Cypress e2e
+            testing framework. I love hiking, so when I&apos;m not coding I enjoy the peace and quiet there.
           </p>
         </Card>
         <Card title="My Stack">
@@ -68,7 +68,7 @@ const Home: NextPage = () => {
           </div>
         </Card>
       </section>
-      <section className="my-14 md:my-20 xl:my-24 flex flex-1 flew-row justify-center">
+      <section className="my-14 md:my-20 xl:my-24 flex flex-1 flex-row justify-center">
         <Form handleSubmitForm={handleSubmitForm} setValues={setValues} values={values} />
       </section>
     </>

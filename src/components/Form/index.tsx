@@ -1,8 +1,6 @@
 import React from 'react';
-import Image from 'next/image';
 import Input from '../Input';
 import TextArea from '../TextArea';
-import { getCloudinaryUrl } from '@/lib/utils';
 
 export type TFormValues = {
   subject: string;

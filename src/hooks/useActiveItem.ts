@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import React from 'react';
 import { INavigation, menuItemConfig } from 'src/configs/navigation';
 
-interface MenuItems extends INavigation {
+interface IMenuItems extends INavigation {
   active?: boolean;
 }
 
@@ -12,7 +12,7 @@ const useActiveItem = () => {
 
   const callback = ({ url }: { url: string }) => setActiveItem(url);
 
-  const menuItems: MenuItems[] = menuItemConfig.map((item) => {
+  const menuItems: IMenuItems[] = menuItemConfig.map((item) => {
     if (item.url === route) {
       return {
         ...item,
