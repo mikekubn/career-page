@@ -3,7 +3,7 @@ import { useWindowSize } from './useWindowSize';
 
 const useRealHeight = () => {
   const { height } = useWindowSize();
-  const [_height, setRealHeight] = React.useState<number>(height);
+  const [_height, setRealHeight] = React.useState<number>(1000);
 
   React.useEffect(() => {
     const header = document.getElementById('header-content')?.clientHeight || height;
@@ -11,7 +11,7 @@ const useRealHeight = () => {
     const totalSize = header + footer;
 
     setRealHeight(() => height - totalSize);
-  }, [height]);
+  }, []);
 
   return {
     height: _height,

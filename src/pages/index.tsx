@@ -1,12 +1,15 @@
 import React from 'react';
 import type { NextPage } from 'next';
-import Head from 'next/head';
 import Image from 'next/image';
 import Card from '@/components/Card';
-import Form, { defaultValues, TFormValues } from '@/components/Form';
+import { defaultValues, TFormValues } from '@/components/Form';
 import emailjs from '@emailjs/browser';
 import { useNotificationProvider } from '@/provider/NotificationProvider';
 import { useWindowSize } from '@/hooks/useWindowSize';
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
+
+const DynamicForm = dynamic(() => import('@/components/Form'));
 
 const Home: NextPage = () => {
   const { dispatch } = useNotificationProvider();
@@ -33,15 +36,21 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>Michael Kubín</title>
-        <meta name="description" content="Michael Kubin frontend developer, career web" />
+        <meta name="description" content="Michael Kubin frontend developer, introducing" />
         <meta property="og:title" content="Michael Kubin - Frontend developer" />
-        <meta property="og:description" content="Michael Kubin work experience" />
+        <meta property="og:description" content="Michael Kubin introducing" />
         <meta property="og:url" content="https://mikekubn.cz/" />
         <meta property="og:type" content="website" />
       </Head>
       <section className="flex flex-col flex-1">
         <div className="flex flex-row justify-center mt-6 md:mt-14 md:h-40">
-          <Image src="career_page/profile/profile_nv9lqo" width={isMobile ? '90' : '160'} height={isMobile ? '90' : '160'} className="rounded-full" />
+          <Image
+            alt="profile-image"
+            src="career_page/profile/profile_nv9lqo"
+            width={isMobile ? '90' : '160'}
+            height={isMobile ? '90' : '160'}
+            className="rounded-full"
+          />
           <div className="flex flex-col pl-4 md:pl-10 my-auto cursor-default leading-relaxed tracking-wide">
             <h1 className="text-2xl font-medium">Michael Kubín</h1>
             <h2 className="text-xl font-medium">Webscope</h2>
@@ -69,7 +78,7 @@ const Home: NextPage = () => {
         </Card>
       </section>
       <section className="my-14 md:my-20 xl:my-24 flex flex-1 flex-row justify-center">
-        <Form handleSubmitForm={handleSubmitForm} setValues={setValues} values={values} />
+        <DynamicForm handleSubmitForm={handleSubmitForm} setValues={setValues} values={values} />
       </section>
     </>
   );

@@ -8,17 +8,19 @@ import Main from '@/layouts/Main';
 import Header from '@/layouts/Header';
 import Footer from '@/layouts/Footer';
 
-const MyApp = ({ Component, pageProps }: AppProps): React.ReactElement => (
-  <ThemeProvider attribute="class" enableSystem>
-    <NotificationProvider>
-      <BackToTop />
-      <Header />
-      <Main>
-        <Component {...pageProps} />
-      </Main>
-      <Footer />
-    </NotificationProvider>
-  </ThemeProvider>
-);
+const MyApp = ({ Component, pageProps }: AppProps): React.ReactElement => {
+  return (
+    <ThemeProvider attribute="class" enableSystem>
+      <NotificationProvider>
+        <BackToTop />
+        <Header />
+        <Main>
+          <Component {...pageProps} />
+        </Main>
+        <Footer />
+      </NotificationProvider>
+    </ThemeProvider>
+  );
+};
 
 export default MyApp;

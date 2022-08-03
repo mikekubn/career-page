@@ -33,7 +33,7 @@ const Header = (): React.ReactElement => {
         <section className="flex flex-col flex-1">
           <div className="flex flex-row my-auto justify-between">
             <div className="flex">
-              <Image src="career_page/profile/profile_nv9lqo" width="50" height="50" className="rounded-full" />
+              <Image src="career_page/profile/profile_nv9lqo" width="50" height="50" className="rounded-full" alt="header-profile-image" />
               <h1 className="pl-4 text-lg font-semibold my-auto cursor-default">Michael Kubín</h1>
             </div>
             {isMobile ? <MobileNavigaiton /> : null}
@@ -49,7 +49,7 @@ const Header = (): React.ReactElement => {
             {links.map((link) => (
               <button key={link.src} className="ml-6 md:ml-4 flex flex-col content-center my-auto">
                 <a href={link.url} target="_blank" rel="noreferrer">
-                  <Image key={link.src} src={link.img} width="30" height="30" className="cursor-pointer" />
+                  <Image key={link.src} src={link.img} width="30" height="30" className="cursor-pointer" alt={link.name} />
                 </a>
               </button>
             ))}
