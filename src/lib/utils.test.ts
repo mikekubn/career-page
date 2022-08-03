@@ -1,6 +1,6 @@
 import { getPaths, getPost, getPosts, sanitation } from './utils';
 
-describe.skip('Utils tests', () => {
+describe('Utils tests', () => {
   it('get paths', () => {
     const paths = getPaths('src/_mock_posts');
 
