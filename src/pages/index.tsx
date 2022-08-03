@@ -5,7 +5,6 @@ import Card from '@/components/Card';
 import { defaultValues, TFormValues } from '@/components/Form';
 import emailjs from '@emailjs/browser';
 import { useNotificationProvider } from '@/provider/NotificationProvider';
-import { useWindowSize } from '@/hooks/useWindowSize';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 
@@ -13,7 +12,6 @@ const DynamicForm = dynamic(() => import('@/components/Form'));
 
 const Home: NextPage = () => {
   const { dispatch } = useNotificationProvider();
-  const { isMobile } = useWindowSize();
   const [values, setValues] = React.useState<TFormValues>(defaultValues);
 
   const handleSubmitForm = (event: React.FormEvent<HTMLFormElement>) => {
@@ -44,13 +42,9 @@ const Home: NextPage = () => {
       </Head>
       <section className="flex flex-col flex-1">
         <div className="flex flex-row justify-center mt-6 md:mt-14 md:h-40">
-          <Image
-            alt="profile-image"
-            src="career_page/profile/profile_nv9lqo"
-            width={isMobile ? '90' : '160'}
-            height={isMobile ? '90' : '160'}
-            className="rounded-full"
-          />
+          <span className="w-20 h-20 md:w-40 md:h-40">
+            <Image alt="profile-image" src="career_page/profile/profile_nv9lqo" width="160" height="160" className="rounded-full" />
+          </span>
           <div className="flex flex-col pl-4 md:pl-10 my-auto cursor-default leading-relaxed tracking-wide">
             <h1 className="text-2xl font-medium">Michael Kubín</h1>
             <h2 className="text-xl font-medium">Webscope</h2>
