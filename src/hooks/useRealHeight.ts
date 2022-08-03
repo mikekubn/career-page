@@ -2,19 +2,29 @@ import React from 'react';
 import { useWindowSize } from './useWindowSize';
 
 const useRealHeight = () => {
-  const { height } = useWindowSize();
-  const [_height, setRealHeight] = React.useState<number>(1000);
+  const { height: clientHight } = useWindowSize();
+  const [realHeight, setRealHeight] = React.useState<number>(1000);
 
   React.useEffect(() => {
-    const header = document.getElementById('header-content')?.clientHeight || height;
-    const footer = document.getElementById('footer-content')?.clientHeight || height;
+    const header = document.getElementById('header-content')?.clientHeight || clientHight;
+    const footer = document.getElementById('footer-content')?.clientHeight || clientHight;
     const totalSize = header + footer;
 
-    setRealHeight(() => height - totalSize);
+    setRealHeight(() => clientHight - totalSize);
   }, []);
 
+  React.useEffect(() => {
+    const header = document.getElementById('header-content')?.clientHeight || clientHight;
+    const footer = document.getElementById('footer-content')?.clientHeight || clientHight;
+    const totalSize = header + footer;
+
+    if (clientHight) {
+      setRealHeight(() => clientHight - totalSize);
+    }
+  }, [clientHight]);
+
   return {
-    height: _height,
+    height: realHeight,
   };
 };
 

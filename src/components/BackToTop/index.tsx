@@ -1,8 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { useScroll } from '@/hooks/index';
 import { getCloudinaryUrl } from '@/lib/utils';
+import { useScroll } from '@/hooks/useScroll';
 
 const BackToTop = (): React.ReactElement | null => {
   const { num } = useScroll();
