@@ -29,14 +29,16 @@ const Experience: NextPage<IExperience> = ({ posts }) => {
 
   return (
     <>
-      <Head>
-        <title>Michael Kubín</title>
-        <meta name="description" content="Michael Kubin frontend developer, experience" />
-        <meta property="og:title" content="Michael Kubin - Frontend developer" />
-        <meta property="og:description" content="experience, work, job, livesport, onsemiconductor, siemens, webscope" />
-        <meta property="og:url" content="https://mikekubn.cz/" />
-        <meta property="og:type" content="website" />
-      </Head>
+      {posts.map((post) => (
+        <Head key={post.id}>
+          <title>Michael Kubín - Experience</title>
+          <meta name="description" content={`Michael Kubin frontend developer, experience, ${post.where}`} />
+          <meta property="og:title" content={`Michael Kubín ${post.position} ${post.title}`} />
+          <meta property="og:description" content={`experience, ${post.description}`} />
+          <meta property="og:url" content="https://mikekubn.cz/experience" />
+          <meta property="og:type" content="website" />
+        </Head>
+      ))}
       <motion.div className="h-3 top-32 fixed z-30 left-0 right-0 mx-16 bg-blue rounded-full" style={{ scaleX }} />
       <section className="flex flex-1 flex-col my-20">
         {posts.map((post) => (

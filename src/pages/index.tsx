@@ -33,7 +33,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Michael Kubín</title>
+        <title>Michael Kubín - Home</title>
         <meta name="description" content="Michael Kubin frontend developer, introducing" />
         <meta property="og:title" content="Michael Kubin - Frontend developer" />
         <meta property="og:description" content="Michael Kubin introducing" />
