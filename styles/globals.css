@@ -4,6 +4,6 @@
 
 @layer base {
   .dark-mode {
-    @apply bg-white text-black dark:bg-gray600 dark:text-white;
+    @apply bg-white ring-white text-black dark:bg-gray600 dark:text-white dark:ring-gray600;
   }
 }
