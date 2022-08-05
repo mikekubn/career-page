@@ -4,6 +4,7 @@ import Head from 'next/head';
 import cloudinary from 'cloudinary.config';
 import { getPosts } from '@/lib/utils';
 import Image from 'next/image';
+import { motion, useScroll, useSpring } from 'framer-motion';
 
 interface IExperience {
   posts: {
@@ -19,6 +20,13 @@ interface IExperience {
 }
 
 const Experience: NextPage<IExperience> = ({ posts }) => {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 25,
+    restDelta: 0.001,
+  });
+
   return (
     <>
       <Head>
@@ -29,9 +37,10 @@ const Experience: NextPage<IExperience> = ({ posts }) => {
         <meta property="og:url" content="https://mikekubn.cz/" />
         <meta property="og:type" content="website" />
       </Head>
+      <motion.div className="h-3 top-32 fixed z-30 left-0 right-0 mx-16 bg-blue rounded-full" style={{ scaleX }} />
       <section className="flex flex-1 flex-col my-20">
         {posts.map((post) => (
-          <ol key={post.id} className="relative border-l bottom-2 border-black mx-auto w-2/5">
+          <ol key={post.id} className="relative border-l mx-auto w-2/5">
             <li className="mb-20 ml-24 w-3/4 rounded-xl bg-sky500/50 shadow-lg shadow-black">
               <span className="flex absolute -left-8 justify-center items-center w-16 h-16 rounded-full ring-8 dark-mode">
                 <Image alt={post.image} src={post.image} height="62" width="62" className="rounded-full" />
@@ -45,8 +54,8 @@ const Experience: NextPage<IExperience> = ({ posts }) => {
                 <p className="text-lg underline underline-offset-4 pb-4">{post.position}</p>
                 <ul>
                   {post.description.map((text, index) => (
-                    <li key={index} className="list-disc font-light leading-relaxed">
-                      {text}
+                    <li key={index} className="list-disc font-light leading-loose">
+                      <code>{text}</code>
                     </li>
                   ))}
                 </ul>
