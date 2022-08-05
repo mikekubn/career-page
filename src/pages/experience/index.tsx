@@ -4,7 +4,6 @@ import Head from 'next/head';
 import cloudinary from 'cloudinary.config';
 import { getPosts } from '@/lib/utils';
 import Image from 'next/image';
-import { motion, useScroll, useSpring } from 'framer-motion';
 import RunningScrollBar from '@/components/RunningScrollBar';
 
 interface IExperience {
@@ -33,14 +32,14 @@ const Experience: NextPage<IExperience> = ({ posts }) => (
       </Head>
     ))}
     <RunningScrollBar />
-    <section className="flex flex-1 flex-col my-20">
+    <section className="flex flex-1 flex-col my-10 md:my-20">
       {posts.map((post) => (
-        <ol key={post.id} className="relative border-l mx-auto w-2/5">
-          <li className="mb-20 ml-24 w-3/4 rounded-xl bg-sky500/50 shadow-lg shadow-black">
-            <span className="flex absolute -left-8 justify-center items-center w-16 h-16 rounded-full ring-8 dark-mode">
+        <ol key={post.id} className="relative border-l mx-auto w-10/12 md:3/5 lg:w-2/5">
+          <li className="mb-20 ml-12 sm:ml-16 md:ml-24 md:w-3/4 lg:w-[430px] rounded-xl bg-sky500/50 shadow-lg shadow-black">
+            <span className="flex absolute -left-5 md:-left-8 justify-center items-center w-11 h-11 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full ring-8 dark-mode">
               <Image alt={post.image} src={post.image} height="62" width="62" className="rounded-full" />
             </span>
-            <section className="pt-2 p-6 rounded-xl">
+            <section className="pt-2 p-6 lg:pt-4 lg:p-8 rounded-xl">
               <time className="text-sm font-normal">
                 From: {post.from} {post.to && `To: ${post.to}`}
               </time>
