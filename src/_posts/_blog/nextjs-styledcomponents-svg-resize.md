@@ -57,4 +57,4 @@ After a few hours of research I discovered that the default option for `removeVi
 
 ## Note
 
-If you are using `.babelrc` and have `inline-react-svg` set, this solution will not work for you.
+If you are using `.babelrc` and have set `inline-react-svg`, this solution will not work for you.

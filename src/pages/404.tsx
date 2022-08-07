@@ -9,9 +9,9 @@ const Error404: NextPage = (): React.ReactElement => {
   return (
     <>
       <section className="flex flex-col items-center justify-center" style={{ minHeight: `${height}px` }}>
-        <h1 className="text-3xl mb-16">Sorry page was not found 404</h1>
+        <h1 className="text-3xl mb-16 text-center px-4">Sorry page was not found 404</h1>
         <Link href="/" scroll={false} replace passHref>
-          <button className="p-4 rounded-full shadow-lg shadow-black dark:shadow-white flex flex-row justify-center hover:text-lg">
+          <button className="p-4 rounded-full shadow-lg shadow-black dark:shadow-white flex flex-row justify-center bg-sky500/50 hover:border hover:border-black">
             Do you want to go to the home page?
           </button>
         </Link>

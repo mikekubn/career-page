@@ -60,7 +60,7 @@ const Home: NextPage = () => {
           </p>
         </Card>
         <Card title="My Stack">
-          <div className="p-6 flex flex-row flex-1  flex-wrap">
+          <div className="p-2 md:p-6 flex flex-row flex-1 flex-wrap">
             {myStack.map((item) => (
               <p
                 key={item}
@@ -71,7 +71,7 @@ const Home: NextPage = () => {
           </div>
         </Card>
       </section>
-      <section className="my-14 md:my-20 xl:my-24 flex flex-1 flex-row justify-center">
+      <section className="my-16 md:my-20 xl:my-24 flex flex-1 flex-row justify-center">
         <DynamicForm handleSubmitForm={handleSubmitForm} setValues={setValues} values={values} />
       </section>
     </>
