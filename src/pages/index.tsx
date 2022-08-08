@@ -43,7 +43,7 @@ const Home: NextPage = () => {
       <section className="flex flex-col flex-1">
         <div className="flex flex-row justify-center mt-6 md:mt-14 md:h-40">
           <span className="w-20 h-20 md:w-40 md:h-40">
-            <Image alt="profile-image" src="career_page/profile/profile_nv9lqo" width="160" height="160" className="rounded-full" />
+            <Image alt="profile-image" src="career_page/profile/home_photo_circle_k9t68o" width="160" height="160" className="rounded-full" />
           </span>
           <div className="flex flex-col pl-4 md:pl-10 my-auto cursor-default leading-relaxed tracking-wide">
             <h1 className="text-2xl font-medium">Michael Kubín</h1>
