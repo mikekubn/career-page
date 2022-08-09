@@ -19,11 +19,12 @@ const getPosts = (dir: string) => {
     const filePath = path.join(directory, filename);
     const fileContent = fs.readFileSync(filePath, 'utf8');
 
-    const { data: frontmatter } = matter(fileContent);
+    const { data: frontmatter, content } = matter(fileContent);
 
     return {
       filename: slug,
       frontmatter,
+      content,
     };
   });
 

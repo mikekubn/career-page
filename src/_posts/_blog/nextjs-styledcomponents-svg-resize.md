@@ -7,7 +7,7 @@ tags:
   - svg
 title: Next.js import and resize SVG in styled components
 excerpt: >-
-  If you want to use **SVG** in your Next.js project with **styled components** you can find problem with import and resize image. I was personally surprised by this problem.
+  If you want to use SVG in your NextJs project with styled components you can find problem with import and resize image. I was personally surprised by this problem.
 ---
 
 # Next.js import and resize SVG in styled components

@@ -8,7 +8,7 @@ tags:
   - link
 title: How use npm link in pnpm overwrites
 excerpt: >-
-  If you work on bigger project with more packages you wil want use `pnpm`, probably.
+  If you work on bigger project with more packages you wil want use pnpm, probably.
 ---
 
 # How use npm link in pnpm overwrites

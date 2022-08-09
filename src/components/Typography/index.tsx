@@ -20,8 +20,12 @@ const Paragraph = ({ children, className }: React.PropsWithChildren<Partial<Pick
   <p className={`text-sm font-light ${className}`}>{children}</p>
 );
 
+const ArticleParagraph = ({ children, className }: React.PropsWithChildren<Partial<Pick<HTMLParagraphElement, 'className'>>>) => (
+  <p className={`text-md font-light leading-relaxed ${className}`}>{children}</p>
+);
+
 const LgParagraph = ({ children, className }: React.PropsWithChildren<Partial<Pick<HTMLParagraphElement, 'className'>>>) => (
   <p className={`text-lg font-light leading-loose ${className}`}>{children}</p>
 );
 
-export { H1, H2, Paragraph, LgParagraph, Time };
+export { H1, H2, Paragraph, LgParagraph, Time, ArticleParagraph };
