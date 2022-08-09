@@ -9,7 +9,9 @@ const RunningScrollBar = (): React.ReactElement => {
     restDelta: 0.001,
   });
 
-  return <motion.div className="h-3 z-10 top-32 fixed left-0 right-0 mx-2 md:mx-8 lg:mx-10 xl:mx-16 bg-blue rounded-full" style={{ scaleX }} />;
+  return (
+    <motion.div className="h-2 z-50 top-32 fixed left-0 right-0 origin-left mx-2 md:mx-8 lg:mx-10 xl:mx-16 bg-blue rounded-full" style={{ scaleX }} />
+  );
 };
 
 export default RunningScrollBar;

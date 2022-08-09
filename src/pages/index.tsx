@@ -7,6 +7,7 @@ import emailjs from '@emailjs/browser';
 import { useNotificationProvider } from '@/provider/NotificationProvider';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
+import { LgParagraph } from '@/components/Typography';
 
 const DynamicForm = dynamic(() => import('@/components/Form'));
 
@@ -33,7 +34,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Michael Kubín - Home</title>
+        <title>Michael Kubín | Home</title>
         <meta name="description" content="Michael Kubin frontend developer, introducing" />
         <meta property="og:title" content="Michael Kubin - Frontend developer" />
         <meta property="og:description" content="Michael Kubin introducing" />
@@ -54,19 +55,17 @@ const Home: NextPage = () => {
       </section>
       <section className="flex flex-col items-center md:flex-row md:justify-between lg:w-11/12 lg:mx-auto xl:w-9/12 xl:mx-auto">
         <Card title="About Me">
-          <p className="leading-loose text-lg p-6 underline underline-offset-8 font-light">
+          <LgParagraph className="p-6 underline underline-offset-8">
             Hi everyone, I&apos;m Michael and I&apos;m a frontend developer mostly working with React and I really enjoy working with the Cypress e2e
             testing framework. I love hiking, so when I&apos;m not coding I enjoy the peace and quiet there.
-          </p>
+          </LgParagraph>
         </Card>
         <Card title="My Stack">
           <div className="p-2 md:p-6 flex flex-row flex-1 flex-wrap">
             {myStack.map((item) => (
-              <p
-                key={item}
-                className="leading-loose text-xl font-light border border-black text-center rounded-xl shadow-md shadow-black p-2 m-1 mb-4">
+              <LgParagraph key={item} className="border border-black text-center rounded-xl shadow-md shadow-black p-2 m-1 mb-4">
                 {item}
-              </p>
+              </LgParagraph>
             ))}
           </div>
         </Card>

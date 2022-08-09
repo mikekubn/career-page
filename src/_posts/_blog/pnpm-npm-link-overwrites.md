@@ -1,13 +1,19 @@
 ---
 author: Michael Kubín
 date: 24.7.2022
-tags: [npm, pnpm, overwrites, link]
+tags:
+  - npm
+  - pnpm
+  - overwrites
+  - link
 title: How use npm link in pnpm overwrites
+excerpt: >-
+  If you work on bigger project with more packages you wil want use `pnpm`, probably.
 ---
 
 # How use npm link in pnpm overwrites
 
-_When you work on bigger project with more packages you wil want use `pnpm`, probably._
+_If you work on bigger project with more packages you wil want use `pnpm`, probably._
 
 `"pnpm": { "overrides": { "my-package-foo": "3.4.0", .... } },`
 

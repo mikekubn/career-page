@@ -6,7 +6,7 @@ const Blog: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Michael Kubín - Blog</title>
+        <title>Michael Kubín | Blog</title>
         <meta name="description" content="Michael Kubin frontend developer, career web" />
         <meta property="og:title" content="Michael Kubin - Frontend developer" />
         <meta property="og:description" content="Michael Kubin work experience" />

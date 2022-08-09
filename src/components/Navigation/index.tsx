@@ -14,8 +14,7 @@ const Navigation = (): React.ReactElement => {
         {items.map((item, index) => (
           <li key={index} className="ml-8" onClick={() => callback({ url: item.url })}>
             <Link href={item.url} passHref replace>
-              <button
-                className={`mb-2 text-lg cursor-pointer hover:underline underline-offset-8 ${item.active ? 'border-b-2 border-sky500/50' : ''}`}>
+              <button className={`mb-2 text-lg cursor-pointer hover:underline underline-offset-8 ${item.active && 'border-b-2 border-sky500/50'}`}>
                 {item.name}
               </button>
             </Link>
@@ -44,7 +43,7 @@ export const MobileNavigaiton = (): React.ReactElement => {
           {items.map((item, index) => (
             <button
               key={index}
-              className={`my-4 first:mt-20 hover:text-2xl  ${item.active ? 'border-b-2 border-sky500/50' : ''}`}
+              className={`my-4 first:mt-20 hover:text-2xl ${item.active ? 'border-b-2 border-sky500/50' : ''}`}
               onClick={() => {
                 setToggle(false);
                 callback({ url: item.url });

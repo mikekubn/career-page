@@ -4,6 +4,7 @@ import Navigation, { MobileNavigaiton } from '@/components/Navigation';
 import { getCloudinaryUrl } from '@/lib/utils';
 import { useWindowSize } from '@/hooks/useWindowSize';
 import { useTheme } from 'next-themes';
+import { H1, Paragraph } from '@/components/Typography';
 
 const Header = (): React.ReactElement => {
   const { isMobile } = useWindowSize();
@@ -34,9 +35,9 @@ const Header = (): React.ReactElement => {
           <div className="flex flex-row my-auto justify-between">
             <div className="flex">
               <Image src="career_page/profile/profile_nv9lqo" width="50" height="50" className="rounded-full" alt="header-profile-image" />
-              <h1 className="pl-4 text-lg font-semibold my-auto cursor-default">Michael Kubín</h1>
+              <H1 className="pl-4 my-auto cursor-default">Michael Kubín</H1>
             </div>
-            {isMobile ? <MobileNavigaiton /> : null}
+            {isMobile && <MobileNavigaiton />}
           </div>
         </section>
         <section className="flex flex-1 flex-col justify-end">
@@ -44,7 +45,7 @@ const Header = (): React.ReactElement => {
             <button
               className="md:ml-4 rounded-full w-28 h-8 shadow-md shadow-black dark:shadow-white flex flex-row justify-center hover:shadow-sm hover:shadow-black"
               onClick={handleClick}>
-              <p className="p-1 text-sm font-light">Theme {clientTheme}</p>
+              <Paragraph className="p-1">Theme {clientTheme}</Paragraph>
             </button>
             {links.map((link) => (
               <button key={link.src} className="ml-6 md:ml-4 flex flex-col content-center my-auto">
@@ -54,7 +55,7 @@ const Header = (): React.ReactElement => {
               </button>
             ))}
           </div>
-          {isMobile ? null : <Navigation />}
+          {!isMobile && <Navigation />}
         </section>
       </header>
       <div className="border-b rounded-full w-11/12 border-sky500/50 mx-auto mt-4" />
