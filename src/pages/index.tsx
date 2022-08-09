@@ -55,9 +55,9 @@ const Home: NextPage = () => {
       </section>
       <section className="flex flex-col items-center md:flex-row md:justify-between lg:w-11/12 lg:mx-auto xl:w-9/12 xl:mx-auto">
         <Card title="About Me">
-          <LgParagraph className="p-6 underline underline-offset-8">
+          <LgParagraph className="p-6">
             Hi everyone, I&apos;m Michael and I&apos;m a frontend developer mostly working with React and I really enjoy working with the Cypress e2e
-            testing framework. I love hiking, so when I&apos;m not coding I enjoy the peace and quiet there.
+            testing framework 👨‍💻. I love hiking, so when I&apos;m not coding I enjoy the peace and quiet there ⛰ 🥾.
           </LgParagraph>
         </Card>
         <Card title="My Stack">

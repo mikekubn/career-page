@@ -2,9 +2,10 @@ import React from 'react';
 import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import { getPosts } from '@/lib/utils';
-import { ArticleParagraph, H1, Paragraph, Time } from '@/components/Typography';
+import { ArticleParagraph, Paragraph, Time } from '@/components/Typography';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
+import RunningScrollBar from '@/components/RunningScrollBar';
 
 interface IArticle {
   filename: string;
@@ -17,6 +18,10 @@ interface IArticle {
   };
 }
 
+//TODO
+// - mobile version
+// - metadata components
+
 const Blog: NextPage<{ articles: IArticle[] }> = ({ articles }) => {
   return (
     <>
@@ -25,18 +30,22 @@ const Blog: NextPage<{ articles: IArticle[] }> = ({ articles }) => {
         <meta name="description" content="Michael Kubin frontend developer, career web" />
         <meta property="og:title" content="Michael Kubin - Frontend developer" />
         <meta property="og:description" content="Michael Kubin work experience" />
-        <meta property="og:url" content="https://mikekubn.cz/" />
+        <meta property="og:url" content="https://mikekubn.cz/blog" />
         <meta property="og:type" content="website" />
       </Head>
-      <section className="mx-auto xl:w-1/2 pt-8">
+      <section className="mx-auto md:w-3/4 lg:w-2/3 xl:w-1/2 pt-8">
         {articles?.map((article) => (
           <motion.article
-            whileHover={{ scale: 1.1 }}
-            transition={{ type: 'spring', stiffness: 300 }}
+            initial="rest"
+            whileHover="hover"
+            animate="rest"
+            variants={articleVariants}
             key={article.metadata.title}
-            className="m-4 p-4 pt-0 mb-14 border-b border-black border-dashed hover:bg-gray/10 rounded-md">
+            className="m-4 p-4 pt-0 mb-14 border-b border-black border-dashed hover:bg-gray/10 rounded-lg">
             <Link href={article.filename} replace passHref>
-              <H1 className="mb-4 cursor-pointer tracking-wide">{article.metadata.title}</H1>
+              <motion.h1 variants={headerVariant} className="pt-2 text-lg font-semibold mb-4 cursor-pointer tracking-wide hover:text-sky500">
+                {article.metadata.title}
+              </motion.h1>
             </Link>
             <div className="flex flex-row flex-1 flex-wrap">
               {article.metadata.tags.map((tag, index) => (
@@ -45,10 +54,20 @@ const Blog: NextPage<{ articles: IArticle[] }> = ({ articles }) => {
                 </p>
               ))}
             </div>
-            <ArticleParagraph className="my-10">{article.metadata.excerpt}</ArticleParagraph>
-            <div className="flex flex-row justify-between mb-12">
+            <ArticleParagraph className="my-10 italic">{article.metadata.excerpt}</ArticleParagraph>
+            <div className="flex flex-row justify-between mb-6">
               <Time>{article.metadata.date}</Time>
               <Paragraph>{article.metadata.author}</Paragraph>
+            </div>
+            <div className="text-center mb-4">
+              <Link href={article.filename} replace passHref>
+                <motion.button
+                  style={{ borderRadius: '9px' }}
+                  whileHover={{ scale: 1.05, borderRadius: '75px', backgroundColor: '#0ea5e9' }}
+                  className="bg-sky500/50 px-2 py-1 font-thin text-sm shadow-md shadow-black">
+                  Read more 📚
+                </motion.button>
+              </Link>
             </div>
           </motion.article>
         ))}
@@ -71,4 +90,31 @@ export const getStaticProps: GetStaticProps = () => {
       articles: data,
     },
   };
+};
+
+const articleVariants: Variants = {
+  reset: {
+    scale: 1,
+  },
+  hover: {
+    scale: 1.1,
+    transition: {
+      stiffness: 300,
+    },
+  },
+};
+
+const headerVariant: Variants = {
+  reset: {
+    x: 0,
+  },
+  hover: {
+    shadow: '2px solid black',
+    scale: 1.1,
+    originX: 0,
+    transition: {
+      duration: 0.4,
+      type: 'tween',
+    },
+  },
 };
