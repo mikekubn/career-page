@@ -21,7 +21,7 @@ const Paragraph = ({ children, className }: React.PropsWithChildren<Partial<Pick
 );
 
 const ArticleParagraph = ({ children, className }: React.PropsWithChildren<Partial<Pick<HTMLParagraphElement, 'className'>>>) => (
-  <p className={`text-md font-light leading-relaxed ${className}`}>{children}</p>
+  <p className={`text-sm md:text-base lg:text-lg xl:text-lg font-light leading-normal ${className}`}>{children}</p>
 );
 
 const LgParagraph = ({ children, className }: React.PropsWithChildren<Partial<Pick<HTMLParagraphElement, 'className'>>>) => (

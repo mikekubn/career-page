@@ -18,10 +18,6 @@ interface IArticle {
   };
 }
 
-//TODO
-// - mobile version
-// - metadata components
-
 const Blog: NextPage<{ articles: IArticle[] }> = ({ articles }) => {
   return (
     <>
@@ -33,7 +29,8 @@ const Blog: NextPage<{ articles: IArticle[] }> = ({ articles }) => {
         <meta property="og:url" content="https://mikekubn.cz/blog" />
         <meta property="og:type" content="website" />
       </Head>
-      <section className="mx-auto md:w-3/4 lg:w-2/3 xl:w-1/2 pt-8">
+      <RunningScrollBar />
+      <section className="mx-auto w-11/12 md:w-3/4 lg:w-2/3 xl:w-1/2 pt-8">
         {articles?.map((article) => (
           <motion.article
             initial="rest"
@@ -43,23 +40,27 @@ const Blog: NextPage<{ articles: IArticle[] }> = ({ articles }) => {
             key={article.metadata.title}
             className="m-4 p-4 pt-0 mb-14 border-b border-black border-dashed hover:bg-gray/10 rounded-lg">
             <Link href={article.filename} replace passHref>
-              <motion.h1 variants={headerVariant} className="pt-2 text-lg font-semibold mb-4 cursor-pointer tracking-wide hover:text-sky500">
+              <motion.h1
+                variants={headerVariant}
+                className="pt-2 text-md md:text-lg lg:text-lg xl:text-xl font-semibold mb-4 cursor-pointer tracking-wide hover:text-sky500">
                 {article.metadata.title}
               </motion.h1>
             </Link>
             <div className="flex flex-row flex-1 flex-wrap">
               {article.metadata.tags.map((tag, index) => (
-                <p key={index} className="px-4 py-1 rounded-full first:ml-0 mx-2 cursor-pointer bg-sky500/50 shadow-md shadow-sky500/20">
+                <p
+                  key={index}
+                  className="text-xs md:text-sm px-2 lg:px-4 py-1 first:ml-0 ml-1 my-1 lg:mx-2 rounded-full cursor-pointer bg-sky500/50 shadow-md shadow-sky500/20">
                   {tag}
                 </p>
               ))}
             </div>
-            <ArticleParagraph className="my-10 italic">{article.metadata.excerpt}</ArticleParagraph>
-            <div className="flex flex-row justify-between mb-6">
+            <ArticleParagraph className="my-6 italic text-left">{article.metadata.excerpt}</ArticleParagraph>
+            <div className="flex flex-row justify-between mb-3">
               <Time>{article.metadata.date}</Time>
               <Paragraph>{article.metadata.author}</Paragraph>
             </div>
-            <div className="text-center mb-4">
+            <div className="text-center mb-3">
               <Link href={article.filename} replace passHref>
                 <motion.button
                   style={{ borderRadius: '9px' }}
