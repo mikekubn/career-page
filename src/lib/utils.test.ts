@@ -1,4 +1,4 @@
-import { getPaths, getPost, getPosts, sanitation } from './utils';
+import { firstLetterToUpperCase, getPaths, getPost, getPosts, sanitation, urlPathnameSanity } from './utils';
 
 describe('Utils tests', () => {
   it('get paths', () => {
@@ -34,5 +34,17 @@ describe('Utils tests', () => {
         content: '',
       },
     ]);
+  });
+
+  it('first letter toUpperCase', () => {
+    const str = firstLetterToUpperCase('test');
+
+    expect(str).toEqual('Test');
+  });
+
+  it('url pathname sanity', () => {
+    const str = urlPathnameSanity('/test-url-blog/');
+
+    expect(str).toEqual('test url blog');
   });
 });
