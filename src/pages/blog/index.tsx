@@ -7,6 +7,7 @@ import BaseArticle from '@/components/Article';
 
 export interface IArticle {
   filename: string;
+  content: string;
   metadata: {
     author: string;
     date: string;

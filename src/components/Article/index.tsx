@@ -15,7 +15,7 @@ const BaseArticle: React.FC<IProps> = (props: IProps) => {
   const { push } = useRouter();
 
   const HeaderWithLink = (): React.ReactElement => (
-    <Link href={article.filename} replace passHref>
+    <Link aria-label="post-link" href="/blog/[slug]" as={`/blog/${article.filename}`} passHref>
       <motion.h1
         variants={headerVariant}
         className="pt-2 text-base md:text-lg lg:text-lg xl:text-xl font-semibold mb-4 cursor-pointer tracking-wide hover:text-sky500">
@@ -51,7 +51,9 @@ const BaseArticle: React.FC<IProps> = (props: IProps) => {
         <Paragraph>{article.metadata.author}</Paragraph>
       </div>
       <div className="text-center mb-3">
-        <AnimatedButton title="Read more 📚" onClick={() => push(`/${article.filename}`)} />
+        <Link aria-label="post-link" href="/blog/[slug]" as={`/blog/${article.filename}`} passHref>
+          <AnimatedButton title="Read more 📚" />
+        </Link>
       </div>
     </motion.article>
   );

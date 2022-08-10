@@ -1,14 +1,25 @@
 import React from 'react';
 import Head from 'next/head';
+import { ParsedUrlQuery } from 'querystring';
+import { firstLetterToUpperCase, urlPathnameSanity } from '@/lib/utils';
 
 export interface IMetadata {
   title: string;
   description: string;
+  query: ParsedUrlQuery;
   url: string;
 }
 
 const Metadata = ({ metadata }: { metadata: IMetadata }): React.ReactElement => {
-  const title = `${metadata.title} ${metadata.description ? ` | ${metadata.description}` : ''}`;
+  const { slug } = metadata.query;
+  let title: string = metadata.title;
+
+  if (metadata.description.length) {
+    title = `${metadata.title} | ${metadata.description}`;
+  }
+  if (slug) {
+    title = firstLetterToUpperCase(urlPathnameSanity(slug.toString()));
+  }
 
   return (
     <Head>

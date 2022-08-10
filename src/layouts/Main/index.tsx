@@ -8,14 +8,15 @@ import { firstLetterToUpperCase, urlPathnameSanity } from '@/lib/utils';
 const Main = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   const { height } = useRealHeight();
   const title = 'Michael Kubin';
-  const { pathname } = useRouter();
+  const { asPath, query } = useRouter();
 
-  const description = firstLetterToUpperCase(urlPathnameSanity(pathname));
+  const description = firstLetterToUpperCase(urlPathnameSanity(asPath));
 
   const metadata: IMetadata = {
     title,
+    query: query,
     description,
-    url: pathname,
+    url: asPath,
   };
 
   return (

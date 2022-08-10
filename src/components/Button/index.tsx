@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 interface IProps extends React.RefAttributes<HTMLButtonElement> {
   title?: string;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const AnimatedButton: React.FC<IProps> = React.forwardRef((props, ref) => {

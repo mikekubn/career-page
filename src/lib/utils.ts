@@ -35,10 +35,11 @@ const getPost = (dir: string) => {
   const directory = getDirection(dir);
   const file = fs.readFileSync(directory, 'utf8');
 
-  const { data: frontmatter } = matter(file);
+  const { data: frontmatter, content } = matter(file);
 
   return {
     frontmatter,
+    content,
   };
 };
 
