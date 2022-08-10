@@ -21,7 +21,7 @@ const useRealHeight = () => {
     if (clientHight) {
       setRealHeight(() => clientHight - totalSize);
     }
-  }, [clientHight]);
+  }, [clientHight, setRealHeight]);
 
   return {
     height: realHeight,

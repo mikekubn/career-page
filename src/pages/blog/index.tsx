@@ -42,7 +42,7 @@ const Blog: NextPage<{ articles: IArticle[] }> = ({ articles }) => {
             <Link href={article.filename} replace passHref>
               <motion.h1
                 variants={headerVariant}
-                className="pt-2 text-md md:text-lg lg:text-lg xl:text-xl font-semibold mb-4 cursor-pointer tracking-wide hover:text-sky500">
+                className="pt-2 text-base md:text-lg lg:text-lg xl:text-xl font-semibold mb-4 cursor-pointer tracking-wide hover:text-sky500">
                 {article.metadata.title}
               </motion.h1>
             </Link>

@@ -3,7 +3,6 @@ import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import cloudinary from 'cloudinary.config';
 import { getPosts } from '@/lib/utils';
-import Image from 'next/image';
 import RunningScrollBar from '@/components/RunningScrollBar';
 import { MiniCard } from '@/components/Card';
 
