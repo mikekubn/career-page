@@ -4,6 +4,7 @@ import React from 'react';
 import { IArticle } from 'src/pages/blog';
 import { ArticleParagraph, Paragraph, Time } from '@/components/Typography';
 import AnimatedButton from '../Button';
+import { useRouter } from 'next/router';
 
 interface IProps extends React.HTMLProps<HTMLDivElement> {
   article: IArticle;
@@ -11,6 +12,7 @@ interface IProps extends React.HTMLProps<HTMLDivElement> {
 
 const BaseArticle: React.FC<IProps> = (props: IProps) => {
   const { article } = props;
+  const { push } = useRouter();
 
   const HeaderWithLink = (): React.ReactElement => (
     <Link href={article.filename} replace passHref>
@@ -34,12 +36,6 @@ const BaseArticle: React.FC<IProps> = (props: IProps) => {
     </div>
   );
 
-  const ButtinWithLink = (): React.ReactElement => (
-    <Link href={article.filename} replace passHref>
-      <AnimatedButton title="Read more 📚" />
-    </Link>
-  );
-
   return (
     <motion.article
       initial="rest"
@@ -55,7 +51,7 @@ const BaseArticle: React.FC<IProps> = (props: IProps) => {
         <Paragraph>{article.metadata.author}</Paragraph>
       </div>
       <div className="text-center mb-3">
-        <ButtinWithLink />
+        <AnimatedButton title="Read more 📚" onClick={() => push(`/${article.filename}`)} />
       </div>
     </motion.article>
   );

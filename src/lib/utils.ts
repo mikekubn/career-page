@@ -48,7 +48,7 @@ const getCloudinaryUrl = (url: string) => `/career_page/${url}`;
 
 const firstLetterToUpperCase = (str: string) => str?.charAt(0).toUpperCase() + str?.slice(1);
 
-const urlPathnameSanity = (str: string) => str?.replaceAll('/', '').replaceAll('-', ' ').toString();
+const urlPathnameSanity = (str: string) => str?.replace(/\//g, '').replace(/-/g, ' ').toString();
 
 const cleanTitle = (value: string) => {
   const title = value
