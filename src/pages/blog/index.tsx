@@ -22,12 +22,9 @@ const Blog: NextPage<{ articles: IArticle[] }> = ({ articles }) => {
   return (
     <>
       <Head>
-        <title>Michael Kubín | Blog</title>
         <meta name="description" content="Michael Kubin frontend developer, career web" />
         <meta property="og:title" content="Michael Kubin - Frontend developer" />
         <meta property="og:description" content="Michael Kubin work experience" />
-        <meta property="og:url" content="https://mikekubn.cz/blog" />
-        <meta property="og:type" content="website" />
       </Head>
       <RunningScrollBar />
       <section className="mx-auto w-11/12 md:w-3/4 lg:w-2/3 xl:w-1/2 pt-8">

@@ -1,16 +1,28 @@
 import React from 'react';
 import { useRealHeight } from '@/hooks/useRealHeight';
-import Metadata from '@/components/Metadata';
+import Metadata, { IMetadata } from '@/components/Metadata';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useRouter } from 'next/router';
+import { firstLetterToUpperCase, urlPathnameSanity } from '@/lib/utils';
 
 const Main = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   const { height } = useRealHeight();
+  const title = 'Michael Kubin';
+  const { pathname } = useRouter();
+
+  const description = firstLetterToUpperCase(urlPathnameSanity(pathname));
+
+  const metadata: IMetadata = {
+    title,
+    description,
+    url: pathname,
+  };
 
   return (
     <main className={'container block mx-auto mb-auto'} style={{ minHeight: `${height}px` }}>
-      <Metadata />
+      <Metadata metadata={metadata} />
       <AnimatePresence exitBeforeEnter>
-        <motion.div initial="hidden" animate="enter" exit="exit" variants={variants} transition={{ type: 'linear', duration: 0.5 }}>
+        <motion.div initial="hidden" animate="enter" exit="exit" variants={variants} transition={{ type: 'linear', duration: 0.3 }}>
           {children}
         </motion.div>
       </AnimatePresence>

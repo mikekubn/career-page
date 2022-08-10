@@ -34,12 +34,9 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Michael Kubín | Home</title>
         <meta name="description" content="Michael Kubin frontend developer, introducing" />
         <meta property="og:title" content="Michael Kubin - Frontend developer" />
         <meta property="og:description" content="Michael Kubin introducing" />
-        <meta property="og:url" content="https://mikekubn.cz/" />
-        <meta property="og:type" content="website" />
       </Head>
       <section className="flex flex-col flex-1">
         <div className="flex flex-row justify-center mt-6 md:mt-14 md:h-40">

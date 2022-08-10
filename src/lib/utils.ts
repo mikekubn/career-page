@@ -46,6 +46,10 @@ const sanitation = (arr: string[], cut: string): string[] => arr.map((a) => a.re
 
 const getCloudinaryUrl = (url: string) => `/career_page/${url}`;
 
+const firstLetterToUpperCase = (str: string) => str?.charAt(0).toUpperCase() + str?.slice(1);
+
+const urlPathnameSanity = (pathname: string) => pathname.replace('/', '').replace('-', ' ').toString();
+
 const cleanTitle = (value: string) => {
   const title = value
     .split('/')
@@ -58,9 +62,9 @@ const cleanTitle = (value: string) => {
     return '';
   }
 
-  const firstLetterToUpperCase = title?.charAt(0).toUpperCase() + title?.slice(1);
+  const string = firstLetterToUpperCase(title);
 
-  return firstLetterToUpperCase;
+  return string;
 };
 
-export { getPost, getPosts, getPaths, getDirection, sanitation, getCloudinaryUrl, cleanTitle };
+export { getPost, getPosts, getPaths, getDirection, sanitation, getCloudinaryUrl, cleanTitle, firstLetterToUpperCase, urlPathnameSanity };

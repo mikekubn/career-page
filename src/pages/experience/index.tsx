@@ -21,12 +21,9 @@ const Experience: NextPage<{ posts: IExperience[] }> = ({ posts }) => (
   <>
     {posts.map((post) => (
       <Head key={post.id}>
-        <title>Michael Kubín | Experience</title>
         <meta name="description" content={`Michael Kubin frontend developer, experience, ${post.where}`} />
         <meta property="og:title" content={`Michael Kubín ${post.position} ${post.title}`} />
         <meta property="og:description" content={`experience, ${post.description}`} />
-        <meta property="og:url" content="https://mikekubn.cz/experience" />
-        <meta property="og:type" content="website" />
       </Head>
     ))}
     <RunningScrollBar />
