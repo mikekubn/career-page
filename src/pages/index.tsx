@@ -55,7 +55,7 @@ const Home: NextPage = () => {
       </section>
       <section className="flex flex-col items-center md:flex-row md:justify-between lg:w-11/12 lg:mx-auto xl:w-9/12 xl:mx-auto">
         <Card title="About Me">
-          <LgParagraph className="p-6">
+          <LgParagraph className="p-3 md:p-6">
             Hi everyone, I&apos;m Michael and I&apos;m a frontend developer mostly working with React and I really enjoy working with the Cypress e2e
             testing framework 👨‍💻. I love hiking, so when I&apos;m not coding I enjoy the peace and quiet there ⛰ 🥾.
           </LgParagraph>
@@ -63,7 +63,7 @@ const Home: NextPage = () => {
         <Card title="My Stack">
           <div className="p-2 md:p-6 flex flex-row flex-1 flex-wrap">
             {myStack.map((item) => (
-              <LgParagraph key={item} className="border border-black text-center rounded-xl shadow-md shadow-black p-2 m-1 mb-4">
+              <LgParagraph key={item} className="text-center rounded-xl shadow-lg shadow-black p-2 m-1 mb-4">
                 {item}
               </LgParagraph>
             ))}
@@ -79,4 +79,4 @@ const Home: NextPage = () => {
 
 export default Home;
 
-const myStack = ['Frontend Development', 'End to End testing', 'Cypress', 'React', 'TypeScript', 'Next.js'];
+const myStack = ['Frontend Development 👨‍💻', 'End to End testing 🧪🪛', 'Cypress', 'React 🏢', 'TypeScript ❤️', 'Next.js 🏎'];

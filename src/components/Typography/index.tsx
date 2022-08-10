@@ -25,7 +25,7 @@ const ArticleParagraph = ({ children, className }: React.PropsWithChildren<Parti
 );
 
 const LgParagraph = ({ children, className }: React.PropsWithChildren<Partial<Pick<HTMLParagraphElement, 'className'>>>) => (
-  <p className={`text-lg font-light leading-loose ${className}`}>{children}</p>
+  <p className={`text-base md:text-lg md:tracking-wide font-light leading-7 md:leading-10 ${className}`}>{children}</p>
 );
 
 export { H1, H2, Paragraph, LgParagraph, Time, ArticleParagraph };

@@ -10,14 +10,14 @@ const Card = ({ children, title }: { title: string; children: React.ReactNode })
   return (
     <motion.div
       whileHover={{ scale: 1.05 }}
-      className="w-72 h-[550px] md:w-80 md:h-[520px] mt-14 md:mt-16 lg:mt-20 lg:w-96 xl:w-96 xl:mx-20 border-b border-black shadow-black shadow-lg p-4 bg-sky500/50 rounded-lg overflow-auto">
+      className="w-72 h-[390px] md:w-[350px] md:h-[520px] lg:h-[500px] mt-14 md:mt-16 md:mx-5 lg:mt-20 lg:w-96 xl:w-96 xl:mx-20 border-b border-black shadow-black shadow-lg p-4 bg-sky500/50 rounded-lg overflow-auto">
       <div className="flex flex-row justify-center mt-2">
         {countOfRing.map((index) => {
-          return <div key={`${Math.random() + index}`} className="rounded-full border-2 border-black p-2 w-4 mx-2 dark-mode" />;
+          return <div key={`${Math.random() + index}`} className="rounded-full border border-black p-2 w-4 mx-2 dark-mode" />;
         })}
       </div>
-      <h1 className="text-xl mt-6 font-light mb-2">{title}</h1>
-      <div className="border-b border-black mb-4" />
+      <h1 className="text-xl mt-3 sm:mt-3 md:mt-6 font-light mb-2">{title}</h1>
+      <div className="border-b border-black mb-1 md:mb-4" />
       {children}
     </motion.div>
   );
