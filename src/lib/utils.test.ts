@@ -31,6 +31,7 @@ describe('Utils tests', () => {
       {
         filename: 'mock',
         frontmatter: { id: 3, title: 'Mock', where: 'Testing' },
+        content: '',
       },
     ]);
   });
