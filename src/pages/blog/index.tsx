@@ -37,7 +37,8 @@ const Blog: NextPage<{ articles: IArticle[] }> = ({ articles }) => {
 export default Blog;
 
 export const getStaticProps: GetStaticProps = () => {
-  const articles = getPosts('src/_posts/_blog');
+  const articles = getPosts('src/_posts/_blog').sort((a, b) => b.frontmatter.id - a.frontmatter.id);
+
   const data = articles.map(({ filename, frontmatter }) => ({
     filename: filename,
     metadata: frontmatter,
