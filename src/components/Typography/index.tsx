@@ -13,7 +13,9 @@ const H2 = ({ children, className }: React.PropsWithChildren<Partial<Pick<HTMLHe
 );
 
 const Time = ({ children, className }: React.PropsWithChildren<Partial<Pick<HTMLTimeElement, 'className'>>>) => (
-  <time className={`text-xs font-light ${className}`}>{children}</time>
+  <time data-testid="time" className={`text-xs font-light ${className}`}>
+    {children}
+  </time>
 );
 
 const Paragraph = ({ children, className }: React.PropsWithChildren<Partial<Pick<HTMLParagraphElement, 'className'>>>) => (

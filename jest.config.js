@@ -14,8 +14,8 @@ const customJestConfig = {
   },
   moduleNameMapper: {
     '^@/components/(.*)$': '<rootDir>/src/components/$1',
+    '^@/configs/(.*)$': '<rootDir>/src/configs/$1',
     '^@/hooks/(.*)$': '<rootDir>/src/hooks/$1',
-    '^@/config/(.*)$': '<rootDir>/src/config/$1',
     '^@/provider/(.*)$': '<rootDir>/src/providers/$1',
     '^@/utils/(.*)$': '<rootDir>/utils/$1',
     '^@/lib/(.*)$': '<rootDir>/src/lib/$1',

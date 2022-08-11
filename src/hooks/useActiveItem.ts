@@ -1,6 +1,6 @@
+import { INavigation, menuItemConfig } from '@/configs/navigation';
 import { useRouter } from 'next/router';
 import React from 'react';
-import { INavigation, menuItemConfig } from 'src/configs/navigation';
 
 interface IMenuItems extends INavigation {
   active?: boolean;
