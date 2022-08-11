@@ -2,16 +2,34 @@ import { getPaths, getPost } from '@/lib/utils';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import { IArticle } from '.';
-import ReactMarkdown from 'react-markdown';
+import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { serialize } from 'next-mdx-remote/serialize';
+import Head from 'next/head';
+import RunningScrollBar from '@/components/RunningScrollBar';
 
 interface IPost {
-  content: string;
+  content: MDXRemoteSerializeResult;
   frontmatter: IArticle['metadata'];
 }
 
 const Post: NextPage<{ article: IPost }> = ({ article }) => {
-  const { content } = article;
-  return <ReactMarkdown>{content}</ReactMarkdown>;
+  const { content, frontmatter } = article;
+
+  return (
+    <>
+      <Head>
+        <meta name="description" content={frontmatter.author} />
+        <meta property="og:title" content={frontmatter.title} />
+        <meta property="og:description" content={frontmatter.excerpt} />
+      </Head>
+      <RunningScrollBar />
+      <section className="w-3/5 mx-auto my-20">
+        <article className="prose max-w-none">
+          <MDXRemote {...content} />
+        </article>
+      </section>
+    </>
+  );
 };
 
 export default Post;
@@ -31,16 +49,19 @@ export const getStaticPaths: GetStaticPaths<IParams> = () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const article = getPost(`src/_posts/_blog/${params?.slug}.md`);
+  const post = getPost(`src/_posts/_blog/${params?.slug}.md`);
+  const { content } = post;
 
-  const data = {
-    ...article,
-    frontmatter: { ...article.frontmatter, date: JSON.parse(JSON.stringify(article.frontmatter.date)) },
+  const mdxSource = await serialize(content);
+
+  const article = {
+    content: mdxSource as MDXRemoteSerializeResult,
+    frontmatter: { ...post.frontmatter, date: post.frontmatter.date.toISOString() as string },
   };
 
   return {
     props: {
-      article: data,
+      article,
     },
     revalidate: 10,
   };
