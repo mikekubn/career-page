@@ -1,4 +1,4 @@
-import { getPaths, getPost, getPosts } from '@/lib/utils';
+import { getPaths, getPost } from '@/lib/utils';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import { IArticle } from '.';
