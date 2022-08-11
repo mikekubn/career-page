@@ -5,6 +5,7 @@ import { IArticle } from 'src/pages/blog';
 import { ArticleParagraph, Paragraph, Time } from '@/components/Typography';
 import AnimatedButton from '../Button';
 import { createdAt } from '@/lib/utils';
+import Tags from '../Tags';
 
 interface IProps extends React.HTMLProps<HTMLDivElement> {
   article: IArticle;
@@ -26,18 +27,6 @@ const BaseArticle: React.FC<IProps> = (props: IProps) => {
     </Link>
   );
 
-  const Tags = (): React.ReactElement => (
-    <div className="flex flex-row flex-1 flex-wrap">
-      {article.metadata.tags.map((tag, index) => (
-        <p
-          key={index}
-          className="cursor-default text-xs md:text-sm px-2 lg:px-4 py-1 first:ml-0 ml-1 my-1 lg:mx-2 rounded-full bg-sky500/50 shadow-md shadow-sky500/20">
-          {tag}
-        </p>
-      ))}
-    </div>
-  );
-
   return (
     <motion.article
       initial="rest"
@@ -46,7 +35,7 @@ const BaseArticle: React.FC<IProps> = (props: IProps) => {
       variants={articleVariants}
       className="m-4 p-4 pt-0 mb-14 border-b border-black border-dashed hover:bg-gray/10 rounded-lg">
       <HeaderWithLink />
-      <Tags />
+      <Tags items={article.metadata.tags} />
       <ArticleParagraph className="my-6 italic text-left">{article.metadata.excerpt}</ArticleParagraph>
       <div className="flex flex-row justify-between mb-3">
         <Time>{createdDate}</Time>

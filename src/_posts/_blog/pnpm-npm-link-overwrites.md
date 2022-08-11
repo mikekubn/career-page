@@ -13,13 +13,15 @@ excerpt: >-
 
 # How use npm link in pnpm overwrites
 
-_If you work on bigger project with more packages you wil want use `pnpm`, probably._
+> _If you work on bigger project with more packages you wil want use `pnpm`, probably._
 
 `"pnpm": { "overrides": { "my-package-foo": "3.4.0", .... } },`
 
 ### What is pnpm?
 
-Alternative of node package manager `npm`, but faster and more efficient. [pnpm](https://github.com/pnpm/pnpm 'pnpm')
+Alternative of node package manager `npm`, but faster and more efficient.
+
+- [pnpm](https://github.com/pnpm/pnpm 'pnpm')
 
 When I started with pnpm, I tried to link local packages where my main project uses `pnpm` and other local packages use the standard `npm`. But when I used the standard method of linking a project using npm link or pnpm link, I always got the error that the package does not exist. So I decided to write down some steps on how to use the link when using pnpm overrides.
 
