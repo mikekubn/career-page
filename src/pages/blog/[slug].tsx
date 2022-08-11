@@ -2,6 +2,7 @@ import { getPaths, getPost } from '@/lib/utils';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import { IArticle } from '.';
+import ReactMarkdown from 'react-markdown';
 
 interface IPost {
   content: string;
@@ -9,7 +10,8 @@ interface IPost {
 }
 
 const Post: NextPage<{ article: IPost }> = ({ article }) => {
-  return <>{article.frontmatter?.title}</>;
+  const { content } = article;
+  return <ReactMarkdown>{content}</ReactMarkdown>;
 };
 
 export default Post;
@@ -31,9 +33,14 @@ export const getStaticPaths: GetStaticPaths<IParams> = () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const article = getPost(`src/_posts/_blog/${params?.slug}.md`);
 
+  const data = {
+    ...article,
+    frontmatter: { ...article.frontmatter, date: JSON.parse(JSON.stringify(article.frontmatter.date)) },
+  };
+
   return {
     props: {
-      article,
+      article: data,
     },
     revalidate: 10,
   };
