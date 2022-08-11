@@ -26,6 +26,8 @@ const Metadata = ({ metadata }: { metadata: IMetadata }): React.ReactElement => 
       <title>{title}</title>
       <meta property="og:url" content={`https://mikekubn.cz${metadata.url}`} />
       <meta property="og:type" content="website" />
+      <meta name="twitter:creator" content="@mikekubn" />
+      <meta name="robots" content="follow" />
     </Head>
   );
 };

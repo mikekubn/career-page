@@ -1,7 +1,6 @@
 ---
-id: 1
 author: Michael Kubín
-date: 23.6.2022
+date: 2022-06-23
 tags:
   - next.js
   - styled-components

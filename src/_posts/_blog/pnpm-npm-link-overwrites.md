@@ -1,7 +1,6 @@
 ---
-id: 2
 author: Michael Kubín
-date: 24.7.2022
+date: 2022-07-24
 tags:
   - npm
   - pnpm

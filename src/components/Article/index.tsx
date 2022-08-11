@@ -4,7 +4,7 @@ import React from 'react';
 import { IArticle } from 'src/pages/blog';
 import { ArticleParagraph, Paragraph, Time } from '@/components/Typography';
 import AnimatedButton from '../Button';
-import { useRouter } from 'next/router';
+import { createdAt } from '@/lib/utils';
 
 interface IProps extends React.HTMLProps<HTMLDivElement> {
   article: IArticle;
@@ -12,7 +12,9 @@ interface IProps extends React.HTMLProps<HTMLDivElement> {
 
 const BaseArticle: React.FC<IProps> = (props: IProps) => {
   const { article } = props;
-  const { push } = useRouter();
+  const { date } = article.metadata;
+
+  const createdDate = createdAt(date);
 
   const HeaderWithLink = (): React.ReactElement => (
     <Link aria-label="post-link" href="/blog/[slug]" as={`/blog/${article.filename}`} passHref>
@@ -47,7 +49,7 @@ const BaseArticle: React.FC<IProps> = (props: IProps) => {
       <Tags />
       <ArticleParagraph className="my-6 italic text-left">{article.metadata.excerpt}</ArticleParagraph>
       <div className="flex flex-row justify-between mb-3">
-        <Time>{article.metadata.date}</Time>
+        <Time>{createdDate}</Time>
         <Paragraph>{article.metadata.author}</Paragraph>
       </div>
       <div className="text-center mb-3">

@@ -68,4 +68,33 @@ const cleanTitle = (value: string) => {
   return string;
 };
 
-export { getPost, getPosts, getPaths, getDirection, sanitation, getCloudinaryUrl, cleanTitle, firstLetterToUpperCase, urlPathnameSanity };
+const sortByDate = (a: string, b: string) => {
+  const date1 = new Date(a);
+  const date2 = new Date(b);
+
+  const result = date2.getTime() - date1.getTime();
+
+  return result;
+};
+
+const createdAt = (str: string) => {
+  const day = new Date(str).getDate();
+  const month = new Date(str).getMonth() + 1;
+  const year = new Date(str).getFullYear();
+
+  return `${day}. ${month}. ${year}`;
+};
+
+export {
+  getPost,
+  getPosts,
+  getPaths,
+  getDirection,
+  sanitation,
+  getCloudinaryUrl,
+  cleanTitle,
+  firstLetterToUpperCase,
+  urlPathnameSanity,
+  sortByDate,
+  createdAt,
+};

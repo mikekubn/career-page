@@ -1,7 +1,7 @@
 import React from 'react';
 import type { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
-import { getPosts } from '@/lib/utils';
+import { getPosts, sortByDate } from '@/lib/utils';
 import RunningScrollBar from '@/components/RunningScrollBar';
 import BaseArticle from '@/components/Article';
 
@@ -38,7 +38,7 @@ const Blog: NextPage<{ articles: IArticle[] }> = ({ articles }) => {
 export default Blog;
 
 export const getStaticProps: GetStaticProps = () => {
-  const articles = getPosts('src/_posts/_blog').sort((a, b) => b.frontmatter.id - a.frontmatter.id);
+  const articles = getPosts('src/_posts/_blog').sort((a, b) => sortByDate(a.frontmatter.date, b.frontmatter.date));
 
   const data = articles.map(({ filename, frontmatter }) => ({
     filename: filename,
@@ -47,7 +47,7 @@ export const getStaticProps: GetStaticProps = () => {
 
   return {
     props: {
-      articles: data,
+      articles: JSON.parse(JSON.stringify(data)),
     },
   };
 };
