@@ -1,19 +1,14 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Input from '.';
-
-const inputName = 'Unit Test';
 
 describe('Input', () => {
   it('render input', () => {
     const onChange = jest.fn();
-    render(<Input label="Name" name={inputName} type="name" placeholder="test-name" value="" handleChange={onChange} />);
+    const { getByLabelText } = render(<Input label="name" value="name" placeholder="test-name" onChange={onChange} />);
+    const input = getByLabelText(/name/i) as HTMLInputElement;
 
-    userEvent.type(screen.getByLabelText(/name/i), inputName);
-
-    waitFor(() => {
-      expect(screen.getByTestId('input-name')).toHaveValue(inputName);
-      expect(onChange).toHaveBeenCalled();
-    });
+    userEvent.type(input, 'name');
+    expect(input.value).toEqual('name');
   });
 });

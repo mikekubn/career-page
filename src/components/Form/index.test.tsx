@@ -6,18 +6,10 @@ const subject = 'Test mail';
 const name = 'Jarek Parek';
 const email = 'ocal@host.cz';
 const messages = 'Lorem ipsum also approximates a typical distribution of letters in English.';
-const values = {
-  subject,
-  from_name: name,
-  from_email: email,
-  messages,
-};
 
 describe('Form', () => {
   it('render form', async () => {
-    const onSubmit = jest.fn();
-    const setValues = jest.fn();
-    render(<Form handleSubmitForm={onSubmit} setValues={setValues} values={values} />);
+    render(<Form />);
 
     const inputSubject = screen.getByTestId(/subject/i);
     const inputName = screen.getByLabelText(/name/i);
