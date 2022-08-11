@@ -27,13 +27,13 @@ const Post: NextPage<{ article: IPost }> = ({ article }) => {
         <meta property="og:description" content={frontmatter.excerpt} />
       </Head>
       <RunningScrollBar />
-      <section className="w-3/5 mx-auto my-20">
+      <section className="my-6 w-4/5 xl:w-3/5 mx-auto lg:my-20">
         <div className="flex flex-row mt-10 justify-between">
           <Time>{created}</Time>
           <Paragraph>{author}</Paragraph>
         </div>
-        <Tags items={tags} className="my-8" />
-        <article className="prose lg:prose-lg prose-zinc prose-h1:pb-10 max-w-none dark:prose-invert prose-a:text-sky500 prose-pre:bg-gray900 hover:prose-pre:bg-gray700 hover:prose-a:text-red400/60">
+        <Tags items={tags} className="my-6 lg:my-8" />
+        <article className="prose lg:prose-lg prose-zinc lg:prose-h1:pb-10 max-w-none dark:prose-invert prose-a:text-sky500 prose-pre:bg-gray900 hover:prose-pre:bg-gray700 hover:prose-a:text-red400/60">
           <MDXRemote {...content} />
         </article>
       </section>
