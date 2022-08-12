@@ -1,30 +1,41 @@
 import { INavigation, menuItemConfig } from '@/configs/navigation';
 import { useRouter } from 'next/router';
-import React from 'react';
 
 interface IMenuItems extends INavigation {
   active?: boolean;
 }
 
 const useActiveItem = () => {
-  const { route } = useRouter();
-  const [, setActiveItem] = React.useState<string>();
+  const { pathname } = useRouter();
+  const breadcrumbs: IMenuItems[] = menuItemConfig
+    .filter((item) => item.enabled)
+    .filter((item) => item.level === 'breadcrumbs')
+    .map((item) => {
+      if (item.url === pathname) {
+        return {
+          ...item,
+          active: true,
+        };
+      }
+      return { ...item };
+    });
 
-  const callback = ({ url }: { url: string }) => setActiveItem(url);
-
-  const menuItems: IMenuItems[] = menuItemConfig.map((item) => {
-    if (item.url === route) {
-      return {
-        ...item,
-        active: true,
-      };
-    }
-    return { ...item };
-  });
+  const items: IMenuItems[] = menuItemConfig
+    .filter((item) => item.enabled)
+    .filter((item) => item.level === 'main')
+    .map((item) => {
+      if (item.url === pathname) {
+        return {
+          ...item,
+          active: true,
+        };
+      }
+      return { ...item };
+    });
 
   return {
-    items: menuItems,
-    callback,
+    items,
+    breadcrumbs,
   };
 };
 

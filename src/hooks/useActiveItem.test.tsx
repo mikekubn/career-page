@@ -1,21 +1,40 @@
-import { menuItemConfig } from '@/configs/navigation';
-import { act, fireEvent, render, renderHook, screen, waitFor } from '@testing-library/react';
+import singletonRouter from 'next/router';
+import mockRouter from 'next-router-mock';
+import { renderHook, waitFor } from '@testing-library/react';
 import { useActiveItem } from './useActiveItem';
-import React from 'react';
 
-describe.skip('useActiveItem', () => {
-  it('hook - active item', () => {
+// Mocking router
+jest.mock('next/router', () => require('next-router-mock'));
+
+describe('useActiveItem', () => {
+  beforeEach(() => mockRouter.setCurrentUrl('/blog'));
+
+  it('hook - active item', async () => {
     const { result } = renderHook(() => useActiveItem());
-    const { callback, items } = result.current;
+    const { items } = result.current;
 
-    const Component = () => {
-      return <button onClick={() => callback({ url: '/blog' })}>Click</button>;
-    };
+    await waitFor(() => {
+      expect(singletonRouter).toMatchObject({
+        asPath: '/blog',
+        pathname: '/blog',
+      });
+    });
 
-    const { getByRole } = render(<Component />);
-
-    const button = getByRole('button');
-
-    fireEvent.click(button);
+    expect(items).toEqual([
+      { enabled: true, level: 'main', name: 'Home', url: '/' },
+      {
+        enabled: true,
+        level: 'main',
+        name: 'Blog',
+        url: '/blog',
+        active: true,
+      },
+      {
+        enabled: true,
+        level: 'main',
+        name: 'Experience',
+        url: '/experience',
+      },
+    ]);
   });
 });
