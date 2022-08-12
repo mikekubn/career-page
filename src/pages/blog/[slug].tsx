@@ -9,12 +9,11 @@ import RunningScrollBar from '@/components/RunningScrollBar';
 import { Paragraph, Time } from '@/components/Typography';
 import Tags from '@/components/Tags';
 
-interface IPost {
-  content: MDXRemoteSerializeResult;
-  frontmatter: IArticle['frontmatter'];
-}
+type Props = {
+  article: IArticle;
+};
 
-const Post: NextPage<{ article: IPost }> = ({ article }) => {
+const Post: NextPage<Props> = ({ article }) => {
   const { content, frontmatter } = article;
   const { date, author, tags } = frontmatter;
   const created = createdAt(date);
@@ -34,7 +33,7 @@ const Post: NextPage<{ article: IPost }> = ({ article }) => {
         </div>
         <Tags items={tags} className="my-6 lg:my-8" />
         <article className="prose lg:prose-lg prose-zinc lg:prose-h1:pb-10 max-w-none dark:prose-invert prose-a:text-sky500 prose-pre:bg-gray900 hover:prose-pre:bg-gray700 hover:prose-a:text-red400/60">
-          <MDXRemote {...content} />
+          <MDXRemote {...(content as unknown as MDXRemoteSerializeResult)} />
         </article>
       </section>
     </>
@@ -47,7 +46,7 @@ interface IParams extends ParsedUrlQuery {
   slug: string;
 }
 
-export const getStaticPaths: GetStaticPaths<IParams> = () => {
+export const getStaticPaths: GetStaticPaths = () => {
   const articles = getPaths('src/_posts/_blog');
   const paths = articles.map((article) => ({ params: { slug: article } }));
 
@@ -64,8 +63,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const mdxSource = await serialize(content);
 
   const article = {
-    content: mdxSource as MDXRemoteSerializeResult,
-    frontmatter: { ...post.frontmatter, date: post.frontmatter.date.toISOString() as string },
+    content: mdxSource,
+    frontmatter: { ...post.frontmatter, date: post.frontmatter.date.toString() },
   };
 
   return {
