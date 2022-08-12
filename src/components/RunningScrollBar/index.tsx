@@ -10,7 +10,11 @@ const RunningScrollBar = (): React.ReactElement => {
   });
 
   return (
-    <motion.div className="h-2 z-50 top-32 fixed inset-x-0 origin-left mx-2 md:mx-8 lg:mx-10 xl:mx-16 bg-blue rounded-full" style={{ scaleX }} />
+    <motion.div
+      data-cy="running-scroll-bar"
+      className="h-2 z-50 top-32 fixed inset-x-0 origin-left mx-2 md:mx-8 lg:mx-10 xl:mx-16 bg-blue rounded-full"
+      style={{ scaleX }}
+    />
   );
 };
 

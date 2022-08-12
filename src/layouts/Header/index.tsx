@@ -43,9 +43,10 @@ const Header = (): React.ReactElement => {
         <section className="flex flex-1 flex-col justify-end">
           <div className="flex flex-row justify-center md:justify-end my-auto">
             <button
+              data-cy="button-theme"
               className="md:ml-4 rounded-full w-28 h-8 shadow-md shadow-black dark:shadow-white flex flex-row justify-center hover:shadow-sm hover:shadow-black"
               onClick={handleClick}>
-              <Paragraph className="p-1">Theme {clientTheme}</Paragraph>
+              <Paragraph className="p-1">{`Theme ${clientTheme}`}</Paragraph>
             </button>
             {links.map((link) => (
               <button key={link.src} className="ml-6 md:ml-4 flex flex-col content-center my-auto">

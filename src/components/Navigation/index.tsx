@@ -12,9 +12,11 @@ const Navigation = (): React.ReactElement => {
     <nav data-cy="navigation" className="flex flex-row justify-end">
       <ul className="flex flex-row">
         {items.map((item, index) => (
-          <li key={index} className="ml-8">
+          <li data-cy="navigation-item" key={index} className="ml-8">
             <Link href={item.url} passHref replace>
-              <button className={`mb-2 text-lg cursor-pointer hover:underline underline-offset-8 ${item.active && 'border-b-2 border-sky500/50'}`}>
+              <button
+                value={item.name}
+                className={`mb-2 text-lg cursor-pointer hover:underline underline-offset-8 ${item.active && 'border-b-2 border-sky500/50'}`}>
                 {item.name}
               </button>
             </Link>
@@ -31,7 +33,10 @@ export const MobileNavigaiton = (): React.ReactElement => {
 
   return (
     <>
-      <button className="flex flex-col justify-center items-center cursor-pointer" onClick={() => setToggle(!toggle)}>
+      <button
+        data-cy={`toggle-menu-${toggle}`}
+        className="flex flex-col justify-center items-center cursor-pointer"
+        onClick={() => setToggle(!toggle)}>
         {toggle ? (
           <Image src={getCloudinaryUrl('assets/close_tukfuc.png')} width="38" height="38" alt="close" />
         ) : (
@@ -42,6 +47,7 @@ export const MobileNavigaiton = (): React.ReactElement => {
         <ul className="flex flex-col flex-1 items-center text-xl">
           {items.map((item, index) => (
             <button
+              data-cy="navigation-item"
               key={index}
               className={`my-4 first:mt-20 hover:text-2xl ${item.active ? 'border-b-2 border-sky500/50' : ''}`}
               onClick={() => {
@@ -62,6 +68,7 @@ const MobileNavigationList = ({ value, children }: { value: boolean; children: R
   if (value) {
     return (
       <motion.div
+        data-cy="mobile-navigaiton-list"
         initial={{ opacity: 0.5 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}

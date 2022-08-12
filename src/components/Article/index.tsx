@@ -70,7 +70,7 @@ const headerVariant: Variants = {
   },
   hover: {
     shadow: '2px solid black',
-    scale: 1.1,
+    scale: 1.05,
     originX: 0,
     transition: {
       duration: 0.4,
