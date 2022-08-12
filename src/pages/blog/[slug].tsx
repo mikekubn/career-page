@@ -11,7 +11,7 @@ import Tags from '@/components/Tags';
 
 interface IPost {
   content: MDXRemoteSerializeResult;
-  frontmatter: IArticle['metadata'];
+  frontmatter: IArticle['frontmatter'];
 }
 
 const Post: NextPage<{ article: IPost }> = ({ article }) => {

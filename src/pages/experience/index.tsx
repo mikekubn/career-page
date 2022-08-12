@@ -7,51 +7,64 @@ import RunningScrollBar from '@/components/RunningScrollBar';
 import { MiniCard } from '@/components/Card';
 
 export interface IExperience {
-  id: string;
-  title: string;
-  from: string;
-  to: string;
-  where: string;
-  position: string;
-  description: string[];
-  image: string;
+  filename: string;
+  content: string;
+  frontmatter: {
+    id: string;
+    title: string;
+    from: string;
+    to: string;
+    where: string;
+    position: string;
+    description: string[];
+    image: string;
+  };
 }
 
-const Experience: NextPage<{ posts: IExperience[] }> = ({ posts }) => (
-  <>
-    {posts.map((post) => (
-      <Head key={post.id}>
-        <meta name="description" content={`Michael Kubin frontend developer, experience, ${post.where}`} />
-        <meta property="og:title" content={`Michael Kubín ${post.position} ${post.title}`} />
-        <meta property="og:description" content={`experience, ${post.description}`} />
-      </Head>
-    ))}
-    <RunningScrollBar />
-    <section className="flex flex-1 flex-col my-10 md:my-20">
-      {posts.map((post) => (
-        <MiniCard key={post.id} item={post} />
+type Props = {
+  posts: ReturnType<typeof getPosts>;
+};
+
+const Experience: NextPage<Props> = ({ posts }) => {
+  return (
+    <>
+      {posts.map(({ frontmatter }) => (
+        <Head key={frontmatter.id}>
+          <meta name="description" content={`Michael Kubin frontend developer, experience, ${frontmatter.where}`} />
+          <meta property="og:title" content={`Michael Kubín ${frontmatter.position} ${frontmatter.title}`} />
+          <meta property="og:description" content={`experience, ${frontmatter.description}`} />
+        </Head>
       ))}
-    </section>
-  </>
-);
+      <RunningScrollBar />
+      <section className="flex flex-1 flex-col my-10 md:my-20">
+        {posts.map(({ frontmatter }) => (
+          <MiniCard key={frontmatter.id} item={frontmatter as IExperience['frontmatter']} />
+        ))}
+      </section>
+    </>
+  );
+};
 
 export default Experience;
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps<Props> = async () => {
   const profileImages = (await cloudinary.api.resources_by_tag('work', { max_results: 20 })).resources
     .map((resource) => resource.public_id)
     .filter((image) => !image.includes('cover'));
 
-  const posts = getPosts('src/_posts/_experience').sort((a, b) => b.frontmatter.id - a.frontmatter.id);
-
-  const data = posts.map((post) => ({
-    ...post.frontmatter,
-    image: profileImages.find((image) => image.includes(post.filename)),
-  }));
+  const posts = getPosts('src/_posts/_experience')
+    .sort((a, b) => b.frontmatter.id - a.frontmatter.id)
+    .map((post) => ({
+      ...post,
+      frontmatter: {
+        ...post.frontmatter,
+        image: profileImages.find((image) => image.includes(post.filename)),
+      },
+    }));
 
   return {
     props: {
-      posts: data,
+      posts,
     },
   };
 };

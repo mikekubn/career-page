@@ -5,7 +5,7 @@ import BaseArticle from '.';
 const mock: IArticle = {
   filename: 'url-post',
   content: 'content',
-  metadata: {
+  frontmatter: {
     author: 'author',
     date: '07-22-3030',
     tags: ['a', 'b', 'c'],
@@ -23,9 +23,9 @@ describe('Article', () => {
     const excerpt = getByText('excerpt');
     const date = getByTestId('time');
 
-    expect(title.textContent).toEqual(mock.metadata.title);
-    expect(author.textContent).toEqual(mock.metadata.author);
+    expect(title.textContent).toEqual(mock.frontmatter.title);
+    expect(author.textContent).toEqual(mock.frontmatter.author);
     expect(date.textContent).toEqual('22. 7. 3030');
-    expect(excerpt.textContent).toEqual(mock.metadata.excerpt);
+    expect(excerpt.textContent).toEqual(mock.frontmatter.excerpt);
   });
 });
