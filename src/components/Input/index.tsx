@@ -1,18 +1,18 @@
 import React from 'react';
 
-interface IProps {
-  label: string;
-  type: string;
-  name: string;
-  placeholder: string;
-  value: string;
-  handleChange: (e: React.FormEvent<HTMLInputElement>) => void;
-}
+const Input: React.FC<React.HTMLProps<HTMLInputElement>> = (props: React.HTMLProps<HTMLInputElement>): React.ReactElement => {
+  const { value, label, onChange } = props;
 
-const Input = (props: IProps): React.ReactElement => {
-  const { label, name, type, placeholder, value, handleChange } = props;
+  const [val, setVal] = React.useState<string>(value?.toString() || '');
 
-  const sanity = label.toLowerCase().replace(' ', '-');
+  const sanity = label?.toLowerCase().replace(' ', '-');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+
+    setVal(e.currentTarget.value);
+    onChange && onChange(e);
+  };
 
   return (
     <>
@@ -20,15 +20,13 @@ const Input = (props: IProps): React.ReactElement => {
         {label}
       </label>
       <input
-        value={value}
-        onChange={handleChange}
+        className="w-full h-10 pl-2 bg-transparent border-b rounded-lg border-sky500/70 hover:bg-sky500/10"
         data-testid={`input-${sanity}`}
         id={`input-${sanity}`}
+        value={val}
+        onChange={handleChange}
         required
-        type={type}
-        name={name}
-        className="w-full h-10 pl-2 bg-transparent border-b rounded-lg border-sky500/70 hover:bg-sky500/10"
-        placeholder={placeholder}
+        {...props}
       />
     </>
   );

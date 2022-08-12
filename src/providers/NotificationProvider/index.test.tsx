@@ -1,6 +1,6 @@
 import { screen, renderHook, act } from '@testing-library/react';
 import React from 'react';
-import { INotificaiton, NotificationProvider, useNotificationProvider, NotificaitonBox } from '@/provider/NotificationProvider/index';
+import { INotificaiton, NotificationProvider, useNotificationProvider } from '@/provider/NotificationProvider/index';
 
 const default_state_notification: INotificaiton = {
   visible: false,

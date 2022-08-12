@@ -19,11 +19,12 @@ const getPosts = (dir: string) => {
     const filePath = path.join(directory, filename);
     const fileContent = fs.readFileSync(filePath, 'utf8');
 
-    const { data: frontmatter } = matter(fileContent);
+    const { data: frontmatter, content } = matter(fileContent);
 
     return {
       filename: slug,
       frontmatter,
+      content,
     };
   });
 
@@ -34,16 +35,21 @@ const getPost = (dir: string) => {
   const directory = getDirection(dir);
   const file = fs.readFileSync(directory, 'utf8');
 
-  const { data: frontmatter } = matter(file);
+  const { data: frontmatter, content } = matter(file);
 
   return {
     frontmatter,
+    content,
   };
 };
 
 const sanitation = (arr: string[], cut: string): string[] => arr.map((a) => a.replace(cut, ''));
 
 const getCloudinaryUrl = (url: string) => `/career_page/${url}`;
+
+const firstLetterToUpperCase = (str: string) => str?.charAt(0).toUpperCase() + str?.slice(1);
+
+const urlPathnameSanity = (str: string) => str?.replace(/\//g, '').replace(/-/g, ' ').toString();
 
 const cleanTitle = (value: string) => {
   const title = value
@@ -57,9 +63,38 @@ const cleanTitle = (value: string) => {
     return '';
   }
 
-  const firstLetterToUpperCase = title?.charAt(0).toUpperCase() + title?.slice(1);
+  const string = firstLetterToUpperCase(title);
 
-  return firstLetterToUpperCase;
+  return string;
 };
 
-export { getPost, getPosts, getPaths, getDirection, sanitation, getCloudinaryUrl, cleanTitle };
+const sortByDate = (a: string, b: string) => {
+  const date1 = new Date(a);
+  const date2 = new Date(b);
+
+  const result = date2.getTime() - date1.getTime();
+
+  return result;
+};
+
+const createdAt = (str: string) => {
+  const day = new Date(str).getDate();
+  const month = new Date(str).getMonth() + 1;
+  const year = new Date(str).getFullYear();
+
+  return `${day}. ${month}. ${year}`;
+};
+
+export {
+  getPost,
+  getPosts,
+  getPaths,
+  getDirection,
+  sanitation,
+  getCloudinaryUrl,
+  cleanTitle,
+  firstLetterToUpperCase,
+  urlPathnameSanity,
+  sortByDate,
+  createdAt,
+};

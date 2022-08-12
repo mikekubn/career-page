@@ -1,77 +1,54 @@
-import { first } from 'cypress/types/lodash';
-
 describe('Basic behavior', () => {
-  const white = 'rgb(255, 255, 255)';
-  const dark = 'rgb(17, 24, 39)';
-
   beforeEach(() => {
     cy.visit('/');
   });
 
-  it('Scrolling', () => {
-    cy.verifyUrlHash('home');
-
-    cy.visit('/#contact');
-
-    cy.wait(500);
-    cy.verifyUrlHash('contact');
-
+  it('scroll', () => {
+    cy.scrollTo('bottom');
     cy.wait(500);
     cy.dataCy('back-to-top').should('be.visible').click();
 
     cy.wait(500);
-    cy.verifyUrlHash('home');
+    cy.verifyUrl('/');
   });
 
-  it('Theme', () => {
-    cy.scrollTo('top');
-    cy.dataCy('toggle-button').should('be.visible');
-
-    const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    if (isDark) {
-      cy.wait(300);
-      cy.get('body').should('have.css', 'background-color').and('eq', dark);
-    } else {
-      cy.wait(300);
-      cy.get('body').should('have.css', 'background-color').and('eq', white);
-    }
-  });
-
-  it('Home page', () => {
-    const name = 'Michael Kubín';
-    const position = 'Frontend developer';
-
-    cy.verifyUrlHash('home');
-    cy.dataCy('name').should('be.visible').contains(name);
-    cy.dataCy('position').first().should('be.visible').contains(position);
-
-    cy.dataCy('card')
-      .first()
-      .should('be.visible')
-      .then(() => {
-        cy.dataCy('company-name')
-          .first()
-          .then((val) => {
-            cy.dataCy('position-card')
-              .first()
-              .then((str) => {
-                const companyName = val[0].innerText.toLowerCase().replace(' ', '');
-                const positionCard = str[0].innerText.trim();
-
-                cy.dataCy('job-content').first().click({ force: true });
-                cy.verifyUrl(`/experience/${companyName}`);
-
-                cy.wait(500);
-                cy.dataCy('position').should('be.visible').contains(positionCard);
-              });
-          });
+  it('theme', () => {
+    cy.dataCy('button-theme').should('be.visible');
+    cy.dataCy('button-theme').click();
+    cy.dataCy('button-theme')
+      .invoke('text')
+      .then((text) => {
+        if (text === 'Theme light') {
+          cy.dataCy('button-theme').click();
+          cy.get('html').should('have.css', 'color-scheme', 'light');
+          cy.dataCy('button-theme').click();
+          cy.get('html').should('have.css', 'color-scheme', 'dark');
+        }
+        if (text === 'Theme dark') {
+          cy.dataCy('button-theme').click();
+          cy.get('html').should('have.css', 'color-scheme', 'dark');
+          cy.dataCy('button-theme').click();
+          cy.get('html').should('have.css', 'color-scheme', 'light');
+        }
       });
+  });
 
-    cy.dataCy('name').should('be.visible').contains(name);
-    cy.dataCy('job-content').should('be.visible');
-    cy.dataCy('close-btn').should('be.visible').click();
+  it('navigation', () => {
+    const menu = [
+      {
+        eq: 0,
+        name: 'Home',
+      },
+      { eq: 1, name: 'Blog' },
+      { eq: 2, name: 'Experience' },
+    ];
+    const url = (str: { name: string }) => (str.name.toLowerCase() === 'home' ? '/' : `/${str.name.toLowerCase()}`);
 
-    cy.verifyUrlHash('home');
+    menu.map((item) => {
+      cy.dataCy('navigation-item').eq(item.eq).children().should('have.value', item.name).click();
+      cy.request(url(item)).then((res) => {
+        expect(res.status).equal(200);
+      });
+    });
   });
 });

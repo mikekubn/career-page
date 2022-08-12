@@ -62,7 +62,7 @@ const useNotificationProvider = () => {
   const context = React.useContext(NotificationContext);
 
   if (context === undefined) {
-    throw new Error('useNotificationProvider must be used within a ThemeProvider');
+    throw new Error('useNotificationProvider must be used within a NotificationProvider');
   }
 
   return context;
