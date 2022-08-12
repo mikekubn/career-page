@@ -23,3 +23,7 @@ Object.defineProperty(window, 'matchMedia', {
   writable: true,
   value: jest.fn().mockImplementation(() => defaultMatchMedia),
 });
+
+export const setMatchMediaProperties = (properties: Partial<MediaQueryList>): void => {
+  global.matchMedia = () => Object.assign(defaultMatchMedia, properties);
+};

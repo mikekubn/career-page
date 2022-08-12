@@ -1,80 +1,55 @@
 import React from 'react';
-import type { GetStaticProps, NextPage } from 'next';
-import Head from 'next/head';
+import type { NextPage } from 'next';
+import Image from 'next/image';
+import Card from '@/components/Card';
 import dynamic from 'next/dynamic';
-import { getPosts } from 'src/lib/utils';
-import cloudinary from 'cloudinary.config';
+import Head from 'next/head';
+import { LgParagraph } from '@/components/Typography';
 
-const HomeSection = dynamic(() => import('@/components/Sections/HomeSection'));
-const ContactSection = dynamic(() => import('@/components/Sections/ContactSection'));
+const DynamicForm = dynamic(() => import('@/components/Form'));
 
-export interface IParamsProps {
-  posts: {
-    filename: string;
-    frontmatter: {
-      description: string[];
-      cover: string;
-      from: string;
-      id: number;
-      image: string;
-      position: string;
-      title: string;
-      to: string;
-      where: string;
-    };
-  }[];
-  resources: {
-    technology: string[];
-  };
-}
-
-const Home: NextPage<IParamsProps> = ({ posts, resources }) => {
-  return (
-    <>
-      <Head>
-        <title>Michael Kubín</title>
-        <meta name="description" content="Michael Kubin frontend developer, career web" />
-        <meta property="og:title" content="Michael Kubin - Frontend developer" />
-        <meta property="og:description" content="Michael Kubin work experience" />
-        <meta property="og:url" content="https://mikekubn.cz/" />
-        <meta property="og:type" content="website" />
-      </Head>
-      <HomeSection posts={posts} />
-      <ContactSection resources={resources} />
-    </>
-  );
-};
+const Home: NextPage = () => (
+  <>
+    <Head>
+      <meta name="description" content="Michael Kubin frontend developer, introducing" />
+      <meta property="og:title" content="Michael Kubin - Frontend developer" />
+      <meta property="og:description" content="Michael Kubin introducing" />
+    </Head>
+    <section className="flex flex-col flex-1">
+      <div className="flex flex-row justify-center mt-6 md:mt-14 md:h-40">
+        <span className="w-20 h-20 md:w-40 md:h-40">
+          <Image alt="profile-image" src="career_page/profile/home_photo_circle_k9t68o" width="160" height="160" className="rounded-full" />
+        </span>
+        <div className="flex flex-col pl-4 md:pl-10 my-auto cursor-default leading-relaxed tracking-wide">
+          <h1 className="text-2xl font-medium">Michael Kubín</h1>
+          <h2 className="text-xl font-medium">Webscope</h2>
+          <p className="text-lg font-light italic">React, Frontend, Next.js 🚀</p>
+        </div>
+      </div>
+    </section>
+    <section className="flex flex-col items-center md:flex-row md:justify-between lg:w-11/12 lg:mx-auto xl:w-9/12 xl:mx-auto">
+      <Card title="About Me">
+        <LgParagraph className="p-3 md:p-6">
+          Hi everyone, I&apos;m Michael and I&apos;m a frontend developer mostly working with React and I really enjoy working with the Cypress e2e
+          testing framework 👨‍💻. I love hiking, so when I&apos;m not coding I enjoy the peace and quiet there ⛰ 🥾.
+        </LgParagraph>
+      </Card>
+      <Card title="My Stack">
+        <div className="p-2 md:p-6 flex flex-row flex-1 flex-wrap">
+          {myStack.map((item) => (
+            <LgParagraph key={item} className="text-center rounded-xl shadow-lg shadow-black p-2 m-1 mb-4">
+              {item}
+            </LgParagraph>
+          ))}
+        </div>
+      </Card>
+    </section>
+    <section className="my-16 md:my-20 xl:my-24 flex flex-1 flex-row justify-center">
+      <DynamicForm />
+    </section>
+  </>
+);
 
 export default Home;
 
-export const getStaticProps: GetStaticProps = async () => {
-  const images = (await cloudinary.api.resources_by_tag('work', { max_results: 20 })).resources.map((resource) => resource.public_id);
-
-  const technology = (await cloudinary.api.resources_by_tag('technology', { max_results: 20 })).resources.map((resource) => resource.public_id);
-
-  const _posts = getPosts('src/_posts').sort((a, b) => b.frontmatter.id - a.frontmatter.id);
-
-  const posts = _posts.map((post) => {
-    const image = images
-      .filter((img) => !img.includes('cover'))
-      .filter((job) => job.includes(post.filename))
-      .toLocaleString();
-
-    return {
-      filename: post.filename,
-      frontmatter: {
-        ...post.frontmatter,
-        image,
-      },
-    };
-  });
-
-  return {
-    props: {
-      posts: posts,
-      resources: {
-        technology,
-      },
-    },
-  };
-};
+const myStack = ['Frontend Development 👨‍💻', 'End to End testing 🧪🪛', 'Cypress', 'React 🏢', 'TypeScript ❤️', 'Next.js 🏎'];

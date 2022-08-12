@@ -1,35 +1,23 @@
 import React from 'react';
-import Head from 'next/head';
 import type { NextPage } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { useRealHeight } from '@/hooks/useRealHeight';
 
-const Custom404: NextPage = (): React.ReactElement => (
-  <>
-    <Head>
-      <title>Michael Kubín | 404</title>
-      <meta name="description" content="Michael Kubín career web" />
-      <meta property="og:title" content="Michael Kubín" />
-      <meta property="og:url" content="https://mikekubn.cz/" />
-      <meta property="og:type" content="website" />
-    </Head>
-    <div className="h-screen flex justify-center items-center">
-      <div className="flex-col-1 justify-center items-center">
-        <h1 className="font-AsapItal text-3xl mb-16">Not Found</h1>
-        <motion.div
-          transition={{ yoyo: Infinity }}
-          animate={{
-            scale: [0.8, 1],
-          }}>
-          <Image src="/img/smiley-sad.png" alt="Error 404 smile sad" width={300} height={300} />
-        </motion.div>
+const Error404: NextPage = (): React.ReactElement => {
+  const { height } = useRealHeight();
+
+  return (
+    <>
+      <section className="flex flex-col items-center justify-center" style={{ minHeight: `${height}px` }}>
+        <h1 className="text-3xl mb-16 text-center px-4">Sorry page was not found 404</h1>
         <Link href="/" scroll={false} replace passHref>
-          <a className="button-style mt-16">Go Home</a>
+          <button className="p-4 rounded-full shadow-lg shadow-black dark:shadow-white flex flex-row justify-center bg-sky500/50 hover:border hover:border-black">
+            Do you want to go to the home page?
+          </button>
         </Link>
-      </div>
-    </div>
-  </>
-);
+      </section>
+    </>
+  );
+};
 
-export default Custom404;
+export default Error404;

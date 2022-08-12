@@ -5,7 +5,7 @@
   "main": "pages/_app.tsx",
   "author": "Michael Kubín",
   "scripts": {
-    "dev": "open http://localhost:3000 && next dev",
+    "dev": "next dev",
     "dev:https": "local-ssl-proxy --source 3001 --target 3000",
     "build": "next build",
     "export": "next export",
@@ -23,12 +23,15 @@
     "framer-motion": "^6.5.1",
     "gray-matter": "^4.0.3",
     "next": "^12.2.3",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "next-mdx-remote": "^4.1.0",
+    "next-themes": "^0.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^12.2.0",
     "@react-hook/media-query": "^1.1.1",
+    "@tailwindcss/typography": "^0.5.4",
     "@testing-library/dom": "^8.16.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
@@ -57,6 +60,7 @@
     "husky": "^8.0.0",
     "jest": "^27.5.1",
     "lint-staged": "^13.0.3",
+    "next-router-mock": "^0.7.4",
     "postcss": "^8.4.14",
     "prettier": "2.7.1",
     "pretty-quick": "^3.1.3",

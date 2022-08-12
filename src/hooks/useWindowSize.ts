@@ -30,7 +30,7 @@ const useWindowSize = (): IWindowSize => {
   }, []);
 
   React.useEffect(() => {
-    if (size.width < 700) {
+    if (size.width < 767) {
       setIsMobile(true);
     }
 
