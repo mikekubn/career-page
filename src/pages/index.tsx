@@ -6,10 +6,6 @@ import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import { LgParagraph } from '@/components/Typography';
 
-// Categories
-// Test e2e, unit
-// Copy button blog
-
 const DynamicForm = dynamic(() => import('@/components/Form'));
 
 const Home: NextPage = () => (
