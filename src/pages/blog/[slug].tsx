@@ -8,6 +8,9 @@ import { Paragraph, Time } from '@/components/Typography';
 import Tags from '@/components/Tags';
 import { IArticle } from '@/lib/types';
 import { NextParsedUrlQuery } from 'next/dist/server/request-meta';
+import AnimatedButton from '@/components/Button';
+import { useRouter } from 'next/router';
+import { useNotificationProvider } from '@/provider/NotificationProvider';
 
 interface IArticleProps extends Partial<Omit<IArticle, 'content'>> {
   content: MDXRemoteSerializeResult;
@@ -20,6 +23,8 @@ type Props = {
 type Params = NextParsedUrlQuery & Pick<IArticle, 'slug'>;
 
 const Post: NextPage<Props> = ({ article }) => {
+  const { back } = useRouter();
+  const { dispatch } = useNotificationProvider();
   const { content, frontmatter } = article;
 
   if (!frontmatter) {
@@ -30,6 +35,15 @@ const Post: NextPage<Props> = ({ article }) => {
   const created = createdAt(date);
   const mdx_content = content as unknown as MDXRemoteSerializeResult;
 
+  const handleClick = async () => {
+    try {
+      await navigator.clipboard.writeText(`${window.location.href}`);
+      dispatch({ visible: true, status: 'success', note: 'Copied success.' });
+    } catch (e) {
+      dispatch({ visible: true, status: 'error', note: 'Copied failed.' });
+    }
+  };
+
   return (
     <>
       <Head>
@@ -39,12 +53,13 @@ const Post: NextPage<Props> = ({ article }) => {
       </Head>
       <RunningScrollBar />
       <section className="my-6 w-4/5 xl:w-3/5 mx-auto lg:mt-10 lg:mb-20">
-        <div className="bg-yellow flex flex-row justify-between">
-          <p>Back arrow</p>
-          <p>Copy Link</p>
+        <div className="flex flex-row justify-between">
+          <AnimatedButton title="🔙 Back" onClick={() => back()} />
+          <AnimatedButton title="🔗 Copy link" onClick={handleClick} />
         </div>
         <div className="flex flex-row mt-10 justify-between">
           <Time>{created}</Time>
+          <Paragraph>reading time</Paragraph>
           <Paragraph>{author}</Paragraph>
         </div>
         <Tags items={tags} className="my-6 lg:my-8" />
