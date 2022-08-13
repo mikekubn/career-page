@@ -5,24 +5,10 @@ import cloudinary from 'cloudinary.config';
 import { getPosts } from '@/lib/utils';
 import RunningScrollBar from '@/components/RunningScrollBar';
 import { MiniCard } from '@/components/Card';
-
-export interface IExperience {
-  filename: string;
-  content: string;
-  frontmatter: {
-    id: string;
-    title: string;
-    from: string;
-    to: string;
-    where: string;
-    position: string;
-    description: string[];
-    image: string;
-  };
-}
+import { IExperience } from '@/lib/types';
 
 type Props = {
-  posts: ReturnType<typeof getPosts>;
+  posts: IExperience[];
 };
 
 const Experience: NextPage<Props> = ({ posts }) => {
@@ -38,7 +24,7 @@ const Experience: NextPage<Props> = ({ posts }) => {
       <RunningScrollBar />
       <section className="flex flex-1 flex-col my-10 md:my-20">
         {posts.map(({ frontmatter }) => (
-          <MiniCard key={frontmatter.id} item={frontmatter as IExperience['frontmatter']} />
+          <MiniCard key={frontmatter.id} item={frontmatter} />
         ))}
       </section>
     </>
@@ -52,15 +38,15 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     .map((resource) => resource.public_id)
     .filter((image) => !image.includes('cover'));
 
-  const posts = getPosts('src/_posts/_experience')
+  const posts: IExperience[] = getPosts('src/_posts/_experience')
     .sort((a, b) => b.frontmatter.id - a.frontmatter.id)
     .map((post) => ({
       ...post,
       frontmatter: {
-        ...post.frontmatter,
-        image: profileImages.find((image) => image.includes(post.filename)),
+        ...(post.frontmatter as IExperience['frontmatter']),
+        image: profileImages.find((image) => image.includes(post.slug)),
       },
-    }));
+    })) as IExperience[];
 
   return {
     props: {

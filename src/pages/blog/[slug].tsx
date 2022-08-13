@@ -1,22 +1,34 @@
 import { createdAt, getPaths, getPost } from '@/lib/utils';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import { ParsedUrlQuery } from 'querystring';
-import { IArticle } from '.';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
 import Head from 'next/head';
 import RunningScrollBar from '@/components/RunningScrollBar';
 import { Paragraph, Time } from '@/components/Typography';
 import Tags from '@/components/Tags';
+import { IArticle } from '@/lib/types';
+import { NextParsedUrlQuery } from 'next/dist/server/request-meta';
+
+interface IArticleProps extends Partial<Omit<IArticle, 'content'>> {
+  content: MDXRemoteSerializeResult;
+}
 
 type Props = {
-  article: IArticle;
+  article: IArticleProps;
 };
+
+type Params = NextParsedUrlQuery & Pick<IArticle, 'slug'>;
 
 const Post: NextPage<Props> = ({ article }) => {
   const { content, frontmatter } = article;
+
+  if (!frontmatter) {
+    return <></>;
+  }
+
   const { date, author, tags } = frontmatter;
   const created = createdAt(date);
+  const mdx_content = content as unknown as MDXRemoteSerializeResult;
 
   return (
     <>
@@ -33,7 +45,7 @@ const Post: NextPage<Props> = ({ article }) => {
         </div>
         <Tags items={tags} className="my-6 lg:my-8" />
         <article className="prose lg:prose-lg prose-zinc lg:prose-h1:pb-10 max-w-none dark:prose-invert prose-a:text-sky500 prose-pre:bg-gray900 hover:prose-pre:bg-gray700 hover:prose-a:text-red400/60">
-          <MDXRemote {...(content as unknown as MDXRemoteSerializeResult)} />
+          <MDXRemote {...mdx_content} />
         </article>
       </section>
     </>
@@ -42,29 +54,24 @@ const Post: NextPage<Props> = ({ article }) => {
 
 export default Post;
 
-interface IParams extends ParsedUrlQuery {
-  slug: string;
-}
+export const getStaticProps: GetStaticProps<Props, Params> = async (context) => {
+  const { params } = context;
 
-export const getStaticPaths: GetStaticPaths = () => {
-  const articles = getPaths('src/_posts/_blog');
-  const paths = articles.map((article) => ({ params: { slug: article } }));
+  if (!params) {
+    return {
+      notFound: true,
+    };
+  }
 
-  return {
-    fallback: 'blocking',
-    paths,
-  };
-};
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const post = getPost(`src/_posts/_blog/${params?.slug}.md`);
+  const { slug } = params;
+  const post = getPost(`src/_posts/_blog/${slug}.md`);
   const { content } = post;
 
   const mdxSource = await serialize(content);
 
-  const article = {
+  const article: IArticleProps = {
     content: mdxSource,
-    frontmatter: { ...post.frontmatter, date: post.frontmatter.date.toString() },
+    frontmatter: { ...(post.frontmatter as IArticle['frontmatter']), date: post.frontmatter.date.toString() },
   };
 
   return {
@@ -72,5 +79,15 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       article,
     },
     revalidate: 10,
+  };
+};
+
+export const getStaticPaths: GetStaticPaths = () => {
+  const articles = getPaths('src/_posts/_blog');
+  const paths = articles.map((article) => ({ params: { slug: article } }));
+
+  return {
+    fallback: 'blocking',
+    paths: paths,
   };
 };

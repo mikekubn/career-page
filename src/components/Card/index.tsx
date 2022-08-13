@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { IExperience } from 'src/pages/experience';
 import { H1, H2, Paragraph, Time } from '../Typography';
+import { IExperience } from '@/lib/types';
 
 const Card = ({ children, title }: { title: string; children: React.ReactNode }): React.ReactElement => {
   const countOfRing = new Array(5).fill('ring');

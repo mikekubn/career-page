@@ -1,11 +1,11 @@
 import { motion, Variants } from 'framer-motion';
 import Link from 'next/link';
 import React from 'react';
-import { IArticle } from 'src/pages/blog';
 import { ArticleParagraph, Paragraph, Time } from '@/components/Typography';
 import AnimatedButton from '../Button';
 import { createdAt } from '@/lib/utils';
 import Tags from '../Tags';
+import { IArticle } from '@/lib/types';
 
 interface IProps extends React.HTMLProps<HTMLDivElement> {
   article: IArticle;
@@ -18,7 +18,7 @@ const BaseArticle: React.FC<IProps> = (props: IProps) => {
   const createdDate = createdAt(date);
 
   const HeaderWithLink = (): React.ReactElement => (
-    <Link aria-label="post-link" href="/blog/[slug]" as={`/blog/${article.filename}`} passHref>
+    <Link aria-label="post-link" href="/blog/[slug]" as={`/blog/${article.slug}`} passHref>
       <motion.h1
         variants={headerVariant}
         className="pt-2 text-base md:text-lg lg:text-lg xl:text-xl font-semibold mb-4 cursor-pointer tracking-wide hover:text-sky500">
@@ -42,7 +42,7 @@ const BaseArticle: React.FC<IProps> = (props: IProps) => {
         <Paragraph>{author}</Paragraph>
       </div>
       <div className="text-center mb-3">
-        <Link aria-label="post-link" href="/blog/[slug]" as={`/blog/${article.filename}`} passHref>
+        <Link aria-label="post-link" href="/blog/[slug]" as={`/blog/${article.slug}`} passHref>
           <AnimatedButton title="Read more 📚" />
         </Link>
       </div>

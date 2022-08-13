@@ -4,21 +4,10 @@ import Head from 'next/head';
 import { getPosts, sortByDate } from '@/lib/utils';
 import RunningScrollBar from '@/components/RunningScrollBar';
 import BaseArticle from '@/components/Article';
-
-export interface IArticle {
-  filename: string;
-  content: string;
-  frontmatter: {
-    author: string;
-    date: string;
-    tags: string[];
-    title: string;
-    excerpt: string;
-  };
-}
+import { IArticle } from '@/lib/types';
 
 type Props = {
-  articles: ReturnType<typeof getPosts>;
+  articles: IArticle[];
 };
 
 const Blog: NextPage<Props> = ({ articles }) => {
@@ -32,7 +21,7 @@ const Blog: NextPage<Props> = ({ articles }) => {
       <RunningScrollBar />
       <section className="mx-auto w-11/12 md:w-3/4 lg:w-2/3 xl:w-1/2 pt-8">
         {articles?.map((article) => (
-          <BaseArticle key={article.filename} article={article as IArticle} />
+          <BaseArticle key={article.slug} article={article} />
         ))}
       </section>
     </>
@@ -50,7 +39,7 @@ export const getStaticProps: GetStaticProps<Props> = () => {
         ...(article.frontmatter as IArticle['frontmatter']),
         date: article.frontmatter.date.toString(),
       },
-    }));
+    })) as IArticle[];
 
   return {
     props: {

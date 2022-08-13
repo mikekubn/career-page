@@ -1,16 +1,18 @@
 import matter from 'gray-matter';
 import path from 'path';
 import fs from 'fs';
+import { Post } from './types';
 
 const getDirection = (str: string): string => path.join(process.cwd(), str);
 
 const getPaths = (str: string) => {
   const directory = getDirection(str);
   const filenames = fs.readdirSync(directory);
-  return sanitation(filenames, '.md');
+  const slug = sanitation(filenames, '.md');
+  return slug;
 };
 
-const getPosts = (dir: string) => {
+const getPosts = (dir: string): Post[] => {
   const directory = getDirection(dir);
   const filenames = fs.readdirSync(directory);
 
@@ -22,7 +24,7 @@ const getPosts = (dir: string) => {
     const { data: frontmatter, content } = matter(fileContent);
 
     return {
-      filename: slug,
+      slug,
       frontmatter,
       content,
     };
@@ -31,13 +33,16 @@ const getPosts = (dir: string) => {
   return posts;
 };
 
-const getPost = (dir: string) => {
+const getPost = (dir: string): Post => {
   const directory = getDirection(dir);
+  const basename = path.basename(dir);
+  const slug = basename.replace('.md', '');
   const file = fs.readFileSync(directory, 'utf8');
 
   const { data: frontmatter, content } = matter(file);
 
   return {
+    slug,
     frontmatter,
     content,
   };
