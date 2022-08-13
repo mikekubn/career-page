@@ -38,7 +38,11 @@ const Post: NextPage<Props> = ({ article }) => {
         <meta property="og:description" content={frontmatter.excerpt} />
       </Head>
       <RunningScrollBar />
-      <section className="my-6 w-4/5 xl:w-3/5 mx-auto lg:my-20">
+      <section className="my-6 w-4/5 xl:w-3/5 mx-auto lg:mt-10 lg:mb-20">
+        <div className="bg-yellow flex flex-row justify-between">
+          <p>Back arrow</p>
+          <p>Copy Link</p>
+        </div>
         <div className="flex flex-row mt-10 justify-between">
           <Time>{created}</Time>
           <Paragraph>{author}</Paragraph>

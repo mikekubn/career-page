@@ -27,6 +27,10 @@ describe('useActiveItem', () => {
         level: 'main',
         name: 'Blog',
         url: '/blog',
+        childrens: [
+          { name: 'Next.js import and resize SVG in styled components', url: '/nextjs-styledcomponents-svg-resize' },
+          { name: 'How use npm link in pnpm overwrites', url: '/pnpm-npm-link-overwrites' },
+        ],
         active: true,
       },
       {

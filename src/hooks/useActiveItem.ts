@@ -6,7 +6,9 @@ interface IMenuItems extends INavigation {
 }
 
 const useActiveItem = () => {
-  const { pathname } = useRouter();
+  const { pathname, asPath } = useRouter();
+  let url: string;
+
   const breadcrumbs: IMenuItems[] = menuItemConfig
     .filter((item) => item.enabled)
     .filter((item) => item.level === 'breadcrumbs')
@@ -24,12 +26,19 @@ const useActiveItem = () => {
     .filter((item) => item.enabled)
     .filter((item) => item.level === 'main')
     .map((item) => {
-      if (item.url === pathname) {
+      url = item.url;
+
+      item.childrens?.map((children) => {
+        if (asPath.includes(children.url)) url = `${item.url}${children.url}`;
+      });
+
+      if (url === asPath) {
         return {
           ...item,
           active: true,
         };
       }
+
       return { ...item };
     });
 
