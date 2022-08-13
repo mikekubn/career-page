@@ -11,6 +11,7 @@ import { NextParsedUrlQuery } from 'next/dist/server/request-meta';
 import AnimatedButton from '@/components/Button';
 import { useRouter } from 'next/router';
 import { useNotificationProvider } from '@/provider/NotificationProvider';
+import readingTime, { ReadTimeResults } from 'reading-time';
 
 interface IArticleProps extends Partial<Omit<IArticle, 'content'>> {
   content: MDXRemoteSerializeResult;
@@ -31,9 +32,8 @@ const Post: NextPage<Props> = ({ article }) => {
     return <></>;
   }
 
-  const { date, author, tags } = frontmatter;
+  const { date, author, tags, readTime } = frontmatter;
   const created = createdAt(date);
-  const mdx_content = content as unknown as MDXRemoteSerializeResult;
 
   const handleClick = async () => {
     try {
@@ -59,12 +59,12 @@ const Post: NextPage<Props> = ({ article }) => {
         </div>
         <div className="flex flex-row mt-10 justify-between">
           <Time>{created}</Time>
-          <Paragraph>reading time</Paragraph>
+          <Paragraph>{readTime.text}</Paragraph>
           <Paragraph>{author}</Paragraph>
         </div>
         <Tags items={tags} className="my-6 lg:my-8" />
         <article className="prose lg:prose-lg prose-zinc lg:prose-h1:pb-10 max-w-none dark:prose-invert prose-a:text-sky500 prose-pre:bg-gray900 hover:prose-pre:bg-gray700 hover:prose-a:text-red400/60">
-          <MDXRemote {...mdx_content} />
+          <MDXRemote {...content} />
         </article>
       </section>
     </>
@@ -86,11 +86,13 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context) => 
   const post = getPost(`src/_posts/_blog/${slug}.md`);
   const { content } = post;
 
+  const readTime: ReadTimeResults = readingTime(content);
+
   const mdxSource = await serialize(content);
 
   const article: IArticleProps = {
     content: mdxSource,
-    frontmatter: { ...(post.frontmatter as IArticle['frontmatter']), date: post.frontmatter.date.toString() },
+    frontmatter: { ...(post.frontmatter as IArticle['frontmatter']), date: post.frontmatter.date.toString(), readTime },
   };
 
   return {

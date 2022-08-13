@@ -1,3 +1,5 @@
+import { ReadTimeResults } from 'reading-time';
+
 export type Post = {
   slug: string;
   frontmatter: {
@@ -26,5 +28,6 @@ export interface IArticle extends Omit<Post, 'frontmatter'> {
     tags: string[];
     title: string;
     excerpt: string;
+    readTime: ReadTimeResults;
   };
 }
