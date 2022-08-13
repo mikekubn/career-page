@@ -1,11 +1,11 @@
 import { motion, Variants } from 'framer-motion';
 import Link from 'next/link';
 import React from 'react';
-import { IArticle } from 'src/pages/blog';
 import { ArticleParagraph, Paragraph, Time } from '@/components/Typography';
 import AnimatedButton from '../Button';
 import { createdAt } from '@/lib/utils';
 import Tags from '../Tags';
+import { IArticle } from '@/lib/types';
 
 interface IProps extends React.HTMLProps<HTMLDivElement> {
   article: IArticle;
@@ -13,16 +13,16 @@ interface IProps extends React.HTMLProps<HTMLDivElement> {
 
 const BaseArticle: React.FC<IProps> = (props: IProps) => {
   const { article } = props;
-  const { date } = article.metadata;
+  const { date, title, excerpt, author, tags } = article.frontmatter;
 
   const createdDate = createdAt(date);
 
   const HeaderWithLink = (): React.ReactElement => (
-    <Link aria-label="post-link" href="/blog/[slug]" as={`/blog/${article.filename}`} passHref>
+    <Link aria-label="post-link" href="/blog/[slug]" as={`/blog/${article.slug}`} passHref>
       <motion.h1
         variants={headerVariant}
         className="pt-2 text-base md:text-lg lg:text-lg xl:text-xl font-semibold mb-4 cursor-pointer tracking-wide hover:text-sky500">
-        {article.metadata.title}
+        {title}
       </motion.h1>
     </Link>
   );
@@ -35,14 +35,14 @@ const BaseArticle: React.FC<IProps> = (props: IProps) => {
       variants={articleVariants}
       className="m-4 p-4 pt-0 mb-14 border-b border-black border-dashed hover:bg-gray/10 rounded-lg">
       <HeaderWithLink />
-      <Tags items={article.metadata.tags} />
-      <ArticleParagraph className="my-6 italic text-left">{article.metadata.excerpt}</ArticleParagraph>
+      <Tags items={tags} />
+      <ArticleParagraph className="my-6 italic text-left">{excerpt}</ArticleParagraph>
       <div className="flex flex-row justify-between mb-3">
         <Time>{createdDate}</Time>
-        <Paragraph>{article.metadata.author}</Paragraph>
+        <Paragraph>{author}</Paragraph>
       </div>
       <div className="text-center mb-3">
-        <Link aria-label="post-link" href="/blog/[slug]" as={`/blog/${article.filename}`} passHref>
+        <Link aria-label="post-link" href="/blog/[slug]" as={`/blog/${article.slug}`} passHref>
           <AnimatedButton title="Read more 📚" />
         </Link>
       </div>

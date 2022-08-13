@@ -4,20 +4,13 @@ import Head from 'next/head';
 import { getPosts, sortByDate } from '@/lib/utils';
 import RunningScrollBar from '@/components/RunningScrollBar';
 import BaseArticle from '@/components/Article';
+import { IArticle } from '@/lib/types';
 
-export interface IArticle {
-  filename: string;
-  content: string;
-  metadata: {
-    author: string;
-    date: string;
-    tags: string[];
-    title: string;
-    excerpt: string;
-  };
-}
+type Props = {
+  articles: IArticle[];
+};
 
-const Blog: NextPage<{ articles: IArticle[] }> = ({ articles }) => {
+const Blog: NextPage<Props> = ({ articles }) => {
   return (
     <>
       <Head>
@@ -28,7 +21,7 @@ const Blog: NextPage<{ articles: IArticle[] }> = ({ articles }) => {
       <RunningScrollBar />
       <section className="mx-auto w-11/12 md:w-3/4 lg:w-2/3 xl:w-1/2 pt-8">
         {articles?.map((article) => (
-          <BaseArticle key={article.filename} article={article} />
+          <BaseArticle key={article.slug} article={article} />
         ))}
       </section>
     </>
@@ -37,17 +30,20 @@ const Blog: NextPage<{ articles: IArticle[] }> = ({ articles }) => {
 
 export default Blog;
 
-export const getStaticProps: GetStaticProps = () => {
-  const articles = getPosts('src/_posts/_blog').sort((a, b) => sortByDate(a.frontmatter.date, b.frontmatter.date));
-
-  const data = articles.map(({ filename, frontmatter }) => ({
-    filename: filename,
-    metadata: frontmatter,
-  }));
+export const getStaticProps: GetStaticProps<Props> = () => {
+  const articles: IArticle[] = getPosts('src/_posts/_blog')
+    .sort((a, b) => sortByDate(a.frontmatter.date, b.frontmatter.date))
+    .map((article) => ({
+      ...article,
+      frontmatter: {
+        ...(article.frontmatter as IArticle['frontmatter']),
+        date: article.frontmatter.date.toString(),
+      },
+    })) as IArticle[];
 
   return {
     props: {
-      articles: JSON.parse(JSON.stringify(data)),
+      articles,
     },
   };
 };

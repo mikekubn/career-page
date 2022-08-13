@@ -2,9 +2,7 @@
 author: Michael Kubín
 date: 2022-07-24
 tags:
-  - npm
   - pnpm
-  - overwrites
   - link
 title: How use npm link in pnpm overwrites
 excerpt: >-
