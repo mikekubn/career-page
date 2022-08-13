@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
 import { H1, H2, Paragraph, Time } from '../Typography';
 import { IExperience } from '@/lib/types';
@@ -23,30 +23,42 @@ const Card = ({ children, title }: { title: string; children: React.ReactNode })
   );
 };
 
-const MiniCard = ({ item }: { item: IExperience['frontmatter'] }): React.ReactElement => (
-  <ol className="relative border-l mx-auto w-10/12 md:w-3/5 lg:w-3/5 xl:w-2/5">
-    <li className="mb-20 ml-12 sm:ml-16 md:ml-24 md:w-3/4 lg:w-[430px] rounded-xl bg-sky500/50 shadow-lg shadow-black">
-      <span className="flex absolute -left-5 md:-left-8 justify-center items-center w-11 h-11 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full ring-8 dark-mode">
-        <Image alt={item.image} src={item.image} height="62" width="62" className="rounded-full" />
-      </span>
-      <section className="pt-2 p-6 lg:pt-4 lg:p-8 rounded-xl">
-        <Time className="text-sm font-normal">
-          From: {item.from} {item.to && `To: ${item.to}`}
-        </Time>
-        <H1>{item.title}</H1>
-        <Paragraph className="pt-1 pb-2">{item.where}</Paragraph>
-        <H2 className="pb-4">{item.position}</H2>
-        <ul>
-          {item.description.map((text, index) => (
-            <li key={index} className="list-disc font-light leading-loose">
-              <Paragraph>{text}</Paragraph>
-            </li>
-          ))}
-        </ul>
-      </section>
-    </li>
-  </ol>
-);
+const MiniCard = ({ item }: { item: IExperience['frontmatter'] }): React.ReactElement => {
+  const ref = React.useRef(null);
+  const isInView = useInView(ref, { once: true });
+
+  return (
+    <ol
+      className="relative border-l mx-auto w-10/12 md:w-3/5 lg:w-3/5 xl:w-2/5"
+      ref={ref}
+      style={{
+        transform: isInView ? 'none' : 'translateX(-200px)',
+        opacity: isInView ? 1 : 0,
+        transition: 'all 0.3s cubic-bezier(0.17, 0.55, 0.55, 1) 0.4s',
+      }}>
+      <li className="mb-20 ml-12 sm:ml-16 md:ml-24 md:w-3/4 lg:w-[430px] rounded-xl bg-sky500/50 shadow-lg shadow-black">
+        <span className="flex absolute -left-5 md:-left-8 justify-center items-center w-11 h-11 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full ring-8 dark-mode">
+          <Image alt={item.image} src={item.image} height="62" width="62" className="rounded-full" />
+        </span>
+        <section className="pt-2 p-6 lg:pt-4 lg:p-8 rounded-xl">
+          <Time className="text-sm font-normal">
+            From: {item.from} {item.to && `To: ${item.to}`}
+          </Time>
+          <H1>{item.title}</H1>
+          <Paragraph className="pt-1 pb-2">{item.where}</Paragraph>
+          <H2 className="pb-4">{item.position}</H2>
+          <ul>
+            {item.description.map((text, index) => (
+              <li key={index} className="list-disc font-light leading-loose">
+                <Paragraph>{text}</Paragraph>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </li>
+    </ol>
+  );
+};
 
 export { MiniCard };
 export default Card;
