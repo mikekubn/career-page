@@ -18,7 +18,7 @@
     "cy:run": "cypress run --config-file ./cypress.config.ts -b chrome"
   },
   "dependencies": {
-    "@emailjs/browser": "^3.6.2",
+    "@emailjs/browser": "^3.7.0",
     "cloudinary": "^1.31.0",
     "framer-motion": "^7.2.1",
     "gray-matter": "^4.0.3",
