@@ -45,7 +45,7 @@
     "@typescript-eslint/parser": "^5.32.0",
     "autoprefixer": "^10.4.8",
     "classnames": "^2.3.1",
-    "cypress": "^10.3.1",
+    "cypress": "^10.7.0",
     "dotenv": "^16.0.1",
     "dotenv-cli": "^6.0.0",
     "eslint": "^8.21.0",
