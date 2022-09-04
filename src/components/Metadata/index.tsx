@@ -2,7 +2,6 @@ import React from 'react';
 import Head from 'next/head';
 import { ParsedUrlQuery } from 'querystring';
 import { firstLetterToUpperCase, urlPathnameSanity } from '@/lib/utils';
-import { useTheme } from 'next-themes';
 
 export interface IMetadata {
   title: string;
@@ -12,7 +11,6 @@ export interface IMetadata {
 }
 
 const Metadata = ({ metadata }: { metadata: IMetadata }): React.ReactElement => {
-  const { theme } = useTheme();
   const { slug } = metadata.query;
   let title: string = metadata.title;
 

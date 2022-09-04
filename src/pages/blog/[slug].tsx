@@ -1,5 +1,5 @@
 import { createdAt, getPaths, getPost } from '@/lib/utils';
-import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
 import Head from 'next/head';
@@ -13,6 +13,7 @@ import readingTime, { ReadTimeResults } from 'reading-time';
 import { NextPageWithLayout } from '../_app';
 import Header from '@/layouts/Header';
 import MainLayout from '@/layouts/Layout';
+import BlogLayout from '@/layouts/Layout/BlogLayout';
 
 interface IArticleProps extends Partial<Omit<IArticle, 'content'>> {
   content: MDXRemoteSerializeResult;
@@ -52,7 +53,7 @@ const Post: NextPageWithLayout<Props> = ({ article }) => {
         <meta property="og:title" content={frontmatter.title} />
         <meta property="og:description" content={frontmatter.excerpt} />
       </Head>
-      <section className="my-6 w-4/5 xl:w-3/5 mx-auto lg:mt-10 lg:mb-20">
+      <section className="my-10 w-4/5 xl:w-3/5 mx-auto lg:mt-10 lg:mb-20">
         <div className="flex flex-row justify-between">
           <Button onClick={() => back()} className="px-4 py-1 text-sm">
             🔙 Back
@@ -67,7 +68,7 @@ const Post: NextPageWithLayout<Props> = ({ article }) => {
           <Paragraph>{author}</Paragraph>
         </div>
         <Tags items={tags} className="my-6 lg:my-8" />
-        <article className="prose lg:prose-lg prose-zinc lg:prose-h1:pb-10 max-w-none dark:prose-invert prose-a:text-sky500 prose-pre:bg-gray900 hover:prose-pre:bg-gray700 hover:prose-a:text-red400/60">
+        <article className="prose lg:prose-lg prose-zinc lg:prose-h1:pb-10 max-w-none dark:prose-invert prose-a:text-blue prose-pre:bg-gray/90 hover:prose-pre:bg-gray hover:prose-a:text-pink">
           <MDXRemote {...content} />
         </article>
       </section>
@@ -81,7 +82,9 @@ Post.getLayout = function getLayout(page: React.ReactElement) {
   return (
     <>
       <Header />
-      <MainLayout>{page}</MainLayout>
+      <MainLayout>
+        <BlogLayout>{page}</BlogLayout>
+      </MainLayout>
     </>
   );
 };

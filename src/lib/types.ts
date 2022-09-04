@@ -1,5 +1,6 @@
 import { ReadTimeResults } from 'reading-time';
 
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 export type Post = {
   slug: string;
   frontmatter: {

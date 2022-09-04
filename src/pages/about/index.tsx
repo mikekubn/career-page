@@ -1,9 +1,8 @@
 import React from 'react';
-import type { GetStaticProps, NextPage } from 'next';
+import type { GetStaticProps } from 'next';
 import Head from 'next/head';
 import cloudinary from 'cloudinary.config';
 import { getPosts } from '@/lib/utils';
-import RunningScrollBar from '@/components/RunningScrollBar';
 import { MiniCard } from '@/components/Card';
 import { IExperience } from '@/lib/types';
 import Header from '@/layouts/Header';

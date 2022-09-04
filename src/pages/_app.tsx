@@ -6,7 +6,7 @@ import { ThemeProvider } from 'next-themes';
 import BackToTop from '@/components/BackToTop';
 import { NextPage } from 'next/types';
 
-export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+export type NextPageWithLayout<P = Record<string, unknown>, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: React.ReactElement) => React.ReactNode;
 };
 

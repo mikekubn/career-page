@@ -20,7 +20,7 @@ const ToggleTheme = ({ className }: { className: string }): React.ReactElement =
     if (systemTheme) {
       setTheme(systemTheme);
     }
-  }, [systemTheme]);
+  }, [systemTheme, setTheme]);
 
   return (
     <label

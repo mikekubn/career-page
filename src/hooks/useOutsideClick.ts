@@ -1,11 +1,11 @@
 import React from 'react';
 
-interface OutsideClick {
+interface IOutsideClick {
   ref: React.RefObject<HTMLElement>;
   callback: () => void;
 }
 
-export const useOutsideClick = ({ ref, callback }: OutsideClick) => {
+export const useOutsideClick = ({ ref, callback }: IOutsideClick) => {
   React.useEffect(() => {
     // Invoke Function onClick outside of element
 

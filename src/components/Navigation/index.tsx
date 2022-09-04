@@ -20,7 +20,7 @@ const Navigation = (): React.ReactElement => {
         <div className="w-screen lg:hidden">
           <button
             data-cy={`toggle-menu-${toggle}`}
-            className="flex flex-row justify-start cursor-pointer lg:hidden ml-3 mt-3 lg:mt-0"
+            className="flex flex-row justify-start cursor-pointer lg:hidden ml-3 lg:mt-0"
             onClick={() => setToggle(!toggle)}>
             <Image src={getCloudinaryUrl('assets/menu_bbe3tl.png')} width="38" height="38" alt="open" />
           </button>

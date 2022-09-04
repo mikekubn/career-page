@@ -1,4 +1,3 @@
-import { setMatchMediaProperties } from '@/utils/setupTests';
 import { renderHook } from '@testing-library/react';
 import { useWindowSize } from './useWindowSize';
 

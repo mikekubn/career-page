@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 // This file is made by Edreya (2022)
 
 export const waves = () => {
