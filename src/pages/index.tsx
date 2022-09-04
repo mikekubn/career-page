@@ -5,6 +5,7 @@ import MainLayout from '@/layouts/Layout';
 import Header from '@/layouts/Header';
 import Link from 'next/link';
 import { Button } from '@/components/Typography';
+import RotateList from '@/components/RotateList';
 
 const Home: NextPageWithLayout = () => (
   <>
@@ -17,16 +18,7 @@ const Home: NextPageWithLayout = () => (
       <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold uppercase mb-10">
         Michael <span className="text-blue">Kubin</span>
       </h1>
-      <div className="flex justify-center box-content mb-10 cursor-default">
-        <h1 className="text-2xl">I am</h1>
-        <div className="text-2xl pl-3 overflow-y-hidden h-8">
-          {items.map((item, index) => (
-            <span className="rotate-list" key={index}>
-              {item}
-            </span>
-          ))}
-        </div>
-      </div>
+      <RotateList className="flex justify-center box-content mb-10 cursor-default" titleSize="text-2xl" />
       <Link href="/contact" passHref>
         <Button className="px-12 py-4 text-xl">Discover</Button>
       </Link>
@@ -44,5 +36,3 @@ Home.getLayout = function getLayout(page: React.ReactElement) {
     </>
   );
 };
-
-const items: string[] = ['Developer', 'Freelancer', 'Creative', 'Tester', 'Developer'];

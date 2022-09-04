@@ -20,7 +20,7 @@ const Time = ({ children, className }: React.PropsWithChildren<Partial<Pick<HTML
 );
 
 const Paragraph = ({ children, className }: React.PropsWithChildren<Partial<Pick<HTMLParagraphElement, 'className'>>>) => (
-  <p className={`font-light text-sm md:text-base leading-normal ${className}`}>{children}</p>
+  <p className={`font-light text-base leading-normal ${className}`}>{children}</p>
 );
 
 interface IButton extends Omit<HTMLButtonElement, 'children'> {
