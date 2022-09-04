@@ -1,8 +1,7 @@
 import React from 'react';
-import type { GetStaticProps, NextPage } from 'next';
+import type { GetStaticProps } from 'next';
 import Head from 'next/head';
 import { getPosts, sortByDate } from '@/lib/utils';
-import RunningScrollBar from '@/components/RunningScrollBar';
 import BaseArticle from '@/components/Article';
 import { IArticle } from '@/lib/types';
 import { NextPageWithLayout } from '../_app';

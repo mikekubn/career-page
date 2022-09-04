@@ -1,8 +1,7 @@
 import { motion, Variants } from 'framer-motion';
 import Link from 'next/link';
 import React from 'react';
-import { ArticleParagraph, Paragraph, Time } from '@/components/Typography';
-import AnimatedButton from '../Button';
+import { ArticleParagraph, Button, Paragraph, Time } from '@/components/Typography';
 import { createdAt } from '@/lib/utils';
 import Tags from '../Tags';
 import { IArticle } from '@/lib/types';
@@ -43,7 +42,7 @@ const BaseArticle: React.FC<IProps> = (props: IProps) => {
       </div>
       <div className="text-center mb-3">
         <Link aria-label="post-link" href="/blog/[slug]" as={`/blog/${article.slug}`} passHref>
-          <AnimatedButton title="Read more 📚" />
+          <Button className="px-4 py-1 text-sm">Read more 📚</Button>
         </Link>
       </div>
     </motion.article>

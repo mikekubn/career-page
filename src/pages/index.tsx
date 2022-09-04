@@ -4,6 +4,7 @@ import { NextPageWithLayout } from './_app';
 import MainLayout from '@/layouts/Layout';
 import Header from '@/layouts/Header';
 import Link from 'next/link';
+import { Button } from '@/components/Typography';
 
 const Home: NextPageWithLayout = () => (
   <>
@@ -27,9 +28,7 @@ const Home: NextPageWithLayout = () => (
         </div>
       </div>
       <Link href="/contact" passHref>
-        <button className="bg-blue rounded-full px-12 py-4 text-xl no-underline cursor-pointer hover:text-white dark:hover:text-black hover:bg-black dark:hover:bg-white transition duration-700 ease-in-out">
-          Discover
-        </button>
+        <Button className="px-12 py-4 text-xl">Discover</Button>
       </Link>
     </section>
   </>

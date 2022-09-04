@@ -1,4 +1,5 @@
 import React from 'react';
+import { clsx } from 'clsx';
 
 const Typography = {
   heading: 'font-title text-xl',
@@ -30,4 +31,25 @@ const LgParagraph = ({ children, className }: React.PropsWithChildren<Partial<Pi
   <p className={`text-base md:text-lg md:tracking-wide font-light leading-7 md:leading-10 ${className}`}>{children}</p>
 );
 
-export { H1, H2, Paragraph, LgParagraph, Time, ArticleParagraph };
+interface IButton extends Omit<HTMLButtonElement, 'children'> {
+  children: string | React.ReactNode;
+  onClick: () => void;
+}
+
+const Button = (props: Partial<IButton>) => {
+  const { className, children, onClick } = props;
+
+  return (
+    <button
+      onClick={onClick}
+      className={clsx({
+        'bg-blue rounded-full no-underline cursor-pointer hover:text-white dark:hover:text-black hover:bg-black dark:hover:bg-white transition duration-700 ease-in-out':
+          true,
+        [className as string]: !!className,
+      })}>
+      {children}
+    </button>
+  );
+};
+
+export { H1, H2, Paragraph, LgParagraph, Time, ArticleParagraph, Button };
