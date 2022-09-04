@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion, useInView } from 'framer-motion';
+import { useInView } from 'framer-motion';
 import Image from 'next/image';
 import { H1, H2, Paragraph, Time } from '../Typography';
 import { IExperience } from '@/lib/types';
@@ -21,7 +21,7 @@ const Card = ({ item }: { item: IExperience['frontmatter'] }): React.ReactElemen
         <Image alt={item.image} src={item.image} height="62" width="62" className="rounded-full" />
       </span>
       <div className="flex flex-col items-end">
-        <section className="pt-2 p-6 lg:pt-4 lg:p-8 mb-10 rounded-xl w-11/12">
+        <section className="pt-2 p-6 lg:pt-4 lg:p-8 mb-10 rounded-xl w-10/12 md:w-11/12">
           <div className="text-start">
             <Time className="text-sm font-normal">
               From: {item.from} {item.to && `To: ${item.to}`}
