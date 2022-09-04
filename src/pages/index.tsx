@@ -1,55 +1,49 @@
 import React from 'react';
-import type { NextPage } from 'next';
-import Image from 'next/image';
-import Card from '@/components/Card';
-import dynamic from 'next/dynamic';
 import Head from 'next/head';
-import { LgParagraph } from '@/components/Typography';
+import { NextPageWithLayout } from './_app';
+import MainLayout from '@/layouts/Layout';
+import Header from '@/layouts/Header';
+import Link from 'next/link';
 
-const DynamicForm = dynamic(() => import('@/components/Form'));
-
-const Home: NextPage = () => (
+const Home: NextPageWithLayout = () => (
   <>
     <Head>
-      <meta name="description" content="Michael Kubin frontend developer, introducing" />
+      <meta name="description" content="Michael Kubin is frontend developer, freelancer and tester" />
       <meta property="og:title" content="Michael Kubin - Frontend developer" />
-      <meta property="og:description" content="Michael Kubin introducing" />
+      <meta property="og:description" content="Michael Kubin landing page" />
     </Head>
-    <section className="flex flex-col flex-1">
-      <div className="flex flex-row justify-center mt-6 md:mt-14 md:h-40">
-        <span className="w-20 h-20 md:w-40 md:h-40">
-          <Image alt="profile-image" src="career_page/profile/home_photo_circle_k9t68o" width="160" height="160" className="rounded-full" />
-        </span>
-        <div className="flex flex-col pl-4 md:pl-10 my-auto cursor-default leading-relaxed tracking-wide">
-          <h1 className="text-2xl font-medium">Michael Kubín</h1>
-          <h2 className="text-xl font-medium">Webscope</h2>
-          <p className="text-lg font-light italic">React, Frontend, Next.js 🚀</p>
-        </div>
-      </div>
-    </section>
-    <section className="flex flex-col items-center md:flex-row md:justify-between lg:w-11/12 lg:mx-auto xl:w-9/12 xl:mx-auto">
-      <Card title="About Me">
-        <LgParagraph className="p-3 md:p-6">
-          Hi everyone, I&apos;m Michael and I&apos;m a frontend developer mostly working with React and I really enjoy working with the Cypress e2e
-          testing framework 👨‍💻. I love hiking, so when I&apos;m not coding I enjoy the peace and quiet there ⛰ 🥾.
-        </LgParagraph>
-      </Card>
-      <Card title="My Stack">
-        <div className="p-2 md:p-6 flex flex-row flex-1 flex-wrap">
-          {myStack.map((item) => (
-            <LgParagraph key={item} className="text-center rounded-xl shadow-lg shadow-black p-2 m-1 mb-4">
+    <section className="m-auto w-full h-auto flex flex-col items-center justify-center">
+      <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold uppercase mb-10">
+        Michael <span className="text-blue">Kubin</span>
+      </h1>
+      <div className="flex justify-center box-content mb-10 cursor-default">
+        <h1 className="text-2xl">I am</h1>
+        <div className="text-2xl pl-3 overflow-y-hidden h-8">
+          {items.map((item, index) => (
+            <span className="rotate-list" key={index}>
               {item}
-            </LgParagraph>
+            </span>
           ))}
         </div>
-      </Card>
-    </section>
-    <section className="my-16 md:my-20 xl:my-24 flex flex-1 flex-row justify-center">
-      <DynamicForm />
+      </div>
+      <Link href="/contact" passHref>
+        <button className="bg-blue rounded-full px-12 py-4 text-xl no-underline cursor-pointer hover:text-white dark:hover:text-black hover:bg-black dark:hover:bg-white transition duration-700 ease-in-out">
+          Discover
+        </button>
+      </Link>
     </section>
   </>
 );
 
 export default Home;
 
-const myStack = ['Frontend Development 👨‍💻', 'End to End testing 🧪🪛', 'Cypress', 'React 🏢', 'TypeScript ❤️', 'Next.js 🏎'];
+Home.getLayout = function getLayout(page: React.ReactElement) {
+  return (
+    <>
+      <Header />
+      <MainLayout>{page}</MainLayout>
+    </>
+  );
+};
+
+const items: string[] = ['Developer', 'Freelancer', 'Creative', 'Tester', 'Developer'];

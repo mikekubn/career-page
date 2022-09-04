@@ -6,12 +6,15 @@ import { getPosts } from '@/lib/utils';
 import RunningScrollBar from '@/components/RunningScrollBar';
 import { MiniCard } from '@/components/Card';
 import { IExperience } from '@/lib/types';
+import Header from '@/layouts/Header';
+import MainLayout from '@/layouts/Layout';
+import { NextPageWithLayout } from '../_app';
 
 type Props = {
   posts: IExperience[];
 };
 
-const Experience: NextPage<Props> = ({ posts }) => {
+const About: NextPageWithLayout<Props> = ({ posts }) => {
   return (
     <>
       {posts.map(({ frontmatter }) => (
@@ -21,7 +24,6 @@ const Experience: NextPage<Props> = ({ posts }) => {
           <meta property="og:description" content={`experience, ${frontmatter.description}`} />
         </Head>
       ))}
-      <RunningScrollBar />
       <section className="flex flex-1 flex-col my-10 md:my-20">
         {posts.map(({ frontmatter }) => (
           <MiniCard key={frontmatter.id} item={frontmatter} />
@@ -31,7 +33,16 @@ const Experience: NextPage<Props> = ({ posts }) => {
   );
 };
 
-export default Experience;
+export default About;
+
+About.getLayout = function getLayout(page: React.ReactElement) {
+  return (
+    <>
+      <Header />
+      <MainLayout>{page}</MainLayout>
+    </>
+  );
+};
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const profileImages = (await cloudinary.api.resources_by_tag('work', { max_results: 20 })).resources

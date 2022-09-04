@@ -17,6 +17,7 @@ export interface INavigation {
 
 export const menuItemConfig: INavigation[] = [
   { enabled: true, level: 'main', name: 'Home', url: '/' },
+  { enabled: true, level: 'main', name: 'About', url: '/about' },
   {
     enabled: true,
     level: 'main',
@@ -30,5 +31,5 @@ export const menuItemConfig: INavigation[] = [
       { name: 'How use npm link in pnpm overwrites', url: '/pnpm-npm-link-overwrites' },
     ],
   },
-  { enabled: true, level: 'main', name: 'Experience', url: '/experience' },
+  { enabled: true, level: 'main', name: 'Contact', url: '/contact' },
 ];

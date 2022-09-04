@@ -10,7 +10,7 @@ const useRealHeight = () => {
     const footer = document.getElementById('footer-content')?.clientHeight || clientHight;
     const totalSize = header + footer;
 
-    setRealHeight(() => clientHight - totalSize);
+    setRealHeight(() => clientHight - header);
   });
 
   React.useEffect(() => {
@@ -19,7 +19,7 @@ const useRealHeight = () => {
     const totalSize = header + footer;
 
     if (clientHight) {
-      setRealHeight(() => clientHight - totalSize);
+      setRealHeight(() => clientHight - header);
     }
   }, [clientHight, setRealHeight]);
 
