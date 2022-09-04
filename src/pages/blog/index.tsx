@@ -20,7 +20,7 @@ const Blog: NextPageWithLayout<Props> = ({ articles }) => {
         <meta property="og:title" content="Michael Kubin - Frontend developer" />
         <meta property="og:description" content="Michael Kubin work experience" />
       </Head>
-      <section className="mx-auto w-11/12 lg:overflow-y-auto lg:overflow-x-hidden md:w-4/5 xl:w-3/5 pt-10 pb-20">
+      <section className="mx-auto w-11/12 lg:overflow-x-hidden md:w-4/5 xl:w-3/5 pt-10 pb-20">
         {articles?.map((article) => (
           <BaseArticle key={article.slug} article={article} />
         ))}

@@ -8,9 +8,9 @@ import Header from '@/layouts/Header';
 import MainLayout from '@/layouts/Layout';
 import { NextPageWithLayout } from '../_app';
 import Image from 'next/image';
-import { H1, H2, Paragraph } from '@/components/Typography';
+import { H1, Paragraph } from '@/components/Typography';
 import RotateList from '@/components/RotateList';
-import { MiniCard } from '@/components/Card';
+import Card from '@/components/Card';
 
 type Props = {
   posts: IExperience[];
@@ -26,12 +26,12 @@ const About: NextPageWithLayout<Props> = ({ posts }) => {
           <meta property="og:description" content={`experience, ${frontmatter.description}`} />
         </Head>
       ))}
-      <section className="flex flex-col m-auto mt-10 sm:mt-20">
-        <div className="flex flex-col lg:flex-row mb-10">
+      <section className="flex flex-col m-auto my-10 sm:mt-20">
+        <div className="flex flex-col lg:flex-row mb-10 mx-auto w-[320px] sm:w-[400px] md:w-[650px] lg:w-[795px]">
           <div className="flex-col m-auto mb-10 lg:mb-0">
             <Image alt="profile-image" src="career_page/profile/home_photo_circle_k9t68o" width="250" height="250" className="rounded-full" />
           </div>
-          <div className="flex-col mx-auto sm:mx-20 w-72 sm:w-96 my-auto">
+          <div className="flex-col m-auto md:mx-10 lg:w-96 text-center lg:text-left">
             <h1 className="uppercase mb-1 text-xl font-semibold">
               Michael <span className="text-blue">Kubin</span>
             </h1>
@@ -40,7 +40,7 @@ const About: NextPageWithLayout<Props> = ({ posts }) => {
                 <span className="text-blue">Arc</span> Certified Remote Developer
               </a>
             </Paragraph>
-            <RotateList className="flex justify-start box-content cursor-default mb-4" titleSize="text-lg" />
+            <RotateList className="flex justify-center lg:justify-start box-content cursor-default mb-4" titleSize="text-lg" />
             <Paragraph>
               Hi everyone, I&apos;m <span className="text-blue font-semiBold">Michael Kubín</span> and I&apos;m a frontend developer mostly working
               with React and I really enjoy working with the Cypress e2e testing framework 👨‍💻. I love hiking, so when I&apos;m not coding I enjoy the
@@ -60,9 +60,9 @@ const About: NextPageWithLayout<Props> = ({ posts }) => {
             </div>
           </div>
         </div>
-        {/* {posts.map(({ frontmatter }) => (
-          <MiniCard key={frontmatter.id} item={frontmatter} />
-        ))} */}
+        {posts.map(({ frontmatter }) => (
+          <Card key={frontmatter.id} item={frontmatter} />
+        ))}
       </section>
     </>
   );

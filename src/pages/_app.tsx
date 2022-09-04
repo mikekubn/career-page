@@ -3,7 +3,6 @@ import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 import { NotificationProvider } from 'src/providers/NotificationProvider';
 import { ThemeProvider } from 'next-themes';
-import BackToTop from '@/components/BackToTop';
 import { NextPage } from 'next/types';
 
 export type NextPageWithLayout<P = Record<string, unknown>, IP = P> = NextPage<P, IP> & {
@@ -20,10 +19,7 @@ const MyApp = ({ Component, pageProps }: AppPropsWithLayout): React.ReactElement
 
   return (
     <ThemeProvider attribute="class" enableSystem>
-      <NotificationProvider>
-        <BackToTop />
-        {getLayout(<Component {...pageProps} />)}
-      </NotificationProvider>
+      <NotificationProvider>{getLayout(<Component {...pageProps} />)}</NotificationProvider>
     </ThemeProvider>
   );
 };
