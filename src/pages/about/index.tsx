@@ -36,13 +36,13 @@ const About: NextPageWithLayout<Props> = ({ posts }) => {
               Michael <span className="text-blue">Kubin</span>
             </h1>
             <Paragraph className="mb-2 cursor-pointer hover:underline">
-              <a href="https://arc.dev/@mikekubn" target="_blank">
+              <a href="https://arc.dev/@mikekubn" target="_blank" rel="noreferrer">
                 <span className="text-blue">Arc</span> Certified Remote Developer
               </a>
             </Paragraph>
             <RotateList className="flex justify-center lg:justify-start box-content cursor-default mb-4" titleSize="text-lg" />
             <Paragraph>
-              Hi everyone, I&apos;m <span className="text-blue font-semiBold">Michael Kubín</span> and I&apos;m a frontend developer mostly working
+              Hi everyone, I&apos;m <span className="text-blue font-semibold">Michael Kubín</span> and I&apos;m a frontend developer mostly working
               with React and I really enjoy working with the Cypress e2e testing framework 👨‍💻. I love hiking, so when I&apos;m not coding I enjoy the
               peace and quiet there ⛰ 🥾.
             </Paragraph>
