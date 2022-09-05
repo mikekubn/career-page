@@ -23,7 +23,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }): React.ReactEle
   }, []);
 
   return (
-    <main className="container mx-auto relative flex flex-1 h-screen lg:h-[calc(100vh-56px)] overflow-auto">
+    <main className="container mx-auto relative flex flex-1">
       <div className="waves dark-mode" />
       <Metadata metadata={metadata} />
       {children}
