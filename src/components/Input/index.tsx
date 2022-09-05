@@ -20,7 +20,7 @@ const Input: React.FC<React.HTMLProps<HTMLInputElement>> = (props: React.HTMLPro
         {label}
       </label>
       <input
-        className="w-full h-10 pl-2 bg-transparent border-b rounded-lg border-blue hover:bg-yellow"
+        className="w-full h-10 pl-2 bg-transparent border-b rounded-lg border-blue hover:bg-gray/20"
         data-testid={`input-${sanity}`}
         id={`input-${sanity}`}
         value={val}
