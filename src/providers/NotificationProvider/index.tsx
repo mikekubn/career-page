@@ -78,7 +78,7 @@ const NotificaitonBox = ({ display, img, note }: INotificaitonBox) => (
         exit={{ x: 300, opacity: 0 }}
         transition={{ duration: 0.7, ease: 'easeInOut' }}
         className="fixed right-0 z-50 mt-12">
-        <div data-cy="notification" className="flex items-center px-4 rounded-lg h-9 w-60 bg-gray500 dark:bg-white text-black lg:h-11">
+        <div data-cy="notification" className="flex items-center px-4 rounded-lg h-9 w-60 bg-gray dark:bg-white text-black lg:h-11">
           <Image data-testid="notificaiton-box-image" src={img} width={18} height={18} alt="Notification" />
           <p data-testid="notificaiton-box-note" className="pl-2 text-sm lg:pl-4">
             {note}

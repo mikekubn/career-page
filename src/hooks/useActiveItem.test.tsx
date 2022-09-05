@@ -22,6 +22,7 @@ describe('useActiveItem', () => {
 
     expect(items).toEqual([
       { enabled: true, level: 'main', name: 'Home', url: '/' },
+      { enabled: true, level: 'main', name: 'About', url: '/about' },
       {
         enabled: true,
         level: 'main',
@@ -33,12 +34,7 @@ describe('useActiveItem', () => {
         ],
         active: true,
       },
-      {
-        enabled: true,
-        level: 'main',
-        name: 'Experience',
-        url: '/experience',
-      },
+      { enabled: true, level: 'main', name: 'Contact', url: '/contact' },
     ]);
   });
 });

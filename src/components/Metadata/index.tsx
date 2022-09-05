@@ -28,6 +28,7 @@ const Metadata = ({ metadata }: { metadata: IMetadata }): React.ReactElement => 
       <meta property="og:type" content="website" />
       <meta name="twitter:creator" content="@mikekubn" />
       <meta name="robots" content="follow" />
+      <meta name="theme-color" content="#1fb6ff" />
     </Head>
   );
 };

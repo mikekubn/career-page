@@ -21,7 +21,7 @@ const TextArea = (props: IProps): React.ReactElement => {
         name={name}
         value={value}
         onChange={handleChange}
-        className="w-full h-32 pl-2 bg-transparent border rounded-lg resize-none border-sky500/70 hover:bg-sky500/10"
+        className="w-full h-32 pl-2 bg-transparent border rounded-lg resize-none border-blue hover:bg-gray/20"
       />
     </>
   );

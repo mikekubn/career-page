@@ -1,23 +1,30 @@
 import React from 'react';
-import type { NextPage } from 'next';
-import Link from 'next/link';
-import { useRealHeight } from '@/hooks/useRealHeight';
+import MainLayout from '@/layouts/Layout';
+import { NextPageWithLayout } from './_app';
+import Image from 'next/image';
+import { getCloudinaryUrl } from '@/lib/utils';
+import { Button } from '@/components/Typography';
+import { useRouter } from 'next/router';
 
-const Error404: NextPage = (): React.ReactElement => {
-  const { height } = useRealHeight();
+const Error404: NextPageWithLayout = (): React.ReactElement => {
+  const { push } = useRouter();
 
   return (
-    <>
-      <section className="flex flex-col items-center justify-center" style={{ minHeight: `${height}px` }}>
-        <h1 className="text-3xl mb-16 text-center px-4">Sorry page was not found 404</h1>
-        <Link href="/" scroll={false} replace passHref>
-          <button className="p-4 rounded-full shadow-lg shadow-black dark:shadow-white flex flex-row justify-center bg-sky500/50 hover:border hover:border-black">
-            Do you want to go to the home page?
-          </button>
-        </Link>
-      </section>
-    </>
+    <section className="flex flex-col justify-center mx-auto items-center h-screen">
+      <Image src={getCloudinaryUrl('assets/404_Error-pana_xknb4q.png')} width="600" height="400" />
+      <Button className="py-3 w-36" onClick={() => push('/')}>
+        GO HOME
+      </Button>
+    </section>
   );
 };
 
 export default Error404;
+
+Error404.getLayout = function getLayout(page: React.ReactElement) {
+  return (
+    <>
+      <MainLayout>{page}</MainLayout>
+    </>
+  );
+};

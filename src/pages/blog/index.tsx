@@ -1,16 +1,18 @@
 import React from 'react';
-import type { GetStaticProps, NextPage } from 'next';
+import type { GetStaticProps } from 'next';
 import Head from 'next/head';
 import { getPosts, sortByDate } from '@/lib/utils';
-import RunningScrollBar from '@/components/RunningScrollBar';
 import BaseArticle from '@/components/Article';
 import { IArticle } from '@/lib/types';
+import { NextPageWithLayout } from '../_app';
+import Header from '@/layouts/Header';
+import MainLayout from '@/layouts/Layout';
 
 type Props = {
   articles: IArticle[];
 };
 
-const Blog: NextPage<Props> = ({ articles }) => {
+const Blog: NextPageWithLayout<Props> = ({ articles }) => {
   return (
     <>
       <Head>
@@ -18,8 +20,7 @@ const Blog: NextPage<Props> = ({ articles }) => {
         <meta property="og:title" content="Michael Kubin - Frontend developer" />
         <meta property="og:description" content="Michael Kubin work experience" />
       </Head>
-      <RunningScrollBar />
-      <section className="mx-auto w-11/12 md:w-3/4 lg:w-2/3 xl:w-1/2 pt-8">
+      <section className="mx-auto w-11/12 md:w-4/5 xl:w-3/5 pt-10 pb-20">
         {articles?.map((article) => (
           <BaseArticle key={article.slug} article={article} />
         ))}
@@ -29,6 +30,15 @@ const Blog: NextPage<Props> = ({ articles }) => {
 };
 
 export default Blog;
+
+Blog.getLayout = function getLayout(page: React.ReactElement) {
+  return (
+    <>
+      <Header />
+      <MainLayout>{page}</MainLayout>
+    </>
+  );
+};
 
 export const getStaticProps: GetStaticProps<Props> = () => {
   const articles: IArticle[] = getPosts('src/_posts/_blog')

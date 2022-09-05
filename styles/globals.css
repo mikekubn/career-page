@@ -4,6 +4,47 @@
 
 @layer base {
   .dark-mode {
-    @apply bg-white ring-white text-black dark:bg-gray600 dark:text-white dark:ring-gray600;
+    @apply bg-white text-black dark:bg-black dark:text-white;
+  }
+}
+
+.waves {
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: -1;
+}
+
+.rotate-list {
+  display: block;
+  animation: rotate_words 8s infinite;
+}
+
+@keyframes rotate_words {
+  10% {
+    transform: translateY(-112%);
+  }
+  25% {
+    transform: translateY(-100%);
+  }
+  35% {
+    transform: translateY(-212%);
+  }
+  50% {
+    transform: translateY(-200%);
+  }
+  60% {
+    transform: translateY(-312%);
+  }
+  75% {
+    transform: translateY(-300%);
+  }
+  85% {
+    transform: translateY(-412%);
+  }
+  100% {
+    transform: translateY(-400%);
   }
 }

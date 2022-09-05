@@ -3,6 +3,7 @@ import React from 'react';
 import Input from '../Input';
 import TextArea from '../TextArea';
 import emailjs from '@emailjs/browser';
+import { Button } from '../Typography';
 
 export type TFormValues = {
   subject: string;
@@ -48,7 +49,7 @@ const Form = (): React.ReactElement => {
   const isDisabled = !values.email.length || !values.name.length || !values.messages.length || !values.subject.length;
 
   return (
-    <form ref={form} onSubmit={handleSubmitForm} className="flex flex-col mx-auto w-5/6 md:w-1/2 lg:w-96 xl:w-96 lg:mx-14">
+    <form ref={form} onSubmit={handleSubmitForm} className="flex flex-col w-72 md:w-96">
       <section className="flex pb-5 mx-auto">
         <h1 data-testid="form-head" className="text-2xl">
           Contact me 📭
@@ -58,19 +59,12 @@ const Form = (): React.ReactElement => {
       <Input label="Full Name" type="text" name="name" placeholder="Write here" value={values.name} onChange={handleChange} />
       <Input label="Your Email" type="email" name="email" placeholder="example@foo.com" value={values.email} onChange={handleChange} />
       <TextArea name="messages" label="Your message" value={values.messages} handleChange={handleChange} />
-      <button
-        type="submit"
-        className={`rounded-full shadow-md shadow-black dark:shadow-white hover:shadow-black w-40 p-3 mt-5 
-          ${isDisabled ? 'cursor-default' : 'cursor-pointer'} 
-          ${isDisabled ? 'hover:shadow-md' : 'hover:shadow-sm'}
-          ${isDisabled ? 'text-red400' : ''}
-        `}
-        disabled={isDisabled}>
+      <Button type="submit" disabled={isDisabled} className="w-40 p-3 mt-6">
         <div className="flex flex-row justify-center">
           <p className="pr-3">{isDisabled ? 'Fill in all' : 'Send'}</p>
           <p>{isDisabled ? '📪' : '📫'}</p>
         </div>
-      </button>
+      </Button>
     </form>
   );
 };

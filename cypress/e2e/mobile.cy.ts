@@ -4,23 +4,12 @@ describe('Mobile test', () => {
     cy.visit('/');
   });
 
-  it('scroll', () => {
-    cy.scrollTo('bottom');
-    cy.wait(500);
-    cy.dataCy('back-to-top').should('be.visible').click();
-
-    cy.wait(500);
-    cy.verifyUrl('/');
-  });
-
   it('menu', () => {
     const menu = [
-      {
-        eq: 0,
-        name: 'Home',
-      },
-      { eq: 1, name: 'Blog' },
-      { eq: 2, name: 'Experience' },
+      { eq: 0, name: 'Home' },
+      { eq: 1, name: 'About' },
+      { eq: 2, name: 'Blog' },
+      { eq: 3, name: 'Contact' },
     ];
 
     cy.dataCy('toggle-menu-false').should('be.visible').click();

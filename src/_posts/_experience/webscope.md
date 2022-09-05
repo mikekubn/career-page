@@ -4,5 +4,10 @@ title: Webscope
 from: 06/2022
 where: Brno, Czech Republic
 position: React Developer
-description: ['React, Next, GraphQL']
+description:
+  [
+    'My main stack - React, React router, Typescript, GraphQl, QA, Visx and Next.js.',
+    'React Developer for Observability Platform - data flow monitoring.',
+    'Other small projects Tailwind, Next.js, React',
+  ]
 ---

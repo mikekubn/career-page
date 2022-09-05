@@ -1,17 +1,19 @@
 import { createdAt, getPaths, getPost } from '@/lib/utils';
-import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
 import Head from 'next/head';
-import RunningScrollBar from '@/components/RunningScrollBar';
-import { Paragraph, Time } from '@/components/Typography';
+import { Button, Paragraph, Time } from '@/components/Typography';
 import Tags from '@/components/Tags';
 import { IArticle } from '@/lib/types';
 import { NextParsedUrlQuery } from 'next/dist/server/request-meta';
-import AnimatedButton from '@/components/Button';
 import { useRouter } from 'next/router';
 import { useNotificationProvider } from '@/provider/NotificationProvider';
 import readingTime, { ReadTimeResults } from 'reading-time';
+import { NextPageWithLayout } from '../_app';
+import Header from '@/layouts/Header';
+import MainLayout from '@/layouts/Layout';
+import BlogLayout from '@/layouts/Layout/BlogLayout';
 
 interface IArticleProps extends Partial<Omit<IArticle, 'content'>> {
   content: MDXRemoteSerializeResult;
@@ -23,7 +25,7 @@ type Props = {
 
 type Params = NextParsedUrlQuery & Pick<IArticle, 'slug'>;
 
-const Post: NextPage<Props> = ({ article }) => {
+const Post: NextPageWithLayout<Props> = ({ article }) => {
   const { back } = useRouter();
   const { dispatch } = useNotificationProvider();
   const { content, frontmatter } = article;
@@ -51,11 +53,14 @@ const Post: NextPage<Props> = ({ article }) => {
         <meta property="og:title" content={frontmatter.title} />
         <meta property="og:description" content={frontmatter.excerpt} />
       </Head>
-      <RunningScrollBar />
-      <section className="my-6 w-4/5 xl:w-3/5 mx-auto lg:mt-10 lg:mb-20">
+      <section className="my-10 w-4/5 xl:w-3/5 mx-auto lg:mt-10 lg:mb-20">
         <div className="flex flex-row justify-between">
-          <AnimatedButton title="🔙 Back" onClick={() => back()} />
-          <AnimatedButton title="🔗 Copy link" onClick={handleClick} />
+          <Button onClick={() => back()} className="px-4 py-1 text-sm">
+            🔙 Back
+          </Button>
+          <Button onClick={handleClick} className="px-4 py-1 text-sm">
+            🔗 Copy link
+          </Button>
         </div>
         <div className="flex flex-row mt-10 justify-between">
           <Time>{created}</Time>
@@ -63,7 +68,7 @@ const Post: NextPage<Props> = ({ article }) => {
           <Paragraph>{author}</Paragraph>
         </div>
         <Tags items={tags} className="my-6 lg:my-8" />
-        <article className="prose lg:prose-lg prose-zinc lg:prose-h1:pb-10 max-w-none dark:prose-invert prose-a:text-sky500 prose-pre:bg-gray900 hover:prose-pre:bg-gray700 hover:prose-a:text-red400/60">
+        <article className="prose lg:prose-lg prose-zinc lg:prose-h1:pb-10 max-w-none dark:prose-invert prose-a:text-blue prose-pre:bg-gray/90 hover:prose-pre:bg-gray hover:prose-a:text-pink">
           <MDXRemote {...content} />
         </article>
       </section>
@@ -72,6 +77,17 @@ const Post: NextPage<Props> = ({ article }) => {
 };
 
 export default Post;
+
+Post.getLayout = function getLayout(page: React.ReactElement) {
+  return (
+    <>
+      <Header />
+      <MainLayout>
+        <BlogLayout>{page}</BlogLayout>
+      </MainLayout>
+    </>
+  );
+};
 
 export const getStaticProps: GetStaticProps<Props, Params> = async (context) => {
   const { params } = context;
