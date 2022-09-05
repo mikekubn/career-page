@@ -8,6 +8,6 @@ description:
   [
     'My main stack - React, React router, Typescript, GraphQl, QA, Visx and Next.js.',
     'React Developer for Observability Platform (Data flow monitoring) for a big technology company.',
-    'Mentoring for junior colleagues Tailwind css, Next.js, React, SWR for other small projects.',
+    'Other small projects Tailwind, Next.js, React',
   ]
 ---

@@ -10,7 +10,7 @@ const Card = ({ item }: { item: IExperience['frontmatter'] }): React.ReactElemen
 
   return (
     <div
-      className="flex flex-col mx-auto w-[320px] sm:w-[400px] md:w-[650px] lg:w-[795px]"
+      className="flex flex-col mx-auto w-11/12 sm:w-[400px] md:w-[650px] lg:w-[750px]"
       ref={ref}
       style={{
         transform: isInView ? 'none' : 'translateX(-200px)',
@@ -21,7 +21,7 @@ const Card = ({ item }: { item: IExperience['frontmatter'] }): React.ReactElemen
         <Image alt={item.image} src={item.image} height="62" width="62" className="rounded-full" />
       </span>
       <div className="flex flex-col items-end">
-        <section className="pt-2 p-6 lg:pt-4 lg:p-8 mb-10 rounded-xl w-10/12 md:w-11/12">
+        <section className="pt-2 p-6 mb-10 rounded-xl w-10/12 sm:w-[330px] md:w-[570px] lg:w-[670px] bg-blue/50">
           <div className="text-start">
             <Time className="text-sm font-normal">
               From: {item.from} {item.to && `To: ${item.to}`}
