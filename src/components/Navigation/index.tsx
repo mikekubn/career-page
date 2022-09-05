@@ -25,7 +25,7 @@ const Navigation = (): React.ReactElement => {
             <Image src={getCloudinaryUrl('assets/menu_bbe3tl.png')} width="38" height="38" alt="open" />
           </button>
         </div>
-        <motion.div layout className={clsx({ [styles.nav_base]: true, flex: toggle, hidden: !toggle })}>
+        <motion.div layout className={clsx({ [styles.nav_base]: true, flex: toggle, hidden: !toggle })} data-cy="mobile-navigaiton-list">
           <ul className="flex flex-1 flex-col lg:flex-row items-center">
             {items.map((item, index) => (
               <li data-cy="navigation-item" key={index} className="ml-0 mb-6 lg:ml-8 lg:first:m-0 lg:mb-0">

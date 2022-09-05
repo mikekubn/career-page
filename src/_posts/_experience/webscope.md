@@ -7,7 +7,7 @@ position: React Developer
 description:
   [
     'My main stack - React, React router, Typescript, GraphQl, QA, Visx and Next.js.',
-    'React Developer for Observability Platform (Data flow monitoring) for a big technology company.',
+    'React Developer for Observability Platform - data flow monitoring.',
     'Other small projects Tailwind, Next.js, React',
   ]
 ---
