@@ -21,7 +21,7 @@
     "@emailjs/browser": "^3.7.0",
     "cloudinary": "^1.32.0",
     "clsx": "^1.2.1",
-    "framer-motion": "^7.5.1",
+    "framer-motion": "^7.6.2",
     "gray-matter": "^4.0.3",
     "next": "^12.3.1",
     "next-mdx-remote": "^4.1.0",
