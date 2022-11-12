@@ -14,7 +14,7 @@ const Home: NextPageWithLayout = () => (
       <meta property="og:title" content="Michael Kubin - Frontend developer" />
       <meta property="og:description" content="Michael Kubin landing page" />
     </Head>
-    <section className="m-auto flex flex-col flex-1 items-center justify-center bg-purple">
+    <section className="m-auto flex flex-col flex-1 items-center justify-center">
       <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold uppercase mb-10">
         Michael <span className="text-blue">Kubin</span>
       </h1>
