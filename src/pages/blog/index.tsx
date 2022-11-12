@@ -7,6 +7,7 @@ import { NextPageWithLayout } from '../_app';
 import Header from '@/layouts/Header';
 import MainLayout from '@/layouts/Layout';
 import Metadata from '@/components/Metadata';
+import BlogContainer from '@/layouts/Layout/BlogContainer';
 
 type Props = {
   articles: IArticle[];
@@ -21,11 +22,11 @@ const Blog: NextPageWithLayout<Props> = ({ articles }) => {
         description="What interested me, fronted development?"
         keywords="React, Nextjs, Blog, Frontend, Styles, Tailwind"
       />
-      <section className="mx-auto pt-10 pb-20">
+      <BlogContainer>
         {articles?.map((article) => (
           <BaseArticle key={article.slug} article={article} />
         ))}
-      </section>
+      </BlogContainer>
     </>
   );
 };

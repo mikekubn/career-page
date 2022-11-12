@@ -51,7 +51,7 @@ const styles = {
   base: 'text-xl lg:text-lg font-medium cursor-pointer hover:underline underline-offset-8',
   mobile_base: 'my-4 first:mt-20 hover:text-2xl',
   active: 'border-b-2 border-blue',
-  nav_base: 'lg:flex flex-grow flex-col items-center',
+  nav_base: 'lg:flex flex-grow flex-col items-center mr-[50px] lg:mr-0',
   nav_list: 'mx-auto flex flex-row justify-between w-11/12 rounded-xl lg:bg-transparent lg:px-4',
   nav_list_active: 'bg-black text-white dark:bg-white dark:text-black',
 };

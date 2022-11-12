@@ -12,7 +12,7 @@ import readingTime, { ReadTimeResults } from 'reading-time';
 import { NextPageWithLayout } from '../_app';
 import Header from '@/layouts/Header';
 import MainLayout from '@/layouts/Layout';
-import BlogLayout from '@/layouts/Layout/BlogLayout';
+import BlogContainer from '@/layouts/Layout/BlogContainer';
 import Metadata from '@/components/Metadata';
 
 interface IArticleProps extends Partial<Omit<IArticle, 'content'>> {
@@ -79,7 +79,7 @@ Post.getLayout = function getLayout(page: React.ReactElement) {
     <>
       <Header />
       <MainLayout>
-        <BlogLayout>{page}</BlogLayout>
+        <BlogContainer className="bg-white dark:bg-black">{page}</BlogContainer>
       </MainLayout>
     </>
   );
