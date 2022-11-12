@@ -17,7 +17,12 @@ const BaseArticle: React.FC<IProps> = (props: IProps) => {
   const createdDate = createdAt(date);
 
   const HeaderWithLink = (): React.ReactElement => (
-    <Link aria-label="post-link" href="/blog/[slug]" as={`/blog/${article.slug}`} passHref>
+    <Link
+      aria-label="post-link"
+      href="/blog/[slug]"
+      as={`/blog/${article.slug}`}
+      passHref
+      legacyBehavior>
       <motion.h1
         variants={headerVariant}
         className="pt-2 text-base md:text-lg xl:text-xl font-semibold mb-4 cursor-pointer tracking-wide hover:underline">
@@ -41,7 +46,12 @@ const BaseArticle: React.FC<IProps> = (props: IProps) => {
         <Paragraph>{author}</Paragraph>
       </div>
       <div className="text-center">
-        <Link aria-label="post-link" href="/blog/[slug]" as={`/blog/${article.slug}`} passHref>
+        <Link
+          aria-label="post-link"
+          href="/blog/[slug]"
+          as={`/blog/${article.slug}`}
+          passHref
+          legacyBehavior>
           <Button className="px-4 py-1 text-sm">Read more 📚</Button>
         </Link>
       </div>

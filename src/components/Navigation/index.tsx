@@ -29,7 +29,7 @@ const Navigation = (): React.ReactElement => {
           <ul className="flex flex-1 flex-col lg:flex-row items-center">
             {items.map((item, index) => (
               <li data-cy="navigation-item" key={index} className="ml-0 mb-6 lg:ml-8 lg:first:m-0 lg:mb-0">
-                <Link href={item.url} passHref replace>
+                <Link href={item.url} passHref replace legacyBehavior>
                   <button value={item.name} className={clsx({ [styles.base]: true, [styles.active]: item.active })} onClick={() => setToggle(false)}>
                     {item.name}
                   </button>
