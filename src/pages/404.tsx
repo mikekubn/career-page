@@ -1,7 +1,7 @@
 import React from 'react';
 import MainLayout from '@/layouts/Layout';
 import { NextPageWithLayout } from './_app';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import { getCloudinaryUrl } from '@/lib/utils';
 import { Button } from '@/components/Typography';
 import { useRouter } from 'next/router';

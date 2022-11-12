@@ -4,7 +4,7 @@ import { getCloudinaryUrl } from '@/lib/utils';
 import dynamic from 'next/dynamic';
 import React from 'react';
 import { NextPageWithLayout } from '../_app';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 
 const DynamicForm = dynamic(() => import('../../components/Form/index'));
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useInView } from 'framer-motion';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import { H1, H2, Paragraph, Time } from '../Typography';
 import { IExperience } from '@/lib/types';
 

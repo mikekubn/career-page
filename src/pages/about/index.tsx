@@ -7,7 +7,7 @@ import { IExperience } from '@/lib/types';
 import Header from '@/layouts/Header';
 import MainLayout from '@/layouts/Layout';
 import { NextPageWithLayout } from '../_app';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import { H1, Paragraph } from '@/components/Typography';
 import RotateList from '@/components/RotateList';
 import Card from '@/components/Card';
