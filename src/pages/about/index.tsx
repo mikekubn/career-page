@@ -2,12 +2,12 @@ import React from 'react';
 import type { GetStaticProps } from 'next';
 import Head from 'next/head';
 import cloudinary from 'cloudinary.config';
-import { getPosts } from '@/lib/utils';
+import { getCloudinaryUrl, getPosts } from '@/lib/utils';
 import { IExperience } from '@/lib/types';
 import Header from '@/layouts/Header';
 import MainLayout from '@/layouts/Layout';
 import { NextPageWithLayout } from '../_app';
-import Image from "next/legacy/image";
+import Image from 'next/image';
 import { H1, Paragraph } from '@/components/Typography';
 import RotateList from '@/components/RotateList';
 import Card from '@/components/Card';
@@ -29,7 +29,13 @@ const About: NextPageWithLayout<Props> = ({ posts }) => {
       <section className="flex flex-col m-auto my-10 sm:my-20">
         <div className="flex flex-col lg:flex-row mb-10 mx-auto w-[320px] sm:w-[400px] md:w-[650px] lg:w-[795px]">
           <div className="flex-col m-auto mb-10 lg:mb-0">
-            <Image alt="profile-image" src="career_page/profile/home_photo_circle_k9t68o" width="250" height="250" className="rounded-full" />
+            <Image
+              alt="profile-image"
+              src={getCloudinaryUrl({ url: 'profile/home_photo_circle_k9t68o' })}
+              width="250"
+              height="250"
+              className="rounded-full"
+            />
           </div>
           <div className="flex-col m-auto md:mx-10 lg:w-96 text-center lg:text-left">
             <h1 className="uppercase mb-1 text-xl font-semibold">

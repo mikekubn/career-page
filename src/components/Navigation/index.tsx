@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from "next/legacy/image";
+import Image from 'next/image';
 import { getCloudinaryUrl } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import { useActiveItem } from '@/hooks/useActiveItem';
@@ -22,7 +22,7 @@ const Navigation = (): React.ReactElement => {
             data-cy={`toggle-menu-${toggle}`}
             className="flex flex-row justify-start cursor-pointer lg:hidden ml-3 lg:mt-0"
             onClick={() => setToggle(!toggle)}>
-            <Image src={getCloudinaryUrl('assets/menu_bbe3tl.png')} width="38" height="38" alt="open" />
+            <Image src={getCloudinaryUrl({ url: 'assets/menu_bbe3tl.png' })} width="38" height="38" alt="open" />
           </button>
         </div>
         <motion.div layout className={clsx({ [styles.nav_base]: true, flex: toggle, hidden: !toggle })} data-cy="mobile-navigaiton-list">

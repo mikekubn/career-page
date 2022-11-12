@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from "next/legacy/image";
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useTheme } from 'next-themes';
 import { getCloudinaryUrl } from '@/lib/utils';
@@ -29,9 +29,9 @@ const ToggleTheme = ({ className }: { className: string }): React.ReactElement =
       onClick={handleClick}>
       <motion.div className="w-6 h-6 rounded-full bg-white flex p-0.5" layout transition={spring}>
         {theme === 'dark' ? (
-          <Image src={getCloudinaryUrl('assets/moon_pomwuu.png')} width="24" height="24" />
+          <Image src={getCloudinaryUrl({ url: 'assets/moon_pomwuu.png' })} width="24" height="24" alt="moon" />
         ) : (
-          <Image src={getCloudinaryUrl('assets/sun_gpqllo.png')} width="24" height="24" />
+          <Image src={getCloudinaryUrl({ url: 'assets/sun_gpqllo.png' })} width="24" height="24" alt="sun" />
         )}
       </motion.div>
     </label>

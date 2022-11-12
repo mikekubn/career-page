@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from "next/legacy/image";
+import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
 import { getCloudinaryUrl } from '@/lib/utils';
 
@@ -50,7 +50,11 @@ const NotificationProvider = ({ children }: NotificationProviderProps) => {
         <NotificaitonBox
           display={notification.visible}
           note={notification.note}
-          img={notification.status === 'success' ? getCloudinaryUrl('assets/check_vc1lwo.png') : getCloudinaryUrl('assets/error_leeg7e.png')}
+          img={
+            notification.status === 'success'
+              ? getCloudinaryUrl({ url: 'assets/check_vc1lwo.png' })
+              : getCloudinaryUrl({ url: 'assets/error_leeg7e.png' })
+          }
         />
       ) : null}
       {children}
