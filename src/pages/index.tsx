@@ -19,7 +19,7 @@ const Home: NextPageWithLayout = () => (
         Michael <span className="text-blue">Kubin</span>
       </h1>
       <RotateList className="flex justify-center box-content mb-10 cursor-default" titleSize="text-2xl" />
-      <Link href="/contact" passHref>
+      <Link href="/contact" passHref legacyBehavior>
         <Button className="px-12 py-4 text-xl">Discover</Button>
       </Link>
     </section>
