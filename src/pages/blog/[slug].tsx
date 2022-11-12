@@ -2,7 +2,7 @@ import { createdAt, getPaths, getPost } from '@/lib/utils';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
-import { Button, Paragraph, Time } from '@/components/Typography';
+import { Button, ParagraphBase } from '@/components/Typography';
 import Tags from '@/components/Tags';
 import { IArticle } from '@/lib/types';
 import { NextParsedUrlQuery } from 'next/dist/server/request-meta';
@@ -12,8 +12,8 @@ import readingTime, { ReadTimeResults } from 'reading-time';
 import { NextPageWithLayout } from '../_app';
 import Header from '@/layouts/Header';
 import MainLayout from '@/layouts/Layout';
-import BlogContainer from '@/layouts/Layout/BlogContainer';
 import Metadata from '@/components/Metadata';
+import BlogContainer from '@/layouts/Layout/BlogContainer';
 
 interface IArticleProps extends Partial<Omit<IArticle, 'content'>> {
   content: MDXRemoteSerializeResult;
@@ -58,9 +58,9 @@ const Post: NextPageWithLayout<Props> = ({ article }) => {
         </Button>
       </div>
       <div className="flex flex-row mt-10 justify-between">
-        <Time>{created}</Time>
-        <Paragraph>{readTime.text}</Paragraph>
-        <Paragraph>{author}</Paragraph>
+        <ParagraphBase>{created}</ParagraphBase>
+        <ParagraphBase>{readTime.text}</ParagraphBase>
+        <ParagraphBase>{author}</ParagraphBase>
       </div>
       <Tags items={tags} className="my-6 lg:my-8" />
       <article className="prose lg:prose-lg prose-zinc lg:prose-h1:pb-10 max-w-none dark:prose-invert prose-a:text-blue prose-pre:bg-gray/90 hover:prose-pre:bg-gray hover:prose-a:text-pink">
@@ -77,7 +77,7 @@ Post.getLayout = function getLayout(page: React.ReactElement) {
     <>
       <Header />
       <MainLayout>
-        <BlogContainer className="bg-white dark:bg-black mt-4 lg:mt-14 pb-14">{page}</BlogContainer>
+        <BlogContainer className="bg-white dark:bg-black mt-4 lg:mt-14 pb-14 md:mx-auto">{page}</BlogContainer>
       </MainLayout>
     </>
   );

@@ -36,7 +36,7 @@ Blog.getLayout = function getLayout(page: React.ReactElement) {
     <>
       <Header />
       <MainLayout>
-        <BlogContainer className="mt-2 lg:mt-14">{page} </BlogContainer>
+        <BlogContainer className="mt-2 lg:mt-14 mx-auto">{page} </BlogContainer>
       </MainLayout>
     </>
   );

@@ -6,7 +6,7 @@ interface IBlogContainer extends React.PropsWithChildren {
 }
 
 const BlogContainer = ({ className, children }: IBlogContainer): React.ReactElement => {
-  return <main className={clsx(className, { ['max-w-3xl mx-auto px-4 lg:px-20']: true })}>{children}</main>;
+  return <main className={clsx(className, { ['max-w-3xl px-4 lg:px-20']: true })}>{children}</main>;
 };
 
 export default BlogContainer;

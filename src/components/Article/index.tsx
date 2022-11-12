@@ -1,7 +1,7 @@
 import { motion, Variants } from 'framer-motion';
 import Link from 'next/link';
 import React from 'react';
-import { Button, Paragraph, Time } from '@/components/Typography';
+import { Button, ParagraphBase } from '@/components/Typography';
 import { createdAt } from '@/lib/utils';
 import Tags from '../Tags';
 import { IArticle } from '@/lib/types';
@@ -18,9 +18,7 @@ const BaseArticle: React.FC<IProps> = (props: IProps) => {
 
   const HeaderWithLink = (): React.ReactElement => (
     <Link aria-label="post-link" href="/blog/[slug]" as={`/blog/${article.slug}`} passHref>
-      <motion.h1
-        variants={headerVariant}
-        className="pt-2 text-base md:text-lg xl:text-xl font-semibold mb-4 cursor-pointer tracking-wide hover:underline">
+      <motion.h1 variants={headerVariant} className="pt-2 text-2xl md:text-4xl font-semibold mb-4 cursor-pointer tracking-wide hover:underline">
         {title}
       </motion.h1>
     </Link>
@@ -35,10 +33,10 @@ const BaseArticle: React.FC<IProps> = (props: IProps) => {
       className="m-4 p-4 pt-0 mb-10 border-b border-black border-dashed rounded-lg hover:bg-blue/50 bg-blue/80">
       <HeaderWithLink />
       <Tags items={tags} />
-      <Paragraph className="my-4 italic text-left">{excerpt}</Paragraph>
+      <ParagraphBase className="my-4 italic text-left">{excerpt}</ParagraphBase>
       <div className="flex flex-row justify-between mb-1">
-        <Time>{createdDate}</Time>
-        <Paragraph>{author}</Paragraph>
+        <ParagraphBase>{createdDate}</ParagraphBase>
+        <ParagraphBase>{author}</ParagraphBase>
       </div>
       <div className="text-center">
         <Link aria-label="post-link" href="/blog/[slug]" as={`/blog/${article.slug}`} passHref>
