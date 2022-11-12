@@ -23,7 +23,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }): React.ReactEle
   }, []);
 
   return (
-    <main className="container mx-auto relative flex flex-1">
+    <main className="relative flex flex-col flex-1">
       <div className="waves dark-mode" />
       <Metadata metadata={metadata} />
       {children}

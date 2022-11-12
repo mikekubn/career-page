@@ -53,7 +53,7 @@ const Post: NextPageWithLayout<Props> = ({ article }) => {
         <meta property="og:title" content={frontmatter.title} />
         <meta property="og:description" content={frontmatter.excerpt} />
       </Head>
-      <section className="my-10 w-4/5 xl:w-3/5 mx-auto lg:mt-10 lg:mb-20">
+      <section className="my-10 mx-auto lg:mt-10 lg:mb-20">
         <div className="flex flex-row justify-between">
           <Button onClick={() => back()} className="px-4 py-1 text-sm">
             🔙 Back

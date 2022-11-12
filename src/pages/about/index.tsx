@@ -27,7 +27,7 @@ const About: NextPageWithLayout<Props> = ({ posts }) => {
         </Head>
       ))}
       <section className="flex flex-col m-auto my-10 sm:my-20">
-        <div className="flex flex-col lg:flex-row mb-10 mx-auto w-[320px] sm:w-[400px] md:w-[650px] lg:w-[795px]">
+        <div className="flex flex-col lg:flex-row mb-10 mx-auto">
           <div className="flex-col m-auto mb-10 lg:mb-0">
             <Image alt="profile-image" src="career_page/profile/home_photo_circle_k9t68o" width="250" height="250" className="rounded-full" />
           </div>

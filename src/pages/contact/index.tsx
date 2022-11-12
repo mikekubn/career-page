@@ -10,7 +10,7 @@ const DynamicForm = dynamic(() => import('../../components/Form/index'));
 
 const Contact: NextPageWithLayout = () => {
   return (
-    <section className="h-screen flex flex-col flex-1 items-center justify-center mb-10 sm:my-0">
+    <section className="flex flex-col flex-1 items-center justify-center mb-10 sm:my-0">
       <div className="flex justify-center">
         {links.map((link) => (
           <button key={link.src} className="mx-2 mb-6">

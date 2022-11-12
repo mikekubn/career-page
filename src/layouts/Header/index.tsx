@@ -3,7 +3,7 @@ import Navigation from '@/components/Navigation';
 
 const Header = (): React.ReactElement => {
   return (
-    <div className="sticky top-0 z-20 bg-gradient-to-b from-blue h-14 pt-3 lg:pt-6">
+    <div className="sticky top-0 h-20 z-50 bg-gradient-to-b from-blue flex justify-center items-center bg-pink">
       <Navigation />
     </div>
   );

@@ -15,9 +15,9 @@ const Navigation = (): React.ReactElement => {
   useOutsideClick({ ref, callback: () => setToggle(false) });
 
   return (
-    <nav className="flex flex-wrap items-center justify-between">
+    <nav className="flex h-12 w-full items-center lg:rounded-full lg:w-[550px] lg:ring-1 lg:shadow-lg lg:px-6 lg:bg-blue/90">
       <div className={clsx({ [styles.nav_list]: true, [styles.nav_list_active]: toggle })} ref={ref}>
-        <div className="w-screen lg:hidden">
+        <div className="lg:hidden">
           <button
             data-cy={`toggle-menu-${toggle}`}
             className="flex flex-row justify-start cursor-pointer lg:hidden ml-3 lg:mt-0"
@@ -48,7 +48,7 @@ const Navigation = (): React.ReactElement => {
 export default Navigation;
 
 const styles = {
-  base: 'mb-2 text-xl lg:text-lg font-medium cursor-pointer hover:underline underline-offset-8',
+  base: 'text-xl lg:text-lg font-medium cursor-pointer hover:underline underline-offset-8',
   mobile_base: 'my-4 first:mt-20 hover:text-2xl',
   active: 'border-b-2 border-blue',
   nav_base: 'lg:flex flex-grow items-center',
