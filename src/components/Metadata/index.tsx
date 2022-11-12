@@ -28,7 +28,6 @@ const Metadata = ({
   keywords = defaultValues.keywords,
   description = defaultValues.description,
   canonical,
-  width,
   ogType = defaultValues.ogType,
   twitterHandle,
 }: Partial<IMetadata>): React.ReactElement => {
