@@ -49,25 +49,23 @@ const Post: NextPageWithLayout<Props> = ({ article }) => {
   return (
     <>
       <Metadata title={title} siteName="Blog" keywords={tags.join(',')} />
-      <section className="my-10 mx-auto lg:mt-10 lg:mb-20">
-        <div className="flex flex-row justify-between">
-          <Button onClick={() => back()} className="px-4 py-1 text-sm">
-            🔙 Back
-          </Button>
-          <Button onClick={handleClick} className="px-4 py-1 text-sm">
-            🔗 Copy link
-          </Button>
-        </div>
-        <div className="flex flex-row mt-10 justify-between">
-          <Time>{created}</Time>
-          <Paragraph>{readTime.text}</Paragraph>
-          <Paragraph>{author}</Paragraph>
-        </div>
-        <Tags items={tags} className="my-6 lg:my-8" />
-        <article className="prose lg:prose-lg prose-zinc lg:prose-h1:pb-10 max-w-none dark:prose-invert prose-a:text-blue prose-pre:bg-gray/90 hover:prose-pre:bg-gray hover:prose-a:text-pink">
-          <MDXRemote {...content} />
-        </article>
-      </section>
+      <div className="flex flex-row justify-between">
+        <Button onClick={() => back()} className="px-4 py-1 text-sm">
+          🔙 Back
+        </Button>
+        <Button onClick={handleClick} className="px-4 py-1 text-sm">
+          🔗 Copy link
+        </Button>
+      </div>
+      <div className="flex flex-row mt-10 justify-between">
+        <Time>{created}</Time>
+        <Paragraph>{readTime.text}</Paragraph>
+        <Paragraph>{author}</Paragraph>
+      </div>
+      <Tags items={tags} className="my-6 lg:my-8" />
+      <article className="prose lg:prose-lg prose-zinc lg:prose-h1:pb-10 max-w-none dark:prose-invert prose-a:text-blue prose-pre:bg-gray/90 hover:prose-pre:bg-gray hover:prose-a:text-pink">
+        <MDXRemote {...content} />
+      </article>
     </>
   );
 };
@@ -79,7 +77,7 @@ Post.getLayout = function getLayout(page: React.ReactElement) {
     <>
       <Header />
       <MainLayout>
-        <BlogContainer className="bg-white dark:bg-black">{page}</BlogContainer>
+        <BlogContainer className="bg-white dark:bg-black mt-4 lg:mt-14 pb-14">{page}</BlogContainer>
       </MainLayout>
     </>
   );

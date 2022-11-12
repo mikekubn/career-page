@@ -22,11 +22,9 @@ const Blog: NextPageWithLayout<Props> = ({ articles }) => {
         description="What interested me, fronted development?"
         keywords="React, Nextjs, Blog, Frontend, Styles, Tailwind"
       />
-      <BlogContainer>
-        {articles?.map((article) => (
-          <BaseArticle key={article.slug} article={article} />
-        ))}
-      </BlogContainer>
+      {articles?.map((article) => (
+        <BaseArticle key={article.slug} article={article} />
+      ))}
     </>
   );
 };
@@ -37,7 +35,9 @@ Blog.getLayout = function getLayout(page: React.ReactElement) {
   return (
     <>
       <Header />
-      <MainLayout>{page}</MainLayout>
+      <MainLayout>
+        <BlogContainer className="mt-2 lg:mt-14">{page} </BlogContainer>
+      </MainLayout>
     </>
   );
 };
