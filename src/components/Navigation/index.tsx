@@ -22,14 +22,14 @@ const Navigation = (): React.ReactElement => {
             data-cy={`toggle-menu-${toggle}`}
             className="flex flex-row justify-start cursor-pointer lg:hidden ml-3 lg:mt-0"
             onClick={() => setToggle(!toggle)}>
-            <Image src={getCloudinaryUrl('assets/menu_bbe3tl.png')} width="38" height="38" alt="open" />
+            <Image src={getCloudinaryUrl({ url: 'assets/menu_bbe3tl.png' })} width="38" height="38" alt="open" />
           </button>
         </div>
         <motion.div layout className={clsx({ [styles.nav_base]: true, flex: toggle, hidden: !toggle })} data-cy="mobile-navigaiton-list">
           <ul className="flex flex-1 flex-col lg:flex-row items-center">
             {items.map((item, index) => (
               <li data-cy="navigation-item" key={index} className="mt-4 ml-0 mb-6 lg:ml-8 lg:first:m-0 lg:my-0">
-                <Link href={item.url} passHref replace>
+                <Link href={item.url} passHref replace legacyBehavior>
                   <button value={item.name} className={clsx({ [styles.base]: true, [styles.active]: item.active })} onClick={() => setToggle(false)}>
                     {item.name}
                   </button>

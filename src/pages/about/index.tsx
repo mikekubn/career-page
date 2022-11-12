@@ -1,7 +1,7 @@
 import React from 'react';
 import type { GetStaticProps } from 'next';
 import cloudinary from 'cloudinary.config';
-import { getPosts } from '@/lib/utils';
+import { getCloudinaryUrl, getPosts } from '@/lib/utils';
 import { IExperience } from '@/lib/types';
 import Header from '@/layouts/Header';
 import MainLayout from '@/layouts/Layout';
@@ -23,7 +23,13 @@ const About: NextPageWithLayout<Props> = ({ posts }) => {
       <section className="flex flex-col m-auto my-10 sm:my-20">
         <div className="flex flex-col lg:flex-row mb-10 mx-auto">
           <div className="flex-col m-auto mb-10 lg:mb-0">
-            <Image alt="profile-image" src="career_page/profile/home_photo_circle_k9t68o" width="250" height="250" className="rounded-full" />
+            <Image
+              alt="profile-image"
+              src={getCloudinaryUrl({ url: 'profile/home_photo_circle_k9t68o' })}
+              width="250"
+              height="250"
+              className="rounded-full"
+            />
           </div>
           <div className="flex-col m-auto md:mx-10 lg:w-96 text-center lg:text-left">
             <H5 className="uppercase mb-1 font-semibold">

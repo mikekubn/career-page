@@ -14,7 +14,7 @@ const Error404: NextPageWithLayout = (): React.ReactElement => {
     <>
       <Metadata title="404" siteName="Not found" description="Sorry, we did not find the way." />
       <section className="flex flex-1 flex-col justify-center mx-auto items-center">
-        <Image src={getCloudinaryUrl('assets/404_Error-pana_xknb4q.png')} width="600" height="400" />
+        <Image src={getCloudinaryUrl({ url: 'assets/404_Error-pana_xknb4q.png' })} width="600" height="400" alt="Not found" />
         <Button className="py-3 w-36" onClick={() => push('/')}>
           Go home
         </Button>

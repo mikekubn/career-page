@@ -50,7 +50,8 @@ const getPost = (dir: string): Post => {
 
 const sanitation = (arr: string[], cut: string): string[] => arr.map((a) => a.replace(cut, ''));
 
-const getCloudinaryUrl = (url: string) => `/career_page/${url}`;
+const getCloudinaryUrl = ({ url, prefix }: { url: string; prefix?: string }) =>
+  `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_NAME}/image/upload${!!prefix ? prefix : '/career_page'}/${url}`;
 
 const firstLetterToUpperCase = (str: string) => str?.charAt(0).toUpperCase() + str?.slice(1);
 

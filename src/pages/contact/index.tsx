@@ -45,18 +45,18 @@ const links: { name: string; src: string; url: string; img: string }[] = [
     name: 'GitHub',
     src: 'github',
     url: `${process.env.NEXT_PUBLIC_GITHUB}`,
-    img: getCloudinaryUrl('assets/github-144_ltj43s.png'),
+    img: getCloudinaryUrl({ url: 'assets/github-144_ltj43s.png' }),
   },
   {
     name: 'LinkedIn',
     src: 'linkedin',
     url: `${process.env.NEXT_PUBLIC_LINKEDIN}`,
-    img: getCloudinaryUrl('assets/linkedin_mgrtgk.png'),
+    img: getCloudinaryUrl({ url: 'assets/linkedin_mgrtgk.png' }),
   },
   {
     name: 'Twitter',
     src: 'twitter',
     url: `${process.env.NEXT_PUBLIC_TWITTER}`,
-    img: getCloudinaryUrl('assets/twitter_qgwhdw.png'),
+    img: getCloudinaryUrl({ url: 'assets/twitter_qgwhdw.png' }),
   },
 ];

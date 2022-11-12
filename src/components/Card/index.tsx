@@ -3,6 +3,7 @@ import { useInView } from 'framer-motion';
 import Image from 'next/image';
 import { H4, ParagrapExtrahLarge, ParagraphBase } from '../Typography';
 import { IExperience } from '@/lib/types';
+import { getCloudinaryUrl } from '@/lib/utils';
 
 const Card = ({ item }: { item: IExperience['frontmatter'] }): React.ReactElement => {
   const ref = React.useRef(null);
@@ -18,7 +19,7 @@ const Card = ({ item }: { item: IExperience['frontmatter'] }): React.ReactElemen
         transition: 'all 0.3s cubic-bezier(0.17, 0.55, 0.55, 1) 0.4s',
       }}>
       <span className="absolute w-11 h-11 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full">
-        <Image alt={item.image} src={item.image} height="62" width="62" className="rounded-full" />
+        <Image alt={item.image} src={getCloudinaryUrl({ url: item.image, prefix: '/' })} height="62" width="62" className="rounded-full" />
       </span>
       <div className="flex flex-col items-end">
         <section className="pt-2 p-6 mb-10 rounded-xl w-11/12 lg:w-[670px] bg-blue/50">
