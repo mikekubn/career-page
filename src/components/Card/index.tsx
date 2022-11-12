@@ -1,8 +1,9 @@
 import React from 'react';
 import { useInView } from 'framer-motion';
 import Image from 'next/image';
-import { H1, H2, Paragraph, Time } from '../Typography';
+import { H4, ParagrapExtrahLarge, ParagraphBase } from '../Typography';
 import { IExperience } from '@/lib/types';
+import { getCloudinaryUrl } from '@/lib/utils';
 
 const Card = ({ item }: { item: IExperience['frontmatter'] }): React.ReactElement => {
   const ref = React.useRef(null);
@@ -10,7 +11,7 @@ const Card = ({ item }: { item: IExperience['frontmatter'] }): React.ReactElemen
 
   return (
     <div
-      className="flex flex-col mx-auto w-11/12 sm:w-[400px] md:w-[650px] lg:w-[750px]"
+      className="flex flex-col flex-1 md:mx-auto w-full lg:w-[750px]"
       ref={ref}
       style={{
         transform: isInView ? 'none' : 'translateX(-200px)',
@@ -18,22 +19,22 @@ const Card = ({ item }: { item: IExperience['frontmatter'] }): React.ReactElemen
         transition: 'all 0.3s cubic-bezier(0.17, 0.55, 0.55, 1) 0.4s',
       }}>
       <span className="absolute w-11 h-11 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full">
-        <Image alt={item.image} src={item.image} height="62" width="62" className="rounded-full" />
+        <Image alt={item.image} src={getCloudinaryUrl({ url: item.image, prefix: '/' })} height="62" width="62" className="rounded-full" />
       </span>
       <div className="flex flex-col items-end">
-        <section className="pt-2 p-6 mb-10 rounded-xl w-10/12 sm:w-[330px] md:w-[570px] lg:w-[670px] bg-blue/50">
+        <section className="pt-2 p-6 mb-10 rounded-xl w-11/12 lg:w-[670px] bg-blue/50">
           <div className="text-start">
-            <Time className="text-sm font-normal">
+            <ParagraphBase className="text-sm font-normal">
               From: {item.from} {item.to && `To: ${item.to}`}
-            </Time>
-            <H1>{item.title}</H1>
-            <Paragraph className="pt-1 pb-2">{item.where}</Paragraph>
-            <H2 className="pb-4">{item.position}</H2>
+            </ParagraphBase>
+            <H4>{item.title}</H4>
+            <ParagraphBase className="pt-1 pb-2">{item.where}</ParagraphBase>
+            <ParagrapExtrahLarge className="pb-4">{item.position}</ParagrapExtrahLarge>
           </div>
           <ul>
             {item.description.map((text, index) => (
               <li key={index} className="list-disc font-light leading-loose py-1">
-                <Paragraph>{text}</Paragraph>
+                <ParagraphBase>{text}</ParagraphBase>
               </li>
             ))}
           </ul>

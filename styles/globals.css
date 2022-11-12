@@ -8,6 +8,12 @@
   }
 }
 
+#__next {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .waves {
   position: fixed;
   top: 0px;

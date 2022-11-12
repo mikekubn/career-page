@@ -2,8 +2,7 @@ import { createdAt, getPaths, getPost } from '@/lib/utils';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
-import Head from 'next/head';
-import { Button, Paragraph, Time } from '@/components/Typography';
+import { Button, ParagraphBase } from '@/components/Typography';
 import Tags from '@/components/Tags';
 import { IArticle } from '@/lib/types';
 import { NextParsedUrlQuery } from 'next/dist/server/request-meta';
@@ -13,7 +12,8 @@ import readingTime, { ReadTimeResults } from 'reading-time';
 import { NextPageWithLayout } from '../_app';
 import Header from '@/layouts/Header';
 import MainLayout from '@/layouts/Layout';
-import BlogLayout from '@/layouts/Layout/BlogLayout';
+import Metadata from '@/components/Metadata';
+import BlogContainer from '@/layouts/Layout/BlogContainer';
 
 interface IArticleProps extends Partial<Omit<IArticle, 'content'>> {
   content: MDXRemoteSerializeResult;
@@ -34,7 +34,7 @@ const Post: NextPageWithLayout<Props> = ({ article }) => {
     return <></>;
   }
 
-  const { date, author, tags, readTime } = frontmatter;
+  const { date, author, tags, readTime, title } = frontmatter;
   const created = createdAt(date);
 
   const handleClick = async () => {
@@ -48,30 +48,24 @@ const Post: NextPageWithLayout<Props> = ({ article }) => {
 
   return (
     <>
-      <Head>
-        <meta name="description" content={frontmatter.author} />
-        <meta property="og:title" content={frontmatter.title} />
-        <meta property="og:description" content={frontmatter.excerpt} />
-      </Head>
-      <section className="my-10 w-4/5 xl:w-3/5 mx-auto lg:mt-10 lg:mb-20">
-        <div className="flex flex-row justify-between">
-          <Button onClick={() => back()} className="px-4 py-1 text-sm">
-            🔙 Back
-          </Button>
-          <Button onClick={handleClick} className="px-4 py-1 text-sm">
-            🔗 Copy link
-          </Button>
-        </div>
-        <div className="flex flex-row mt-10 justify-between">
-          <Time>{created}</Time>
-          <Paragraph>{readTime.text}</Paragraph>
-          <Paragraph>{author}</Paragraph>
-        </div>
-        <Tags items={tags} className="my-6 lg:my-8" />
-        <article className="prose lg:prose-lg prose-zinc lg:prose-h1:pb-10 max-w-none dark:prose-invert prose-a:text-blue prose-pre:bg-gray/90 hover:prose-pre:bg-gray hover:prose-a:text-pink">
-          <MDXRemote {...content} />
-        </article>
-      </section>
+      <Metadata title={title} siteName="Blog" keywords={tags.join(',')} />
+      <div className="flex flex-row justify-between">
+        <Button onClick={() => back()} className="px-4 py-1 text-sm">
+          🔙 Back
+        </Button>
+        <Button onClick={handleClick} className="px-4 py-1 text-sm">
+          🔗 Copy link
+        </Button>
+      </div>
+      <div className="flex flex-row mt-10 justify-between">
+        <ParagraphBase>{created}</ParagraphBase>
+        <ParagraphBase>{readTime.text}</ParagraphBase>
+        <ParagraphBase>{author}</ParagraphBase>
+      </div>
+      <Tags items={tags} className="my-6 lg:my-8" />
+      <article className="prose lg:prose-lg prose-zinc lg:prose-h1:pb-10 max-w-none dark:prose-invert prose-a:text-blue prose-pre:bg-gray/90 hover:prose-pre:bg-gray hover:prose-a:text-pink">
+        <MDXRemote {...content} />
+      </article>
     </>
   );
 };
@@ -83,7 +77,7 @@ Post.getLayout = function getLayout(page: React.ReactElement) {
     <>
       <Header />
       <MainLayout>
-        <BlogLayout>{page}</BlogLayout>
+        <BlogContainer className="bg-white dark:bg-black mt-4 lg:mt-14 pb-14 md:mx-auto">{page}</BlogContainer>
       </MainLayout>
     </>
   );
