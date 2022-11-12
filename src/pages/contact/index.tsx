@@ -5,23 +5,27 @@ import dynamic from 'next/dynamic';
 import React from 'react';
 import { NextPageWithLayout } from '../_app';
 import Image from 'next/image';
+import Metadata from '@/components/Metadata';
 
 const DynamicForm = dynamic(() => import('../../components/Form/index'));
 
 const Contact: NextPageWithLayout = () => {
   return (
-    <section className="flex flex-col flex-1 items-center justify-center mb-10 sm:my-0">
-      <div className="flex justify-center">
-        {links.map((link) => (
-          <button key={link.src} className="mx-2 mb-6">
-            <a href={link.url} target="_blank" rel="noreferrer">
-              <Image key={link.src} src={link.img} width="30" height="30" className="cursor-pointer" alt={link.name} />
-            </a>
-          </button>
-        ))}
-      </div>
-      <DynamicForm />
-    </section>
+    <>
+      <Metadata title="Contact" siteName="Michael Kubín" description="Contact me." />
+      <section className="flex flex-col flex-1 items-center justify-center mb-10 sm:my-0">
+        <div className="flex justify-center">
+          {links.map((link) => (
+            <button key={link.src} className="mx-2 mb-6">
+              <a href={link.url} target="_blank" rel="noreferrer">
+                <Image key={link.src} src={link.img} width="30" height="30" className="cursor-pointer" alt={link.name} />
+              </a>
+            </button>
+          ))}
+        </div>
+        <DynamicForm />
+      </section>
+    </>
   );
 };
 

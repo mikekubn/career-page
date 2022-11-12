@@ -2,7 +2,6 @@ import { createdAt, getPaths, getPost } from '@/lib/utils';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
-import Head from 'next/head';
 import { Button, Paragraph, Time } from '@/components/Typography';
 import Tags from '@/components/Tags';
 import { IArticle } from '@/lib/types';
@@ -14,6 +13,7 @@ import { NextPageWithLayout } from '../_app';
 import Header from '@/layouts/Header';
 import MainLayout from '@/layouts/Layout';
 import BlogLayout from '@/layouts/Layout/BlogLayout';
+import Metadata from '@/components/Metadata';
 
 interface IArticleProps extends Partial<Omit<IArticle, 'content'>> {
   content: MDXRemoteSerializeResult;
@@ -34,7 +34,7 @@ const Post: NextPageWithLayout<Props> = ({ article }) => {
     return <></>;
   }
 
-  const { date, author, tags, readTime } = frontmatter;
+  const { date, author, tags, readTime, title } = frontmatter;
   const created = createdAt(date);
 
   const handleClick = async () => {
@@ -48,11 +48,7 @@ const Post: NextPageWithLayout<Props> = ({ article }) => {
 
   return (
     <>
-      <Head>
-        <meta name="description" content={frontmatter.author} />
-        <meta property="og:title" content={frontmatter.title} />
-        <meta property="og:description" content={frontmatter.excerpt} />
-      </Head>
+      <Metadata title={title} siteName="Blog" keywords={tags.join(',')} />
       <section className="my-10 mx-auto lg:mt-10 lg:mb-20">
         <div className="flex flex-row justify-between">
           <Button onClick={() => back()} className="px-4 py-1 text-sm">
