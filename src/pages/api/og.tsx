@@ -3,6 +3,7 @@ import { ImageResponse } from '@vercel/og';
 
 export const config = {
   runtime: 'experimental-edge',
+  unstable_allowDynamic: ['/node_modules/gray-matter/**'],
 };
 
 const imgUrl = getCloudinaryUrl({ url: 'og.jpg' });
