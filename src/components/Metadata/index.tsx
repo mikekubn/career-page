@@ -43,7 +43,7 @@ const Metadata = ({
 
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content={`${process.env.NEXT_PUBLIC_URL}api/og?title=${title}&width=${width}`} />
+      <meta property="og:image" content={`${process.env.NEXT_PUBLIC_URL}api/og`} />
       <meta property="og:type" content={ogType} />
       <meta key="og_site_name" property="og:site_name" content={siteName} />
       <meta key="og_url" property="og:url" content={canonical ?? defaultValues.domain} />
