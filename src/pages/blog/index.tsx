@@ -1,12 +1,13 @@
 import React from 'react';
 import type { GetStaticProps } from 'next';
-import Head from 'next/head';
 import { getPosts, sortByDate } from '@/lib/utils';
 import BaseArticle from '@/components/Article';
 import { IArticle } from '@/lib/types';
 import { NextPageWithLayout } from '../_app';
 import Header from '@/layouts/Header';
 import MainLayout from '@/layouts/Layout';
+import Metadata from '@/components/Metadata';
+import BlogContainer from '@/layouts/Layout/BlogContainer';
 
 type Props = {
   articles: IArticle[];
@@ -15,16 +16,15 @@ type Props = {
 const Blog: NextPageWithLayout<Props> = ({ articles }) => {
   return (
     <>
-      <Head>
-        <meta name="description" content="Michael Kubin frontend developer, career web" />
-        <meta property="og:title" content="Michael Kubin - Frontend developer" />
-        <meta property="og:description" content="Michael Kubin work experience" />
-      </Head>
-      <section className="mx-auto w-11/12 md:w-4/5 xl:w-3/5 pt-10 pb-20">
-        {articles?.map((article) => (
-          <BaseArticle key={article.slug} article={article} />
-        ))}
-      </section>
+      <Metadata
+        title="Blog"
+        siteName="Posts"
+        description="What interested me, fronted development?"
+        keywords="React, Nextjs, Blog, Frontend, Styles, Tailwind"
+      />
+      {articles?.map((article) => (
+        <BaseArticle key={article.slug} article={article} />
+      ))}
     </>
   );
 };
@@ -35,7 +35,9 @@ Blog.getLayout = function getLayout(page: React.ReactElement) {
   return (
     <>
       <Header />
-      <MainLayout>{page}</MainLayout>
+      <MainLayout>
+        <BlogContainer className="mt-2 lg:mt-14 mx-auto">{page} </BlogContainer>
+      </MainLayout>
     </>
   );
 };

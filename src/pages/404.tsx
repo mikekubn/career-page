@@ -5,17 +5,21 @@ import Image from 'next/image';
 import { getCloudinaryUrl } from '@/lib/utils';
 import { Button } from '@/components/Typography';
 import { useRouter } from 'next/router';
+import Metadata from '@/components/Metadata';
 
 const Error404: NextPageWithLayout = (): React.ReactElement => {
   const { push } = useRouter();
 
   return (
-    <section className="flex flex-col justify-center mx-auto items-center h-screen">
-      <Image src={getCloudinaryUrl({ url: 'assets/404_Error-pana_xknb4q.png' })} width="600" height="400" alt="Not found" />
-      <Button className="py-3 w-36" onClick={() => push('/')}>
-        GO HOME
-      </Button>
-    </section>
+    <>
+      <Metadata title="404" siteName="Not found" description="Sorry, we did not find the way." />
+      <section className="flex flex-1 flex-col justify-center mx-auto items-center">
+        <Image src={getCloudinaryUrl({ url: 'assets/404_Error-pana_xknb4q.png' })} width="600" height="400" alt="Not found" />
+        <Button className="py-3 w-36" onClick={() => push('/')}>
+          Go home
+        </Button>
+      </section>
+    </>
   );
 };
 

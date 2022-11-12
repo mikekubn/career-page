@@ -15,9 +15,9 @@ const Navigation = (): React.ReactElement => {
   useOutsideClick({ ref, callback: () => setToggle(false) });
 
   return (
-    <nav className="flex flex-wrap items-center justify-between">
+    <nav className="flex h-12 w-full items-start lg:items-center lg:rounded-full lg:w-[550px] lg:ring-1 lg:shadow-lg lg:px-6 lg:bg-black/30">
       <div className={clsx({ [styles.nav_list]: true, [styles.nav_list_active]: toggle })} ref={ref}>
-        <div className="w-screen lg:hidden">
+        <div className="lg:hidden">
           <button
             data-cy={`toggle-menu-${toggle}`}
             className="flex flex-row justify-start cursor-pointer lg:hidden ml-3 lg:mt-0"
@@ -28,7 +28,7 @@ const Navigation = (): React.ReactElement => {
         <motion.div layout className={clsx({ [styles.nav_base]: true, flex: toggle, hidden: !toggle })} data-cy="mobile-navigaiton-list">
           <ul className="flex flex-1 flex-col lg:flex-row items-center">
             {items.map((item, index) => (
-              <li data-cy="navigation-item" key={index} className="ml-0 mb-6 lg:ml-8 lg:first:m-0 lg:mb-0">
+              <li data-cy="navigation-item" key={index} className="mt-4 ml-0 mb-6 lg:ml-8 lg:first:m-0 lg:my-0">
                 <Link href={item.url} passHref replace legacyBehavior>
                   <button value={item.name} className={clsx({ [styles.base]: true, [styles.active]: item.active })} onClick={() => setToggle(false)}>
                     {item.name}
@@ -36,7 +36,7 @@ const Navigation = (): React.ReactElement => {
                 </Link>
               </li>
             ))}
-            <ToggleTheme className="lg:hidden" />
+            <ToggleTheme className="mb-6 lg:hidden" />
           </ul>
         </motion.div>
         <ToggleTheme className="hidden lg:flex" />
@@ -48,10 +48,10 @@ const Navigation = (): React.ReactElement => {
 export default Navigation;
 
 const styles = {
-  base: 'mb-2 text-xl lg:text-lg font-medium cursor-pointer hover:underline underline-offset-8',
+  base: 'text-xl lg:text-lg font-medium cursor-pointer hover:underline underline-offset-8',
   mobile_base: 'my-4 first:mt-20 hover:text-2xl',
   active: 'border-b-2 border-blue',
-  nav_base: 'lg:flex flex-grow items-center',
-  nav_list: 'lg:container lg:px-4 mx-auto flex flex-wrap items-center justify-between w-11/12 rounded-xl lg:bg-transparent',
-  nav_list_active: 'bg-black text-white dark:bg-white dark:text-black pb-14',
+  nav_base: 'lg:flex flex-grow flex-col items-center mr-[50px] lg:mr-0',
+  nav_list: 'mx-auto flex flex-row justify-between w-11/12 rounded-xl lg:bg-transparent lg:px-4',
+  nav_list_active: 'bg-black text-white dark:bg-white dark:text-black',
 };
