@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@emailjs/browser": "^3.7.0",
-    "@vercel/og": "^0.0.20",
+    "@vercel/og": "^0.0.21",
     "cloudinary": "^1.32.0",
     "clsx": "^1.2.1",
     "framer-motion": "^7.6.2",
