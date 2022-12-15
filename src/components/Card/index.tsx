@@ -14,9 +14,8 @@ const Card = ({ item }: { item: IExperience['frontmatter'] }): React.ReactElemen
       className="flex flex-col flex-1 md:mx-auto w-full lg:w-[750px]"
       ref={ref}
       style={{
-        transform: isInView ? 'none' : 'translateX(-200px)',
         opacity: isInView ? 1 : 0,
-        transition: 'all 0.3s cubic-bezier(0.17, 0.55, 0.55, 1) 0.4s',
+        transition: 'opacity 0.5s ease-in',
       }}>
       <span className="absolute w-11 h-11 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full">
         <Image alt={item.image} src={getCloudinaryUrl({ url: item.image, prefix: '/' })} height="62" width="62" className="rounded-full" />
