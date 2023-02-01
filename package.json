@@ -32,7 +32,7 @@
     "reading-time": "^1.5.0"
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "^13.1.1",
+    "@next/eslint-plugin-next": "^13.1.6",
     "@react-hook/media-query": "^1.1.1",
     "@tailwindcss/typography": "^0.5.8",
     "@testing-library/dom": "^8.19.1",
