@@ -22,7 +22,7 @@
     "@vercel/og": "^0.0.27",
     "cloudinary": "^1.33.0",
     "clsx": "^1.2.1",
-    "framer-motion": "^8.5.5",
+    "framer-motion": "^10.0.1",
     "gray-matter": "^4.0.3",
     "next": "^13.1.6",
     "next-mdx-remote": "^4.3.0",
