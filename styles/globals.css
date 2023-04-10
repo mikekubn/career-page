@@ -3,55 +3,31 @@
 @tailwind utilities;
 
 @layer base {
-  .dark-mode {
-    @apply bg-white text-black dark:bg-black dark:text-white;
+  .animation-fast {
+    @apply duration-200 transition-all;
   }
-}
 
-#__next {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
+  .animation-base {
+    @apply duration-300 transition-all;
+  }
 
-.waves {
-  min-height: 100vh;
-  position: fixed;
-  top: 0px;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  z-index: -1;
-}
+  .gradient {
+    @apply bg-gradient-to-r from-blue via-purple to-light-blue;
+  }
 
-.rotate-list {
-  display: block;
-  animation: rotate_words 8s infinite;
-}
+  .gradient-blue-text {
+    @apply bg-gradient-to-r from-blue to-light-blue gradient-text;
+  }
 
-@keyframes rotate_words {
-  10% {
-    transform: translateY(-112%);
+  .gradient-text {
+    @apply bg-clip-text text-transparent gradient;
   }
-  25% {
-    transform: translateY(-100%);
+
+  .gradient-text-animate {
+    @apply gradient-text gradient-animate animate-headers;
   }
-  35% {
-    transform: translateY(-212%);
-  }
-  50% {
-    transform: translateY(-200%);
-  }
-  60% {
-    transform: translateY(-312%);
-  }
-  75% {
-    transform: translateY(-300%);
-  }
-  85% {
-    transform: translateY(-412%);
-  }
-  100% {
-    transform: translateY(-400%);
+
+  .gradient-animate {
+    @apply bg-size-200 animation-base bg-pos-100;
   }
 }

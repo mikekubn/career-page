@@ -10,7 +10,7 @@ interface ITypographyHeading extends React.PropsWithChildren<Partial<Pick<HTMLHe
 export const H1 = ({ children, className, font }: ITypographyHeading): React.ReactElement => (
   <h1
     className={clsx(className, {
-      ['font-metropolis leading-more-loose md:leading-more-loose text-4xl md:text-6xl']: true,
+      ['font-metropolis leading-more-loose md:leading-more-loose text-6xl md:text-9xl']: true,
       ['font-light']: font === 'light',
       ['font-normal']: font === 'regular',
       ['font-semibold']: font === 'medium',

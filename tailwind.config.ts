@@ -8,17 +8,14 @@ export default {
     extend: {
       colors: {
         transparent: 'transparent',
-        black: '#000000',
         'light-black': '#262626',
-        shadow: '#585858',
-        'light-shadow': '#8D8D8D',
+        black: '#000000',
         white: '#FFFFFF',
-        devRed: '#FF0000',
-        devGreen: '#00FF00',
-        devBlue: '#0000FF',
-        'light-blue': '#479FF1',
-        'light-green': '#45EB9B',
-        pink: '#9A35CD',
+        red: '#FF0000',
+        green: '#00FF00',
+        blue: '#387aff',
+        'light-blue': '#34b5ff',
+        purple: '#a244ff',
         'red-error': '#B91C1C',
       },
       fontFamily: {
