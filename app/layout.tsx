@@ -2,8 +2,6 @@ import localFont from 'next/font/local';
 import type { Metadata } from 'next/types';
 import clsx from 'clsx';
 import '../styles/globals.css';
-import Link from 'next/link';
-import { H4, H5 } from './components/Typography';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 
@@ -58,13 +56,13 @@ export const metadata: Metadata = {
     statusBarStyle: 'black-translucent',
   },
   verification: {
-    google: '',
+    google: 'JKVyi3BBSq744RDL7GjbV4PnS8NyES3hY93rQMu-QsE',
   },
   twitter: {
     card: 'summary_large_image',
     site: '@site',
     creator: '@creator',
-    images: '',
+    images: 'https://res.cloudinary.com/dctc6iyms/image/upload/v1681157556/og_michael_kubin_dcskgv.jpg',
   },
   openGraph: {
     type: 'website',
@@ -74,7 +72,7 @@ export const metadata: Metadata = {
     siteName: 'Software engineer - Michael Kubin',
     images: [
       {
-        url: '',
+        url: 'https://res.cloudinary.com/dctc6iyms/image/upload/v1681157556/og_michael_kubin_dcskgv.jpg',
       },
     ],
   },
