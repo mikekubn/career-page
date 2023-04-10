@@ -16,7 +16,7 @@
   }
 
   .gradient-blue-text {
-    @apply bg-gradient-to-r from-blue to-light-blue gradient-text;
+    @apply bg-gradient-to-r from-blue to-light-blue bg-clip-text text-transparent;
   }
 
   .gradient-text {
