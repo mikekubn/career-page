@@ -2,7 +2,7 @@
 
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { SectionLeft, SectionRight } from './Sections';
+import { SectionLeft } from './Sections';
 import Image from 'next/image';
 import { H2 } from './Typography';
 
@@ -12,11 +12,11 @@ const Contact = (): React.ReactElement => {
 
   return (
     <section id="contact" ref={ref} className="flex flex-col items-center justify-center min-h-screen">
-      <SectionRight isInView={isInView}>
+      <SectionLeft isInView={isInView}>
         <H2 font="bold" className="gradient-text-animate mb-8 pb-2">
           Ping me!
         </H2>
-      </SectionRight>
+      </SectionLeft>
       <SectionLeft isInView={isInView} className="flex flex-col md:flex-row flex-wrap justify-center gap-10 items-center">
         {items.map((item, index) => (
           <div key={index}>
