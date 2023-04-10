@@ -3,7 +3,7 @@
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Parallax from './Parallax';
-import { SectionLeft, SectionRight } from './Sections';
+import { SectionLeft } from './Sections';
 import { H2, ParagraphLarge } from './Typography';
 
 const WhoIam = (): React.ReactElement => {
@@ -11,8 +11,8 @@ const WhoIam = (): React.ReactElement => {
   const isInView = useInView(ref, { once: true });
 
   return (
-    <section ref={ref} id="who-i-am" className="flex flex-col md:flex-row flex-1 justify-center items-center md:justify-between min-h-screen gap-6">
-      <SectionLeft isInView={isInView} className="flex flex-col w-full md:w-1/2 justify-center mb-16 md:mb-0">
+    <section ref={ref} className="flex flex-col md:flex-row flex-1 justify-center items-center md:justify-between min-h-screen gap-6">
+      <SectionLeft isInView={isInView} id="who-i-am" className="flex flex-col w-full md:w-1/2 justify-center mb-16 md:mb-0">
         <H2 font="bold" className="gradient-text-animate mb-8">
           Who I am?
         </H2>
@@ -26,12 +26,12 @@ const WhoIam = (): React.ReactElement => {
           the peace and quiet there ⛰ 🥾.
         </ParagraphLarge>
       </SectionLeft>
-      <SectionRight isInView={isInView} className="flex flex-col w-full md:w-1/2 justify-center items-center mb-16 md:mb-0">
+      <SectionLeft isInView={isInView} className="flex flex-col w-full md:w-1/2 justify-center items-center mb-28 md:mb-0">
         <H2 font="bold" className="gradient-text-animate mb-8 pb-2 text-center">
           Technology dev stack.
         </H2>
         <Parallax />
-      </SectionRight>
+      </SectionLeft>
     </section>
   );
 };
