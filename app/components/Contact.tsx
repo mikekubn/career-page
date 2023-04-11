@@ -14,7 +14,7 @@ const Contact = (): React.ReactElement => {
     <section id="contact" ref={ref} className="flex flex-col items-center justify-center min-h-screen">
       <SectionLeft isInView={isInView}>
         <H2 font="bold" className="gradient-text-animate mb-8 pb-2">
-          Ping me!
+          Ping me.
         </H2>
       </SectionLeft>
       <SectionLeft isInView={isInView} className="flex flex-col md:flex-row flex-wrap justify-center gap-10 items-center">

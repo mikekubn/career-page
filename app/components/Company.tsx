@@ -12,7 +12,7 @@ const Cooperation = (): React.ReactElement => {
   const isInView = useInView(ref, { once: true });
 
   return (
-    <section ref={ref} className="flex min-h-screen w-full mb-16 md:mb-0">
+    <section ref={ref} className="flex min-h-screen w-full">
       <SectionLeft isInView={isInView} className="flex flex-row flex-wrap justify-center gap-10">
         {items.map((item, index) => (
           <div id="cooperation" key={index} className="bg-light-blue/5 w-full lg:w-[45%] rounded-3xl p-8">
