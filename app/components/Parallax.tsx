@@ -19,7 +19,7 @@ const CustomParallax = (): React.ReactElement => {
               />
             </div>
           </Parallax>
-          <Parallax translateY={['-8%', '8%']}>
+          <Parallax translateY={['-20%', '20%']}>
             <div className="relative object-fill w-20 h-20">
               <Image
                 fill={true}
