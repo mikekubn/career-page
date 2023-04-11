@@ -13,7 +13,7 @@ const Cooperation = (): React.ReactElement => {
 
   return (
     <section ref={ref} className="flex min-h-screen w-full">
-      <SectionLeft isInView={isInView} className="flex flex-row flex-wrap justify-center gap-10">
+      <SectionLeft isInView={isInView} className="flex flex-row flex-wrap justify-center gap-10 md:mt-20">
         {items.map((item, index) => (
           <div id="cooperation" key={index} className="bg-light-blue/5 w-full lg:w-[45%] rounded-3xl p-8">
             <div className="flex flex-row flex-wrap items-center justify-between mb-8">
