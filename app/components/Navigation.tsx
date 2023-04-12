@@ -62,7 +62,7 @@ const MobileItems = (): React.ReactElement => {
 };
 
 const styles = {
-  link: 'gradient-blue-text underline hover:none-underline',
+  link: 'gradient-blue-text hover:to-purple',
 };
 
 const items = [
