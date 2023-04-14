@@ -4,7 +4,7 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Parallax from './Parallax';
 import { SectionLeft } from './Sections';
-import { H2, ParagrapExtrahLarge, ParagraphLarge } from './Typography';
+import { H2, ParagrapExtrahLarge } from './Typography';
 
 const WhoIam = (): React.ReactElement => {
   const ref = useRef<HTMLDivElement>(null);
@@ -17,13 +17,13 @@ const WhoIam = (): React.ReactElement => {
           Who I am?
         </H2>
         <ParagrapExtrahLarge font="light" className="text-left">
-          Hi everyone, I'm Michael Kubin software engineer mostly working with tools like React, Nextjs, Nodejs, Cypress and many others. I currently
-          lead the frontend team at{' '}
-          <a href="https://www.akcenta.digital/" target="_blank" className="underline hover:no-underline gradient-blue-text">
+          Hi everyone, I&apos;m Michael Kubin software engineer mostly working with tools like React, Nextjs, Nodejs, Cypress and many others. I
+          currently lead the frontend team at{' '}
+          <a href="https://www.akcenta.digital/" target="_blank" className="underline hover:no-underline gradient-blue-text" rel="noreferrer">
             Akcenta
           </a>{' '}
-          company. We are facing a major challenge to digitalize of an international financial company. I love hiking, so when I'm not coding I enjoy
-          the peace and quiet there ⛰ 🥾.
+          company. We are facing a major challenge to digitalize of an international financial company. I love hiking, so when I&apos;m not coding I
+          enjoy the peace and quiet there ⛰ 🥾.
         </ParagrapExtrahLarge>
       </SectionLeft>
       <SectionLeft isInView={isInView} className="flex flex-col w-full md:w-1/2 justify-center items-center min-h-screen">
