@@ -20,7 +20,7 @@ const Contact = (): React.ReactElement => {
       <SectionLeft isInView={isInView} className="flex flex-col md:flex-row flex-wrap justify-center gap-10 items-center">
         {items.map((item, index) => (
           <div key={index}>
-            <a href={item.link} target="_blank">
+            <a href={item.link} target="_blank" rel="noreferrer">
               <Image height={60} width={60} quality={100} loading="eager" src={item.image} alt={item.title} />
             </a>
           </div>
