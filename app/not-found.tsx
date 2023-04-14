@@ -10,9 +10,8 @@ const NotFound = (): React.ReactElement => (
     <Image loading="eager" src="/assets/not_found.gif" width="700" height="450" alt="Not found" className="rounded-3xl my-10 md:my-14" />
     <div className="inline-flex text-center">
       <ParagraphLarge font="regular" className="gradient-blue-text">
-        Could not find requested resource
+        Could not find requested resource &nbsp;
       </ParagraphLarge>
-      &nbsp;
       <Link className="gradient-blue-text hover:to-purple" href="/">
         <ParagraphLarge font="regular" className="gradient-blue-text hover:to-purple">
           go home.

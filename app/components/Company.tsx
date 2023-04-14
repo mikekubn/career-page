@@ -19,7 +19,7 @@ const Cooperation = (): React.ReactElement => {
             <div className="flex flex-row flex-1 items-center justify-between mb-8">
               <div className="flex-col flex flex-1">
                 <H2 font="bold" className="gradient-text-animate pb-2  pr-4">
-                  <a href={item.link} target="_blank">
+                  <a href={item.link} target="_blank" rel="noreferrer">
                     {item.title}
                   </a>
                 </H2>
@@ -28,7 +28,7 @@ const Cooperation = (): React.ReactElement => {
                 </H5>
               </div>
               <div className="flex-col flex">
-                <a href={item.link} target="_blank">
+                <a href={item.link} target="_blank" rel="noreferrer">
                   <Image
                     height={81}
                     width={62}

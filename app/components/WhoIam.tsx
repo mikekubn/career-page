@@ -4,7 +4,7 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Parallax from './Parallax';
 import { SectionLeft } from './Sections';
-import { H2, ParagrapExtrahLarge, ParagraphLarge } from './Typography';
+import { H2, ParagrapExtrahLarge } from './Typography';
 
 const WhoIam = (): React.ReactElement => {
   const ref = useRef<HTMLDivElement>(null);
@@ -19,7 +19,7 @@ const WhoIam = (): React.ReactElement => {
         <ParagrapExtrahLarge font="light" className="text-left">
           Hi everyone, I'm Michael Kubin software engineer mostly working with tools like React, Nextjs, Nodejs, Cypress and many others. I currently
           lead the frontend team at{' '}
-          <a href="https://www.akcenta.digital/" target="_blank" className="underline hover:no-underline gradient-blue-text">
+          <a href="https://www.akcenta.digital/" target="_blank" className="underline hover:no-underline gradient-blue-text" rel="noreferrer">
             Akcenta
           </a>{' '}
           company. We are facing a major challenge to digitalize of an international financial company. I love hiking, so when I'm not coding I enjoy
