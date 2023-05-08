@@ -163,22 +163,24 @@ export const Prose = ({ children, className, imgCustom = false }: ITypographyPro
       [prose.p]: true,
       [prose.strong]: true,
       [prose.ul]: true,
+      [prose.code]: true,
     })}>
     {children}
   </article>
 );
 
 const prose = {
-  h1: 'prose-h1:leading-more-loose md:prose-h1:leading-more-loose prose-h1:text-4xl md:prose-h1:text-6xl prose-h1:font-inter prose-h1:text-bright-blue-700',
-  h2: 'prose-h2:leading-more-loose md:prose-h2:leading-more-loose prose-h2:text-3xl md:prose-h2:text-5xl prose-h2:font-inter prose-h2:text-bright-blue-700',
-  h3: 'prose-h3:leading-more-loose md:prose-h3:leading-more-loose prose-h3:text-2xl md:prose-h3:text-4xl prose-h3:font-inter prose-h3:text-bright-blue-700',
-  h4: 'prose-h4:leading-more-loose md:prose-h4:leading-more-loose prose-h4:text-xl md:prose-h4:text-3xl prose-h4:font-inter prose-h4:text-bright-blue-700',
-  h5: 'prose-h5:leading-more-loose md:prose-h5:leading-more-loose prose-h5:text-lg md:prose-h5:text-2xl prose-h5:font-inter prose-h5:text-bright-blue-700',
-  p: 'md:prose-p:leading-more-relaxed prose-p:leading-more-relaxed prose-p:text-sm md:prose-p:text-base prose-p:text-bright-blue-700 prose-p:font-inter prose-p:font-normal',
-  img: 'prose-img:rounded-xl prose-img:mx-auto prose-img:w-[300px] prose-img:h-[250px]',
-  a: 'prose-a:leading-more-relaxed md:prose-a:leading-more-relaxed prose-a:text-sm md:prose-a:text-base prose-a:text-primary hover:prose-a:no-underline prose-a:font-inter',
+  h1: 'prose-h1:leading-more-loose md:prose-h1:leading-more-loose prose-h1:text-4xl md:prose-h1:text-6xl prose-h1:font-inter prose-h1:text-blue',
+  h2: 'prose-h2:leading-more-loose md:prose-h2:leading-more-loose prose-h2:text-3xl md:prose-h2:text-5xl prose-h2:font-inter prose-h2:text-blue',
+  h3: 'prose-h3:leading-more-loose md:prose-h3:leading-more-loose prose-h3:text-2xl md:prose-h3:text-4xl prose-h3:font-inter prose-h3:text-blue',
+  h4: 'prose-h4:leading-more-loose md:prose-h4:leading-more-loose prose-h4:text-xl md:prose-h4:text-3xl prose-h4:font-inter prose-h4:text-blue',
+  h5: 'prose-h5:leading-more-loose md:prose-h5:leading-more-loose prose-h5:text-lg md:prose-h5:text-2xl prose-h5:font-inter prose-h5:text-blue',
+  p: 'md:prose-p:leading-more-relaxed prose-p:leading-more-relaxed prose-p:text-sm md:prose-p:text-base prose-p:text-white prose-p:font-inter prose-p:font-normal',
+  img: 'prose-img:rounded-xl prose-img:mx-auto prose-img:w-[1075px] prose-img:h-[438px] prose-img:object-cover prose-img:my-20',
+  a: 'prose-a:leading-more-relaxed md:prose-a:leading-more-relaxed prose-a:text-sm md:prose-a:text-base prose-a:text-purple hover:prose-a:no-underline prose-a:font-inter',
   blockquote:
     'prose-blockquote:leading-more-relaxed md:prose-blockquote:leading-more-relaxed prose-blockquote:text-sm md:prose-blockquote:text-base prose-blockquote:font-inter',
-  ul: 'prose-ul:font-inter prose-ul:text-sm md:prose-ul::text-base prose-ol:text-sm md:prose-ol:text-base marker:text-bright-blue-700 prose-ul:text-bright-blue-700 prose-ul:leading-more-relaxed md:prose-ul:leading-more-relaxed prose-ol:leading-more-relaxed md:prose-ol:leading-more-relaxed',
-  strong: 'prose-strong:font-inter prose-strong:font-bold prose-strong:text-bright-blue-700',
+  ul: 'prose-ul:font-inter prose-ul:text-sm md:prose-ul::text-base prose-ol:text-sm md:prose-ol:text-base marker:text-blue prose-ul:text-blue prose-ul:leading-more-relaxed md:prose-ul:leading-more-relaxed prose-ol:leading-more-relaxed md:prose-ol:leading-more-relaxed',
+  strong: 'prose-strong:font-inter prose-strong:font-bold prose-strong:text-blue',
+  code: 'prose-code:text-light-blue md:prose-code:w-full',
 };
