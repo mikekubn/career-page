@@ -7,7 +7,7 @@ import { H5, ParagraphLarge } from './Typography';
 
 const Navigation = (): React.ReactElement => (
   <header className="top-0 sticky z-50 block bg-black opacity-80">
-    <div className="max-w-6xl flex flex-row justify-between mx-auto p-4 sm-px-6">
+    <div className="max-w-6xl flex flex-row justify-between mx-auto p-4 sm:px-6">
       <H5 font="bold" className="gradient-blue-text items-start">
         <Link href="/">mikekubn.cz</Link>
       </H5>
