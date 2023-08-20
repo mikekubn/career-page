@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import '../styles/globals.css';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
+import Providers from './providers';
 
 const inter = localFont({
   src: [
@@ -81,11 +82,13 @@ export const metadata: Metadata = {
 const RootLayout = ({ children }: { children: React.ReactNode }): React.ReactElement => (
   <html lang="en" className={clsx(inter.variable, 'bg-black text-white')}>
     <head />
-    <body>
-      <Navigation />
-      <main className="-mt-16 min-h-screen px-4 sm:px-6 max-w-6xl flex flex-col mx-auto">{children}</main>
-      <Footer />
-    </body>
+    <Providers>
+      <body>
+        <Navigation />
+        <main className="-mt-16 min-h-screen px-4 sm:px-6 max-w-6xl flex flex-col mx-auto">{children}</main>
+        <Footer />
+      </body>
+    </Providers>
   </html>
 );
 

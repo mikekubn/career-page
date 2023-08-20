@@ -1,13 +1,21 @@
 'use client';
 
+import React from 'react';
 import { useScrollIntoView } from 'app/hooks/useScrollToView';
 import { motion } from 'framer-motion';
 import { ButtonWithGradient } from './Button';
 import TextLoop from './Textloop';
 import { H1, ParagraphLarge } from './Typography';
+import { usePostHog } from 'posthog-js/react';
 
 const Intro = (): React.ReactElement => {
   const { scroll } = useScrollIntoView();
+  const posthog = usePostHog();
+
+  const handleClick = React.useCallback(() => {
+    posthog?.capture('Click on Knoe me button.');
+    scroll('who-i-am');
+  }, [posthog, scroll]);
 
   return (
     <motion.section
@@ -20,7 +28,7 @@ const Intro = (): React.ReactElement => {
         Michael Kubin
       </H1>
       <TextLoop className="w-full h-14 mb-14" texts={['Software engineer', 'Creative', 'QA tester', 'Leader', 'Freelancer']} />
-      <ButtonWithGradient className="h-14 w-48" id="know-me" onClick={() => scroll('who-i-am')}>
+      <ButtonWithGradient className="h-14 w-48" id="know-me" onClick={handleClick}>
         <ParagraphLarge font="bold" className="gradient-blue-text">
           Know me.
         </ParagraphLarge>
