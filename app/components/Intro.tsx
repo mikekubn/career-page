@@ -13,7 +13,7 @@ const Intro = (): React.ReactElement => {
   const posthog = usePostHog();
 
   const handleClick = React.useCallback(() => {
-    posthog?.capture('Click on Knoe me button.');
+    posthog?.capture('Click on Know me button.');
     scroll('who-i-am');
   }, [posthog, scroll]);
 
