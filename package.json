@@ -24,7 +24,7 @@
     "@heroicons/react": "^2.0.18",
     "@next/mdx": "^13.4.19",
     "@types/node": "20.5.1",
-    "@types/react": "18.2.20",
+    "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
     "axios": "^1.4.0",
     "clsx": "^2.0.0",
