@@ -29,8 +29,10 @@ const inter = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://mikekubn.cz/'),
   title: 'Michael Kubin',
-  description: 'Software engineer',
+  description:
+    'Welcome to my page, a skilled software engineer specializing in React, Next.js, and frontend development. Explore the world of JavaScript and TypeScript with Michael Kubin.',
   applicationName: 'Home page - Michael Kubin',
   generator: 'Next.js',
   keywords: [
@@ -47,7 +49,6 @@ export const metadata: Metadata = {
     'livesport',
   ],
   referrer: 'origin',
-  viewport: { width: 'device-width', initialScale: 1 },
   creator: 'Michael Kubin',
   publisher: 'Michael Kubin',
   robots: 'index, follow',
