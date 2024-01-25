@@ -5,12 +5,12 @@ date: June 23, 2022
 title: Next.js import and resize SVG in styled components
 keywords: ['styled', 'nextjs', 'components', 'styled-components', 'resize', 'svg', 'Michael Kubin', 'blog']
 image: https://res.cloudinary.com/dctc6iyms/image/upload/v1683554782/career_page/chris-lawton-5IHz5WhosQE-unsplash_ek9dyw.jpg
-excerpt: If you want to use SVG in your NextJs project with styled components you can find problem with import and resize image. I personally surprised by this problem.
+excerpt: If you want to use SVG in your Next.js project with styled components you may encounter problems with importing and resizing images. I was personally surprised by this issue.
 ---
 
 ### Next.js import and resize SVG in styled components
 
-> _If you want to use **SVG** in your Next.js project with **styled components** you can find problem with import and resize image. I personally surprised by this problem._
+> _If you want to use **SVG** in your Next.js project with **styled components** you may encounter problems with importing and resizing images. I was personally surprised by this issue._
 
 Example: [Next.js with styled components resize SVG](https://github.com/mikekubn/next-removeViewBox-example)
 
@@ -19,7 +19,7 @@ Example: [Next.js with styled components resize SVG](https://github.com/mikekubn
   alt="styled components"
 />
 
-I started the same way I was used to using in CRA, but immediately ran into an issue regarding SVG support in Next.js but it had a quick solution [Dangerously Allow SVG ](https://nextjs.org/docs/api-reference/next/image#dangerously-allow-svg). My `typing.d.ts` file looked like this:
+I started the same way I was used to using in CRA, but immediately ran into an issue regarding SVG support in Next.js. However, it had a quick solution [Dangerously Allow SVG ](https://nextjs.org/docs/api-reference/next/image#dangerously-allow-svg). My `typing.d.ts` file looked like this:
 
 ```ts
 declare module '*.svg' {

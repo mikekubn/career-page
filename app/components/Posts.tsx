@@ -9,7 +9,7 @@ import { H4, ParagraphLarge } from './Typography';
 import { usePostHog } from 'posthog-js/react';
 
 const Posts = ({ posts }: { posts: IFile[] }): React.ReactElement => (
-  <section className="flex flex-col lg:flex-row min-h-screen w-full justify-center items-center gap-10 my-10 md:my-20">
+  <section className="min-h-screen grid grid-cols-1 md:grid-cols-2 gap-6 place-items-center">
     {posts.map((post) => (
       <Post post={post} key={post.frontmatter.slug} />
     ))}
@@ -20,22 +20,27 @@ export const Post = ({ post }: { post: IFile }): React.ReactElement => {
   const posthog = usePostHog();
 
   return (
-    <Link
-      href={`/${post.frontmatter.slug}` as Route}
-      onClick={() => posthog?.capture(`Click on post - ${post.frontmatter.title}`)}
-      className="group bg-white w-full sm:w-2/3 md:w-1/2 lg:w-5/12 text-light-black rounded-2xl hover:cursor-pointer">
-      <div className="p-5">
-        <H4 font="medium" className="h-16 md:h-28 text-light-blue group-hover:underline decoration-1 underline-offset-4">
-          {post.frontmatter.title}
-        </H4>
-        <ParagraphLarge font="light" className="flex flex-col justify-start h-20 md:h-36">
+    <article className="group gradient gradient-animate rounded-2xl h-[400px] w-[350px] text-white">
+      <div className="m-1 rounded-t-2xl bg-black h-[96px] hover:opacity-90">
+        <div className="p-3">
+          <Link href={`/${post.frontmatter.slug}` as Route} onClick={() => posthog?.capture(`Click on post - ${post.frontmatter.title}`)}>
+            <H4 font="medium" className="group-hover:underline decoration-1 underline-offset-4 line-clamp-2">
+              {post.frontmatter.title}
+            </H4>
+          </Link>
+        </div>
+      </div>
+      <div className="px-4 h-[140px] text-start">
+        <ParagraphLarge font="light" className="line-clamp-5">
           {post.frontmatter.excerpt}
         </ParagraphLarge>
       </div>
-      <div className="relative w-full h-64">
-        <Image className="rounded-b-2xl" fill quality={100} loading="eager" src={post.frontmatter.image} alt={post.frontmatter.slug} />
+      <div className="h-[150px] m-1 rounded-b-2xl bg-black flex flex-row items-center justify-center">
+        <div className="relative w-[98%] h-[140px]">
+          <Image className="rounded-b-2xl" fill quality={100} loading="eager" src={post.frontmatter.image} alt={post.frontmatter.slug} />
+        </div>
       </div>
-    </Link>
+    </article>
   );
 };
 
