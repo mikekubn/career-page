@@ -9,7 +9,7 @@ const CustomParallax = (): React.ReactElement => {
       <ParallaxProvider>
         <div className="flex flex-row gap-36">
           <Parallax translateY={['-0%', '0%']}>
-            <div className="relative object-fill w-20 h-20">
+            <div className="relative object-fill size-20">
               <Image
                 fill={true}
                 quality={100}
@@ -20,7 +20,7 @@ const CustomParallax = (): React.ReactElement => {
             </div>
           </Parallax>
           <Parallax translateY={['-20%', '20%']}>
-            <div className="relative object-fill w-20 h-20">
+            <div className="relative object-fill size-20">
               <Image
                 fill={true}
                 quality={100}
@@ -33,7 +33,7 @@ const CustomParallax = (): React.ReactElement => {
         </div>
         <div className="flex flex-row gap-20">
           <Parallax translateY={['-30%', '30%']}>
-            <div className="relative object-fill w-20 h-20">
+            <div className="relative object-fill size-20">
               <Image
                 fill={true}
                 quality={100}
@@ -44,7 +44,7 @@ const CustomParallax = (): React.ReactElement => {
             </div>
           </Parallax>
           <Parallax translateY={['0%', '0%']}>
-            <div className="relative object-fill w-20 h-20">
+            <div className="relative object-fill size-20">
               <Image
                 fill={true}
                 quality={100}
@@ -56,7 +56,7 @@ const CustomParallax = (): React.ReactElement => {
           </Parallax>
         </div>
         <Parallax translateY={['-20%', '20%']}>
-          <div className="relative object-fill w-20 h-20">
+          <div className="relative object-fill size-20">
             <Image
               fill={true}
               quality={100}
