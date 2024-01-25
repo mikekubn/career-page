@@ -1,7 +1,7 @@
 import localFont from 'next/font/local';
 import type { Metadata } from 'next/types';
 import clsx from 'clsx';
-import '../styles/globals.css';
+import './globals.css';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import Providers from './providers';
