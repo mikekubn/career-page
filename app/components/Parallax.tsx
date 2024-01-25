@@ -32,7 +32,7 @@ const CustomParallax = (): React.ReactElement => {
           </Parallax>
         </div>
         <div className="flex flex-row gap-20">
-          <Parallax translateY={['-30%', '30%']}>
+          <Parallax translateY={['-30%', '40%']}>
             <div className="relative object-fill size-20">
               <Image
                 fill={true}
@@ -55,7 +55,7 @@ const CustomParallax = (): React.ReactElement => {
             </div>
           </Parallax>
         </div>
-        <Parallax translateY={['-20%', '20%']}>
+        <Parallax translateY={['-20%', '50%']}>
           <div className="relative object-fill size-20">
             <Image
               fill={true}
