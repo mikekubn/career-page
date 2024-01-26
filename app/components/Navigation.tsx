@@ -1,16 +1,20 @@
 'use client';
 
+import React from 'react';
 import { Menu } from '@headlessui/react';
 import { useScrollIntoView } from 'app/hooks/useScrollToView';
 import Link from 'next/link';
 import { H5, ParagraphLarge } from './Typography';
+import { usePathname, useRouter } from 'next/navigation';
 
 const Navigation = (): React.ReactElement => (
   <header className="top-0 sticky z-50 block bg-black opacity-80">
     <div className="max-w-6xl flex flex-row justify-between mx-auto p-4 sm:px-6">
-      <H5 font="bold" className="gradient-blue-text items-start">
-        <Link href="/">mikekubn.cz</Link>
-      </H5>
+      <Link href="/">
+        <H5 font="bold" className="text-light-blue hover:text-blue hover:underline hover:underline-offset-2">
+          mikekubn.cz
+        </H5>
+      </Link>
       <DesktopItems />
       <MobileItems />
     </div>
@@ -22,11 +26,24 @@ export default Navigation;
 
 const DesktopItems = (): React.ReactElement => {
   const { scroll } = useScrollIntoView();
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const handleClickRedirect = React.useCallback(
+    (id: string) => {
+      if (pathname !== '/' && id === 'cooperation') {
+        router.push('/cooperation');
+      } else {
+        scroll(id);
+      }
+    },
+    [pathname, router, scroll],
+  );
 
   return (
     <div className="hidden md:flex gap-4">
       {items.map((item, index) => (
-        <button key={index} onClick={(): void => scroll(item?.id)}>
+        <button key={index} onClick={(): void => handleClickRedirect(item?.id)}>
           <ParagraphLarge font="bold" className={styles.link}>
             {item.title}
           </ParagraphLarge>
@@ -38,6 +55,19 @@ const DesktopItems = (): React.ReactElement => {
 
 const MobileItems = (): React.ReactElement => {
   const { scroll } = useScrollIntoView();
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const handleClickRedirect = React.useCallback(
+    (id: string) => {
+      if (pathname !== '/' && id === 'cooperation') {
+        router.push('/cooperation');
+      } else {
+        scroll(id);
+      }
+    },
+    [pathname, router, scroll],
+  );
 
   return (
     <div className="flex md:hidden">
@@ -49,7 +79,7 @@ const MobileItems = (): React.ReactElement => {
         </Menu.Button>
         <Menu.Items className="absolute flex flex-col gap-y-4 items-start w-64 origin-top-right right-0 mt-2 pl-4 py-2 bg-black opacity-90 focus:outline-none">
           {items.map((item, index) => (
-            <Menu.Item key={index} as="button" onClick={(): void => scroll(item?.id)}>
+            <Menu.Item key={index} as="button" onClick={(): void => handleClickRedirect(item?.id)}>
               <ParagraphLarge font="regular" className={styles.link}>
                 {item?.title}
               </ParagraphLarge>
@@ -62,7 +92,7 @@ const MobileItems = (): React.ReactElement => {
 };
 
 const styles = {
-  link: 'gradient-blue-text hover:to-purple',
+  link: 'text-light-blue hover:text-blue hover:underline hover:underline-offset-2',
 };
 
 const items = [

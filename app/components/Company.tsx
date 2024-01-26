@@ -2,49 +2,79 @@
 
 import { H2, H5, ParagraphLarge } from './Typography';
 import Image from 'next/image';
-import { useRef } from 'react';
+import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { useWindowResize } from 'app/hooks/useResize';
 
 const Cooperation = (): React.ReactElement => {
-  const ref = useRef<HTMLDivElement>(null);
+  const [elWidth, setElWidth] = React.useState(0);
+  const [isClient, setIsClient] = React.useState(false);
+  const ref = React.useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref });
-  const x = useTransform(scrollYProgress, [0, 1], ['20%', '-100%']);
+  const { width } = useWindowResize();
+  const isMobile = width <= 500;
+  const isTable = width <= 800 && !isMobile;
+  const getScrollingPercentage = () => {
+    if (isMobile) return ['5%', '-90%'];
+    else if (isTable) return ['20%', '-95%'];
+    else return ['10', '-50%'];
+  };
+  const x = useTransform(scrollYProgress, [0, 1], getScrollingPercentage());
+
+  React.useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  React.useEffect(() => {
+    if (width !== 0) {
+      if (isMobile) {
+        setElWidth(width - 60);
+      } else if (isTable) {
+        setElWidth(600);
+      } else {
+        setElWidth(700);
+      }
+    }
+  }, [isMobile, isTable, width]);
 
   return (
     <section ref={ref} className="relative w-screen h-[300vh]">
       <div className="sticky top-0 flex min-h-screen items-center overflow-hidden">
         <motion.div style={{ x }} className="flex gap-8">
-          {items.map((item, index) => (
-            <div
-              id="cooperation"
-              key={index}
-              className="group bg-white h-[220px] w-[500px] md:h-[300px] md:w-[600px] rounded-2xl md:rounded-3xl p-4 md:p-6">
-              <div className="inline-flex h-full">
-                <div className="flex flex-col gap-2 md:w-[80%]">
-                  <H2 font="bold" className="gradient-text-animate">
-                    <a href={item.link} target="_blank" rel="noreferrer">
-                      {item.title}
-                    </a>
-                  </H2>
-                  <H5 font="light" className="gradient-blue-text">
-                    {item.position}
-                  </H5>
-                  <div className="flex flex-col flex-1 justify-center">
-                    <ParagraphLarge font="light" className="text-light-black">
-                      {item.description}
-                    </ParagraphLarge>
+          {isClient ? (
+            items.map((item, index) => (
+              <div
+                id="cooperation"
+                key={index}
+                style={{ width: elWidth }}
+                className="group bg-white h-[400px] md:h-[300px] rounded-3xl p-4 md:p-6 flex flex-1 flex-col">
+                <div className="inline-flex justify-between h-[30%]">
+                  <div className="flex flex-col gap-2">
+                    <H2 font="bold" className="gradient-text-animate">
+                      <a href={item.link} target="_blank" rel="noreferrer">
+                        {item.title}
+                      </a>
+                    </H2>
+                    <H5 font="light" className="text-light-blue">
+                      {item.position}
+                    </H5>
                   </div>
-                </div>
-                <div className="flex flex-col items-end w-[20%]">
                   <a href={item.link} target="_blank" rel="noreferrer">
-                    <div className="relative size-[32px] md:size-[62px]">
+                    <div className="relative size-[52px] md:size-[62px]">
                       <Image fill quality={100} loading="eager" src={item.image} alt={item.title} className="rounded-full" />
                     </div>
                   </a>
                 </div>
+                <div className="flex flex-col justify-center h-[70%]">
+                  <ParagraphLarge font="light" className="text-light-black">
+                    {item.description}
+                  </ParagraphLarge>
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+          ) : (
+            <div />
+          )}
         </motion.div>
       </div>
     </section>

@@ -13,7 +13,8 @@ const Contact = (): React.ReactElement => {
   const posthog = usePostHog();
 
   return (
-    <section id="contact" ref={ref} className="flex flex-col items-center justify-center min-h-screen">
+    <section id="contact" className="flex flex-col items-center justify-center min-h-screen">
+      <div ref={ref} />
       <SectionLeft isInView={isInView}>
         <H2 font="bold" className="gradient-text-animate mb-8 pb-2">
           Ping me.
@@ -23,7 +24,7 @@ const Contact = (): React.ReactElement => {
         {items.map((item, index) => (
           <div key={index}>
             <a href={item.link} onClick={() => posthog?.capture(`Click on ${item.title}`)} target="_blank" rel="noreferrer">
-              <Image height={60} width={60} quality={100} loading="eager" src={item.image} alt={item.title} />
+              <Image className="hover:animate-pulse" height={60} width={60} quality={100} loading="eager" src={item.image} alt={item.title} />
             </a>
           </div>
         ))}

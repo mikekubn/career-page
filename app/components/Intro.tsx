@@ -29,7 +29,7 @@ const Intro = (): React.ReactElement => {
       </H1>
       <TextLoop className="w-full h-14 mb-14" texts={['Software engineer', 'Creative', 'QA tester', 'Leader', 'Freelancer']} />
       <ButtonWithGradient className="h-14 w-48" id="know-me" onClick={handleClick}>
-        <ParagraphLarge font="bold" className="gradient-blue-text">
+        <ParagraphLarge font="bold" className="text-light-blue hover:text-blue hover:underline hover:underline-offset-2">
           Know me.
         </ParagraphLarge>
       </ButtonWithGradient>

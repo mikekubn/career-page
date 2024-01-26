@@ -3,11 +3,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const NotFound = (): React.ReactElement => (
-  <section className="flex flex-1 flex-col items-center justify-center">
+  <section className="flex flex-1 flex-col items-center justify-center gap-6">
     <H2 font="regular" className="gradient-text">
-      Not Found
+      Not Found.
     </H2>
-    <Image loading="eager" src="/assets/not_found.gif" width="700" height="450" alt="Not found" className="rounded-3xl my-10 md:my-14" />
+    <div className="relative w-[340px] h-[220px] md:w-[700px] md:h-[350px]">
+      <Image loading="eager" src="/assets/not_found.gif" fill alt="Not found" className="rounded-3xl" />
+    </div>
     <div className="inline-flex text-center">
       <ParagraphLarge font="regular" className="gradient-blue-text">
         Could not find requested resource &nbsp;
