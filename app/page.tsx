@@ -20,8 +20,8 @@ const Home = async (): Promise<React.ReactElement> => {
     <section className="flex flex-1 flex-col justify-center items-center">
       <Intro />
       <Posts posts={posts} />
-      <div className="mt-44 md:mt-0" />
-      <div className="min-h-screen flex flex-col gap-10 md:gap-20">
+      <div className="h-40 md:h-0" />
+      <div className="min-h-screen flex flex-col justify-between">
         <WhoIam />
         <Technology />
       </div>

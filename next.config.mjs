@@ -7,7 +7,13 @@ const nextConfig = {
     mdxRs: true,
   },
   images: {
-    domains: ['res.cloudinary.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        port: '',
+      },
+    ],
   },
   webpack: (config) => {
     config.resolve.fallback = { fs: false };
