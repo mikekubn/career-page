@@ -23,6 +23,7 @@ const Home = async (): Promise<React.ReactElement> => {
       <div className="h-40 md:h-0" />
       <div className="min-h-screen flex flex-col justify-between">
         <WhoIam />
+        <div className="h-40" />
         <Technology />
       </div>
       <Cooperation />
