@@ -25,7 +25,7 @@
     "@next/mdx": "^14.1.0",
     "@types/node": "20.11.24",
     "@types/react": "18.2.61",
-    "@types/react-dom": "18.2.19",
+    "@types/react-dom": "18.2.23",
     "axios": "^1.6.7",
     "clsx": "^2.1.0",
     "framer-motion": "^11.0.8",
