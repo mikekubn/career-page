@@ -18,16 +18,20 @@ const Home = async (): Promise<React.ReactElement> => {
 
   return (
     <section className="flex flex-1 flex-col justify-center items-center">
-      <Intro />
-      <Posts posts={posts} />
-      <div className="h-40 md:h-0" />
-      <div className="min-h-screen flex flex-col justify-between">
-        <WhoIam />
-        <div className="h-40" />
-        <Technology />
+      <div className="max-w-6xl">
+        <Intro />
+        <Posts posts={posts} />
+        <div className="h-40 md:h-0" />
+        <div className="min-h-screen flex flex-col justify-between">
+          <WhoIam />
+          <div className="h-40" />
+          <Technology />
+        </div>
       </div>
       <Cooperation />
-      <Contact />
+      <div className="max-w-6xl">
+        <Contact />
+      </div>
     </section>
   );
 };

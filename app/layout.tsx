@@ -86,7 +86,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }): React.ReactEle
     <Providers>
       <body>
         <Navigation />
-        <main className="-mt-16 min-h-screen px-4 sm:px-6 max-w-6xl flex flex-col mx-auto">{children}</main>
+        <main className="-mt-16 min-h-screen px-4 sm:px-6 flex flex-col mx-auto">{children}</main>
         <Footer />
       </body>
     </Providers>
