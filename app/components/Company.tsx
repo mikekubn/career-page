@@ -38,7 +38,7 @@ const Cooperation = (): React.ReactElement => {
   }, [isMobile, isTable, width]);
 
   return (
-    <section ref={ref} className="relative w-screen h-[300vh]">
+    <section ref={ref} className="relative w-full h-[300vh]">
       <div className="sticky top-0 flex min-h-screen items-center overflow-hidden">
         <motion.div style={{ x }} className="flex gap-8">
           {isClient ? (
