@@ -27,7 +27,7 @@
     "@types/react": "18.2.73",
     "@types/react-dom": "18.3.0",
     "axios": "^1.6.8",
-    "clsx": "^2.1.0",
+    "clsx": "^2.1.1",
     "framer-motion": "^11.1.7",
     "fs": "^0.0.1-security",
     "next": "^14.1.4",
