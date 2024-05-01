@@ -24,7 +24,7 @@
     "@heroicons/react": "^2.1.3",
     "@next/mdx": "^14.1.4",
     "@types/node": "20.12.2",
-    "@types/react": "18.2.73",
+    "@types/react": "18.3.1",
     "@types/react-dom": "18.2.23",
     "axios": "^1.6.8",
     "clsx": "^2.1.0",
@@ -33,7 +33,7 @@
     "next": "^14.1.4",
     "next-mdx-remote": "^4.4.1",
     "posthog-js": "^1.116.6",
-    "react": "^18.2.0",
+    "react": "^18.3.1",
     "react-dom": "^18.2.0",
     "react-scroll-parallax": "^3.4.5",
     "typescript": "5.4.3"
