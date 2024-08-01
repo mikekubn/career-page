@@ -21,7 +21,7 @@
   "dependencies": {
     "@headlessui/react": "^2.1.2",
     "@headlessui/tailwindcss": "^0.2.1",
-    "@heroicons/react": "^2.1.4",
+    "@heroicons/react": "^2.1.5",
     "@next/mdx": "^14.2.5",
     "@types/node": "20.14.9",
     "@types/react": "18.3.3",
