@@ -1,95 +1,81 @@
-import localFont from 'next/font/local';
-import type { Metadata } from 'next/types';
+import type { Metadata } from 'next';
+import { Inter, PT_Serif, Be_Vietnam_Pro, Source_Code_Pro } from 'next/font/google';
 import clsx from 'clsx';
-import './globals.css';
-import Navigation from './components/Navigation';
-import Footer from './components/Footer';
-import Providers from './providers';
 
-const inter = localFont({
-  src: [
-    {
-      path: './fonts/Inter-Light.ttf',
-      weight: '300',
-    },
-    {
-      path: './fonts/Inter-Regular.ttf',
-      weight: '400',
-    },
-    {
-      path: './fonts/Inter-Medium.ttf',
-      weight: '600',
-    },
-    {
-      path: './fonts/Inter-Bold.ttf',
-      weight: '700',
-    },
-  ],
+import './globals.css';
+
+const ptSerif = PT_Serif({ subsets: ['latin'], display: 'swap', weight: ['400', '700'], variable: '--font-pt-serif' });
+
+const inter = Inter({
+  subsets: ['latin'],
   variable: '--font-inter',
+  display: 'swap',
+});
+
+const beVietnamPro = Be_Vietnam_Pro({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-be-vietnam-pro',
+});
+
+const sourceCodePro = Source_Code_Pro({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-source-code-pro',
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://mikekubn.cz/'),
   title: 'Michael Kubin',
-  description:
-    'Welcome to my page, a skilled software engineer specializing in React, Next.js, and frontend development. Explore the world of JavaScript and TypeScript with Michael Kubin.',
-  applicationName: 'Home page - Michael Kubin',
-  generator: 'Next.js',
-  keywords: [
-    'software engineer',
-    'react',
-    'Michael Kubín',
-    'Kubin',
-    'Michael',
-    'next.js',
-    'frontend developer',
-    'javascript',
-    'typescript',
-    'akcenta.digital',
-    'livesport',
-  ],
-  referrer: 'origin',
-  creator: 'Michael Kubin',
-  publisher: 'Michael Kubin',
-  robots: 'index, follow',
-  appleWebApp: {
-    capable: true,
-    title: 'Michael Kubin',
-    statusBarStyle: 'black-translucent',
-  },
-  verification: {
-    google: 'JKVyi3BBSq744RDL7GjbV4PnS8NyES3hY93rQMu-QsE',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    site: '@site',
-    creator: '@creator',
-    images: 'https://res.cloudinary.com/dctc6iyms/image/upload/v1681157556/og_michael_kubin_dcskgv.jpg',
-  },
+  description: 'Software engineer & Digital Crafting',
   openGraph: {
-    type: 'website',
-    url: 'https://mikekubn.cz/',
     title: 'Michael Kubin',
-    description: 'Software engineer',
-    siteName: 'Software engineer - Michael Kubin',
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://mikekubn.cz/',
+    description: 'Software engineer & Digital Crafting',
     images: [
       {
         url: 'https://res.cloudinary.com/dctc6iyms/image/upload/v1681157556/og_michael_kubin_dcskgv.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Software engineer & Digital Crafting',
       },
     ],
   },
+  robots: 'index, follow',
+  alternates: {
+    canonical: 'https://www.the12st.com',
+  },
 };
 
-const RootLayout = ({ children }: { children: React.ReactNode }): React.ReactElement => (
-  <html lang="en" className={clsx(inter.variable, 'bg-black text-white')}>
-    <head />
-    <Providers>
-      <body>
-        <Navigation />
-        <main className="-mt-16 min-h-screen px-4 sm:px-6 flex flex-col mx-auto">{children}</main>
-        <Footer />
-      </body>
-    </Providers>
+interface RootLayoutProps {
+  children: React.ReactNode;
+}
+
+const RootLayout = ({ children }: Readonly<RootLayoutProps>) => (
+  <html lang="en">
+    <body
+      className={clsx(
+        'bg-black-darkest text-white overflow-x-hidden py-12',
+        inter.variable,
+        ptSerif.variable,
+        beVietnamPro.variable,
+        sourceCodePro.variable,
+      )}>
+      <main className="min-h-screen flex flex-col overflow-x-hidden">{children}</main>
+      <footer className="font-normal font-sourceCodePro flex flex-col items-start md:items-center text-start md:text-center justify-center w-full gap-1 px-4 md:px-6">
+        <p className="text-base md:text-lg">No Data Collected, created in 🇪🇺.</p>
+        <p className="text-base md:text-lg">
+          Powered by{' '}
+          <a href="https://www.the12st.com/" className="text-blue hover:underline" target="_blank" rel="noreferrer">
+            the12st
+          </a>{' '}
+          professionals
+        </p>
+      </footer>
+    </body>
   </html>
 );
 

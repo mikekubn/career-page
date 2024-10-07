@@ -2,32 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  .animation-fast {
-    @apply duration-200 transition-all;
-  }
+.line-height-article {
+  line-height: 34px; /* Default for mobile */
+}
 
-  .animation-base {
-    @apply duration-300 transition-all;
-  }
-
-  .gradient {
-    @apply bg-gradient-to-r from-blue via-purple to-light-blue;
-  }
-
-  .gradient-blue-text {
-    @apply bg-gradient-to-r from-blue to-light-blue bg-clip-text text-transparent;
-  }
-
-  .gradient-text {
-    @apply bg-clip-text text-transparent gradient;
-  }
-
-  .gradient-text-animate {
-    @apply gradient-text gradient-animate animate-headers;
-  }
-
-  .gradient-animate {
-    @apply bg-size-200 animation-base bg-pos-100;
+@media (min-width: 768px) {
+  .line-height-article {
+    line-height: 52px; /* For desktop */
   }
 }

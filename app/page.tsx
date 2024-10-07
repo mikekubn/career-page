@@ -1,38 +1,30 @@
-import { getPosts } from 'utils';
-import Cooperation from './components/Company';
-import Contact from './components/Contact';
-import Intro from './components/Intro';
-import Posts from './components/Posts';
-import WhoIam from './components/WhoIam';
-import Technology from './components/Technology';
+import Clients from '@/components/Clients';
+import Talk from '@/components/Talk';
+import Welcome from '@/components/Welcome';
+import Intro from '@/components/Intro';
+import Stack from '@/components/Stack';
+import Video from '@/components/Video';
+import Experience from '@/components/Experience';
+import type { Metadata } from 'next';
 
-export const revalidate = 3600;
-
-const getPostsData = async () => {
-  const posts = await getPosts();
-  return posts;
+export const metadata: Metadata = {
+  alternates: {
+    canonical: 'https://www.the12st.com/',
+  },
 };
 
-const Home = async (): Promise<React.ReactElement> => {
-  const posts = await getPostsData();
+const HomePage = () => (
+  <section className="flex flex-col items-center md:items-stretch w-full max-w-screen-lg mx-auto px-6">
+    <Intro title="Hello," />
+    <Stack />
+    <Welcome />
+    <Clients title="Where I've been coding" className="mx-auto mb-40 md:mb-60" />
+    <Experience />
+    <div className="my-20">
+      <Video />
+    </div>
+    <Talk className="mx-auto my-40 md:my-60" />
+  </section>
+);
 
-  return (
-    <section className="flex flex-1 flex-col justify-center items-center">
-      <div className="max-w-6xl">
-        <Intro />
-        <Posts posts={posts} />
-        <div className="h-40 md:h-0" />
-        <div className="min-h-screen flex flex-col justify-between">
-          <WhoIam />
-          <div className="h-40" />
-          <Technology />
-        </div>
-      </div>
-      <Cooperation />
-      <div className="max-w-6xl">
-        <Contact />
-      </div>
-    </section>
-  );
-};
-export default Home;
+export default HomePage;

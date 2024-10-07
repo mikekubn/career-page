@@ -3,6 +3,11 @@
     "browser": true,
     "es2021": true
   },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
   "extends": [
     "airbnb-typescript",
     "plugin:@typescript-eslint/recommended",
@@ -10,8 +15,7 @@
     "plugin:import/typescript",
     "plugin:react-hooks/recommended",
     "plugin:@next/next/recommended",
-    "plugin:tailwindcss/recommended",
-    "prettier"
+    "plugin:tailwindcss/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -24,6 +28,8 @@
   },
   "plugins": ["react", "@typescript-eslint", "tailwindcss"],
   "rules": {
+    "indent": "off",
+    "@typescript-eslint/indent": "off",
     "jsx-a11y/label-has-for": "off",
     "jsx-a11y/label-has-associated-control": "off",
     "jsx-a11y/anchor-is-valid": "off",
@@ -65,17 +71,7 @@
     ],
     "@typescript-eslint/ban-ts-ignore": 0,
     "@typescript-eslint/no-unused-expressions": 0,
-    "@typescript-eslint/naming-convention": [
-      "error",
-      {
-        "selector": "interface",
-        "format": ["PascalCase"],
-        "custom": {
-          "regex": "^I[A-Z]",
-          "match": true
-        }
-      }
-    ],
+    "@typescript-eslint/naming-convention": 0,
     "@typescript-eslint/ban-types": [
       "warn",
       {
@@ -92,6 +88,6 @@
         "ts-ignore": true
       }
     ],
-    "@typescript-eslint/no-use-before-define": ["off"]
+    "@typescript-eslint/no-use-before-define": ["error", { "functions": false }]
   }
 }
