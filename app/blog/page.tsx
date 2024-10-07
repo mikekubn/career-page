@@ -42,6 +42,7 @@ const Blog = async () => {
           />
         ))}
       </div>
+      <div className="h-40 md:h-0" />
       <Clients title="Where I've been coding" className="mx-auto mb-40 md:mb-60" />
       <Talk className="mx-auto my-40 md:my-60" />
     </section>
