@@ -9,7 +9,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://www.the12st.com/',
+    canonical: 'https://mikekubn.cz/',
   },
 };
 

@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     },
     robots: 'index, follow',
     alternates: {
-      canonical: `https://www.the12st.com/blog/${params.slug}`,
+      canonical: `https://mikekubn.cz/blog/${params.slug}`,
     },
   };
 }

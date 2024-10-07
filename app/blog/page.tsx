@@ -8,7 +8,7 @@ import Talk from '@/components/Talk';
 export const metadata: Metadata = {
   title: 'Blog | Michael Kubin',
   alternates: {
-    canonical: 'https://www.the12st.com/blog',
+    canonical: 'https://mikekubn.cz/blog',
   },
 };
 

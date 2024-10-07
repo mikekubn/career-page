@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   },
   robots: 'index, follow',
   alternates: {
-    canonical: 'https://www.the12st.com',
+    canonical: 'https://mikekubn.cz',
   },
 };
 
