@@ -1,72 +1,45 @@
----
-slug: styled-components-resize-svg
-author: Michael Kubín
-date: June 23, 2022
-title: Next.js import and resize SVG in styled components
-keywords: ['styled', 'nextjs', 'components', 'styled-components', 'resize', 'svg', 'Michael Kubin', 'blog']
-image: https://res.cloudinary.com/dctc6iyms/image/upload/v1683554782/career_page/chris-lawton-5IHz5WhosQE-unsplash_ek9dyw.jpg
-excerpt: If you want to use SVG in your Next.js project with styled components you may encounter problems with importing and resizing images. I was personally surprised by this issue.
----
-
-### Next.js import and resize SVG in styled components
-
-> _If you want to use **SVG** in your Next.js project with **styled components** you may encounter problems with importing and resizing images. I was personally surprised by this issue._
-
-Example: [Next.js with styled components resize SVG](https://github.com/mikekubn/next-removeViewBox-example)
-
-<img
-  src="https://res.cloudinary.com/dctc6iyms/image/upload/v1683554782/career_page/chris-lawton-5IHz5WhosQE-unsplash_ek9dyw.jpg"
-  alt="styled components"
-/>
-
-I started the same way I was used to using in CRA, but immediately ran into an issue regarding SVG support in Next.js. However, it had a quick solution [Dangerously Allow SVG ](https://nextjs.org/docs/api-reference/next/image#dangerously-allow-svg). My `typing.d.ts` file looked like this:
-
-```ts
-declare module '*.svg' {
-  import React from 'react';
-
-  const src: string;
-
-  export const ReactComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
-  export default src;
-}
-```
-
-I was looking for some solution for import, resize SVG in my project. I found several solutions that works, but it no worked for my purposes.
-
-**Successful solution but neither worked for my purposes**
-
-- [# Image Component Example](https://github.com/vercel/next.js/tree/canary/examples/image-component)
-- [# SVG components example with SWC](https://github.com/vercel/next.js/tree/canary/examples/svg-components)
-
-After a few hours of researched, I discovered that the default option for `removeViewBox` is set to `true`. When I changed the height or width in the SVG, the viewport from the SVG returned to the default state. **The solution** is edit the webpack configuration in `next.config.js` and set `removeViewBox` to `false` SVG resizing will work.
-
-```js
-webpack(config) {
-  config.module.rules.push({
-    loader: '@svgr/webpack',
-    options: {
-      prettier: false,
-      svgo: true,
-      svgoConfig: {
-        plugins: [
-          {
-            name: 'preset-default',
-            params: {
-              overrides: { removeViewBox: false },
-            },
-          },
-        ],
-      },
-      titleProp: true,
+{
+  "metadata": {
+    "title": "Importing and Resizing SVGs in Styled Components",
+    "description": "If you want to use SVG in your Next.js project with styled components you may encounter problems with importing and resizing images. I was personally surprised by this issue.",
+    "date": "September 2022"
+  },
+  "image": {
+    "url": "https://res.cloudinary.com/dctc6iyms/image/upload/v1683554782/career_page/chris-lawton-5IHz5WhosQE-unsplash_ek9dyw.jpg",
+    "alt": "If you work on bigger project with more packages you will want to use pnpm, probably."
+  },
+  "content": [
+    {
+      "type": "heading",
+      "level": 3,
+      "children": [{ "type": "text", "text": "Next.js import and resize SVG in styled components" }]
     },
-    test: /\.svg$/,
-  });
-
-  return config;
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "text": "If you want to use **SVG** in your Next.js project with **styled components** you may encounter problems with importing and resizing images. I was personally surprised by this issue. Example: [Next.js with styled components resize SVG](https://github.com/mikekubn/next-removeViewBox-example) I started the same way I was used to using in CRA, but immediately ran into an issue regarding SVG support in Next.js. However, it had a quick solution [Dangerously Allow SVG ](https://nextjs.org/docs/api-reference/next/image#dangerously-allow-svg). My `typing.d.ts` file looked like this:"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "children": [
+        {
+          "type": "text",
+          "text": "ts declare module '*.svg' { import React from 'react'; const src: string; export const ReactComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement>>; export default src }"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "children": [
+        {
+          "type": "text",
+          "text": "I was looking for some solution for import, resize SVG in my project. I found several solutions that works, but it no worked for my purposes **Successful solution but neither worked for my purposes**"
+        }
+      ]
+    }
+  ]
 }
-```
-
-##### Note
-
-If you are using `.babelrc` with `inline-react-svg`, this solution will not work for you.
