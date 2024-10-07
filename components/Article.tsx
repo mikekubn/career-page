@@ -15,6 +15,14 @@ const Article: React.FC<{ content: any }> = ({ content }) => {
         italic: ({ children }) => <span className="italic">{children}</span>,
       }}
       blocks={{
+        list: ({ children }) => <ul className="list-disc list-inside">{children}</ul>,
+        code: ({ children }) => (
+          <div className="p-4">
+            <pre className="bg-dark-gray p-4 rounded-md overflow-auto max-w-full whitespace-pre-wrap">
+              <code className="text-sm">{children}</code>
+            </pre>
+          </div>
+        ),
         paragraph: ({ children }) => (
           <>
             <p className="font-ptSerif font-normal text-[20px] md:text-[28px]">{children}</p>
@@ -24,7 +32,7 @@ const Article: React.FC<{ content: any }> = ({ content }) => {
         heading: ({ children, level }) => {
           switch (level) {
             case 1:
-              return <h1 className="font-beVietnamPro font-semibold text-[28px] md:text-[52px] md:mb-4 my-[38px]">{children}</h1>;
+              return <h1 className="font-sourceCodePro font-semibold text-[28px] md:text-[48px] md:mb-4 my-[38px]">{children}</h1>;
             case 3:
               return <h3 className="font-beVietnamPro font-semibold text-[28px] md:text-[34px] md:mb-4 my-[38px]">{children}</h3>;
             default:

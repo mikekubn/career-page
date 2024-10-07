@@ -1,67 +1,262 @@
 {
   "metadata": {
     "title": "How to use npm link with pnpm and handle overwrites",
-    "description": "If you work on bigger project with more packages you will want to use pnpm, probably.",
+    "description": "If you're working on a larger project with multiple packages, you might want to use pnpm for better performance and efficiency.",
     "date": "September 2022"
   },
   "image": {
     "url": "https://res.cloudinary.com/dctc6iyms/image/upload/v1683554783/career_page/edge2edge-media-t1OalCBUYRc-unsplash_pf9tcz.jpg",
-    "alt": "If you work on bigger project with more packages you will want to use pnpm, probably."
+    "alt": "If you're working on a larger project with multiple packages, you might want to use pnpm for better performance and efficiency."
   },
   "content": [
     {
       "type": "heading",
-      "level": 3,
-      "children": [{ "type": "text", "text": "How to use npm link in pnpm overwrites" }]
+      "level": 1,
+      "children": [
+        {
+          "text": "How to use npm link with pnpm and handle overwrites",
+          "type": "text"
+        }
+      ]
     },
     {
       "type": "paragraph",
       "children": [
         {
+          "text": "",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "children": [
+        {
+          "text": "If you're working on a larger project with multiple packages, you might want to use pnpm for better performance and efficiency.",
           "type": "text",
-          "text": "If you're working on a larger project with more packages, you will probably want to use pnpm. pnpm: { overrides: { my-package-foo: 3.4.0, .... } },"
+          "italic": true
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "children": [
+        {
+          "text": "\"pnpm\": { \"overrides\": { \"my-package-foo\": \"3.4.0\", .... } }",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "",
+          "type": "text"
         }
       ]
     },
     {
       "type": "heading",
       "level": 3,
-      "children": [{ "type": "text", "text": "What is pnpm?" }]
+      "children": [
+        {
+          "text": "What is pnpm?",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "format": "unordered",
+      "children": [
+        {
+          "type": "list-item",
+          "children": [
+            {
+              "text": "pnpm is an alternative to npm (Node Package Manager), designed to be faster and more efficient.",
+              "type": "text"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "format": "unordered",
+      "children": [
+        {
+          "type": "list-item",
+          "children": [
+            {
+              "text": "When I first started using pnpm, I ran into issues while trying to link local packages where my main project used pnpm and other local packages used the standard npm. When I attempted to link packages using npm link or pnpm link, I frequently encountered errors stating that the package did not exist.",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "type": "list-item",
+          "children": [
+            {
+              "text": "To address this, I’ve outlined some steps for successfully using package linking with pnpm and handling overrides.",
+              "type": "text"
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "text",
-          "text": "Alternative of node package manager `npm`, but faster and more efficient. [pnpm](https://github.com/pnpm/pnpm 'pnpm'). When I started with pnpm, I tried to link local packages where my main project uses `pnpm` and other local packages use the standard `npm`. When I used the standard method of linking a project using npm link or pnpm link, I always got the error that the package does not exist. I decided to write some steps below, how use the link when using pnpm overrides."
+          "text": "",
+          "type": "text"
         }
       ]
     },
     {
       "type": "heading",
       "level": 3,
-      "children": [{ "type": "text", "text": "Steps" }]
+      "children": [
+        {
+          "text": "Steps:",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "format": "unordered",
+      "children": [
+        {
+          "type": "list-item",
+          "children": [
+            {
+              "text": "Linking with npm: In the repository where you are using ",
+              "type": "text"
+            },
+            {
+              "text": "npm",
+              "type": "text",
+              "italic": true
+            },
+            {
+              "text": ", type ",
+              "type": "text"
+            },
+            {
+              "text": "npm",
+              "type": "text",
+              "italic": true
+            },
+            {
+              "text": " link. Then, go to your main project, where the linked package is used, and run the following command:",
+              "type": "text"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "children": [
+        {
+          "text": "npm link <package-name-from-package.json>",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "format": "unordered",
+      "children": [
+        {
+          "type": "list-item",
+          "children": [
+            {
+              "text": "That’s it for the repository using npm.",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "type": "list-item",
+          "children": [
+            {
+              "text": "Linking with pnpm (with overrides): If you're using pnpm with overrides, and you want to override the package version, modify the package.json like this:",
+              "type": "text"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "children": [
+        {
+          "text": "\"overrides\": \"link:../foo-basic\"",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "format": "unordered",
+      "children": [
+        {
+          "type": "list-item",
+          "children": [
+            {
+              "text": "Make sure to point the path to the package directory, not the dist folder. Then, run pnpm install (pnpm i) to apply the changes.",
+              "type": "text"
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "text",
-          "text": "The repository where is use `npm` can be link with `npm link`. In the package, type `npm link` and then go to the main project where the above link package is used and type `npm link package-name-from-package.json` example `npm link @foo/basic` and that's it. The repository where is use `pnpm` with overrides. If you want to override the package version in the `pnpm` overrides, you need to type this into your package `overrides: link:../foo-basic` *write path into package no path into dist* and then run `pnpm i` and that's it."
+          "text": "",
+          "type": "text"
         }
       ]
     },
     {
       "type": "heading",
       "level": 3,
-      "children": [{ "type": "text", "text": "Note" }]
+      "children": [
+        {
+          "text": "Note:",
+          "type": "text"
+        }
+      ]
     },
     {
       "type": "paragraph",
       "children": [
         {
+          "text": "If you're using VS Code, you may need to reload your IDE after linking packages. You can do this by going to ",
+          "type": "text"
+        },
+        {
+          "text": "Developer > Reload Window",
           "type": "text",
-          "text": "If you are using VS code, you are goint to need reload your IDE, sometimes - `developer: Reload the window`."
+          "italic": true
+        },
+        {
+          "text": ".",
+          "type": "text"
         }
       ]
     }
