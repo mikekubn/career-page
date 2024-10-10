@@ -22,3 +22,12 @@ export const getArticle = async (slug: string): Promise<IArticle> => {
   const json = JSON.parse(file);
   return json;
 };
+
+export const getArticlesPaths = async () => {
+  const pathnames = await getArticles();
+  const paths = pathnames?.map((pathname) => ({
+    params: { slug: pathname },
+  }));
+
+  return paths;
+};

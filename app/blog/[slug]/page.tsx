@@ -1,5 +1,5 @@
 import { Metadata } from 'next/types';
-import { getArticle } from '@/utils/helpers';
+import { getArticle, getArticlesPaths } from '@/utils/helpers';
 import { IArticle } from '@/type';
 import Intro from '@/components/Intro';
 import Article from '@/components/Article';
@@ -34,6 +34,12 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     },
   };
 }
+
+export const generateStaticParams = async () => {
+  const pathnames = await getArticlesPaths();
+
+  return pathnames;
+};
 
 const Post = async ({ params }: { params: { slug: string } }) => {
   const article: IArticle = await getArticle(params.slug);
