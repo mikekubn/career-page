@@ -6,7 +6,25 @@ import Clients from '@/components/Clients';
 import Talk from '@/components/Talk';
 
 export const metadata: Metadata = {
-  title: 'Blog | Michael Kubin',
+  title: 'Tech Blog | Michael Kubin',
+  description: 'Explore articles and insights on React, TypeScript, frontend architecture, and software engineering by Michael Kubin.',
+  keywords:
+    'Michael Kubin blog, React tutorials, TypeScript tips, frontend development, software engineering, JavaScript articles, web application architecture, tech blog, digital crafting, programming insights',
+  openGraph: {
+    title: 'Tech Blog | Michael Kubin - Software Engineering & Frontend Development',
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://mikekubn.cz/blog',
+    description: 'Explore articles and insights on React, TypeScript, frontend architecture, and software engineering by Michael Kubin.',
+    images: [
+      {
+        url: 'https://res.cloudinary.com/dctc6iyms/image/upload/v1681157556/og_michael_kubin_dcskgv.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Michael Kubin Blog',
+      },
+    ],
+  },
   alternates: {
     canonical: 'https://mikekubn.cz/blog',
   },

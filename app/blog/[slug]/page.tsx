@@ -12,8 +12,21 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   return {
     title: article?.metadata?.title,
     description: article?.metadata?.description,
+    keywords: article?.metadata?.keywords,
     openGraph: {
-      title: article?.metadata?.title,
+      title: `Tech Blog | ${article?.metadata?.title}`,
+      type: 'website',
+      locale: 'en_US',
+      url: `https://mikekubn.cz/blog/${params.slug}`,
+      description: article?.metadata?.description,
+      images: [
+        {
+          url: 'https://res.cloudinary.com/dctc6iyms/image/upload/v1681157556/og_michael_kubin_dcskgv.jpg',
+          width: 1200,
+          height: 630,
+          alt: `Tech Blog | ${article?.metadata?.title}`,
+        },
+      ],
     },
     robots: 'index, follow',
     alternates: {

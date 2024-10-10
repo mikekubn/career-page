@@ -1,6 +1,7 @@
 {
   "metadata": {
     "title": "Importing and Resizing SVGs in Styled Components",
+    "keywords": "Import SVGs in Next.js, SVG resizing with styled-components, styled-components SVG issues, import SVG Next.js styled-components, Next.js removeViewBox solution, Webpack configuration for SVGs, SVG import errors in Next.js, styled-components SVG resizing, SVG handling in Next.js, Webpack removeViewBox, SVG resizing techniques, SVG integration with React, Webpack for SVG images, Next.js and styled-components",
     "description": "If you want to use SVGs in your Next.js project with styled-components, you may encounter issues with importing and resizing the images. I was personally surprised by this.",
     "date": "September 2022"
   },

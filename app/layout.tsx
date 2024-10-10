@@ -27,8 +27,11 @@ const sourceCodePro = Source_Code_Pro({
 });
 
 export const metadata: Metadata = {
-  title: 'Michael Kubin',
-  description: 'Software engineer & Digital Crafting',
+  title: 'Michael Kubin - Senior React Developer & Software Engineer',
+  description:
+    'Michael Kubin - Senior React Developer, Software Engineer, and Digital Craftsman. Specializing in TypeScript, Next.js, and web application architecture.',
+  keywords:
+    'Senior React Developer, Frontend Developer, Software Engineer, Digital Craftsman, TypeScript Developer, React.js Architect, JavaScript Expert, Web Application Developer, Tailwind CSS Developer, Next.js Developer, React Developer Czech Republic, Remote React Developer, React Developer Prague, Frontend Architecture Consulting',
   openGraph: {
     title: 'Michael Kubin',
     type: 'website',
@@ -55,7 +58,7 @@ interface RootLayoutProps {
 }
 
 const RootLayout = ({ children }: Readonly<RootLayoutProps>) => (
-  <html lang="en">
+  <html lang="en" className="bg-black-darkest">
     <body
       className={clsx(
         'bg-black-darkest text-white overflow-x-hidden py-12',
