@@ -1,0 +1,282 @@
+---
+title: 'How to enable PWA in Nextjs app router step-by-step? Custom Service Worker or Third-Party library.'
+keywords": 'Next.js, PWA, Progressive Web App, service worker, app router, custom service worker, Next.js app router, Serwist, caching, offline, React, Next.js service worker, web performance, SW, JavaScript, Next.js PWA tutorial, Next.js service worker setup'
+description: 'Learn how to enable Progressive Web App (PWA) functionality in a Next.js app using the app router. This step-by-step guide covers setting up a custom service worker and using the Serwist library to enhance caching, offline capabilities, and performance. Perfect for developers looking to integrate PWA features into modern web applications with Next.js.'
+image: 'https://res.cloudinary.com/dctc6iyms/image/upload/v1729244400/service-worker_gzj340.png'
+published: '2024-10-18'
+date: 'October 2024'
+canonicalUrl: 'https://www.the12st.com/blog/nextjs-app-router-sw'
+---
+
+### Introduction
+
+In today’s fast-paced digital world, users expect web applications to be fast, reliable, and engaging, no matter the network conditions. A slow or unresponsive app can lead to poor user experience and lost engagement, especially when users face unstable or limited internet connections. As developers, we’re often tasked with finding solutions to these challenges while maintaining high performance and scalability. This is where **Progressive Web Apps** (PWAs) and **Next.js** come into play.
+
+The real challenge lies in how to combine Next.js’s powerful routing system with PWA features to create a web application that is not only fast but also works offline, can be installed on a user’s device, and keeps them engaged.
+
+### What is Next.js app router and what is a PWA?
+
+- **Next.js app router** is a modern routing system introduced in Next.js framework that simplifies the management of pages, layouts, and server-side data fetching by leveraging the file system and supporting advanced features like React Server Components.
+- **PWA** is a web application that uses modern web capabilities, like offline functionality, push notifications, and installability, to deliver a native app-like experience on the web.
+
+### Why Use a Service Worker in a PWA?
+
+A Service Worker in a PWA is essential because it acts as a background script that enables key features like offline access, caching of assets, and push notifications, ensuring the app remains functional even with poor or no internet connectivity, improves load times, and enhances overall user experience. You can enable the service worker by either using a third-party library for a faster setup or adding a custom script for more control and flexibility.
+
+### Step-by-step
+
+- **Generate icons and favicon for your app** - [realfavicongenerator.net](https://realfavicongenerator.net)
+  - Favicon file and images like [_favicon.svg, favicon.ico, favicon-48x48.png, apple-touch-icon.png_] place inside app folder _app/\*\*_.
+  - Images like [_web-app-manifest-192x192.png, web-app-manifest-512x512.png_] place inside public folder _public/assets/\*\*_. You must place these two images in the public folder for the manifest file to load correctly in the browser.
+- Inside _app/\*\*_, create a _manifest.ts_ file to automatically generate a _manifest.json_ file, you can check your manifest at the URL: _https://\*\*/manifest.webmanifest_.
+
+```ts
+import { MetadataRoute } from 'next';
+
+export default function manifest(): MetadataRoute.Manifest {
+  return {
+    name: 'Next.js Progressive Web Apps and Service worker.',
+    short_name: 'Next.js - PWA - SW',
+    description: 'How to Enable step-by-step PWA in Nextjs app router? Custom Service Worker or Third-Party library.',
+    start_url: '/',
+    display: 'standalone',
+    background_color: '#FFFFFF',
+    theme_color: '#FFFFFF',
+    orientation: 'portrait',
+    screenshots: [
+      {
+        src: './assets/desktop-home-screen.png',
+        sizes: '640x320',
+        type: 'image/png',
+      },
+      {
+        src: './assets/desktop-login-screen.png',
+        sizes: '640x320',
+        type: 'image/png',
+      },
+    ],
+    icons: [
+      {
+        src: '/favicon.ico',
+        sizes: '48x48',
+        type: 'image/x-icon',
+      },
+      {
+        src: './assets/web-app-manifest-192x192.png',
+        sizes: '192x192',
+        type: 'image/png',
+      },
+      {
+        src: './assets/web-app-manifest-512x512.png',
+        sizes: '512x512',
+        type: 'image/png',
+      },
+    ],
+  };
+}
+```
+
+### Setup a custom service worker withou third-party library
+
+Create a simple _service-worker.js_ file inside the _public_ folder. This code registers a service worker _(*/sw.js*)_ for the app, but only in a browser environment that supports service workers. It ensures that the app can use service workers for tasks like caching assets for offline use, improving performance, or background syncs.
+
+```js
+// public/service-worker.js
+
+function registerServiceWorker() {
+  if (typeof window !== 'undefined') {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').then((registration) => {
+        console.log('The App service worker has been successfully registered:', registration);
+      });
+    }
+  }
+}
+
+registerServiceWorker();
+```
+
+After creating the _service-worker.js_ file we need create another one. This file _sw.js_ will be the service worker itself. This code caches the app shell and assets when the service worker is installed and serves cached assets when the app is offline.
+
+```js
+// public/sw.js
+
+const CACHE_NAME = 'your-app-cache-v1';
+
+self.addEventListener('install', (e) => {
+  e.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => {
+      return cache.addAll(['/']);
+    }),
+  );
+});
+
+self.addEventListener('fetch', (e) => {
+  e.respondWith(
+    caches.match(e.request).then((res) => {
+      return res || fetch(e.request);
+    }),
+  );
+});
+```
+
+You should also update the _tsconfig.json_ file to include the _\**/*.js_ file in the list of files to be compiled by TypeScript.
+
+```.json
+// tsconfig.json
+
+{
+   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.mjs", "**/*.js", ".next/types/**/*.ts"],
+   "exclude": ["node_modules"]
+}
+```
+
+After creating the _service-worker.js_ file, you need to import it into the _layout.tsx_ file to ensure that the service worker is registered when the app loads.
+
+```.tsx
+// app/layout.tsx
+import Script from 'next/script';
+
+......
+
+  return (
+    <html lang="en">
+      <body className="flex flex-col items-center bg-app font-sans">
+        <Script src="/service-worker.js" />
+        <main className="flex min-h-screen flex-col items-center">{children}</main>
+      <body>
+    </html>
+  );
+```
+
+After successfully setting up the service worker, you can test the app by running it in a browser that supports service workers. You can also use the Chrome DevTools to check the service worker status and cache storage.
+
+![Chrome DevTools](https://res.cloudinary.com/dctc6iyms/image/upload/v1729326088/Screenshot_2024-10-19_at_10.20.13_h6xfpk.png)
+
+<figcaption>Service worker, Chrome DevTools</figcaption>
+
+### Setup a service worker with Serwist library
+
+Now we will use the Serwist library to set up a service worker in the Next.js app. Serwist is a lightweight library that simplifies the process of adding a service worker to a web application by providing a simple API to cache assets, manage cache versions, and handle fetch events.
+
+- Use install command to add the Serwist library to your project.
+
+```bash
+bun add @serwist/next && bun add -D serwist
+```
+
+- Setup your _next.config.mjs_ file to enable the Serwist library in your Next.js app.
+
+```mjs
+// next.config.mjs
+
+/** @type {import('next').NextConfig} */
+import withSerwistInit from '@serwist/next';
+
+const nextConfig = {
+  reactStrictMode: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        port: '',
+      },
+    ],
+  },
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: [{ loader: '@svgr/webpack', options: { icon: true } }],
+    });
+    return config;
+  },
+};
+
+const withSerwist = withSerwistInit({
+  swSrc: 'app/sw.ts',
+  swDest: 'public/sw.js',
+});
+
+export default withSerwist(nextConfig);
+```
+
+- Update your tsconfig.json.
+
+```json
+// tsconfig.json
+
+{
+  // Other stuff...
+  "compilerOptions": {
+    // Other options...
+    "types": [
+      // Other types...
+      // This allows Serwist to type `window.serwist`.
+      "@serwist/next/typings"
+    ],
+    "lib": [
+      // Other libs...
+      // Add this! Doing so adds WebWorker and ServiceWorker types to the global.
+      "webworker"
+    ]
+  },
+  "exclude": ["public/sw.js"]
+}
+```
+
+- Update your .gitignore file.
+
+```txt
+// .gitignore
+
+# Serwist
+public/sw*
+public/swe-worker*
+```
+
+- Create a _sw.ts_ file inside the _app_ folder to define the service worker logic.
+
+```ts
+// app/sw.ts
+
+import { defaultCache } from '@serwist/next/worker';
+import type { PrecacheEntry, SerwistGlobalConfig } from 'serwist';
+import { Serwist } from 'serwist';
+
+// This declares the value of `injectionPoint` to TypeScript.
+// `injectionPoint` is the string that will be replaced by the
+// actual precache manifest. By default, this string is set to
+// `"self.__SW_MANIFEST"`.
+declare global {
+  interface WorkerGlobalScope extends SerwistGlobalConfig {
+    __SW_MANIFEST: (PrecacheEntry | string)[] | undefined;
+  }
+}
+
+declare const self: ServiceWorkerGlobalScope;
+
+const serwist = new Serwist({
+  precacheEntries: self.__SW_MANIFEST,
+  skipWaiting: true,
+  clientsClaim: true,
+  navigationPreload: true,
+  runtimeCaching: defaultCache,
+});
+
+serwist.addEventListeners();
+```
+
+- If you deploy to Vercel, you should add one more dependency to your project. This is because Vercel does not include the `minimatch` package by default. This avoids the error shown in the figure below.
+
+```bash
+bun add -D minimatch
+```
+
+![Vercel Deployment](https://res.cloudinary.com/dctc6iyms/image/upload/v1729244401/Screenshot_2024-10-18_at_10.56.29_kyjgvm.png)
+
+<figcaption>Vercel Deployment, vercel.com</figcaption>
+
+After setting up the Serwist library, you can test the app by running it in a browser that supports service workers. You can also use the Chrome DevTools to check the service worker status and cache storage.
+
+For more configuration options and advanced features, you can refer to the [Serwist documentation](https://serwist.pages.dev/docs/next/configuring/additional-precache-entries).
