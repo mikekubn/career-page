@@ -1,9 +1,11 @@
 import Intro from '@/components/Intro';
 import { Metadata } from 'next/types';
-import Article from '@/components/ArticleIntro';
-import { getArticle, getArticles } from '@/utils/helpers';
+import Teaser from '@/components/Teaser';
+import { getArticles } from '@/utils/helpers';
 import Clients from '@/components/Clients';
 import Talk from '@/components/Talk';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Tech Blog | Michael Kubin',
@@ -31,36 +33,23 @@ export const metadata: Metadata = {
 };
 
 const Blog = async () => {
-  const pathnames = await getArticles();
-  const articles = pathnames?.map(async (pathname) => {
-    try {
-      const article = await getArticle(pathname);
-      return {
-        slug: pathname,
-        ...article,
-      };
-    } catch (error) {
-      console.error('error', error);
-    }
-  });
-  const content = await Promise.all(articles);
+  const articles = await getArticles();
 
   return (
     <section className="flex flex-col items-center md:items-stretch w-full max-w-screen-lg mx-auto px-6">
       <Intro title="Blog," />
       <div className="h-20" />
-      <div className="flex flex-row justify-center flex-wrap gap-6 min-h-screen">
-        {content?.map((article) => (
-          <Article
-            key={article?.slug}
-            title={article?.metadata?.title}
-            date={article?.metadata?.date}
-            src={article?.image?.url}
-            slug={article?.slug}
-          />
-        ))}
-      </div>
-      <div className="h-40 md:h-0" />
+      <div className="flex flex-row flex-wrap justify-center gap-6">{articles?.map((article) => <Teaser {...article} key={article.slug} />)}</div>
+      <section className="flex flex-col items-center gap-4 my-40">
+        <p className="text-[24px] md:text-[32px] text-white font-beVietnamPro font-semibold">Read more interesting articles from:</p>
+        <Link
+          href="https://www.the12st.com/blog"
+          target="_blank"
+          className="inline-flex items-center underline hover:no-underline underline-offset-8 text-[18px] md:text-[24px] text-blue">
+          the12st Tech Blog
+          <ArrowRight className="size-[24px]" />
+        </Link>
+      </section>
       <Clients title="Where I've been coding" className="mx-auto mb-40 md:mb-60" />
       <Talk className="mx-auto my-40 md:my-60" />
     </section>

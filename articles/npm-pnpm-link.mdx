@@ -1,5 +1,5 @@
 ---
-title: 'How to use npm link with pnpm and handle overwrites'
+title: 'How to use npm link with pnpm and handle overwrites?'
 keywords: 'npm link with pnpm, handle npm link overwrites, pnpm vs npm, how to link packages with pnpm, npm link issues, pnpm overrides, package linking tutorial, pnpm linking guide, Node.js package management, pnpm efficiency tips, npm link local packages, pnpm install with overrides'
 description: "If you're working on a larger project with multiple packages, you might want to use pnpm for better performance and efficiency."
 image: 'https://res.cloudinary.com/dctc6iyms/image/upload/v1683554783/career_page/edge2edge-media-t1OalCBUYRc-unsplash_pf9tcz.jpg'
@@ -7,7 +7,7 @@ published: '2022-09-02'
 date: 'September 2022'
 ---
 
-### How to use npm link with pnpm and handle overwrites
+### How to use npm link with pnpm and handle overwrites?
 
 > _If you're working on a larger project with multiple packages, you might want to use pnpm for better performance and efficiency._
 
@@ -25,20 +25,20 @@ date: 'September 2022'
 
 ### Steps:
 
-1. Linking with npm: In the repository where you are using npm, type npm link. Then, go to your main project, where the linked package is used, and run the following command:
+- Linking with npm: In the repository where you are using npm, type npm link. Then, go to your main project, where the linked package is used, and run the following command:
 
-   ```bash
-   npm link <package-name-from-package.json>
-   ```
+  ```bash
+  npm link <package-name-from-package.json>
+  ```
 
-2. That’s it for the repository using npm.
-3. Linking with pnpm (with overrides): If you're using pnpm with overrides, and you want to override the package version, modify the package.json like this:
+- That’s it for the repository using npm.
+- Linking with pnpm (with overrides): If you're using pnpm with overrides, and you want to override the package version, modify the package.json like this:
 
-   ```bash
-   "overrides": "link:../foo-basic"
-   ```
+  ```bash
+  "overrides": "link:../foo-basic"
+  ```
 
-4. Make sure to point the path to the package directory, not the dist folder. Then, run pnpm install _(pnpm i)_ to apply the changes.
+- Make sure to point the path to the package directory, not the dist folder. Then, run pnpm install _(pnpm i)_ to apply the changes.
 
 #### Note:
 

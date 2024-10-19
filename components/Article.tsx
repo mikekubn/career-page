@@ -1,52 +1,20 @@
-'use client';
-
 import React from 'react';
-import { BlocksRenderer } from '@strapi/blocks-react-renderer';
-import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import clsx from 'clsx';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const Article: React.FC<{ content: any }> = ({ content }) => {
+const Article: React.FC<{ markdown: React.ReactElement }> = ({ markdown }) => {
   return (
-    <BlocksRenderer
-      content={content}
-      modifiers={{
-        bold: ({ children }) => <strong className="font-semibold">{children}</strong>,
-        italic: ({ children }) => <span className="italic">{children}</span>,
-      }}
-      blocks={{
-        list: ({ children }) => <ul className="list-disc list-inside">{children}</ul>,
-        code: ({ children }) => (
-          <div className="p-4">
-            <pre className="bg-dark-gray p-4 rounded-md overflow-auto max-w-full whitespace-pre-wrap">
-              <code className="text-sm">{children}</code>
-            </pre>
-          </div>
-        ),
-        paragraph: ({ children }) => (
-          <>
-            <p className="font-ptSerif font-normal text-[20px] md:text-[28px]">{children}</p>
-            <br />
-          </>
-        ),
-        heading: ({ children, level }) => {
-          switch (level) {
-            case 1:
-              return <h1 className="font-sourceCodePro font-semibold text-[28px] md:text-[48px] md:mb-4 my-[38px]">{children}</h1>;
-            case 3:
-              return <h3 className="font-beVietnamPro font-semibold text-[28px] md:text-[34px] md:mb-4 my-[38px]">{children}</h3>;
-            default:
-              return <h3 className="font-beVietnamPro font-semibold text-[28px] md:text-[34px] md:mb-4 my-[38px]">{children}</h3>;
-          }
-        },
-        link: ({ children, url }) => (
-          <Link href={url} className="inline-flex items-center gap-2 text-blue font-ptSerif font-light text-[20px] md:text-[28px] hover:underline">
-            {children}
-            <ArrowRight size={24} />
-          </Link>
-        ),
-      }}
-    />
+    <article
+      className={clsx('prose max-w-screen-lg', {
+        'prose-img:-mb-4': true,
+        'prose-h3:font-beVietnamPro prose-h3:font-semibold prose-h3:text-[28px] prose-h3:md:text-[34px] prose-h3:text-white': true,
+        'prose-h4:font-beVietnamPro prose-h4:font-semibold prose-h4:text-[24px] prose-h4:md:text-[30px] prose-h4:text-white': true,
+        'prose-p:font-inter prose-p:font-normal prose-p:text-[18px] prose-p:md:text-[22px] prose-p:text-white': true,
+        'prose-a:font-inter prose-a:font-light prose-a:text-blue prose-a:text-[18px] prose-a:md:text-[22px] prose-a:no-underline hover:prose-a:underline':
+          true,
+        'prose-ul:font-inter prose-ul:font-normal prose-ul:text-[18px] prose-ul:md:text-[22px]prose-ul:text-white': true,
+      })}>
+      {markdown}
+    </article>
   );
 };
 

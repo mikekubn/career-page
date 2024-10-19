@@ -8,6 +8,10 @@ date: 'October 2024'
 canonicalUrl: 'https://www.the12st.com/blog/nextjs-app-router-sw'
 ---
 
+### How to enable PWA in Nextjs app router step-by-step? Custom Service Worker or Third-Party library.
+
+> _Learn how to enable Progressive Web App (PWA) functionality in a Next.js app using the app router. This step-by-step guide covers setting up a custom service worker and using the Serwist library to enhance caching, offline capabilities, and performance. Perfect for developers looking to integrate PWA features into modern web applications with Next.js._
+
 ### Introduction
 
 In today’s fast-paced digital world, users expect web applications to be fast, reliable, and engaging, no matter the network conditions. A slow or unresponsive app can lead to poor user experience and lost engagement, especially when users face unstable or limited internet connections. As developers, we’re often tasked with finding solutions to these challenges while maintaining high performance and scalability. This is where **Progressive Web Apps** (PWAs) and **Next.js** come into play.
@@ -25,7 +29,7 @@ A Service Worker in a PWA is essential because it acts as a background script th
 
 ### Step-by-step
 
-- **Generate icons and favicon for your app** - [realfavicongenerator.net](https://realfavicongenerator.net)
+- Generate icons and favicon for your app - [realfavicongenerator.net](https://realfavicongenerator.net)
   - Favicon file and images like [_favicon.svg, favicon.ico, favicon-48x48.png, apple-touch-icon.png_] place inside app folder _app/\*\*_.
   - Images like [_web-app-manifest-192x192.png, web-app-manifest-512x512.png_] place inside public folder _public/assets/\*\*_. You must place these two images in the public folder for the manifest file to load correctly in the browser.
 - Inside _app/\*\*_, create a _manifest.ts_ file to automatically generate a _manifest.json_ file, you can check your manifest at the URL: _https://\*\*/manifest.webmanifest_.

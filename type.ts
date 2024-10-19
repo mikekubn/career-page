@@ -1,5 +1,15 @@
-export interface IArticle {
-  metadata: { title: string; description: string; date: string; keywords: string };
-  image: { url: string; alt: string };
-  content: Record<string, unknown>;
+export interface IArticleMetadata {
+  title: string;
+  keywords: string;
+  description: string;
+  image: string;
+  published: string;
+  date: string;
+  canonicalUrl?: string;
+}
+
+export interface IArticleProps {
+  slug?: string;
+  metadata: IArticleMetadata;
+  article: React.ReactElement;
 }

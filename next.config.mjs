@@ -1,4 +1,7 @@
 /** @type {import('next').NextConfig} */
+import nextMDX from '@next/mdx';
+
+const withMDX = nextMDX();
 
 const nextConfig = {
   images: {
@@ -20,4 +23,4 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+export default withMDX(nextConfig);
