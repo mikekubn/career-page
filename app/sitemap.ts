@@ -1,11 +1,11 @@
-import { getArticles } from '@/utils/helpers';
+import { getArticlesPaths } from '@/utils/helpers';
 import type { MetadataRoute } from 'next';
 
 const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
-  const articles = await getArticles();
+  const articles = await getArticlesPaths();
 
-  const content = articles.map((slug) => ({
-    url: `https://mikekubn.cz/blog/${slug}`,
+  const content = articles.map((article) => ({
+    url: `https://mikekubn.cz/blog/${article?.params?.slug}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: 0.8,
