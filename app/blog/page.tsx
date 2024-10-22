@@ -40,7 +40,7 @@ const Blog = async () => {
       <Intro title="Blog," />
       <div className="h-20" />
       <div className="flex flex-row flex-wrap justify-center gap-6">{articles?.map((article) => <Teaser {...article} key={article.slug} />)}</div>
-      <section className="flex flex-col items-center gap-4 my-40">
+      <section className="flex flex-col items-center text-center gap-4 my-40">
         <p className="text-[24px] md:text-[32px] text-white font-beVietnamPro font-semibold">Read more interesting articles from:</p>
         <Link
           href="https://www.the12st.com/blog"
