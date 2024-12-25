@@ -22,6 +22,6 @@ const config: Config = {
       sourceCodePro: ['var(--font-source-code-pro)'],
     },
   },
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [require('@tailwindcss/typography'), require('tailwindcss-motion')],
 };
 export default config;

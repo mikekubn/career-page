@@ -61,7 +61,7 @@ const RootLayout = ({ children }: Readonly<RootLayoutProps>) => (
   <html lang="en" className="bg-black-darkest">
     <body
       className={clsx(
-        'bg-black-darkest text-white overflow-x-hidden py-12',
+        'bg-black-darkest text-white overflow-x-hidden pb-12',
         inter.variable,
         ptSerif.variable,
         beVietnamPro.variable,

@@ -37,7 +37,7 @@ const Blog = async () => {
 
   return (
     <section className="flex flex-col items-center md:items-stretch w-full max-w-screen-lg mx-auto px-6">
-      <Intro title="Blog," />
+      <Intro title="Blog," isArrowVisible />
       <div className="h-20" />
       <div className="flex flex-row flex-wrap justify-center gap-6">{articles?.map((article) => <Teaser {...article} key={article.slug} />)}</div>
       <section className="flex flex-col items-center text-center gap-4 my-40">

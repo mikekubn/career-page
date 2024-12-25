@@ -36,7 +36,7 @@ const staggerAnimation = {
     opacity: 1,
     scale: 1,
     transition: {
-      delay: index * 0.1,
+      delay: index * 0.2,
       duration: 0.4,
       ease: 'easeOut',
     },
@@ -57,10 +57,10 @@ const Stack = () => {
   }, [controls, isInView]);
 
   return (
-    <section className="my-12">
+    <section className="h-screen w-full flex flex-col justify-center">
       <div
         ref={ref}
-        className="grid grid-cols-3 gap-2 justify-items-center items-center justify-center md:w-[720px] lg:w-[960px] mx-auto"
+        className="grid grid-cols-3 gap-16 md:gap-2 justify-items-center items-center justify-center md:w-[720px] lg:w-[960px] mx-auto"
         style={{ gridAutoRows: 'minmax(100px, auto)' }}>
         {technologies.map((technology, index) => (
           <motion.div
@@ -78,7 +78,7 @@ const Stack = () => {
       </div>
       <div className="h-6" />
       <div
-        className="grid grid-cols-2 gap-6 justify-items-center items-center justify-center md:w-[720px] lg:w-[960px] mx-auto"
+        className="grid grid-cols-2 gap-12 md:gap-6 justify-items-center items-center justify-center md:w-[720px] lg:w-[960px] mx-auto"
         style={{ gridAutoRows: 'minmax(100px, auto)' }}>
         {services.map((technology, index) => (
           <motion.div

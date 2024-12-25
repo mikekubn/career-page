@@ -47,7 +47,7 @@ const Post = async ({ params }: { params: { slug: string } }) => {
 
   return (
     <section className="flex flex-col w-full max-w-screen-lg mx-auto px-6">
-      <Intro title="Blog," />
+      <Intro title="Blog," isArrowVisible />
       <div className="h-20" />
       <Article markdown={article} />
       <section className="flex flex-col items-center my-40">

@@ -16,6 +16,11 @@ const nextConfig = {
         hostname: 'uloziste.space',
         port: '',
       },
+      {
+        protocol: 'https',
+        hostname: 'the12st.imgix.net',
+        port: '',
+      },
     ],
   },
   reactStrictMode: true,
