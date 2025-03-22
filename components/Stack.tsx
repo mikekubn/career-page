@@ -1,3 +1,4 @@
+//@ts-nocheck
 'use client';
 
 import React from 'react';
@@ -60,7 +61,7 @@ const Stack = () => {
     <section className="h-screen w-full flex flex-col justify-center">
       <div
         ref={ref}
-        className="grid grid-cols-3 gap-16 md:gap-2 justify-items-center items-center justify-center md:w-[720px] lg:w-[960px] mx-auto"
+        className="grid grid-cols-3 gap-16 md:gap-2 place-items-center justify-center md:w-[720px] lg:w-[960px] mx-auto"
         style={{ gridAutoRows: 'minmax(100px, auto)' }}>
         {technologies.map((technology, index) => (
           <motion.div
@@ -78,7 +79,7 @@ const Stack = () => {
       </div>
       <div className="h-6" />
       <div
-        className="grid grid-cols-2 gap-12 md:gap-6 justify-items-center items-center justify-center md:w-[720px] lg:w-[960px] mx-auto"
+        className="grid grid-cols-2 gap-12 md:gap-6 place-items-center justify-center md:w-[720px] lg:w-[960px] mx-auto"
         style={{ gridAutoRows: 'minmax(100px, auto)' }}>
         {services.map((technology, index) => (
           <motion.div

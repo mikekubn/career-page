@@ -7,8 +7,11 @@ import Talk from '@/components/Talk';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const { metadata } = await getArticle(params.slug);
+type Params = { params: Promise<{ slug: string }> };
+
+export const generateMetadata = async ({ params }: Params): Promise<Metadata> => {
+  const { slug } = await params;
+  const { metadata } = await getArticle(slug);
 
   return {
     title: metadata?.title,
@@ -18,7 +21,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       title: `Tech Blog | ${metadata?.title}`,
       type: 'website',
       locale: 'en_US',
-      url: `https://mikekubn.cz/blog/${params.slug}`,
+      url: `https://mikekubn.cz/blog/${slug}`,
       description: metadata?.description,
       images: [
         {
@@ -31,10 +34,10 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     },
     robots: 'index, follow',
     alternates: {
-      canonical: metadata?.canonicalUrl?.length ? metadata?.canonicalUrl : `https://mikekubn.cz/blog/${params.slug}`,
+      canonical: metadata?.canonicalUrl?.length ? metadata?.canonicalUrl : `https://mikekubn.cz/blog/${slug}`,
     },
   };
-}
+};
 
 export const generateStaticParams = async () => {
   const pathnames = await getArticlesPaths();
@@ -42,8 +45,9 @@ export const generateStaticParams = async () => {
   return pathnames;
 };
 
-const Post = async ({ params }: { params: { slug: string } }) => {
-  const { article } = await getArticle(params.slug);
+const Post = async ({ params }: Params) => {
+  const { slug } = await params;
+  const { article } = await getArticle(slug);
 
   return (
     <section className="flex flex-col w-full max-w-screen-lg mx-auto px-6">
