@@ -36,7 +36,7 @@ const experiences = [
     logo: '/customers/metait.svg',
   },
   {
-    position: 'Senior Frontend Developer',
+    position: 'Software Developer',
     company: 'Direct',
     note: 'Improved app performance & streamlined CMS.',
     logo: '/customers/direct.svg',

@@ -2,41 +2,31 @@
 
 import React from 'react';
 import { motion, useAnimation, useInView } from 'framer-motion';
-import ReactSvg from '@/public/technologies/react.svg';
-import NextJsSvg from '@/public/technologies/next-js.svg';
-import TypeScriptSvg from '@/public/technologies/ts.svg';
-import JavaScriptSvg from '@/public/technologies/js.svg';
-import TailwindCssSvg from '@/public/technologies/tailwind.svg';
-import VercelSvg from '@/public/technologies/vercel.svg';
-import DigitalOceanSvg from '@/public/technologies/digitalocean.svg';
-import HtmlSvg from '@/public/technologies/html-5.svg';
-import PrismaSvg from '@/public/technologies/prisma.svg';
-import StrapiSvg from '@/public/technologies/strapi.svg';
+import { ReactComponent as ReactSvg } from '@/public/technologies/react.svg';
+import { ReactComponent as NextJsSvg } from '@/public/technologies/next-js.svg';
+import { ReactComponent as TypeScriptSvg } from '@/public/technologies/ts.svg';
+import { ReactComponent as JavaScriptSvg } from '@/public/technologies/js.svg';
+import { ReactComponent as TailwindCssSvg } from '@/public/technologies/tailwind.svg';
+import { ReactComponent as VercelSvg } from '@/public/technologies/vercel.svg';
+import { ReactComponent as DigitalOceanSvg } from '@/public/technologies/digitalocean.svg';
+import { ReactComponent as HtmlSvg } from '@/public/technologies/html-5.svg';
+import { ReactComponent as PrismaSvg } from '@/public/technologies/prisma.svg';
+import { ReactComponent as StrapiSvg } from '@/public/technologies/strapi.svg';
 import clsx from 'clsx';
 
 const technologies = [
-  //@ts-ignore
   { title: 'React', src: <ReactSvg className="size-[50px] md:size-[60px]" /> },
-  //@ts-ignore
   { title: 'Next.js', src: <NextJsSvg className="size-[50px] md:size-[60px]" /> },
-  //@ts-ignore
   { title: 'TypeScript', src: <TypeScriptSvg className="size-[50px] md:size-[60px]" /> },
-  //@ts-ignore
   { title: 'JavaScript', src: <JavaScriptSvg className="size-[50px] md:size-[60px]" /> },
-  //@ts-ignore
   { title: 'Tailwind CSS', src: <TailwindCssSvg className="size-[50px] md:size-[60px]" /> },
-  //@ts-ignore
   { title: 'HTML', src: <HtmlSvg className="size-[50px] md:size-[60px]" /> },
-  //@ts-ignore
   { title: 'DigitalOcean', src: <DigitalOceanSvg className="size-[90px] md:size-[120px]" /> },
 ];
 
 const services = [
-  //@ts-ignore
   { title: 'Vercel', src: <VercelSvg className="h-[80px] w-[140px] md:h-[80px] md:w-[160px]" /> },
-  //@ts-ignore
   { title: 'Prisma', src: <PrismaSvg className="h-[80px] w-[140px] md:h-[80px] md:w-[160px]" /> },
-  //@ts-ignore
   { title: 'Strapi', src: <StrapiSvg className="h-[80px] w-[140px] md:h-[80px] md:w-[160px]" /> },
 ];
 

@@ -28,8 +28,8 @@ const Teaser: React.FC<IArticleProps> = ({ metadata, slug }) => {
             <Image
               fill
               src={metadata?.image}
-              title={metadata.title}
-              alt={metadata.title}
+              title={metadata?.title}
+              alt={metadata?.title}
               className="object-cover rounded-b-[22px] md:rounded-b-[30px]"
             />
           </motion.div>

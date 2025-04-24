@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import Lines from '@/public/svg/lines.svg';
+import { ReactComponent as Lines } from '@/public/svg/lines.svg';
 import Image from 'next/image';
 import { Metadata } from 'next';
 
@@ -17,7 +17,6 @@ const NotFoundPage = () => {
         <div className="group flex flex-col gap-0.5">
           <Link href="/" className="text-[20px] md:text-[28px] text-center group-hover:text-blue/50">
             I wanna Go home!
-            {/**@ts-ignore */}
             <Lines className="group-hover:fill-blue/50 w-[340px] md:w-[438px] h-[30px]" />
           </Link>
         </div>
