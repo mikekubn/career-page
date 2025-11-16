@@ -8,17 +8,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'res.cloudinary.com',
-        port: '',
-      },
-      {
-        protocol: 'https',
-        hostname: 'uloziste.space',
-        port: '',
-      },
-      {
-        protocol: 'https',
-        hostname: 'the12st.imgix.net',
+        hostname: 'cdn.mikekubn.cz',
         port: '',
       },
     ],

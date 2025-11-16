@@ -33,7 +33,7 @@ const Video = () => {
       autoPlay={true}
       playsInline={true}
       className="rounded-[20px]">
-      <source src="https://uloziste.space/akcenta_d3wrqm.mp4" type="video/mp4" />
+      <source src="https://cdn.mikekubn.cz/akcenta_d3wrqm.mp4" type="video/mp4" />
     </motion.video>
   );
 };

@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     description: 'Software engineer & Digital Crafting',
     images: [
       {
-        url: 'https://res.cloudinary.com/dctc6iyms/image/upload/v1733505263/image_stnxij.png',
+        url: 'https://cdn.mikekubn.cz/og-image-mk.png',
         width: 1200,
         height: 630,
         alt: 'Software engineer & Digital Crafting',
